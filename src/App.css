@@ -301,81 +301,17 @@
   white-space: nowrap;
 }
 
+.handubi .center-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
 .handubi .frame-1 {
-  left: 199px !important;
-  position: absolute !important;
-  top: 1138px !important;
-}
-
-.handubi .frame-instance {
-  left: 347px !important;
-  position: absolute !important;
-  top: 1138px !important;
-}
-
-.handubi .frame-1-instance {
-  margin-left: -0.5px !important;
-  margin-right: -0.5px !important;
-}
-
-.handubi .design-component-instance-node {
-  display: flex !important;
-  left: 450px !important;
-  position: absolute !important;
-  top: 1138px !important;
-  width: 212px !important;
-}
-
-.handubi .frame-2 {
-  left: 680px !important;
-  position: absolute !important;
-  top: 1138px !important;
-}
-
-.handubi .frame-3 {
-  display: flex !important;
-  left: 830px !important;
-  position: absolute !important;
-  top: 1138px !important;
-  width: 145px !important;
-}
-
-.handubi .frame-4 {
-  left: 993px !important;
-  position: absolute !important;
-  top: 1138px !important;
-}
-
-.handubi .frame-5 {
-  left: 1100px !important;
-  position: absolute !important;
-  top: 1138px !important;
-}
-
-.handubi .frame-6 {
-  left: 1227px !important;
-  position: absolute !important;
-  top: 1138px !important;
-}
-
-.handubi .frame-7 {
-  left: 1368px !important;
-  position: absolute !important;
-  top: 1138px !important;
-}
-
-.handubi .frame-8 {
-  display: flex !important;
-  left: 1465px !important;
-  position: absolute !important;
-  top: 1138px !important;
-  width: 123px !important;
-}
-
-.handubi .frame-9 {
-  left: 1606px !important;
-  position: absolute !important;
-  top: 1138px !important;
+  top: 1138px;
+  white-space: nowrap;
 }
 
 .handubi .group-3 {
@@ -958,197 +894,91 @@
 }
 
 .handubi .group-14 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 62px;
-  left: 199px;
+  width: 1530px;
   position: absolute;
+  left: 199px;
   top: 32px;
-  width: 1522px;
 }
 
 .handubi .navbar {
-  height: 12px;
-  left: 336px;
-  position: absolute;
-  top: 25px;
-  width: 868px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 1000px;
+  gap: 30px;
+  position: relative;
 }
 
 .handubi .text-wrapper-30 {
   color: var(--text);
   font-family: "Manrope", Helvetica;
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 500;
-  left: 0;
   letter-spacing: 0;
-  line-height: 78px;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-
-.handubi .text-wrapper-31 {
-  color: var(--text);
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  left: 113px;
-  letter-spacing: 0;
-  line-height: 78px;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-
-.handubi .text-wrapper-32 {
-  color: var(--text);
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  left: 184px;
-  letter-spacing: 0;
-  line-height: 78px;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-
-.handubi .text-wrapper-33 {
-  color: var(--text);
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  left: 299px;
-  letter-spacing: 0;
-  line-height: 78px;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-
-.handubi .text-wrapper-34 {
-  color: var(--text);
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  left: 427px;
-  letter-spacing: 0;
-  line-height: 78px;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-
-.handubi .text-wrapper-35 {
-  color: var(--text);
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  left: 502px;
-  letter-spacing: 0;
-  line-height: 78px;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-
-.handubi .text-wrapper-36 {
-  color: var(--text);
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  left: 609px;
-  letter-spacing: 0;
-  line-height: 78px;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-
-.handubi .text-wrapper-37 {
-  color: var(--text);
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  left: 674px;
-  letter-spacing: 0;
-  line-height: 78px;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-}
-
-.handubi .text-wrapper-38 {
-  color: var(--text);
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  left: 781px;
-  letter-spacing: 0;
-  line-height: 78px;
-  position: absolute;
-  top: 0;
   white-space: nowrap;
 }
 
 .handubi .group-15 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 45px;
   left: 1318px;
   position: absolute;
-  top: 8px;
-  width: 206px;
+  width: 136px;
+}
+
+.handubi .text-wrapper-40 {
+  color: var(--accent);
+  font-family: "Manrope", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 45px;
+  top: 16px;
+  white-space: nowrap;
+  margin-right: 30px;
 }
 
 .handubi .group-16 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 45px;
-  left: 104px;
+  left: 90px;
   position: absolute;
   top: 0;
-  width: 102px;
+  width: 130px;
 }
 
 .handubi .overlap-group-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--accent);
   border-radius: 4px;
-  height: 45px;
+  height: 50px;
   position: relative;
-  width: 100px;
+  width: 110px;
 }
 
 .handubi .text-wrapper-39 {
   color: #ffffff;
   font-family: "Manrope", Helvetica;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
-  left: 11px;
-  letter-spacing: -0.96px;
   line-height: 78px;
-  position: absolute;
-  top: 16px;
   white-space: nowrap;
-}
-
-.handubi .text-wrapper-40 {
-  color: var(--text);
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  left: 34px;
-  letter-spacing: 0;
-  line-height: 78px;
-  position: absolute;
-  top: 16px;
-  white-space: nowrap;
-}
-
-.handubi .search-2 {
-  height: 14px;
-  left: 0;
-  position: absolute;
-  top: 14px;
-  width: 14px;
 }
 
 .handubi .group-17 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 62px;
   left: 0;
   position: absolute;
@@ -1159,24 +989,19 @@
 .handubi .text-wrapper-41 {
   color: var(--accent);
   font-family: "Manrope", Helvetica;
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 500;
-  left: 74px;
   letter-spacing: -1.8px;
-  line-height: 78px;
-  position: absolute;
-  top: 20px;
   white-space: nowrap;
+  margin-left: 90px;
 }
 
-.handubi .ellipse {
-  background-color: #000000;
-  border-radius: 31px;
-  height: 62px;
+.handubi .logo {
+  height: 60px;
+  width: 60px;
   left: 0;
   position: absolute;
-  top: 0;
-  width: 62px;
+  top: 0px;
 }
 
 .handubi .group-18 {

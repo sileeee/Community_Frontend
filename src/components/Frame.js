@@ -3,10 +3,10 @@ import React from "react";
 import "../App.css";
 
 
-export const Frame = ({ className, text = "Job Search", divClassName }) => {
+export const Frame = ({ className, text, divClassName }) => {
   return (
     <div className={`frame ${className}`}>
-      <div className={`job-search ${divClassName}`}>{text}</div>
+      <div className={`job-search`}>{text}</div>
     </div>
   );
 };
