@@ -1,12 +1,8 @@
 import "../App.css";
 import '../styleguide.css';
-import { useLocation } from 'react-router-dom';
 
 
-function Home(){
-
-    const location = useLocation();
-    console.log(location);
+function BigBanner(){
 
     return(
         <div className="overlap">
@@ -50,4 +46,4 @@ function Home(){
         </div>
     );
 }
-export default Home;
+export default BigBanner;
