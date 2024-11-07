@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
         <Switch>
           <Route path="/">
-                <Home />
+              <Home />
           </Route>
         </Switch>
     </BrowserRouter>
