@@ -1,38 +1,2485 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.handubi {
+  background-color: #fffefb;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.handubi .div {
+  background-color: #fffefb;
+  height: 11056px;
+  overflow: hidden;
+  position: relative;
+  width: 1920px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.handubi .overlap {
+  height: 754px;
+  left: 0;
+  position: absolute;
+  top: 126px;
+  width: 1930px;
+}
+
+.handubi .group {
+  height: 754px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1930px;
+}
+
+.handubi .overlap-group {
+  background-color: var(--accent);
+  background-image: url(../public/static/img/mask-group.png);
+  background-size: 100% 100%;
+  height: 754px;
+  position: relative;
+  width: 1920px;
+}
+
+.handubi .div-wrapper {
+  background-color: #71ff6e;
+  border-radius: 59.5px;
+  box-shadow: 0px 4px 4px #5e5e5e40;
+  left: 1051px;
+  top: 242px;
+  height: 64px;
+  width: 148px;
+  position: relative; /* 여기서부터 끝까지 수정 포인트*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.handubi .overlap-2 {
+  background-color: #71ff6e;
+  border-radius: 59.5px;
+  box-shadow: 0px 4px 4px #5e5e5e40;
+  height: 64px;
+  width: 104px;
+  left: 1567px;
+  top: 242px;
+  position: absolute;
+   /* 여기서부터 끝까지 수정 포인트*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.handubi .overlap-3 {
+  background-color: #71ff6e;
+  border-radius: 59.5px;
+  box-shadow: 0px 4px 4px #5e5e5e40;
+  height: 64px;
+  left: 1193px;
+  top: 119px;
+  width: 104px;
+  position: absolute;
+  display: flex; /* 여기서부터 끝까지 수정 포인트*/
+  justify-content: center;
+  align-items: center;
+}
+
+
+.handubi .overlap-4 {
+  background-color: #71ff6e;
+  border-radius: 59.5px;
+  box-shadow: 0px 4px 4px #5e5e5e40;
+  height: 64px;
+  left: 1440px;
+  top: 141px;
+  width: 114px;
+  position: absolute;
+   /* 여기서부터 끝까지 수정 포인트*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.handubi .overlap-5 {
+  background-color: #71ff6e;
+  border-radius: 59.5px;
+  box-shadow: 0px 4px 4px #5e5e5e40;
+  height: 64px;
+  left: 1167px;
+  position: absolute;
+   /* 여기서부터 끝까지 수정 포인트*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 532px;
+  width: 148px;
+}
+
+.handubi .component {
+  background-color: #71ff6e;
+  border-radius: 59.5px;
+  box-shadow: 0px 4px 4px #5e5e5e40;
+  height: 64px;
+  left: 1020px;
+  position: absolute;
+  top: 405px;
+  width: 148px;
+   /* 여기서부터 끝까지 수정 포인트*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.handubi .text-wrapper {
+  color: #183524;
+  font-family: "Manrope", Helvetica;
+  font-size: 27px;
+  font-weight: 500;
+  left: 27px;
+  letter-spacing: -1.62px;
+  line-height: 78px;
+  position: absolute;
+  top: 23px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-2 {
+  color: #183524;
+  font-family: "Manrope", Helvetica;
+  font-size: 27px;
+  font-weight: 500;
+  left: 22px;
+  letter-spacing: -1.62px;
+  line-height: 20px;
+  top: 23px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-3 {
+  color: #183524;
+  font-family: "Manrope", Helvetica;
+  font-size: 27px;
+  font-weight: 500;
+  left: 26px;
+  letter-spacing: -1.62px;
+  line-height: 78px;
+  position: absolute;
+  top: 23px;
+  white-space: nowrap;
+}
+
+
+.handubi .text-wrapper-4 {
+  color: #183524;
+  font-family: "Manrope", Helvetica;
+  font-size: 27px;
+  font-weight: 500;
+  left: 32px;
+  letter-spacing: -1.62px;
+  line-height: 78px;
+  position: absolute;
+  top: 22px;
+  white-space: nowrap;
+}
+
+.handubi .korean-dreams-in {
+  color: #fffefc;
+  font-family: "Manrope", Helvetica;
+  font-size: 84px;
+  font-weight: 600;
+  left: 193px;
+  letter-spacing: -5.04px;
+  line-height: 92px;
+  position: absolute;
+  top: 223px;
+  width: 544px;
+}
+
+.handubi .overlap-wrapper {
+  height: 55px;
+  left: 199px;
+  position: absolute;
+  top: 431px;
+  width: 540px;
+}
+
+.handubi .overlap-6 {
+  display: flex; /* 수정 포인트 여기서부터 */
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 10px; /* 여기까지 */
+  background-color: #f3f8f5;
+  border-radius: 5px;
+  height: 55px;
+  position: relative;
+  width: 538px;
+}
+
+.handubi .group-wrapper {
+  background-color: #2d2d2d;
+  border-radius: 0px 5px 5px 0px;
+  height: 55px;
+  left: 405px;
+  position: absolute;
+  top: 0;
+  width: 133px;
+}
+
+.handubi .group-2 {
+  display: flex;
+  align-items: center;
+  height: 14px;
+  left: 26px;
+  position: relative;
+  top: 20px;
+  width: 84px;
+}
+
+.handubi .text-wrapper-5 {
+  color: #fffefc;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  left: 24px; 
+  text-align: left;
+  line-height: normal;
+  top: 1px;
+  margin-left: 25px;
+}
+
+.handubi .search {
+  height: 14px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 16px;
+}
+
+.handubi .text-wrapper-6 {
+  color: #9c9c9c;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.32px;
+  text-align: left;
+  line-height: normal;
+}
+
+.handubi .text-wrapper-7 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 64px;
+  font-weight: 500;
+  left: 654px;
+  letter-spacing: -2px;
+  line-height: 55px;
+  position: absolute;
+  top: 1029px;
+  white-space: nowrap;
+}
+
+.handubi .frame-1 {
+  left: 199px !important;
+  position: absolute !important;
+  top: 1138px !important;
+}
+
+.handubi .frame-instance {
+  left: 347px !important;
+  position: absolute !important;
+  top: 1138px !important;
+}
+
+.handubi .frame-1-instance {
+  margin-left: -0.5px !important;
+  margin-right: -0.5px !important;
+}
+
+.handubi .design-component-instance-node {
+  display: flex !important;
+  left: 450px !important;
+  position: absolute !important;
+  top: 1138px !important;
+  width: 212px !important;
+}
+
+.handubi .frame-2 {
+  left: 680px !important;
+  position: absolute !important;
+  top: 1138px !important;
+}
+
+.handubi .frame-3 {
+  display: flex !important;
+  left: 830px !important;
+  position: absolute !important;
+  top: 1138px !important;
+  width: 145px !important;
+}
+
+.handubi .frame-4 {
+  left: 993px !important;
+  position: absolute !important;
+  top: 1138px !important;
+}
+
+.handubi .frame-5 {
+  left: 1100px !important;
+  position: absolute !important;
+  top: 1138px !important;
+}
+
+.handubi .frame-6 {
+  left: 1227px !important;
+  position: absolute !important;
+  top: 1138px !important;
+}
+
+.handubi .frame-7 {
+  left: 1368px !important;
+  position: absolute !important;
+  top: 1138px !important;
+}
+
+.handubi .frame-8 {
+  display: flex !important;
+  left: 1465px !important;
+  position: absolute !important;
+  top: 1138px !important;
+  width: 123px !important;
+}
+
+.handubi .frame-9 {
+  left: 1606px !important;
+  position: absolute !important;
+  top: 1138px !important;
+}
+
+.handubi .group-3 {
+  height: 515px;
+  left: 200px;
+  position: absolute;
+  top: 1275px;
+  width: 1556px;
+}
+
+.handubi .text-wrapper-8 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 40px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: -2.4px;
+  line-height: 78px;
+  position: absolute;
+  top: 3px;
+  white-space: nowrap;
+}
+
+.handubi .frame-10 {
+  background-color: var(--accent) !important;
+  left: 1420px !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.handubi .frame-11 {
+  color: #fffefc !important;
+}
+
+.handubi .overlap-7 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 0;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .rectangle {
+  height: 251px;
+  left: 11px;
+  object-fit: cover;
+  position: absolute;
+  top: 11px;
+  width: 344px;
+}
+
+.handubi .text-wrapper-9 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  left: 11px;
+  letter-spacing: -0.4px;
+  line-height: 78px;
+  position: absolute;
+  top: 281px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-10 {
+  color: #3c3c3c;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 11px;
+  letter-spacing: -0.32px;
+  line-height: 78px;
+  position: absolute;
+  top: 311px;
+  white-space: nowrap;
+}
+
+.handubi .salary-AED {
+  color: #3c3c3c;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 11px;
+  letter-spacing: -0.32px;
+  line-height: 78px;
+  position: absolute;
+  top: 339px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-11 {
+  color: #3c3c3c;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 11px;
+  letter-spacing: -0.32px;
+  line-height: 78px;
+  position: absolute;
+  top: 367px;
+  white-space: nowrap;
+}
+
+.handubi .overlap-8 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 386px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-9 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 772px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-10 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 1155px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-group-wrapper {
+  height: 1289px;
+  left: -105px;
+  position: absolute;
+  top: 9767px;
+  width: 2130px;
+}
+
+.handubi .overlap-11 {
+  height: 1289px;
+  position: relative;
+  width: 2134px;
+}
+
+.handubi .rectangle-2 {
+  background-color: var(--accent);
+  height: 526px;
+  left: 105px;
+  position: absolute;
+  top: 763px;
+  width: 1920px;
+}
+
+.handubi .group-4 {
+  height: 1274px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 2134px;
+}
+
+.handubi .text-wrapper-12 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 64px;
+  font-weight: 500;
+  left: 757px;
+  letter-spacing: -3.84px;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .img {
+  height: 480px;
+  left: 105px;
+  object-fit: cover;
+  position: absolute;
+  top: 148px;
+  width: 313px;
+}
+
+.handubi .rectangle-3 {
+  height: 480px;
+  left: 428px;
+  object-fit: cover;
+  position: absolute;
+  top: 148px;
+  width: 418px;
+}
+
+.handubi .rectangle-4 {
+  height: 480px;
+  left: 856px;
+  object-fit: cover;
+  position: absolute;
+  top: 148px;
+  width: 418px;
+}
+
+.handubi .rectangle-5 {
+  height: 480px;
+  left: 1284px;
+  object-fit: cover;
+  position: absolute;
+  top: 148px;
+  width: 418px;
+}
+
+.handubi .rectangle-6 {
+  height: 480px;
+  left: 1712px;
+  object-fit: cover;
+  position: absolute;
+  top: 149px;
+  width: 313px;
+}
+
+.handubi .group-5 {
+  height: 103px;
+  left: 1083px;
+  position: absolute;
+  top: 820px;
+  width: 147px;
+}
+
+.handubi .text-wrapper-13 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 18px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 0;
+}
+
+.handubi .text-wrapper-14 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 55px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-15 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 91px;
+  white-space: nowrap;
+}
+
+.handubi .group-6 {
+  height: 103px;
+  left: 867px;
+  position: absolute;
+  top: 820px;
+  width: 114px;
+}
+
+.handubi .group-7 {
+  height: 368px;
+  left: 596px;
+  position: absolute;
+  top: 820px;
+  width: 163px;
+}
+
+.handubi .group-8 {
+  height: 368px;
+  position: relative;
+  width: 185px;
+}
+
+.handubi .text-wrapper-16 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 59px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-17 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 92px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-18 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 125px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-19 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 158px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-20 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 191px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-21 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 224px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-22 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 257px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-23 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 290px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-24 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 323px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-25 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 1px;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 356px;
+  white-space: nowrap;
+}
+
+.handubi .group-9 {
+  height: 236px;
+  left: 1346px;
+  position: absolute;
+  top: 820px;
+  width: 487px;
+}
+
+.handubi .overlap-group-2 {
+  background-color: #ffffff;
+  border-radius: 14px;
+  height: 236px;
+  position: relative;
+  width: 479px;
+}
+
+.handubi .subscribe-to-our {
+  color: transparent;
+  font-family: "Manrope", Helvetica;
+  font-size: 24px;
+  font-weight: 500;
+  left: 34px;
+  letter-spacing: -0.96px;
+  line-height: normal;
+  position: absolute;
+  top: 39px;
+  white-space: nowrap;
+}
+
+.handubi .span {
+  color: #000000;
+  letter-spacing: -0.23px;
+}
+
+.handubi .text-wrapper-26 {
+  color: #001419;
+  letter-spacing: -0.23px;
+}
+
+.handubi .we-ll-send-you {
+  color: #818181;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 34px;
+  letter-spacing: 0;
+  line-height: 31px;
+  position: absolute;
+  top: 77px;
+  width: 411px;
+}
+
+.handubi .overlap-12 {
+  background-color: #f3f8f3;
+  border-radius: 5px;
+  height: 50px;
+  left: 34px;
+  position: absolute;
+  top: 149px;
+  width: 411px;
+}
+
+.handubi .overlap-13 {
+  background-color: var(--accent);
+  border-radius: 0px 5px 5px 0px;
+  height: 50px;
+  left: 282px;
+  position: absolute;
+  top: 0;
+  width: 129px;
+}
+
+.handubi .text-wrapper-27 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 18px;
+  font-weight: 400;
+  left: 26px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 18px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-28 {
+  color: #818181;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 15px;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 19px;
+  white-space: nowrap;
+}
+
+.handubi .group-10 {
+  height: 76px;
+  left: 302px;
+  position: absolute;
+  top: 820px;
+  width: 186px;
+}
+
+.handubi .group-11 {
+  height: 22px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 186px;
+}
+
+.handubi .text-wrapper-29 {
+  color: #fffefc;
+  font-family: "Manrope", Helvetica;
+  font-size: 30px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: -1.8px;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .group-12 {
+  height: 25px;
+  left: 3px;
+  position: absolute;
+  top: 51px;
+  width: 183px;
+}
+
+.handubi .p {
+  color: var(--variable-collection-faded-text);
+  font-family: "Inter Tight", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 918px;
+  letter-spacing: 0;
+  line-height: 30px;
+  position: absolute;
+  top: 1262px;
+  white-space: nowrap;
+}
+
+.handubi .group-13 {
+  background-image: url(../public/static/img/line-17.svg);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 1px;
+  left: 105px;
+  position: absolute;
+  top: 1243px;
+  width: 1920px;
+}
+
+.handubi .group-14 {
+  height: 62px;
+  left: 199px;
+  position: absolute;
+  top: 32px;
+  width: 1522px;
+}
+
+.handubi .navbar {
+  height: 12px;
+  left: 336px;
+  position: absolute;
+  top: 25px;
+  width: 868px;
+}
+
+.handubi .text-wrapper-30 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-31 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 113px;
+  letter-spacing: 0;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-32 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 184px;
+  letter-spacing: 0;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-33 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 299px;
+  letter-spacing: 0;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-34 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 427px;
+  letter-spacing: 0;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-35 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 502px;
+  letter-spacing: 0;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-36 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 609px;
+  letter-spacing: 0;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-37 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 674px;
+  letter-spacing: 0;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-38 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 781px;
+  letter-spacing: 0;
+  line-height: 78px;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .group-15 {
+  height: 45px;
+  left: 1318px;
+  position: absolute;
+  top: 8px;
+  width: 206px;
+}
+
+.handubi .group-16 {
+  height: 45px;
+  left: 104px;
+  position: absolute;
+  top: 0;
+  width: 102px;
+}
+
+.handubi .overlap-group-3 {
+  background-color: var(--accent);
+  border-radius: 4px;
+  height: 45px;
+  position: relative;
+  width: 100px;
+}
+
+.handubi .text-wrapper-39 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 11px;
+  letter-spacing: -0.96px;
+  line-height: 78px;
+  position: absolute;
+  top: 16px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-40 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 34px;
+  letter-spacing: 0;
+  line-height: 78px;
+  position: absolute;
+  top: 16px;
+  white-space: nowrap;
+}
+
+.handubi .search-2 {
+  height: 14px;
+  left: 0;
+  position: absolute;
+  top: 14px;
+  width: 14px;
+}
+
+.handubi .group-17 {
+  height: 62px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 183px;
+}
+
+.handubi .text-wrapper-41 {
+  color: var(--accent);
+  font-family: "Manrope", Helvetica;
+  font-size: 30px;
+  font-weight: 500;
+  left: 74px;
+  letter-spacing: -1.8px;
+  line-height: 78px;
+  position: absolute;
+  top: 20px;
+  white-space: nowrap;
+}
+
+.handubi .ellipse {
+  background-color: #000000;
+  border-radius: 31px;
+  height: 62px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 62px;
+}
+
+.handubi .group-18 {
+  height: 734px;
+  left: 199px;
+  position: absolute;
+  top: 1943px;
+  width: 1531px;
+}
+
+.handubi .frame-12 {
+  background-color: var(--accent) !important;
+  left: 1423px !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.handubi .overlap-14 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 627px;
+  left: 3px;
+  position: absolute;
+  top: 107px;
+  width: 800px;
+}
+
+.handubi .overlap-15 {
+  background-image: url(../public/static/img/rectangle-9-4.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 430px;
+  left: 16px;
+  position: absolute;
+  top: 16px;
+  width: 768px;
+}
+
+.handubi .group-19 {
+  height: 40px;
+  left: 662px;
+  position: relative;
+  top: 11px;
+  width: 94px;
+}
+
+.handubi .overlap-group-4 {
+  background-color: #ffffff;
+  border-radius: 33px;
+  height: 40px;
+  position: relative;
+  width: 92px;
+}
+
+.handubi .text-wrapper-42 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 12px;
+  letter-spacing: -0.16px;
+  line-height: 38px;
+  position: absolute;
+  top: 14px;
+  white-space: nowrap;
+}
+
+.handubi .GDRFA-dubai-receives {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
+  left: 16px;
+  letter-spacing: -0.96px;
+  line-height: 38px;
+  position: absolute;
+  top: 476px;
+  width: 768px;
+}
+
+.handubi .text-wrapper-43 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 16px;
+  letter-spacing: -0.64px;
+  line-height: 28px;
+  position: absolute;
+  top: 553px;
+  width: 768px;
+}
+
+.handubi .overlap-16 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 303px;
+  left: 824px;
+  position: absolute;
+  top: 107px;
+  width: 701px;
+}
+
+.handubi .overlap-17 {
+  background-image: url(../public/static/img/rectangle-4203.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 279px;
+  left: 11px;
+  position: absolute;
+  top: 13px;
+  width: 332px;
+}
+
+.handubi .group-20 {
+  height: 40px;
+  left: 229px;
+  position: relative;
+  top: 14px;
+  width: 94px;
+}
+
+.handubi .group-21 {
+  height: 188px;
+  left: 366px;
+  position: absolute;
+  top: 59px;
+  width: 322px;
+}
+
+.handubi .group-22 {
+  height: 188px;
+  position: relative;
+  width: 326px;
+}
+
+.handubi .GDRFA-dubai-receives-2 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 20px;
+  font-weight: 600;
+  left: 0;
+  letter-spacing: -0.8px;
+  line-height: 26px;
+  position: absolute;
+  top: 0;
+  width: 322px;
+}
+
+.handubi .text-wrapper-44 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 0;
+  letter-spacing: -0.64px;
+  line-height: 28px;
+  position: absolute;
+  top: 92px;
+  width: 309px;
+}
+
+.handubi .overlap-18 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 303px;
+  left: 824px;
+  position: absolute;
+  top: 431px;
+  width: 701px;
+}
+
+.handubi .overlap-19 {
+  background-image: url(../public/static/img/rectangle-4205.png);
+  background-size: 100% 100%;
+  height: 279px;
+  left: 11px;
+  position: absolute;
+  top: 13px;
+  width: 332px;
+}
+
+.handubi .group-23 {
+  height: 40px;
+  left: 229px;
+  position: relative;
+  top: 11px;
+  width: 94px;
+}
+
+.handubi .group-24 {
+  height: 515px;
+  left: 199px;
+  position: absolute;
+  top: 2830px;
+  width: 1549px;
+}
+
+.handubi .frame-13 {
+  background-color: var(--accent) !important;
+  left: 1421px !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.handubi .overlap-20 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 1px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .text-wrapper-45 {
+  color: #3c3c3c;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 11px;
+  letter-spacing: -0.32px;
+  line-height: 26px;
+  position: absolute;
+  top: 311px;
+  width: 350px;
+}
+
+.handubi .text-wrapper-46 {
+  color: #3c3c3c;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 11px;
+  letter-spacing: -0.32px;
+  line-height: 26px;
+  position: absolute;
+  top: 365px;
+  white-space: nowrap;
+}
+
+.handubi .overlap-21 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 387px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-22 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 773px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-23 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 1157px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .group-25 {
+  height: 657px;
+  left: 199px;
+  position: absolute;
+  top: 5255px;
+  width: 1543px;
+}
+
+.handubi .group-26 {
+  height: 35px;
+  left: 2px;
+  position: absolute;
+  top: 0;
+  width: 1525px;
+}
+
+.handubi .text-wrapper-47 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
+  left: 0;
+  letter-spacing: -1.2px;
+  line-height: 30px;
+  position: absolute;
+  text-align: center;
+  top: 594px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-48 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
+  left: 772px;
+  letter-spacing: -1.2px;
+  line-height: 30px;
+  position: absolute;
+  text-align: center;
+  top: 594px;
+  white-space: nowrap;
+}
+
+.handubi .rectangle-7 {
+  height: 454px;
+  left: 2px;
+  position: absolute;
+  top: 110px;
+  width: 748px;
+}
+
+.handubi .rectangle-8 {
+  height: 454px;
+  left: 775px;
+  object-fit: cover;
+  position: absolute;
+  top: 110px;
+  width: 748px;
+}
+
+.handubi .group-27 {
+  height: 18px;
+  left: 3px;
+  position: absolute;
+  top: 638px;
+  width: 18px;
+}
+
+.handubi .group-28 {
+  height: 18px;
+  left: 775px;
+  position: absolute;
+  top: 638px;
+  width: 18px;
+}
+
+.handubi .text-wrapper-49 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 32px;
+  letter-spacing: -0.32px;
+  line-height: 27px;
+  position: absolute;
+  top: 642px;
+  white-space: nowrap;
+  width: 56px;
+}
+
+.handubi .text-wrapper-50 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 804px;
+  letter-spacing: -0.32px;
+  line-height: 27px;
+  position: absolute;
+  top: 642px;
+  white-space: nowrap;
+  width: 56px;
+}
+
+.handubi .text-wrapper-51 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 150px;
+  letter-spacing: -0.32px;
+  line-height: 27px;
+  position: absolute;
+  top: 641px;
+  white-space: nowrap;
+  width: 67px;
+}
+
+.handubi .text-wrapper-52 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 922px;
+  letter-spacing: -0.32px;
+  line-height: 27px;
+  position: absolute;
+  top: 641px;
+  white-space: nowrap;
+  width: 67px;
+}
+
+.handubi .fi {
+  height: 18px;
+  left: 121px;
+  position: absolute;
+  top: 638px;
+  width: 18px;
+}
+
+.handubi .fi-2 {
+  height: 18px;
+  left: 893px;
+  position: absolute;
+  top: 638px;
+  width: 18px;
+}
+
+.handubi .text-wrapper-53 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 279px;
+  letter-spacing: -0.32px;
+  line-height: 27px;
+  position: absolute;
+  top: 641px;
+  white-space: nowrap;
+  width: 101px;
+}
+
+.handubi .text-wrapper-54 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 1051px;
+  letter-spacing: -0.32px;
+  line-height: 27px;
+  position: absolute;
+  top: 641px;
+  white-space: nowrap;
+  width: 101px;
+}
+
+.handubi .overlap-24 {
+  height: 18px;
+  left: 250px;
+  position: absolute;
+  top: 638px;
+  width: 18px;
+}
+
+.handubi .group-29 {
+  height: 10px;
+  left: 10px;
+  position: absolute;
+  top: 4px;
+  width: 3px;
+}
+
+.handubi .group-30 {
+  height: 10px;
+  left: 5px;
+  position: absolute;
+  top: 4px;
+  width: 3px;
+}
+
+.handubi .group-31 {
+  height: 3px;
+  left: 6px;
+  position: absolute;
+  top: 4px;
+  width: 1px;
+}
+
+.handubi .group-32 {
+  height: 3px;
+  left: 7px;
+  position: absolute;
+  top: 4px;
+  width: 1px;
+}
+
+.handubi .group-33 {
+  height: 18px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 18px;
+}
+
+.handubi .group-34 {
+  height: 1px;
+  left: 8px;
+  position: absolute;
+  top: 14px;
+  width: 2px;
+}
+
+.handubi .group-35 {
+  height: 8px;
+  left: 13px;
+  position: absolute;
+  top: 5px;
+  width: 2px;
+}
+
+.handubi .group-36 {
+  height: 1px;
+  left: 7px;
+  position: absolute;
+  top: 3px;
+  width: 4px;
+}
+
+.handubi .group-37 {
+  height: 8px;
+  left: 3px;
+  position: absolute;
+  top: 5px;
+  width: 2px;
+}
+
+.handubi .overlap-25 {
+  height: 18px;
+  left: 1022px;
+  position: absolute;
+  top: 638px;
+  width: 18px;
+}
+
+.handubi .text-wrapper-55 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 1210px;
+  letter-spacing: -0.32px;
+  line-height: 27px;
+  position: absolute;
+  top: 641px;
+  white-space: nowrap;
+  width: 126px;
+}
+
+.handubi .group-38 {
+  height: 16px;
+  left: 411px;
+  position: absolute;
+  top: 638px;
+  width: 155px;
+}
+
+.handubi .text-wrapper-56 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 27px;
+  letter-spacing: -0.32px;
+  line-height: 27px;
+  position: absolute;
+  top: 3px;
+  white-space: nowrap;
+  width: 126px;
+}
+
+.handubi .vector {
+  height: 16px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 16px;
+}
+
+.handubi .vector-2 {
+  height: 16px;
+  left: 1183px;
+  position: absolute;
+  top: 638px;
+  width: 16px;
+}
+
+.handubi .group-39 {
+  height: 491px;
+  left: 198px;
+  position: absolute;
+  top: 6893px;
+  width: 1545px;
+}
+
+.handubi .frame-14 {
+  background-color: var(--accent) !important;
+  left: 1422px !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.handubi .overlap-26 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 384px;
+  left: 3px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-27 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 384px;
+  left: 389px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-28 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 384px;
+  left: 775px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-29 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 384px;
+  left: 1161px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .rectangle-9 {
+  height: 251px;
+  left: 10px;
+  object-fit: cover;
+  position: absolute;
+  top: 11px;
+  width: 344px;
+}
+
+.handubi .text-wrapper-57 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  left: 10px;
+  letter-spacing: -0.4px;
+  line-height: 78px;
+  position: absolute;
+  top: 281px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-58 {
+  color: #3c3c3c;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 10px;
+  letter-spacing: -0.32px;
+  line-height: 26px;
+  position: absolute;
+  top: 311px;
+  width: 350px;
+}
+
+.handubi .group-40 {
+  height: 515px;
+  left: 199px;
+  position: absolute;
+  top: 7537px;
+  width: 1551px;
+}
+
+.handubi .rectangle-10 {
+  height: 251px;
+  left: 11px;
+  object-fit: cover;
+  position: absolute;
+  top: 12px;
+  width: 344px;
+}
+
+.handubi .overlap-30 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 390px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-31 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 776px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-32 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 408px;
+  left: 1156px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .group-41 {
+  height: 550px;
+  left: 200px;
+  position: absolute;
+  top: 9033px;
+  width: 1559px;
+}
+
+.handubi .overlap-33 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 443px;
+  left: 1px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .text-wrapper-59 {
+  color: #3c3c3c;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 11px;
+  letter-spacing: -0.32px;
+  line-height: 26px;
+  position: absolute;
+  top: 393px;
+  white-space: nowrap;
+}
+
+.handubi .overlap-34 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 443px;
+  left: 387px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-35 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 443px;
+  left: 773px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .overlap-36 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 443px;
+  left: 1159px;
+  position: absolute;
+  top: 107px;
+  width: 366px;
+}
+
+.handubi .group-42 {
+  height: 936px;
+  left: 198px;
+  position: absolute;
+  top: 3498px;
+  width: 1546px;
+}
+
+.handubi .group-43 {
+  height: 35px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1526px;
+}
+
+.handubi .group-44 {
+  height: 35px;
+  position: relative;
+  width: 1528px;
+}
+
+.handubi .frame-15 {
+  background-color: var(--accent) !important;
+  left: 1424px !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+
+.handubi .rectangle-11 {
+  height: 732px;
+  left: 4px;
+  object-fit: cover;
+  position: absolute;
+  top: 110px;
+  width: 748px;
+}
+
+.handubi .rectangle-12 {
+  height: 473px;
+  left: 776px;
+  object-fit: cover;
+  position: absolute;
+  top: 110px;
+  width: 748px;
+}
+
+.handubi .text-wrapper-60 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 22px;
+  font-weight: 500;
+  left: 4px;
+  letter-spacing: -0.44px;
+  line-height: normal;
+  position: absolute;
+  top: 864px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-61 {
+  color: #000000;
+  font-family: "Manrope", Helvetica;
+  font-size: 22px;
+  font-weight: 500;
+  left: 776px;
+  letter-spacing: -0.44px;
+  line-height: normal;
+  position: absolute;
+  top: 605px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-62 {
+  color: var(--variable-collection-sub-text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 4px;
+  letter-spacing: -0.32px;
+  line-height: normal;
+  position: absolute;
+  top: 896px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-63 {
+  color: var(--variable-collection-sub-text);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 776px;
+  letter-spacing: -0.32px;
+  line-height: normal;
+  position: absolute;
+  top: 637px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-64 {
+  color: var(--accent);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 21px;
+  letter-spacing: -0.32px;
+  line-height: normal;
+  position: absolute;
+  top: 924px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-65 {
+  color: var(--accent);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 793px;
+  letter-spacing: -0.32px;
+  line-height: normal;
+  position: absolute;
+  top: 665px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-66 {
+  color: var(--accent);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 100px;
+  letter-spacing: -0.32px;
+  line-height: normal;
+  position: absolute;
+  top: 924px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-67 {
+  color: var(--accent);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 872px;
+  letter-spacing: -0.32px;
+  line-height: normal;
+  position: absolute;
+  top: 665px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-68 {
+  color: var(--accent);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 179px;
+  letter-spacing: -0.32px;
+  line-height: normal;
+  position: absolute;
+  top: 924px;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-69 {
+  color: var(--accent);
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  left: 951px;
+  letter-spacing: -0.32px;
+  line-height: normal;
+  position: absolute;
+  top: 665px;
+  white-space: nowrap;
+}
+
+.handubi .ellipse-2 {
+  background-color: var(--accent);
+  border-radius: 5.5px;
+  height: 11px;
+  left: 4px;
+  position: absolute;
+  top: 924px;
+  width: 11px;
+}
+
+.handubi .ellipse-3 {
+  background-color: var(--accent);
+  border-radius: 5.5px;
+  height: 11px;
+  left: 776px;
+  position: absolute;
+  top: 665px;
+  width: 11px;
+}
+
+.handubi .ellipse-4 {
+  background-color: var(--accent);
+  border-radius: 5.5px;
+  height: 11px;
+  left: 83px;
+  position: absolute;
+  top: 924px;
+  width: 11px;
+}
+
+.handubi .ellipse-5 {
+  background-color: var(--accent);
+  border-radius: 5.5px;
+  height: 11px;
+  left: 855px;
+  position: absolute;
+  top: 665px;
+  width: 11px;
+}
+
+.handubi .ellipse-6 {
+  background-color: var(--accent);
+  border-radius: 5.5px;
+  height: 11px;
+  left: 162px;
+  position: absolute;
+  top: 924px;
+  width: 11px;
+}
+
+.handubi .ellipse-7 {
+  background-color: var(--accent);
+  border-radius: 5.5px;
+  height: 11px;
+  left: 934px;
+  position: absolute;
+  top: 665px;
+  width: 11px;
+}
+
+.handubi .group-45 {
+  background-color: var(--accent);
+  border-radius: 10px;
+  height: 100px;
+  left: 776px;
+  position: absolute;
+  top: 742px;
+  width: 748px;
+}
+
+.handubi .group-46 {
+  height: 41px;
+  left: 27px;
+  position: absolute;
+  top: 30px;
+  width: 261px;
+}
+
+.handubi .text-wrapper-70 {
+  color: #ffffff;
+  font-family: "Fonetika Unlicensed Trial-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 500;
+  left: 0;
+  letter-spacing: -1px;
+  line-height: normal;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+
+.handubi .text-wrapper-71 {
+  color: #ffffff;
+  font-family: "Fonetika Unlicensed Trial-Light", Helvetica;
+  font-size: 16px;
+  font-weight: 300;
+  left: 0;
+  letter-spacing: -0.32px;
+  line-height: normal;
+  position: absolute;
+  top: 30px;
+  white-space: nowrap;
+}
+
+.handubi .group-47 {
+  height: 46px;
+  left: 544px;
+  position: absolute;
+  top: 27px;
+  width: 178px;
+}
+
+.handubi .overlap-group-5 {
+  background-color: #e8ff6b;
+  border-radius: 35.5px;
+  height: 45px;
+  left: 0;
+  position: absolute;
+  top: 1px;
+  width: 121px;
+}
+
+.handubi .text-wrapper-72 {
+  color: #00732f;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 19px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 17px;
+  white-space: nowrap;
+}
+
+.handubi .vector-wrapper {
+  background-color: #e8ff6b;
+  border-radius: 23px;
+  height: 46px;
+  left: 130px;
+  position: absolute;
+  top: 0;
+  width: 46px;
+}
+
+.handubi .vector-3 {
+  height: 20px;
+  left: 11px;
+  position: absolute;
+  top: 13px;
+  width: 25px;
+}
+
+.handubi .group-48 {
+  height: 675px;
+  left: 199px;
+  position: absolute;
+  top: 6065px;
+  width: 1531px;
+}
+
+.handubi .rectangle-13 {
+  height: 486px;
+  left: 1px;
+  object-fit: cover;
+  position: absolute;
+  top: 98px;
+  width: 750px;
+}
+
+.handubi .rectangle-14 {
+  height: 486px;
+  left: 774px;
+  object-fit: cover;
+  position: absolute;
+  top: 98px;
+  width: 750px;
+}
+
+.handubi .GDRFA-dubai-receives-3 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
+  left: 3px;
+  letter-spacing: -0.96px;
+  line-height: 38px;
+  position: absolute;
+  top: 620px;
+  width: 748px;
+}
+
+.handubi .GDRFA-dubai-receives-4 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
+  left: 776px;
+  letter-spacing: -0.96px;
+  line-height: 38px;
+  position: absolute;
+  top: 620px;
+  width: 748px;
+}
+
+.handubi .group-49 {
+  height: 675px;
+  left: 199px;
+  position: absolute;
+  top: 8205px;
+  width: 1533px;
+}
+
+.handubi .overlap-37 {
+  background-image: url(../public/static/img/rectangle-4221.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 565px;
+  left: 514px;
+  position: absolute;
+  top: 110px;
+  width: 494px;
+}
+
+.handubi .rectangle-15 {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(1.06, 1.06, 1.06, 0.85) 100%);
+  border-radius: 20px;
+  height: 565px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 494px;
+}
+
+.handubi .text-wrapper-73 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
+  left: 30px;
+  letter-spacing: -0.96px;
+  line-height: 38px;
+  position: absolute;
+  top: 476px;
+  white-space: nowrap;
+}
+
+.handubi .group-50 {
+  height: 16px;
+  left: 30px;
+  position: absolute;
+  top: 513px;
+  width: 155px;
+}
+
+.handubi .text-wrapper-74 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 27px;
+  letter-spacing: -0.32px;
+  line-height: 27px;
+  position: absolute;
+  top: 3px;
+  white-space: nowrap;
+  width: 126px;
+}
+
+.handubi .text-wrapper-75 {
+  color: var(--text);
+  font-family: "Manrope", Helvetica;
+  font-size: 40px;
+  font-weight: 500;
+  left: 1px;
+  letter-spacing: -2.4px;
+  line-height: 78px;
+  position: absolute;
+  top: 3px;
+  white-space: nowrap;
+}
+
+.handubi .overlap-38 {
+  background-image: url(../public/static/img/rectangle-4220.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 565px;
+  left: 0;
+  position: absolute;
+  top: 110px;
+  width: 494px;
+}
+
+.handubi .overlap-39 {
+  background-image: url(../public/static/img/rectangle-4222.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 565px;
+  left: 1029px;
+  position: absolute;
+  top: 110px;
+  width: 494px;
+}
+
+.handubi .text-wrapper-76 {
+  color: #ffffff;
+  font-family: "Manrope", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
+  left: 30px;
+  letter-spacing: -0.96px;
+  line-height: 38px;
+  position: absolute;
+  top: 469px;
+  white-space: nowrap;
+}
+
+.handubi .group-51 {
+  height: 16px;
+  left: 30px;
+  position: absolute;
+  top: 506px;
+  width: 155px;
+}
+
+.handubi .group-52 {
+  height: 515px;
+  left: 200px;
+  position: absolute;
+  top: 4587px;
+  width: 1549px;
+}
+
+.handubi .rectangle-16 {
+  height: 251px;
+  left: 11px;
+  object-fit: cover;
+  position: absolute;
+  top: 8px;
+  width: 344px;
+}
+
+.handubi .text-wrapper-77 {
+  color: #3c3c3c;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 11px;
+  letter-spacing: -0.96px;
+  line-height: 26px;
+  position: absolute;
+  top: 311px;
+  width: 350px;
+}
+
+.handubi .text-wrapper-78 {
+  color: #3c3c3c;
+  font-family: "Manrope", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+  left: 11px;
+  letter-spacing: -0.96px;
+  line-height: 26px;
+  position: absolute;
+  top: 365px;
+  white-space: nowrap;
 }
