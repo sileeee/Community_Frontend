@@ -40,7 +40,7 @@ function BigBanner(){
                   <img className="search" alt="Search" src="/static/img/search.png" />
                 </div>
               </div>
-              <div className="text-wrapper-6">Search “Jobs”</div>
+              <div className="text-wrapper-6">궁금하신 모든것을 찾아보세요!</div>
             </div>
           </div>
         </div>

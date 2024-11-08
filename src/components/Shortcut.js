@@ -8,7 +8,7 @@ function Shortcut(){
         <div className="center-container">
             <Frame className="frame-1" text="구인구직" />
             <Frame className="frame-1" text="뉴스" />
-            <Frame className="frame-1" divClassName="frame-1-instance" text="부동산" />
+            <Frame className="frame-1" text="부동산" />
             <Frame className="frame-1" text="중고시장" />
             <Frame className="frame-1" text="마켓정보" />
             <Frame className="frame-1" text="여행정보" />

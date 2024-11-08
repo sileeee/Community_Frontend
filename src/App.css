@@ -2,29 +2,50 @@
   align-items: center;
   background-color: #88ffc3;
   border-radius: 43px;
-  display: inline-flex;
+  display: flex;
   gap: 10px;
   height: 35px;
   justify-content: center;
   padding: 10px 20px;
-  position: relative;
 }
 
-.frame .job-search {
+.frame .frame-text {
   color: var(--accent);
   font-family: "Manrope", Helvetica;
   font-size: 18px;
   font-weight: 500;
   letter-spacing: -0.36px;
-  line-height: 78px;
-  position: relative;
   white-space: nowrap;
   width: fit-content;
+}
+
+.frame .frame-text-2 {
+  color: var(--white-text);
+  font-family: "Manrope", Helvetica;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.36px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+
+.handubi .space {
+  height: 100px;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.handubi .flex-start {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .handubi {
   background-color: #fffefb;
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: center;
   width: 100%;
@@ -35,14 +56,14 @@
   height: 11056px;
   overflow: hidden;
   position: relative;
+  flex-direction: row;
   width: 1920px;
 }
 
 .handubi .overlap {
   height: 754px;
   left: 0;
-  position: absolute;
-  top: 126px;
+  position: relative;
   width: 1930px;
 }
 
@@ -293,25 +314,26 @@
   font-family: "Manrope", Helvetica;
   font-size: 64px;
   font-weight: 500;
-  left: 654px;
   letter-spacing: -2px;
-  line-height: 55px;
-  position: absolute;
-  top: 1029px;
+  /* line-height: 55px; */
+  position: relative;
   white-space: nowrap;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .handubi .center-container{
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   gap: 20px;
   padding: 20px;
 }
 
 .handubi .frame-1 {
-  top: 1138px;
   white-space: nowrap;
+  position: relative;
 }
 
 .handubi .group-3 {
@@ -322,6 +344,23 @@
   width: 1556px;
 }
 
+.handubi .parent-group {
+  position: relative; /* 자식 요소의 기준점 설정 */
+  display: flex;
+  flex-direction: column; /* 세로로 나열 */
+  gap: 20px; /* 요소 간 간격 설정 */
+  align-items: center;
+}
+
+.handubi .group-18 {
+  height: 734px;
+  width: 1531px;
+  position: relative;
+  left: 0;
+  top: 0;
+  text-align: center;
+}
+
 .handubi .text-wrapper-8 {
   color: var(--text);
   font-family: "Manrope", Helvetica;
@@ -329,8 +368,6 @@
   font-weight: 500;
   left: 0;
   letter-spacing: -2.4px;
-  line-height: 78px;
-  position: absolute;
   top: 3px;
   white-space: nowrap;
 }
@@ -899,9 +936,9 @@
   align-items: center;
   height: 62px;
   width: 1530px;
-  position: absolute;
-  left: 199px;
+  position: relative;
   top: 32px;
+  margin-bottom: 40px;
 }
 
 .handubi .navbar {
@@ -1004,14 +1041,6 @@
   top: 0px;
 }
 
-.handubi .group-18 {
-  height: 734px;
-  left: 199px;
-  position: absolute;
-  top: 1943px;
-  width: 1531px;
-}
-
 .handubi .frame-12 {
   background-color: var(--accent) !important;
   left: 1423px !important;
@@ -1065,7 +1094,6 @@
   letter-spacing: -0.16px;
   line-height: 38px;
   position: absolute;
-  top: 14px;
   white-space: nowrap;
 }
 

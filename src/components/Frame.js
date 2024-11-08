@@ -6,7 +6,7 @@ import "../App.css";
 export const Frame = ({ className, text, divClassName }) => {
   return (
     <div className={`frame ${className}`}>
-      <div className={`job-search`}>{text}</div>
+      <div className={`frame-text${divClassName}`}>{text}</div>
     </div>
   );
 };
