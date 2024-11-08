@@ -1,9 +1,9 @@
 import "../App.css";
-import BigBanner from "../components/BigBanner";
-import Shortcut from "../components/Shortcut";
+import BigBanner from "../components/Home/BigBanner";
+import Shortcut from "../components/Home/Shortcut";
 import Nav from "../components/Nav"
 import '../styleguide.css';
-import CategoryList from "../components/CategoryList";
+import CategoryList from "../components/Home/CategoryList";
 
 
 function Home(){

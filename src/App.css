@@ -373,14 +373,14 @@
 }
 
 .handubi .frame-10 {
-  background-color: var(--accent) !important;
-  left: 1420px !important;
-  position: absolute !important;
-  top: 0 !important;
+  background-color: var(--accent);
+  left: 1420px;
+  position: absolute;
+  top: 0;
 }
 
 .handubi .frame-11 {
-  color: #fffefc !important;
+  color: #fffefc;
 }
 
 .handubi .overlap-7 {
@@ -1042,10 +1042,10 @@
 }
 
 .handubi .frame-12 {
-  background-color: var(--accent) !important;
-  left: 1423px !important;
-  position: absolute !important;
-  top: 0 !important;
+  background-color: var(--accent);
+  left: 1423px;
+  position: absolute;
+  top: 0;
 }
 
 .handubi .overlap-14 {
@@ -1229,10 +1229,10 @@
 }
 
 .handubi .frame-13 {
-  background-color: var(--accent) !important;
-  left: 1421px !important;
-  position: absolute !important;
-  top: 0 !important;
+  background-color: var(--accent);
+  left: 1421px;
+  position: absolute;
+  top: 0;
 }
 
 .handubi .overlap-20 {
@@ -1627,10 +1627,10 @@
 }
 
 .handubi .frame-14 {
-  background-color: var(--accent) !important;
-  left: 1422px !important;
-  position: absolute !important;
-  top: 0 !important;
+  background-color: var(--accent);
+  left: 1422px;
+  position: absolute;
+  top: 0;
 }
 
 .handubi .overlap-26 {
@@ -1839,10 +1839,10 @@
 }
 
 .handubi .frame-15 {
-  background-color: var(--accent) !important;
-  left: 1424px !important;
-  position: absolute !important;
-  top: 0 !important;
+  background-color: var(--accent);
+  left: 1424px;
+  position: absolute;
+  top: 0;
 }
 
 .handubi .rectangle-11 {

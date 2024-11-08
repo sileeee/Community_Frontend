@@ -3,6 +3,8 @@ import { HashRouter, Route, BrowserRouter } from "react-router-dom";
 import { Router, Switch } from "react-router-dom/cjs/react-router-dom.min";
 
 import Home from "./routes/Home";
+import Login from "./routes/Login";
+import SignUp from "./routes/SignUp";
 
 import "./App.css";
 import './styleguide.css';
@@ -12,8 +14,14 @@ function App() {
   return (
     <BrowserRouter>
         <Switch>
-          <Route path="/">
+          <Route path="/home">
               <Home />
+          </Route>
+          <Route path="/login">
+              <Login />
+          </Route>
+          <Route path="/sign-up">
+              <SignUp />
           </Route>
         </Switch>
     </BrowserRouter>

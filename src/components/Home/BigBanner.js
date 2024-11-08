@@ -1,5 +1,5 @@
-import "../App.css";
-import '../styleguide.css';
+import "../../App.css";
+import '../../styleguide.css';
 
 
 function BigBanner(){
