@@ -62,7 +62,7 @@ const Login = () => {
         <div>
           <button type="submit">Login</button>
           <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%" }}>
-            계정이 없으신가요? <Link to="/signup">회원가입</Link>
+            계정이 없으신가요? <Link to="/sign-up">회원가입</Link>
           </span>
         </div>
       </form>

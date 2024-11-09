@@ -12,11 +12,11 @@ function Home(){
       <div className="handubi">
         <div className="div">
           <div className="parent-group">
-          <Nav />
-          <BigBanner/>
-          <div className="space"/>
-          <div className="text-wrapper-7">Everything in one place</div>
-          <Shortcut/>
+            <Nav />
+            <BigBanner/>
+            <div className="space"/>
+            <div className="text-wrapper-7">Everything in one place</div>
+            <Shortcut/>
           <CategoryList />
           </div>
         </div>

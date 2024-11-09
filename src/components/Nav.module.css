@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box; /* 모든 요소에 대해 box-sizing을 border-box로 설정 */
+}
+
+.container {
+    width: 100%;
+    max-width: 100%; /* 최대 너비 설정 */
+    padding-top: 2%;
+    padding-bottom: 1%;
+    min-height: calc(6vh); /* 최소 높이를 브라우저 창 높이의 6% */
+    word-break: keep-all;
+    margin: 0 auto; /* 가운데 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 62px;
+    width: 183px;
+    left: 0;
+    top: 0;
+}
+
+.logo {
+    height: 60px;
+    width: 60px;
+}
+
+.logoHandubi {
+    color: var(--accent);
+    font-family: "Manrope", Helvetica;
+    font-size: 35px;
+    font-weight: 500;
+    letter-spacing: -1.8px;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
+.navbar {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    margin: 10px;
+}
+
+.textNavbar {
+    color: var(--text);
+    font-family: "Manrope", Helvetica;
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.notLoggedIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 62px;
+}
+
+.textLogin {
+    color: var(--accent);
+    font-family: "Manrope", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 45px;
+    top: 16px;
+    white-space: nowrap;
+    margin-right: 30px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 62px;
+    left: 90px;
+    top: 0;
+}
+
+.btnSignUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent);
+    border-radius: 4px;
+    height: 50px;
+    position: relative;
+    width: 110px;
+}
+
+.textSignUp {
+    color: #ffffff;
+    font-family: "Manrope", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 78px;
+    white-space: nowrap;
+  }

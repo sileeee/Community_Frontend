@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addbutton {
+  display: inline-block;
+  padding-left: 30px;
+  padding-right: 30px;
+}

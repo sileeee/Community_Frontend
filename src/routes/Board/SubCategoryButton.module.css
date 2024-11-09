@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+  max-width: 100%; /* 최대 너비 설정 */
+  min-height: calc(6vh); /* 최소 높이를 브라우저 창 높이의 6% */
+  word-break: keep-all;
+  margin: 0 auto; /* 가운데 정렬 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10%;
+}
+  
+.button {
+  width: 110px;
+}

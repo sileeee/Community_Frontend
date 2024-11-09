@@ -6,7 +6,7 @@ import News from "../CategoryList/News";
 function CategoryList(){
 
     return(
-        <div className="parent-group">
+        <div>
             <div className="space"/>
                 <News />
                 <div className="space"/>
