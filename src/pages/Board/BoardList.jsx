@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import styles from "./NewsBoard.module.css";
 import { Paper } from "@mui/material";
 import { Table } from "antd";
@@ -8,7 +8,7 @@ import WriteButton from "../../components/common/WriteButton";
 import SubCategoryButton from "../../components/common/SubCategoryButton";
 
 function BoardList() {
-  const history = useHistory();
+  const navigate = useNavigate();
   
   const [noticeList, setNoticeList] = useState();
   const [subCategory, setSubCategory] = useState("TOTAL");
@@ -19,10 +19,7 @@ function BoardList() {
 
   const movePage = (item) => {
     let id = item.id + "";
-    history.push({
-      pathname: `/posts/${id}`,
-      state: { id: id, prev: item.prev, next: item.next },
-    });
+    navigate(`/news/${id}`, { state: { id: id, prev: item.prev, next: item.next } });
   };
 
   const convertToStringDate = (param) => {
@@ -33,24 +30,24 @@ function BoardList() {
   const columns = [
     {
       title: "No.",
-      dataIndex: "id",
+      dataIndex: "key",
       align: "center",
       width: "6%",
     },
     {
-      title: "Title",
+      title: "제목",
       dataIndex: "title",
       align: "center",
       width: "40%"
     },
     {
-      title: "Author",
+      title: "작성자",
       dataIndex: "author",
       align: "center",
       width: "10%"
     },
     {
-      title: "Date",
+      title: "작성날짜",
       dataIndex: "createdAt",
       align: "center",
       width: "10%"
@@ -66,8 +63,7 @@ function BoardList() {
           let tmp = res.data.data;
           console.log(tmp);
           tmp.map((item, index) => {
-            item.key = index;
-            item.id = totalElements - index;
+            item.key = totalElements - index;
             item.createdAt = convertToStringDate(item.createdAt);
           });
           tmp && setNoticeList(tmp);

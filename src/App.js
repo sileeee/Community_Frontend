@@ -1,6 +1,5 @@
 import React from "react";
-import { HashRouter, Route, BrowserRouter } from "react-router-dom";
-import { Router, Switch } from "react-router-dom/cjs/react-router-dom.min";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import Login from "./pages/User/Login/Login";
@@ -9,25 +8,19 @@ import NewsBoard from "./pages/Board/NewsBoard";
 
 import "./App.css";
 import './styleguide.css';
+import PostDetail from "./pages/Board/PostDetail";
 
 
 function App() {
   return (
     <BrowserRouter>
-        <Switch>
-          <Route path="/home">
-              <Home />
-          </Route>
-          <Route path="/login">
-              <Login />
-          </Route>
-          <Route path="/sign-up">
-              <SignUp />
-          </Route>
-          <Route path="/news">
-              <NewsBoard />
-          </Route>
-        </Switch>
+        <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/news" element={<NewsBoard />} />
+        <Route path="/news/:id" element={<PostDetail />} />
+      </Routes>
     </BrowserRouter>
   );
 }
