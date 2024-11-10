@@ -3,7 +3,7 @@ import '../../styleguide.css';
 import React from "react";
 import styles from "./NewsBoard.module.css";
 import BoardList from "./BoardList";
-import Nav from "../../components/Nav";
+import Nav from "../../components/Navbar/Nav";
 
 
 function NewsBoard() {

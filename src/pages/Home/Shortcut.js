@@ -1,6 +1,6 @@
 import "../../App.css";
 import '../../styleguide.css';
-import { Frame } from "../Frame";
+import { Frame } from "../../components/common/Frame";
 
 function Shortcut(){
 

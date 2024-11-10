@@ -1,6 +1,6 @@
 import "../../App.css";
 import '../../styleguide.css';
-import News from "../CategoryList/News";
+import News from "./CategoryList/News";
 
 
 function CategoryList(){

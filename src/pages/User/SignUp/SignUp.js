@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import { validate } from "./validate";
+import { validate } from "../validate";
 
-import styles from "./Login.module.css";
+import styles from "../Login.module.css";
 import "react-toastify/dist/ReactToastify.css";
 
 import { ToastContainer, toast } from "react-toastify";
-import { notify } from "./toast";
+import { notify } from "../toast";
 
 import { Link } from "react-router-dom";
 import axios from "axios";

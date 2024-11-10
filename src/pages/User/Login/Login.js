@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styles from "./Login.module.css";
+import styles from "../Login.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { notify } from "./toast";
+import { notify } from "../toast";
 import { Link } from "react-router-dom";
 import axios from "axios";
 

@@ -4,8 +4,8 @@ import { useHistory } from "react-router";
 import styles from "./NewsBoard.module.css";
 import { Paper } from "@mui/material";
 import { Table } from "antd";
-import WriteButton from "./WriteButton";
-import SubCategoryButton from "./SubCategoryButton";
+import WriteButton from "../../components/common/WriteButton";
+import SubCategoryButton from "../../components/common/SubCategoryButton";
 
 function BoardList() {
   const history = useHistory();
@@ -69,8 +69,6 @@ function BoardList() {
           tmp.map((item, index) => {
             item.key = index;
             item.id = totalElements - index;
-            item.author = item.author;
-            item.title = item.title;
             item.createdAt = convertToStringDate(item.createdAt);
           });
           tmp && setNoticeList(tmp);

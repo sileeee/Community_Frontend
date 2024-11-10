@@ -8,7 +8,7 @@ import { applyMiddleware, createStore } from "redux";
 import { persistStore } from "redux-persist";
 import promiseMiddleware from "redux-promise";
 import { thunk } from "redux-thunk";
-import Reducer from "./redux/reducers";
+import Reducer from "./store/reducers";
 import { PersistGate } from "redux-persist/integration/react";
 
 const createStoreWithMiddleware = applyMiddleware(
