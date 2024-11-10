@@ -1,6 +1,7 @@
 import "../../../App.css";
 import '../../../styleguide.css';
 import { Frame } from "../../../components/common/Frame";
+import frameStyle  from "../../../components/common/Frame.module.css";
 
 
 function News(){
@@ -9,7 +10,7 @@ function News(){
         <div className="group-18">
             <div className="flex-start">
         <div className="text-wrapper-8">News</div>
-        <Frame className="frame-12" divClassName="-2" text="View All" />
+          <Frame className={frameStyle["frame-2"]} divClassName="frame-text-2" text="View All" />
         </div>
         <div className="overlap-14">
           <div className="overlap-15">

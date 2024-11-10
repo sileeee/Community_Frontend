@@ -12,10 +12,9 @@ function BoardList() {
   
   const [noticeList, setNoticeList] = useState();
   const [subCategory, setSubCategory] = useState("TOTAL");
-
+  
   const getFilteredPosts = (selected) => {
     setSubCategory(selected);
-    console.log(selected);
   };
 
   const movePage = (item) => {

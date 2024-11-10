@@ -1,0 +1,47 @@
+/* .frame {
+  white-space: nowrap;
+  position: relative;
+  cursor: pointer;
+} */
+
+
+.frame {
+  align-items: center;
+  background-color: #88ffc3;
+  border-radius: 43px;
+  display: flex;
+  gap: 10px;
+  height: 35px;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+
+
+.frame-text {
+  color: var(--accent);
+  font-family: "Manrope", Helvetica;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.36px;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+
+.frame-2 {
+  background-color: var(--accent);
+  left: 1423px;
+  position: absolute;
+  top: 0;
+}
+
+.frame-text-2 {
+  color: var(--white-text);
+  font-family: "Manrope", Helvetica;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.36px;
+  white-space: nowrap;
+  width: fit-content;
+}

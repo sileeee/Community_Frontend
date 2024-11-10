@@ -2,38 +2,6 @@
   box-sizing: border-box; /* 모든 요소에 대해 box-sizing을 border-box로 설정 */
 }
 
-.frame {
-  align-items: center;
-  background-color: #88ffc3;
-  border-radius: 43px;
-  display: flex;
-  gap: 10px;
-  height: 35px;
-  justify-content: center;
-  padding: 10px 20px;
-}
-
-.frame .frame-text {
-  color: var(--accent);
-  font-family: "Manrope", Helvetica;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.36px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.frame .frame-text-2 {
-  color: var(--white-text);
-  font-family: "Manrope", Helvetica;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.36px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-
 .handubi .space {
   height: 100px;
   position: relative;
@@ -347,10 +315,7 @@
   padding: 20px;
 }
 
-.handubi .frame-1 {
-  white-space: nowrap;
-  position: relative;
-}
+
 
 .handubi .group-3 {
   height: 515px;
@@ -378,17 +343,6 @@
   letter-spacing: -2.4px;
   top: 3px;
   white-space: nowrap;
-}
-
-.handubi .frame-10 {
-  background-color: var(--accent);
-  left: 1420px;
-  position: absolute;
-  top: 0;
-}
-
-.handubi .frame-11 {
-  color: #fffefc;
 }
 
 .handubi .overlap-7 {
@@ -938,13 +892,6 @@
   width: 1920px;
 }
 
-.handubi .frame-12 {
-  background-color: var(--accent);
-  left: 1423px;
-  position: absolute;
-  top: 0;
-}
-
 .handubi .overlap-14 {
   background-color: #f3f9f6;
   border-radius: 10px;
@@ -1123,13 +1070,6 @@
   position: absolute;
   top: 2830px;
   width: 1549px;
-}
-
-.handubi .frame-13 {
-  background-color: var(--accent);
-  left: 1421px;
-  position: absolute;
-  top: 0;
 }
 
 .handubi .overlap-20 {
@@ -1523,13 +1463,6 @@
   width: 1545px;
 }
 
-.handubi .frame-14 {
-  background-color: var(--accent);
-  left: 1422px;
-  position: absolute;
-  top: 0;
-}
-
 .handubi .overlap-26 {
   background-color: #f3f9f6;
   border-radius: 10px;
@@ -1733,13 +1666,6 @@
   height: 35px;
   position: relative;
   width: 1528px;
-}
-
-.handubi .frame-15 {
-  background-color: var(--accent);
-  left: 1424px;
-  position: absolute;
-  top: 0;
 }
 
 .handubi .rectangle-11 {

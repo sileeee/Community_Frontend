@@ -1,18 +1,24 @@
 import '../../styleguide.css';
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Nav.module.css"
 
 function Nav(){
 
     return(
         <div className={styles.container}>
-            <div className={styles.logoContainer}>
-                <img className={styles.logo} alt="Handubi" src="../../static/img/handubi-logo.png"/>
-                <div className={styles.logoHandubi}> Handubi </div>
-            </div>
+            <Link to="/home">
+                <div className={styles.logoContainer}>
+                    <img className={styles.logo} alt="Handubi" src="../../static/img/handubi-logo.png"/>
+                    <div className={styles.logoHandubi}> Handubi </div>
+                </div>
+            </Link>
             <div className={styles.navbar}>
+                <Link to="/news">
+                    <div className={styles.textNavbar}>뉴스</div>
+                </Link>
                 <div className={styles.textNavbar}>구인구직</div>
-                <div className={styles.textNavbar}>뉴스</div>
+                
                 <div className={styles.textNavbar}>부동산</div>
                 <div className={styles.textNavbar}>중고시장</div>
                 <div className={styles.textNavbar}>마켓정보</div>
@@ -25,12 +31,16 @@ function Nav(){
             </div>
 
             <div className={styles.notLoggedIn}>
-                <div className={styles.textLogin}>로그인</div>
-                <div className={styles.btn}>
-                    <div className={styles.btnSignUp}>
-                        <div className={styles.textSignUp}>회원가입</div>
+                <Link to="/login">
+                    <div className={styles.textLogin}>로그인</div>
+                </Link>
+                <Link to="/sign-up">
+                    <div className={styles.btn}>
+                        <div className={styles.btnSignUp}>
+                            <div className={styles.textSignUp}>회원가입</div>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     );
