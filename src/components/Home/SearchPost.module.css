@@ -1,0 +1,81 @@
+.searchWrapper {
+    gap: 20px;
+    padding: 0px 0px 50px 0px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 40%;
+    color: #ffffff;
+  }
+  
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 요소들이 양 끝에 위치하도록 설정 */
+    padding-left: 15px;
+    padding-right: 0; /* 필요 시 padding 조정 */
+    background-color: #f3f8f5;
+    border-radius: 5px;
+    height: 55px;
+    width: 100%;
+  }
+
+  .searchInput {
+    background-color: #f3f8f5;
+    pointer-events: auto;
+    font-family: "Manrope", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.32px;
+    text-align: left;
+    line-height: normal;
+    border: none;
+    outline: none;
+    flex: 1;
+    padding-right: 10px;
+    margin-right: 10px;
+  }
+  
+  .searchBtnContainer {
+    background-color: #2d2d2d;
+    border-radius: 0px 5px 5px 0px;
+    height: 55px;
+    justify-content: center;
+    align-items: center;
+    width: 133px;
+  }
+  
+  
+  .btnTextContainer {
+    display: flex;
+    align-items: center;
+    height: 14px;
+    left: 26px;
+    position: relative;
+    top: 20px;
+    width: 84px;
+  }
+  
+  .btnText {
+    color: #fffefc;
+    font-family: "Manrope", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.32px;
+    left: 24px; 
+    text-align: left;
+    line-height: normal;
+    top: 1px;
+    margin-left: 25px;
+  }
+  
+  
+  .search {
+    height: 14px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 16px;
+  }
+  

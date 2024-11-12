@@ -1,6 +1,5 @@
 import '../../styleguide.css';
-import { Frame } from "../../components/common/Frame";
-import styles from'../../components/common/Frame.module.css'
+import { Frame } from "../common/Frame";
 
 function Shortcut(){
     
@@ -11,7 +10,13 @@ function Shortcut(){
         if (text === "뉴스") {
           scrollPosition = 1300;
         } else if (text === "구인구직") {
-          scrollPosition = 2100;
+          scrollPosition = 2200;
+        } else if (text === "부동산") {
+            scrollPosition = 3800;
+        } else if (text === "중고시장") {
+            scrollPosition = 3100;
+        } else if (text === "마켓정보") {
+            scrollPosition = 4900;
         }
     
         window.scrollTo({ top: scrollPosition, behavior: "smooth" });

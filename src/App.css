@@ -44,119 +44,6 @@
   align-items: center;
 }
 
-.handubi .overlap {
-  height: 754px;
-  left: 0;
-  position: relative;
-  width: 1930px;
-}
-
-.handubi .group {
-  height: 754px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 1930px;
-}
-
-.handubi .overlap-group {
-  background-color: var(--accent);
-  background-image: url(../public/static/img/mask-group.png);
-  background-size: 100% 100%;
-  height: 754px;
-  position: relative;
-  width: 1920px;
-}
-
-.handubi .div-wrapper {
-  background-color: #71ff6e;
-  border-radius: 59.5px;
-  box-shadow: 0px 4px 4px #5e5e5e40;
-  left: 1051px;
-  top: 242px;
-  height: 64px;
-  width: 148px;
-  position: relative; /* 여기서부터 끝까지 수정 포인트*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.handubi .overlap-2 {
-  background-color: #71ff6e;
-  border-radius: 59.5px;
-  box-shadow: 0px 4px 4px #5e5e5e40;
-  height: 64px;
-  width: 104px;
-  left: 1567px;
-  top: 242px;
-  position: absolute;
-   /* 여기서부터 끝까지 수정 포인트*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.handubi .overlap-3 {
-  background-color: #71ff6e;
-  border-radius: 59.5px;
-  box-shadow: 0px 4px 4px #5e5e5e40;
-  height: 64px;
-  left: 1193px;
-  top: 119px;
-  width: 104px;
-  position: absolute;
-  display: flex; /* 여기서부터 끝까지 수정 포인트*/
-  justify-content: center;
-  align-items: center;
-}
-
-
-.handubi .overlap-4 {
-  background-color: #71ff6e;
-  border-radius: 59.5px;
-  box-shadow: 0px 4px 4px #5e5e5e40;
-  height: 64px;
-  left: 1440px;
-  top: 141px;
-  width: 114px;
-  position: absolute;
-   /* 여기서부터 끝까지 수정 포인트*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.handubi .overlap-5 {
-  background-color: #71ff6e;
-  border-radius: 59.5px;
-  box-shadow: 0px 4px 4px #5e5e5e40;
-  height: 64px;
-  left: 1167px;
-  position: absolute;
-   /* 여기서부터 끝까지 수정 포인트*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 532px;
-  width: 148px;
-}
-
-.handubi .component {
-  background-color: #71ff6e;
-  border-radius: 59.5px;
-  box-shadow: 0px 4px 4px #5e5e5e40;
-  height: 64px;
-  left: 1020px;
-  position: absolute;
-  top: 405px;
-  width: 148px;
-   /* 여기서부터 끝까지 수정 포인트*/
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .handubi .text-wrapper {
   color: #183524;
   font-family: "Manrope", Helvetica;
@@ -166,18 +53,6 @@
   letter-spacing: -1.62px;
   line-height: 78px;
   position: absolute;
-  top: 23px;
-  white-space: nowrap;
-}
-
-.handubi .text-wrapper-2 {
-  color: #183524;
-  font-family: "Manrope", Helvetica;
-  font-size: 27px;
-  font-weight: 500;
-  left: 22px;
-  letter-spacing: -1.62px;
-  line-height: 20px;
   top: 23px;
   white-space: nowrap;
 }
@@ -209,97 +84,12 @@
   white-space: nowrap;
 }
 
-.handubi .korean-dreams-in {
-  color: #fffefc;
-  font-family: "Manrope", Helvetica;
-  font-size: 84px;
-  font-weight: 600;
-  left: 193px;
-  letter-spacing: -5.04px;
-  line-height: 92px;
-  position: absolute;
-  top: 223px;
-  width: 544px;
-}
-
-.handubi .overlap-wrapper {
-  height: 55px;
-  left: 199px;
-  position: absolute;
-  top: 431px;
-  width: 540px;
-}
-
-.handubi .overlap-6 {
-  display: flex; /* 수정 포인트 여기서부터 */
-  align-items: center;
-  padding-left: 15px;
-  padding-right: 10px; /* 여기까지 */
-  background-color: #f3f8f5;
-  border-radius: 5px;
-  height: 55px;
-  position: relative;
-  width: 538px;
-}
-
-.handubi .group-wrapper {
-  background-color: #2d2d2d;
-  border-radius: 0px 5px 5px 0px;
-  height: 55px;
-  left: 405px;
-  position: absolute;
-  top: 0;
-  width: 133px;
-}
-
-.handubi .group-2 {
-  display: flex;
-  align-items: center;
-  height: 14px;
-  left: 26px;
-  position: relative;
-  top: 20px;
-  width: 84px;
-}
-
-.handubi .text-wrapper-5 {
-  color: #fffefc;
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: -0.32px;
-  left: 24px; 
-  text-align: left;
-  line-height: normal;
-  top: 1px;
-  margin-left: 25px;
-}
-
-.handubi .search {
-  height: 14px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 16px;
-}
-
-.handubi .text-wrapper-6 {
-  color: #9c9c9c;
-  font-family: "Manrope", Helvetica;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: -0.32px;
-  text-align: left;
-  line-height: normal;
-}
-
 .handubi .text-wrapper-7 {
   color: var(--text);
   font-family: "Manrope", Helvetica;
   font-size: 64px;
   font-weight: 500;
   letter-spacing: -2px;
-  /* line-height: 55px; */
   position: relative;
   white-space: nowrap;
   text-align: center;
@@ -356,12 +146,10 @@
 }
 
 .handubi .rectangle {
-  height: 251px;
-  left: 11px;
-  object-fit: cover;
-  position: absolute;
-  top: 11px;
   width: 344px;
+  height: 251px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .handubi .text-wrapper-9 {
@@ -369,11 +157,9 @@
   font-family: "Manrope", Helvetica;
   font-size: 20px;
   font-weight: 500;
-  left: 11px;
   letter-spacing: -0.4px;
-  line-height: 78px;
-  position: absolute;
-  top: 281px;
+  line-height: 1.2;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -464,7 +250,6 @@
   background-color: var(--accent);
   height: 526px;
   left: 105px;
-  position: absolute;
   top: 763px;
   width: 1920px;
 }
@@ -535,13 +320,6 @@
   width: 313px;
 }
 
-.handubi .group-5 {
-  height: 103px;
-  left: 1083px;
-  position: absolute;
-  top: 820px;
-  width: 147px;
-}
 
 .handubi .text-wrapper-13 {
   color: #ffffff;
@@ -581,10 +359,10 @@
   white-space: nowrap;
 }
 
+
 .handubi .group-6 {
   height: 103px;
   left: 867px;
-  position: absolute;
   top: 820px;
   width: 114px;
 }
@@ -592,9 +370,22 @@
 .handubi .group-7 {
   height: 368px;
   left: 596px;
-  position: absolute;
   top: 820px;
   width: 163px;
+}
+
+.handubi .group-9 {
+  height: 236px;
+  left: 1346px;
+  top: 20px;
+  width: 487px;
+}
+
+.handubi .group-10 {
+  height: 76px;
+  left: 302px;
+  top: 820px;
+  width: 186px;
 }
 
 .handubi .group-8 {
@@ -733,14 +524,6 @@
   white-space: nowrap;
 }
 
-.handubi .group-9 {
-  height: 236px;
-  left: 1346px;
-  position: absolute;
-  top: 820px;
-  width: 487px;
-}
-
 .handubi .overlap-group-2 {
   background-color: #ffffff;
   border-radius: 14px;
@@ -829,14 +612,6 @@
   position: absolute;
   top: 19px;
   white-space: nowrap;
-}
-
-.handubi .group-10 {
-  height: 76px;
-  left: 302px;
-  position: absolute;
-  top: 820px;
-  width: 186px;
 }
 
 .handubi .group-11 {
@@ -977,8 +752,29 @@
   width: 701px;
 }
 
+.handubi .overlap-160 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 303px;
+  left: 0px;
+  position: absolute;
+  top: 107px;
+  width: 800px;
+}
+
 .handubi .overlap-17 {
-  background-image: url(../public/static/img/rectangle-4203.png);
+  background-image: url(../public/static/img/rectangle-4223.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 279px;
+  left: 11px;
+  position: absolute;
+  top: 13px;
+  width: 332px;
+}
+
+.handubi .overlap-170 {
+  background-image: url(../public/static/img/rectangle-98.png);
   background-position: 50% 50%;
   background-size: cover;
   height: 279px;
@@ -1016,11 +812,11 @@
   font-size: 20px;
   font-weight: 600;
   left: 0;
-  letter-spacing: -0.8px;
   line-height: 26px;
   position: absolute;
   top: 0;
   width: 322px;
+  text-align: left;
 }
 
 .handubi .text-wrapper-44 {
@@ -1033,6 +829,7 @@
   line-height: 28px;
   position: absolute;
   top: 92px;
+  align-items: left;
   width: 309px;
 }
 
@@ -1046,8 +843,38 @@
   width: 701px;
 }
 
+.handubi .overlap-180 {
+  background-color: #f3f9f6;
+  border-radius: 10px;
+  height: 303px;
+  left: 0px;
+  position: absolute;
+  top: 431px;
+  width: 800px;
+}
+
 .handubi .overlap-19 {
   background-image: url(../public/static/img/rectangle-4205.png);
+  background-size: 100% 100%;
+  height: 279px;
+  left: 11px;
+  position: absolute;
+  top: 13px;
+  width: 332px;
+}
+
+.handubi .overlap-190 {
+  background-image: url(../public/static/img/rectangle-72.png);
+  background-size: 100% 100%;
+  height: 279px;
+  left: 11px;
+  position: absolute;
+  top: 13px;
+  width: 332px;
+}
+
+.handubi .overlap-191 {
+  background-image: url(../public/static/img/rectangle-90.png);
   background-size: 100% 100%;
   height: 279px;
   left: 11px;
@@ -1065,36 +892,41 @@
 }
 
 .handubi .group-24 {
-  height: 515px;
-  left: 199px;
-  position: absolute;
-  top: 2830px;
-  width: 1549px;
+    height: 734px;
+    width: 1531px;
+    position: relative;
+    left: 0;
+    top: 0;
+    text-align: center;
+  
 }
 
 .handubi .overlap-20 {
   background-color: #f3f9f6;
   border-radius: 10px;
-  height: 408px;
-  left: 1px;
-  position: absolute;
   top: 107px;
   width: 366px;
+  position: absolute;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  gap: 10px;
 }
 
-.handubi .text-wrapper-45 {
+.handubi .text-wrapper-45,
+.handubi .text-wrapper-46 {
   color: #3c3c3c;
   font-family: "Manrope", Helvetica;
   font-size: 16px;
   font-weight: 500;
-  left: 11px;
   letter-spacing: -0.32px;
-  line-height: 26px;
-  position: absolute;
-  top: 311px;
-  width: 350px;
+  line-height: 1.6;
+  text-align: center;
+  white-space: normal;
 }
-
+/* 
 .handubi .text-wrapper-46 {
   color: #3c3c3c;
   font-family: "Manrope", Helvetica;
@@ -1106,7 +938,7 @@
   position: absolute;
   top: 365px;
   white-space: nowrap;
-}
+} */
 
 .handubi .overlap-21 {
   background-color: #f3f9f6;
@@ -1114,8 +946,14 @@
   height: 408px;
   left: 387px;
   position: absolute;
+  padding: 16px;
   top: 107px;
   width: 366px;
+  padding-top: 20px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .handubi .overlap-22 {
@@ -1126,6 +964,11 @@
   position: absolute;
   top: 107px;
   width: 366px;
+  padding-top: 20px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .handubi .overlap-23 {
@@ -1136,6 +979,11 @@
   position: absolute;
   top: 107px;
   width: 366px;
+  padding-top: 20px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .handubi .group-25 {

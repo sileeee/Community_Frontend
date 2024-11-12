@@ -1,9 +1,12 @@
 import "../../App.css";
-import BigBanner from "./BigBanner";
-import Shortcut from "./Shortcut";
+import BigBanner from "../../components/Home/BigBanner";
+import Shortcut from "../../components/Home/Shortcut";
 import Nav from "../../components/Navbar/Nav"
+import Foot from "../../components/Footer/Foot"
 import '../../styleguide.css';
 import CategoryList from "./CategoryList";
+import SearchPost from "../../components/Home/SearchPost";
+
 
 
 function Home(){
@@ -16,9 +19,11 @@ function Home(){
             <BigBanner/>
             <div className="space"/>
             <div className="text-wrapper-7">Everything in one place</div>
+            <SearchPost />
             <Shortcut/>
-          <CategoryList />
+            <CategoryList />
           </div>
+          <Foot />
         </div>
       </div>
     );
