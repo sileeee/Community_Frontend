@@ -9,11 +9,6 @@
   top: 0;
 }
 
-.handubi .flex-start {
-  display: flex;
-  justify-content: flex-start;
-}
-
 .handubi {
   margin: 0; /* 기본 여백 제거 */
   padding: 0; /* 기본 여백 제거 */
@@ -28,7 +23,7 @@
   display: flex;
   flex-direction: column;
   height: 100%; /* 컨테이너가 화면의 전체 높이를 차지하게 설정 */
-  overflow: auto; /* 내용이 넘치면 자동으로 스크롤바가 생기도록 설정 */
+  overflow: hidden; /* 내용이 넘치면 자동으로 스크롤바가 생기도록 설정 */
 }
 
 .handubi .parent-group {
@@ -36,12 +31,85 @@
   flex: 0 1 auto;
   flex-grow: 0; /* 공간을 자동으로 차지하지 않도록 설정 */
   flex-shrink: 0; /* 축소되지 않도록 설정 */
-  overflow: auto; /* 넘치는 콘텐츠에 대해 스크롤 활성화 */
-  gap: 20px;
+  
+  gap: 15px;
   /* 아래 세 가지 요소가 있어야 가운데 정렬됨 */
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+.handubi .group-18 {
+  background-color: #12aa5e;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 0;
+  top: 0;
+  text-align: center;
+
+  flex-direction: column; /* Stack elements vertically */
+  gap: 1vw; /* Adds space between elements */
+}
+
+.handubi .flex-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.handubi .overlap-14 {
+  background-color: #7ce0ae;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 100%; /* Adjust to full width initially */
+  aspect-ratio: 16 / 9; /* Maintains aspect ratio */
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .handubi .group-18 {
+    width: 100%;
+  }
+  .handubi .overlap-14 {
+    width: 90%; /* Adjust width for smaller screens */
+  }
+}
+
+
+.handubi .overlap-15 {
+  background-image: url(../public/static/img/rectangle-9-4.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  left: 2%;
+  top: 2%;
+  display: flex;
+  position: relative;
+  width: 40vw;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.handubi .group-19 {
+  height: 10vh;
+  left: 90vw;
+  position: relative;
+  display: flex;
+  top: 1vh;
+  width: 10vw;
+}
+
+.handubi .overlap-group-4 {
+  background-color: #ffffff;
+  border-radius: 33px;
+  height: 40px;
+  position: relative;
+  width: 92px;
 }
 
 .handubi .text-wrapper {
@@ -87,24 +155,14 @@
 .handubi .text-wrapper-7 {
   color: var(--text);
   font-family: "Manrope", Helvetica;
-  font-size: 64px;
   font-weight: 500;
   letter-spacing: -2px;
   position: relative;
   white-space: nowrap;
   text-align: center;
   margin-bottom: 30px;
+  font-size: clamp(2rem, 5vw, 3rem); /* Adjust font size based on viewport */
 }
-
-.handubi .center-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  gap: 20px;
-  padding: 20px;
-}
-
 
 
 .handubi .group-3 {
@@ -113,15 +171,6 @@
   position: absolute;
   top: 1275px;
   width: 1556px;
-}
-
-.handubi .group-18 {
-  height: 734px;
-  width: 1531px;
-  position: relative;
-  left: 0;
-  top: 0;
-  text-align: center;
 }
 
 .handubi .text-wrapper-8 {
@@ -667,42 +716,8 @@
   width: 1920px;
 }
 
-.handubi .overlap-14 {
-  background-color: #f3f9f6;
-  border-radius: 10px;
-  height: 627px;
-  left: 3px;
-  position: absolute;
-  top: 107px;
-  width: 800px;
-}
 
-.handubi .overlap-15 {
-  background-image: url(../public/static/img/rectangle-9-4.png);
-  background-position: 50% 50%;
-  background-size: cover;
-  height: 430px;
-  left: 16px;
-  position: absolute;
-  top: 16px;
-  width: 768px;
-}
 
-.handubi .group-19 {
-  height: 40px;
-  left: 662px;
-  position: relative;
-  top: 11px;
-  width: 94px;
-}
-
-.handubi .overlap-group-4 {
-  background-color: #ffffff;
-  border-radius: 33px;
-  height: 40px;
-  position: relative;
-  width: 92px;
-}
 
 .handubi .text-wrapper-42 {
   color: #000000;

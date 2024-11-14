@@ -1,6 +1,6 @@
 import "../../App.css";
 import '../../styleguide.css';
-import News from "./CategoryList/News";
+import CategorySection from "./CategoryList/CategorySection";
 
 
 function CategoryList(){
@@ -8,9 +8,7 @@ function CategoryList(){
     return(
         <div>
             <div className="space"/>
-                <News />
-                <div className="space"/>
-                <News />
+            <CategorySection />
         </div>
     );
 }

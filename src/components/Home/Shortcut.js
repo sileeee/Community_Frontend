@@ -1,5 +1,6 @@
 import '../../styleguide.css';
 import { Frame } from "../common/Frame";
+import styles from "../common/Frame.module.css";
 
 function Shortcut(){
     
@@ -23,7 +24,7 @@ function Shortcut(){
     };
 
     return(
-        <div className="center-container">
+        <div className={styles.centerContainer}>
             <Frame className="frame" divClassName="frame-text" text="뉴스" onClick={() => ScrollToPosition("뉴스")} />
             <Frame className="frame" divClassName="frame-text" text="구인구직" onClick={() => ScrollToPosition("구인구직")} />
             <Frame className="frame" divClassName="frame-text" text="부동산" onClick={() => ScrollToPosition("부동산")} />

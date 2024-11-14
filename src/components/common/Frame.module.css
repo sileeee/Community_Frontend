@@ -1,47 +1,34 @@
-/* .frame {
-  white-space: nowrap;
+.centerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  cursor: pointer;
-} */
-
+  gap: clamp(10px, 2vw, 20px);
+  padding: clamp(10px, 2vw, 20px);
+  flex-wrap: wrap; /* 요소들이 줄 바꿈되도록 설정 */
+}
 
 .frame {
   align-items: center;
   background-color: #88ffc3;
   border-radius: 43px;
   display: flex;
-  gap: 10px;
-  height: 35px;
+  gap: clamp(5px, 1vw, 10px);
+  height: clamp(25px, 3vw, 35px);
   justify-content: center;
-  padding: 10px 20px;
+  padding: clamp(5px, 1vw, 10px) clamp(10px, 2vw, 20px);
 }
 
-
-
-.frame-text {
-  color: var(--accent);
-  font-family: "Manrope", Helvetica;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.36px;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-
-.frame-2 {
-  background-color: var(--accent);
-  left: 1423px;
-  position: absolute;
-  top: 0;
-}
-
-.frame-text-2 {
-  color: var(--white-text);
-  font-family: "Manrope", Helvetica;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.36px;
-  white-space: nowrap;
-  width: fit-content;
+@media (max-width: 800px) {
+  .centerContainer {
+    flex-wrap: wrap;
+    gap: 4vw;
+    justify-content: space-around;
+  }
+  .frame {
+    flex: 1 1 45vw; /* 두 줄로 배치되도록 너비 조절 */
+    max-width: 45vw;
+    min-width: 10vw;
+    min-height: 4vh;
+  }
 }

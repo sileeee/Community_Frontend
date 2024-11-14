@@ -15,16 +15,19 @@
   }
   
   .footer-section {
-    padding-left: 100px;
+    padding-left: 5vw;
+    padding-right: 5vw;
     padding-bottom: 30px;
     flex: 1;
-    min-width: 100px;
+    min-width: 20vw;
   }
   
   .footer-logo {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    white-space: normal;
+    word-wrap: break-word;
   }
   
   .social-icons i {
@@ -52,40 +55,6 @@
   
   .footer-section p {
     margin: 5px 0;
-  }
-  
-  .newsletter {
-    background-color: #fff;
-    color: #333;
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  .newsletter h4 {
-    color: #333;
-  }
-  
-  .newsletter-form {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .newsletter-form input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    flex: 1;
-    margin-right: 10px;
-  }
-  
-  .newsletter-form button {
-    padding: 8px 16px;
-    border: none;
-    background-color: #336633;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
   }
   
   .footer-bottom {

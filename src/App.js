@@ -9,6 +9,7 @@ import NewsBoard from "./pages/Board/NewsBoard";
 import "./App.css";
 import './styleguide.css';
 import PostDetail from "./pages/Board/PostDetail";
+import PostWrite from "./pages/Board/PostWrite";
 
 
 function App() {
@@ -18,8 +19,12 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/news" element={<NewsBoard />} />
+        {/* 이거 경로 잘 수정해야함. 수정하고 BoardList.jsx의 movePage()함수 살펴보기 */}
+        <Route path="/news" element={<NewsBoard />} /> 
+
         <Route path="/news/:id" element={<PostDetail />} />
+
+        <Route path="/new/NEWS" element={<PostWrite />} />
       </Routes>
     </BrowserRouter>
   );

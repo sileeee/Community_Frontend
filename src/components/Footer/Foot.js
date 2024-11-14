@@ -6,6 +6,7 @@ const Foot = () => {
   return (
     <div className="footer">
       <div className="footer-container">
+
         <div className="footer-section">
           <div className="footer-logo">KoreaninDubai</div>
           <div className="social-icons">
@@ -44,20 +45,13 @@ const Foot = () => {
           <p>+1 (917) 695 - 4990</p>
           <p>info@handubi.com</p>
         </div>
-{/* 
-        <div className="footer-section newsletter">
-          <h4>Subscribe to our newsletter</h4>
-          <p>We'll send you occasional but very useful tips about weight loss and skin care</p>
-          <div className="newsletter-form">
-            <input type="email" placeholder="What’s your email ?" />
-            <button>Subscribe</button>
-          </div>
-        </div> */}
+
       </div>
 
       <div className="footer-bottom">
         © 2024 KoreaninDubai - All rights reserved
       </div>
+      
     </div>
   );
 };

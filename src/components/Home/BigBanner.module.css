@@ -1,32 +1,36 @@
 .bannerContainer {
-  position: relative;
   width: 100%;
+  max-width: 100vw;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  display: flex;
+  overflow: hidden;
 }
 
 .overlap {
-  background-color: var(--accent);
   background-image: url(../../../public/static/img/banner.png);
-  background-size: 100% 100%;
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 원하는 가로:세로 비율 지정 (예: 16:9) */
   position: relative;
   display: flex;
-  width: 100%;
-  height: 550px;
+  justify-content: center;
 }
+
 
 .mainText {
   color: #ffffff;
   font-family: "Manrope", Helvetica;
-  font-size: 500%;
+  font-size: clamp(1rem, 5vw, 5rem); /* Adjust font size based on viewport */
   font-weight: 600;
-  letter-spacing: -5.04px;
-  line-height: 92px;
-  display: flex;
-  padding-left: 10%;
-  align-items: center;
-  width: 544px;
-  left: 20px;
+  letter-spacing: -0.05em;
+  line-height: 1.2;
+  position: absolute;
+  left: 10%; /* Adjust left position as needed */
+  top: 35%;
+  transform: translateY(-50%); /* Center vertically */
+  text-align: left;
 }

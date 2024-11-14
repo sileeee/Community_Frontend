@@ -17,13 +17,12 @@ function Home(){
           <div className="parent-group">
             <Nav />
             <BigBanner/>
-            <div className="space"/>
             <div className="text-wrapper-7">Everything in one place</div>
             <SearchPost />
             <Shortcut/>
             <CategoryList />
+            <Foot />
           </div>
-          <Foot />
         </div>
       </div>
     );
