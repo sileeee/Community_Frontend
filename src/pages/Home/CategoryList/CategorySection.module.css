@@ -38,21 +38,15 @@
   justify-content: end;
 }
 
-
-/* 2행 2열 */
 .square {
-  display: grid; /* flex로 하면 1행 4열 */
+  display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
   grid-template-rows: repeat(2, 1fr);    /* 2 rows */
-  gap: 10px;                             /* spacing between squares */
+  gap: 10px;
   width: 100%;
-  height: 80vh;
-  max-width: 100%;                      /* optional max width */
-  aspect-ratio: 1 / 1;                   /* ensures a square container */
+  height: auto;
   margin: auto;
-  /* position: relative;
-  background-size: contain; */
-  aspect-ratio: 16 / 9; /* 원하는 가로:세로 비율 지정 (예: 16:9) */
+  aspect-ratio: 16 / 4;
   justify-content: center;
 }
 

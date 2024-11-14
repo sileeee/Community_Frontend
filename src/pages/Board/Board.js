@@ -1,25 +1,29 @@
 import "../../App.css";
 import '../../styleguide.css';
 import React from "react";
-import styles from "./NewsBoard.module.css";
+import { useParams } from 'react-router-dom';
+
 import BoardList from "./BoardList";
 import Nav from "../../components/Navbar/Nav";
+import Foot from "../../components/Footer/Foot";
 
 
-function NewsBoard() {
+function Board() {
+
+  const { category } = useParams();
+
   return (
     <div className="handubi">
         <div className="div">
             <div className="parent-group">
                 <Nav />
-                <div className={styles.container}>
-                    <h1>UAE News</h1>
-                    <BoardList />
-                </div>
+                <BoardList category={category}/>
+                <div className="space"/>
+                <Foot />
             </div>
         </div>
     </div>
   );
 }
 
-export default NewsBoard;
+export default Board;

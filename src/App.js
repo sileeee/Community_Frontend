@@ -4,7 +4,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Login from "./pages/User/Login/Login";
 import SignUp from "./pages/User/SignUp/SignUp";
-import NewsBoard from "./pages/Board/NewsBoard";
+import Board from "./pages/Board/Board";
 
 import "./App.css";
 import './styleguide.css';
@@ -19,12 +19,10 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
-        {/* 이거 경로 잘 수정해야함. 수정하고 BoardList.jsx의 movePage()함수 살펴보기 */}
-        <Route path="/news" element={<NewsBoard />} /> 
-
-        <Route path="/news/:id" element={<PostDetail />} />
-
-        <Route path="/new/NEWS" element={<PostWrite />} />
+      
+        <Route path="/board/:category" element={<Board/>} /> 
+        <Route path="/board/:category/:id" element={<PostDetail />} />
+        <Route path="/board/new/:category" element={<PostWrite />} />
       </Routes>
     </BrowserRouter>
   );

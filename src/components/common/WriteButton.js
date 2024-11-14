@@ -2,28 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import styles from "./WriteButton.module.css";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 function WriteButton({ value }) {
-  
-  const history = useHistory();
+
+  const navigate = useNavigate();
+
+  const { category } = useParams();
+
   const account = useSelector((state) => state.user.loginSuccess);
   const [isLogged, setIsLogged] = useState(false);
 
   const moveToWritePage = () => {
-    if(isLogged){
-      history.push(window.location.pathname + "/write");
-    } else {
-      history.push({
-      pathname: `/login`});
-    }
+    navigate(`/board/new/${String(category || '').toUpperCase()}`);
   };
-
-  useEffect(() => {
-    if (account && account.status === "OK") 
-      setIsLogged(true);
-  }, [account]);
 
   return (
     <div className={styles.container}>

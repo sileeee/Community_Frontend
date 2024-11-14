@@ -3,8 +3,9 @@ import '../../styleguide.css';
 import styles from "./PostDetail.module.css";
 import ButtonSet from "../../components/Board/ButtonSet";
 import Nav from "../../components/Navbar/Nav";
+import Foot from "../../components/Footer/Foot";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router";
@@ -18,24 +19,26 @@ import { UnorderedListOutlined, LikeOutlined, CaretUpOutlined, CaretDownOutlined
 function PostDetail() {
   
     const navigate = useNavigate();
-
+    const { category, id } = useParams();
     const location = useLocation();
-    const [pageId, setPageId] = useState(location.state.id);
+    const sub = location.state?.subCategory;
+    
+    const [pageId, setPageId] = useState(id);
     const [boardDetail, setBoardDetail] = useState();
     const [data, setData] = useState();
-    const [subCategory, setSubCategory] = useState();
+    const [subCategory, setSubCategory] = useState(sub);
 
     useEffect(() => {
-        if (location.state?.id) {
-            setPageId(location.state.id);
+        if (id) {
+            setPageId(id);
         }
-    }, [location.state?.id]);
+    }, [id]);
 
     const movePage = (url, id) => {
         if(id){
-            navigate(url+id, {state: {id: id}});
+            navigate(url+id, {state: {id: id, category: category}});
         }else{
-            navigate(url);
+            navigate(url, {state: {category: category}});
         }
     };
 
@@ -63,7 +66,7 @@ function PostDetail() {
         if (!subCategory) return;
         let data_tmp = [];
         axios
-        .get(`http://localhost:8080/posts?category=NEWS&subCategory=${subCategory}`)
+        .get(`http://localhost:8080/posts?category=${category.toUpperCase()}&subCategory=${subCategory}`)
         .then((res) => {
             if (res.status === 200) {
                 let totalElements = res.data.data.length;
@@ -97,7 +100,7 @@ function PostDetail() {
             <div className="div">
                 <div className="parent-group"> 
                     <Nav />
-                    <h1 className={styles.category}>UAE News</h1>   
+                    <h1 className={styles.category}>{category}</h1>   
 
                     <div className={styles.container}>
                         {boardDetail && (
@@ -161,7 +164,7 @@ function PostDetail() {
                                 size="large"
                                 icon={<UnorderedListOutlined />}
                                 style={{ border: "1px solid gray", color: "gray", width: "150px"}}
-                                onClick={() => {movePage("/news", 0)}}>
+                                onClick={() => {movePage(`/board/${category}`, 0)}}>
                                 목록
                                 </Button>
                                 <Button type="primary" 
@@ -183,7 +186,7 @@ function PostDetail() {
                                 renderItem={(item) =>
                                     item.type === "prev" ? (
                                     <List.Item
-                                        onClick={() => movePage(`/news/`, item.id)}
+                                        onClick={() => movePage(`/board/${category}/`, item.id)}
                                         className={styles.list_item} >
                                         <span className={styles.icon_container}>
                                         <CaretUpOutlined />
@@ -195,7 +198,7 @@ function PostDetail() {
                                     </List.Item>
                                     ) : (
                                     <List.Item
-                                        onClick={() => movePage(`/news/`, item.id)}
+                                        onClick={() => movePage(`/board/${category}/`, item.id)}
                                         className={styles.list_item}>
                                         <span className={styles.icon_container}>
                                         <CaretDownOutlined />
@@ -210,8 +213,12 @@ function PostDetail() {
                             )}
                             </div>
                         </Paper>
+                        
                         )}
                     </div>
+
+                    <div className="space"/>
+                            <Foot />
                 </div>
             </div>
         </div>
