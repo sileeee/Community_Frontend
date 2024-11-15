@@ -116,7 +116,8 @@ function BoardList({category}) {
           <div className={styles.buttonContainer}>
             {!keyword && (
                 <SubCategoryButton
-                    onSubCategoryChange={getFilteredPosts}
+                  category={category.toUpperCase()}
+                  onSubCategoryChange={(selectedCategory) => getFilteredPosts(selectedCategory)}
                 />
             )}
             <WriteButton />

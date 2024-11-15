@@ -97,6 +97,11 @@
     padding-top: 20px;
     padding-right: 10px;
   }
+
+  .formPadding {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
   
   .table_th_2 {
     font-size: 1.7em;
@@ -115,6 +120,7 @@
     padding-bottom: 30px;
     width: 100%;
     word-break: break-all;
+    padding-right: 10px;
   }
   
   .list {
@@ -142,3 +148,26 @@
     text-align: center;
     padding-top: 7px;
   }
+  
+  .radioButton {
+    background-color: transparent;
+  }
+
+  .radioButton:hover {
+    color: green;
+  }
+  
+  .radioButton.selected {
+    background-color: green;
+    color: white;
+    border-color: green;
+  }
+  
+  .radioButton.selected:hover {
+    color: white;
+  }
+
+  .radioButton:focus {
+    outline: none; /* 클릭 시 파란색 outline 제거 */
+  }
+  
