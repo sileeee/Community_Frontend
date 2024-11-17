@@ -50,7 +50,7 @@ function PostDetail() {
     useEffect(() => {
         pageId &&
         axios
-            .get(`http://localhost:8080/posts/${pageId}`)
+            .get(`https://localhost:8443/posts/${pageId}`)
             .then((res) => {
             if (res.status === 200) {
                 setBoardDetail(res.data.data);
@@ -66,7 +66,7 @@ function PostDetail() {
         if (!subCategory) return;
         let data_tmp = [];
         axios
-        .get(`http://localhost:8080/posts?category=${category.toUpperCase()}&subCategory=${subCategory}`)
+        .get(`https://localhost:8443/posts?category=${category.toUpperCase()}&subCategory=${subCategory}`)
         .then((res) => {
             if (res.status === 200) {
                 let totalElements = res.data.data.length;
@@ -147,12 +147,7 @@ function PostDetail() {
                                     
                                     <tr>
                                         <td className={styles.table_td_2}>
-                                            {boardDetail.body.split("\n").map((line, idx) => (
-                                            <span key={idx}>
-                                                {line}
-                                                <br />
-                                            </span>
-                                            ))}
+                                            {boardDetail.body}
                                         </td>
                                     </tr>
                                 </tbody>

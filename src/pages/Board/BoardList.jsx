@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Board.module.css";
 import { Paper } from "@mui/material";
 import { Table } from "antd";
-import WriteButton from "../../components/common/WriteButton";
-import SubCategoryButton from "../../components/common/SubCategoryButton";
+import WriteButton from "../../components/Board/WriteButton";
+import SubCategoryButton from "../../components/Board/SubCategoryButton";
 import { useLocation } from "react-router";
 
 function BoardList({category}) {
@@ -73,7 +73,7 @@ function BoardList({category}) {
   useEffect(() => {
     if(keyword){
       axios
-      .get(`http://localhost:8080/posts/search?keyword=${keyword}`)
+      .get(`https://localhost:8443/posts/search?keyword=${keyword}`)
       .then((res) => {
         if (res.status === 200) {
           let totalElements = res.data.data.length;
@@ -90,7 +90,7 @@ function BoardList({category}) {
       });
     }else{
     axios
-      .get(`http://localhost:8080/posts?category=${String(category || '').toUpperCase()}&subCategory=${subCategory}`)
+      .get(`https://localhost:8443/posts?category=${String(category || '').toUpperCase()}&subCategory=${subCategory}`)
       .then((res) => {
         if (res.status === 200) {
           let totalElements = res.data.data.length;

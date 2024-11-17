@@ -49,9 +49,9 @@ const Foot = () => {
       </div>
 
       <div className="footer-bottom">
-        © 2024 KoreaninDubai - All rights reserved
+        © 2024 Handubi - All rights reserved
       </div>
-      
+
     </div>
   );
 };

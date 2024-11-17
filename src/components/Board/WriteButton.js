@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import styles from "./WriteButton.module.css";
-import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
 
@@ -10,9 +9,6 @@ function WriteButton({ value }) {
   const navigate = useNavigate();
 
   const { category } = useParams();
-
-  const account = useSelector((state) => state.user.loginSuccess);
-  const [isLogged, setIsLogged] = useState(false);
 
   const moveToWritePage = () => {
     navigate(`/board/new/${String(category || '').toUpperCase()}`);

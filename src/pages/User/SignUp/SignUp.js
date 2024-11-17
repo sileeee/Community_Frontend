@@ -10,6 +10,8 @@ import { notify } from "../toast";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Foot from "../../../components/Footer/Foot";
+import Nav from "../../../components/Navbar/Nav";
 
 const SignUp = () => {
   const [data, setData] = useState({
@@ -75,6 +77,8 @@ const SignUp = () => {
   };
 
   return (
+    <div>
+      <Nav />
     <div className={styles.container}>
       <form className={styles.formLogin} onSubmit={submitHandler} autoComplete="off">
         <h1> 회원가입 </h1>
@@ -134,6 +138,8 @@ const SignUp = () => {
         </div>
       </form>
       <ToastContainer />
+      </div>
+      <Foot />
     </div>
   );
 };

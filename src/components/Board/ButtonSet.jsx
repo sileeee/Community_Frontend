@@ -16,7 +16,7 @@ function ButtonSet({ id }) {
     const deleteProcess = (id) => {
         
         axios
-            .delete(`http://localhost:8080/posts/delete/${id}`)
+            .delete(`https://localhost:8443/posts/delete/${id}`)
             .then((res) => {
                 if (res.status === 200) {
                     alert("해당 내용이 삭제되었습니다.");
