@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import styles from "../Login.module.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { notify } from "../toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Nav from "../../../components/Navbar/Nav";
+import Foot from "../../../components/Footer/Foot";
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -15,17 +20,22 @@ const Login = () => {
   const [touched, setTouched] = useState({});
 
   const checkData = (obj) => {
-    const { email, password } = obj;
-    const urlApi = `https://lightem.senatorhost.com/login-react/index.php?email=${email.toLowerCase()}&password=${password}`;
+    const urlApi = `https://localhost:8443/users/login`;
+    console.log(obj);
+    
     const api = axios
-      .get(urlApi)
+      .post(urlApi, obj, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        }})
       .then((response) => response.data)
-      .then((data) => (data.ok ? notify("You login to your account successfully", "success") : notify("Your password or your email is wrong", "error")));
-    toast.promise(api, {
-      pending: "Loading your data...",
-      success: false,
-      error: "Something went wrong!",
-    });
+      .then((data) => (
+        data.status==="OK" ? movePage("/home") : notify("비밀번호 또는 이메일이 틀렸습니다", "error")))
+      .catch(function (error) {
+        console.log(error);
+        notify("비밀번호 또는 이메일이 틀렸습니다", "error");
+      });
   };
 
   const changeHandler = (event) => {
@@ -45,7 +55,13 @@ const Login = () => {
     checkData(data);
   };
 
+  const movePage = (url) => {
+        navigate(url);
+  };
+
   return (
+    <div>
+    <Nav />
     <div className={styles.container}>
       <form className={styles.formLogin} onSubmit={submitHandler} autoComplete="off">
         <h1>Login</h1>
@@ -67,6 +83,8 @@ const Login = () => {
         </div>
       </form>
       <ToastContainer />
+    </div>
+    <Foot />
     </div>
   );
 };
