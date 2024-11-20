@@ -4,7 +4,9 @@ import styles from "./PostDetail.module.css";
 import ButtonSet from "../../components/Board/ButtonSet";
 import Nav from "../../components/Navbar/Nav";
 import Foot from "../../components/Footer/Foot";
+import HtmlRenderer from "../../components/Board/HtmlRenderer";
 
+import DOMPurify from 'dompurify';
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -95,6 +97,16 @@ function PostDetail() {
         });
     }, [pageId, subCategory]);
 
+    const htmlRenderer = ({ htmlContent }) => {
+        const cleanHtml = DOMPurify.sanitize(htmlContent);
+      
+        return (
+          <div
+            dangerouslySetInnerHTML={{ __html: cleanHtml }}
+          />
+        );
+      };
+
     return (
         <div className="handubi">
             <div className="div">
@@ -147,7 +159,7 @@ function PostDetail() {
                                     
                                     <tr>
                                         <td className={styles.table_td_2}>
-                                            {boardDetail.body}
+                                            <HtmlRenderer htmlContent={boardDetail.body} />
                                         </td>
                                     </tr>
                                 </tbody>

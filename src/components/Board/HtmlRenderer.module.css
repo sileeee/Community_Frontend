@@ -1,0 +1,66 @@
+/* HTMLRenderer 모듈에서 TinyMCE 출력물을 스타일링하기 위한 기본 설정 */
+.htmlRender {
+    all: unset;
+    display: block; /* 기본 컨테이너 역할 설정 */
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+
+.htmlRender *[style] {
+    all: revert;
+}
+
+
+/* 텍스트 관련 스타일 */
+.htmlRender h1 {
+    font-size: 2em; /* 제목 크기 설정 */
+    margin-bottom: 0.5em; /* 여백 설정 */
+}
+
+.htmlRender h2 {
+    font-size: 1.6em; /* 제목 크기 설정 */
+    margin-bottom: 0.5em; /* 여백 설정 */
+}
+
+.htmlRender h3 {
+    font-size: 1.3em; /* 제목 크기 설정 */
+    margin-bottom: 0.5em; /* 여백 설정 */
+}
+
+
+.htmlRender p {
+    line-height: 1.6; /* 줄 간격 조정 */
+    margin-bottom: 1em; /* 하단 여백 설정 */
+}
+
+.htmlRender a {
+    text-decoration: underline; /* 밑줄 설정 */
+    color: #007bff; /* 링크 색상 설정 */
+}
+
+.htmlRender em {
+    font-style: italic;
+}
+
+.htmlRender strong {
+    font-weight: bold;
+}
+
+
+
+/* table 관련 설정 - 수정 필요
+
+.htmlRender table {
+    width: 100%; 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+}
+
+
+.htmlRender td, .htmlRender th {
+    padding: unset;
+    border: unset;
+    text-align: unset;
+} */
