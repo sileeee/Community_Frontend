@@ -26,9 +26,12 @@ function PostDetail() {
     const sub = location.state?.subCategory;
     
     const [pageId, setPageId] = useState(id);
+    const [like, setLike] = useState(0);
+    const [isUserLike, setIsUserLike] = useState(false);
     const [boardDetail, setBoardDetail] = useState();
     const [data, setData] = useState();
     const [subCategory, setSubCategory] = useState(sub);
+
 
     useEffect(() => {
         if (id) {
@@ -49,20 +52,65 @@ function PostDetail() {
         return result;
     };
 
-    useEffect(() => {
-        pageId &&
+    const toggledLikeBtn = (pageId) => {
+
+        const newLikeState = !isUserLike; // 새 상태 계산
+        setIsUserLike(newLikeState); // 상태 업데이트
+
+    // 서버에 좋아요 상태 업데이트 요청
         axios
-            .get(`https://localhost:8443/posts/${pageId}`)
-            .then((res) => {
-            if (res.status === 200) {
-                setBoardDetail(res.data.data);
-                setSubCategory(res.data.data.subCategory);
-            }
+            .post(`https://localhost:8443/likes`, { postId: pageId, likeType: "UP" }, {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             })
-            .catch(function (error) {
-                console.log(error);
-            });
-        }, [pageId]);
+            .then(() => {
+                // 좋아요 개수 갱신
+                axios
+                    .get(`https://localhost:8443/likes/count/${pageId}`)
+                    .then((res) => {
+                        if (res.status === 200) {
+                            setLike(res.data.data);
+                        }
+                    })
+                    .catch(console.error);
+            })
+            .catch(console.error);
+    };
+
+    useEffect(() => {
+        if (!pageId) return;
+    
+        const fetchData = async () => {
+            try {
+                const [postRes, likeRes, countRes] = await Promise.all([
+                    axios.get(`https://localhost:8443/posts/${pageId}`),
+                    axios.get(`https://localhost:8443/likes/${pageId}`, {
+                        withCredentials: true,
+                        headers: { 'Content-Type': 'application/json' },
+                    }),
+                    axios.get(`https://localhost:8443/likes/count/${pageId}`),
+                ]);
+    
+                if (postRes.status === 200) {
+                    setBoardDetail(postRes.data.data);
+                    setSubCategory(postRes.data.data.subCategory);
+                }
+                if (likeRes.status === 200) {
+                    setIsUserLike(likeRes.data.data);
+                }
+                if (countRes.status === 200) {
+                    setLike(countRes.data.data);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
+    
+        fetchData();
+    }, [pageId]);
+    
     
     useEffect(() => {
         if (!subCategory) return;
@@ -96,16 +144,6 @@ function PostDetail() {
             console.log(error);
         });
     }, [pageId, subCategory]);
-
-    const htmlRenderer = ({ htmlContent }) => {
-        const cleanHtml = DOMPurify.sanitize(htmlContent);
-      
-        return (
-          <div
-            dangerouslySetInnerHTML={{ __html: cleanHtml }}
-          />
-        );
-      };
 
     return (
         <div className="handubi">
@@ -146,10 +184,11 @@ function PostDetail() {
                                             {boardDetail.view}
                                             </span>
                                             <span style={{ paddingRight: "50px" }}>
-                                            <LikeOutlined style={{paddingRight: "10px"}} />Like
-                                            13
+                                            <LikeOutlined style={{paddingRight: "5px"}} />Like&nbsp;&nbsp;
+                                            {console.log(like)}
+                                            {like}
                                             </span><span style={{ paddingRight: "50px" }}>
-                                            <CommentOutlined style={{paddingRight: "10px"}} />Comment
+                                            <CommentOutlined style={{paddingRight: "5px"}} />Comment&nbsp;&nbsp;
                                             4
                                             </span>
                                         </td>
@@ -175,11 +214,16 @@ function PostDetail() {
                                 목록
                                 </Button>
                                 <Button type="primary" 
-                                ghost 
+                                ghost
                                 size="large" 
                                 icon={<LikeOutlined />}
-                                style={{ border: "1px solid gray", color: "gray", width: "150px"}}
-                                onClick={() => {}}>
+                                style={{
+                                    border: isUserLike ? "2px solid green" : "1px solid gray", // 테두리 색상
+                                    backgroundColor: isUserLike ? "#d9f4d8" : "transparent", // 내부 색상
+                                    color: isUserLike ? "green" : "gray", // 텍스트 및 아이콘 색상
+                                    width: "150px",
+                                }}
+                                onClick={() => toggledLikeBtn(pageId)}>
                                 좋아요
                                 </Button>
                                 </Flex>
