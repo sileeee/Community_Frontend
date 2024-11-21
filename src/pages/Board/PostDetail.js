@@ -25,6 +25,7 @@ function PostDetail() {
     const location = useLocation();
     const sub = location.state?.subCategory;
     
+    const [postCategory, setPostCategory] = useState();
     const [pageId, setPageId] = useState(id);
     const [like, setLike] = useState(0);
     const [isUserLike, setIsUserLike] = useState(false);
@@ -101,6 +102,7 @@ function PostDetail() {
                 if (postRes.status === 200) {
                     setBoardDetail(postRes.data.data);
                     setSubCategory(postRes.data.data.subCategory);
+                    setPostCategory(postRes.data.data.category);
                 }
                 if (likeRes.status === 200) {
                     setIsUserLike(likeRes.data.data);
@@ -119,6 +121,7 @@ function PostDetail() {
     
     useEffect(() => {
         if (!subCategory) return;
+        if (category == "search") return;
         let data_tmp = [];
         axios
         .get(`https://localhost:8443/posts?category=${category.toUpperCase()}&subCategory=${subCategory}`)
@@ -214,7 +217,7 @@ function PostDetail() {
                                 size="large"
                                 icon={<UnorderedListOutlined />}
                                 style={{ border: "1px solid gray", color: "gray", width: "150px"}}
-                                onClick={() => {movePage(`/board/${category}`, 0)}}>
+                                onClick={() => {movePage(`/board/${postCategory}`, 0)}}>
                                 목록
                                 </Button>
                                 <Button type="primary" 

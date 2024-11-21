@@ -16,7 +16,7 @@ function SearchPost(){
 
   const handleKeyDown = async (e) => {
     if (e.key === 'Enter') {
-      navigate('/news', {state: {keyword: keyword}});
+      navigate('/board/search', {state: {keyword: keyword}});
   }};
 
     return (

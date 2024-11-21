@@ -24,7 +24,7 @@ function BoardList({category}) {
   const movePage = (item) => {
     let id = item.id + "";
 
-    if (category) {
+    if (category !== "search") {
       navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next, subCategory: subCategory } });
     }
     else if (keyword) {
