@@ -1,6 +1,6 @@
 :root {
-  --accent: rgba(0, 115, 47, 1);
-  --text: rgba(0, 11, 13, 1);
+  --accent: #00732f;
+  --text: #000000;
   --white-text: rgb(255, 255, 255);
   --variable-collection-faded-text: rgba(179, 185, 186, 1);
   --variable-collection-sub-text: rgba(101, 101, 101, 1);

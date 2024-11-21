@@ -4,7 +4,7 @@ import { Button } from "antd";
 import styles from "./ButtonSet.module.css";
 import { useNavigate } from "react-router-dom";
 
-function ButtonSet({ id }) {
+function ButtonSet({ id, page }) {
     
     const navigate = useNavigate();
 
@@ -14,25 +14,47 @@ function ButtonSet({ id }) {
     };
 
     const deleteProcess = (id) => {
-        
-        axios
-            .delete(`https://localhost:8443/posts/delete/${id}`)
-            .then((res) => {
-                if (res.status === 200) {
-                    alert("해당 내용이 삭제되었습니다.");
-                    window.location.reload();
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        if(page === "comments"){
+            axios
+                .delete(`https://localhost:8443/comments/${id}`, {
+                    withCredentials: true,
+                    headers: { 'Content-Type': 'application/json' }
+                    })
+                .then((res) => {
+                    if (res.status === 200) {
+                        alert("해당 내용이 삭제되었습니다.");
+                        window.location.reload();
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+        if(page === "posts"){
+            axios
+                .delete(`https://localhost:8443/posts/delete/${id}`, {
+                    withCredentials: true,
+                    headers: { 'Content-Type': 'application/json' }
+                    })
+                .then((res) => {
+                    if (res.status === 200) {
+                        alert("해당 내용이 삭제되었습니다.");
+                        window.location.reload();
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
     }
 
     return (
         <div className={styles.container}>
-            <Button className={styles.edit_button} onClick={moveToEditPage}>
-            편집
-            </Button>
+            {page === "posts" && (
+                <Button className={styles.edit_button} onClick={moveToEditPage}>
+                편집
+                </Button>
+            )}
             <Button
             className={styles.delete_button}
             onClick={() => deleteProcess(id)}

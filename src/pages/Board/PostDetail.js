@@ -5,8 +5,8 @@ import ButtonSet from "../../components/Board/ButtonSet";
 import Nav from "../../components/Navbar/Nav";
 import Foot from "../../components/Footer/Foot";
 import HtmlRenderer from "../../components/Board/HtmlRenderer";
+import Comment from "../../components/Board/Comment"
 
-import DOMPurify from 'dompurify';
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -31,6 +31,11 @@ function PostDetail() {
     const [boardDetail, setBoardDetail] = useState();
     const [data, setData] = useState();
     const [subCategory, setSubCategory] = useState(sub);
+    const [commentsCount, setCommentsCount] = useState(0);
+
+    const handleCommentsCountChange = (count) => {
+        setCommentsCount(count);
+    };
 
 
     useEffect(() => {
@@ -185,11 +190,10 @@ function PostDetail() {
                                             </span>
                                             <span style={{ paddingRight: "50px" }}>
                                             <LikeOutlined style={{paddingRight: "5px"}} />Like&nbsp;&nbsp;
-                                            {console.log(like)}
                                             {like}
                                             </span><span style={{ paddingRight: "50px" }}>
                                             <CommentOutlined style={{paddingRight: "5px"}} />Comment&nbsp;&nbsp;
-                                            4
+                                            {commentsCount}
                                             </span>
                                         </td>
                                     </tr>
@@ -218,7 +222,7 @@ function PostDetail() {
                                 size="large" 
                                 icon={<LikeOutlined />}
                                 style={{
-                                    border: isUserLike ? "2px solid green" : "1px solid gray", // 테두리 색상
+                                    border: isUserLike ? "1.4px solid green" : "1px solid gray", // 테두리 색상
                                     backgroundColor: isUserLike ? "#d9f4d8" : "transparent", // 내부 색상
                                     color: isUserLike ? "green" : "gray", // 텍스트 및 아이콘 색상
                                     width: "150px",
@@ -229,6 +233,8 @@ function PostDetail() {
                                 </Flex>
                             </div>
                             
+                            <Comment postId={pageId} onCommentsCountChange={handleCommentsCountChange}/>
+
                             <div className={styles.list}>
                             {data && data.length !== 0 && (
                                 <List
