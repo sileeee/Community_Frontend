@@ -7,6 +7,8 @@ import { Table } from "antd";
 import WriteButton from "../../components/Board/WriteButton";
 import SubCategoryButton from "../../components/Board/SubCategoryButton";
 import { useLocation } from "react-router";
+import { getKorCategories } from "../../components/Board/getKorCategories"
+
 
 function BoardList({category}) {
   
@@ -110,7 +112,7 @@ function BoardList({category}) {
 
   return (
     <div className={styles.container}>
-      <h1>{category}</h1>
+      <h1>{getKorCategories(category)}</h1>
       <div className={styles.datagrid}>
         <Paper elevation={0} square className={styles.paper}>
           <div className={styles.buttonContainer}>
