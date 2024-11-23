@@ -6,6 +6,7 @@
     min-height: calc(65vh);
     word-break: keep-all;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .likeContainer {
@@ -76,14 +77,22 @@ cursor: pointer;
     text-align: left;
     font-size: 0.9em;
     padding: 10px 15px 40px 10px;
+    width: 100%;
+    border-bottom: 1px solid rgb(161, 161, 161);
+    max-width: 76vw;
+    display: block;
 }
 
 .table_td_2 {
-    border-top: 1px solid rgb(161, 161, 161);
-    padding: 80px 0px 80px 10px;
+    padding: 80px 10px 80px 10px;
     line-height:2;
-    width: 100%;
+    width: 85%;
     word-break: break-all;
+    overflow-x: auto;
+    position: relative;
+    max-width: 90vw;
+    box-sizing: border-box;
+    display: block; /* 기본적으로 블록으로 설정 */
 }
 
 .list {
@@ -114,4 +123,6 @@ background-color: #f6f6f6;
     border-top: 2px solid rgba(0, 115, 47, 1);
     padding: 40px 15px 20px 10px;
     text-align: left;
+    max-width: 76vw;
+    display: block;
 }
