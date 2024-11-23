@@ -191,7 +191,7 @@ function PostWrite() {
                   <div style={{ paddingLeft: "10%" }}>
                     <Button
                       type="text"
-                      onClick={() => movePage(`/board/${category.category}`)}
+                      onClick={() => movePage(`/board/${category.category.toLowerCase()}`)}
                     >
                       ← Back
                     </Button>

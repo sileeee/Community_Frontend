@@ -7,10 +7,12 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Nav from "../../../components/Navbar/Nav";
 import Foot from "../../../components/Footer/Foot";
+import { useAuth } from '../../../components/common/AuthContext';
 
 const Login = () => {
 
   const navigate = useNavigate();
+  const { checkSession } = useAuth();
 
   const [data, setData] = useState({
     email: "",
@@ -19,23 +21,29 @@ const Login = () => {
 
   const [touched, setTouched] = useState({});
 
-  const checkData = (obj) => {
+  const checkData = async(obj) => {
     const urlApi = `https://localhost:8443/users/login`;
-    console.log(obj);
     
-    const api = axios
-      .post(urlApi, obj, {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-        }})
-      .then((response) => response.data)
-      .then((data) => (
-        data.status==="OK" ? movePage("/home") : notify("비밀번호 또는 이메일이 틀렸습니다", "error")))
-      .catch(function (error) {
-        console.log(error);
-        notify("비밀번호 또는 이메일이 틀렸습니다", "error");
+    try {
+      const response = await axios.post(urlApi, obj, {
+          withCredentials: true,
+          headers: {
+              'Content-Type': 'application/json',
+          },
       });
+
+      const { status } = response.data;
+
+      if (status === "OK") {
+          checkSession(); // 세션 상태 업데이트
+          movePage("/home"); // 홈으로 이동
+      } else {
+          notify("비밀번호 또는 이메일이 틀렸습니다", "error");
+      }
+    } catch (error) {
+        console.error("Login error:", error.message || error);
+        notify("비밀번호 또는 이메일이 틀렸습니다", "error");
+    }
   };
 
   const changeHandler = (event) => {

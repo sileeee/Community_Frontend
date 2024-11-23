@@ -6,7 +6,7 @@ export default function EditorBox({ value, onChange }) {
   
   return (
     <Editor
-      apiKey=''
+      apiKey='ir9tbgfsjyo71v42bliw2qaffo9vjtx4fw7k6l3jsrqm67vj' // 환경변수 파일로 이동!!!!!!!!!!!!!!!!!
       value={value}
       onEditorChange={(content) => {
         if (onChange) onChange(content);

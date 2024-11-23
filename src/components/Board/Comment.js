@@ -3,6 +3,8 @@ import axios from "axios";
 import styles from "./Comment.module.css";
 import { CommentOutlined } from '@ant-design/icons';
 import ButtonSet from "./ButtonSet";
+import { useAuth } from '../common/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 function Comment({ postId, onCommentsCountChange }) {
 
@@ -10,7 +12,9 @@ function Comment({ postId, onCommentsCountChange }) {
     const [newComment, setNewComment] = useState("");
     const [replyInputVisible, setReplyInputVisible] = useState(null);
     const [replyText, setReplyText] = useState("");
+    const { isLoggedIn } = useAuth();
 
+    const navigate = useNavigate();
     
     useEffect(() => {
         axios
@@ -28,6 +32,12 @@ function Comment({ postId, onCommentsCountChange }) {
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         if (!newComment.trim()) return; // 빈 입력 방지
+
+        if(!isLoggedIn){
+            alert("로그인 후 댓글작성이 가능합니다.");
+            navigate(`/login`);
+            return;
+        }
 
         axios
         .post("https://localhost:8443/comments", {postId, content:newComment, preCommentId: null}, {
@@ -59,6 +69,12 @@ function Comment({ postId, onCommentsCountChange }) {
     const handleReplySubmit = (e, parentId) => {
         e.preventDefault();
         if (!replyText.trim()) return;
+
+        if(!isLoggedIn){
+            alert("로그인 후 댓글작성이 가능합니다.");
+            navigate(`/login`);
+            return;
+        }
 
         axios
             .post("https://localhost:8443/comments", {postId, content:replyText, preCommentId:parentId}, {
@@ -121,14 +137,13 @@ function Comment({ postId, onCommentsCountChange }) {
                     {!comment.deleted &&
                     <ButtonSet id={comment.id} page={"comments"} />}
                 </div>
-
                 {comments
                     .filter((reply) => reply.preCommentId === comment.id) // 현재 댓글의 대댓글만 필터링
                     .map((reply) => (
                     <div key={`reply-${reply.id}`} className={styles.replyBox}>
                         <div className={styles.comment}>
                             <div className={styles.author}>{reply.author}</div>
-                            {comment.deleted ? (
+                            {reply.deleted ? (
                             <div className={styles.deletedComment}>삭제된 댓글입니다</div>):(<div className={styles.content}>{reply.content}</div>)}
                             <div className={styles.createdAt}>{formatDate(reply.createdAt)}</div>
                         </div>

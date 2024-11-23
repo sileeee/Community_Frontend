@@ -2,9 +2,11 @@ import '../../styleguide.css';
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Nav.module.css"
+import { useAuth } from '../common/AuthContext';
 
 function Nav(){
 
+    const { isLoggedIn, logout } = useAuth();
     const navigate = useNavigate();
 
     const goToBoard = (category) => {
@@ -35,16 +37,27 @@ function Nav(){
             </div>
 
             <div className={styles.notLoggedIn}>
-                <Link to="/login">
-                    <div className={styles.textLogin}>로그인</div>
-                </Link>
-                <Link to="/sign-up">
+                
+                {isLoggedIn ? (
                     <div className={styles.btn}>
                         <div className={styles.btnSignUp}>
-                            <div className={styles.textSignUp}>회원가입</div>
+                            <div className={styles.textSignUp} onClick={() => logout()} style={{ cursor: 'pointer' }}>로그아웃</div>
                         </div>
                     </div>
-                </Link>
+                ) : (
+                    <div className={styles.notLoggedIn}>
+                        <Link to="/login">
+                            <div className={styles.textLogin}>로그인</div>
+                        </Link>
+                        <Link to="/sign-up">
+                            <div className={styles.btn}>
+                                <div className={styles.btnSignUp}>
+                                    <div className={styles.textSignUp}>회원가입</div>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                )}
             </div>
         </div>
     );

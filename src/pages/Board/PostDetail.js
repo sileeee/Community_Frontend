@@ -6,6 +6,7 @@ import Nav from "../../components/Navbar/Nav";
 import Foot from "../../components/Footer/Foot";
 import HtmlRenderer from "../../components/Board/HtmlRenderer";
 import Comment from "../../components/Board/Comment"
+import { useAuth } from '../../components/common/AuthContext';
 
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
@@ -24,6 +25,7 @@ function PostDetail() {
     const { category, id } = useParams();
     const location = useLocation();
     const sub = location.state?.subCategory;
+    const { isLoggedIn } = useAuth();
     
     const [postCategory, setPostCategory] = useState();
     const [pageId, setPageId] = useState(id);
@@ -63,7 +65,7 @@ function PostDetail() {
         const newLikeState = !isUserLike; // 새 상태 계산
         setIsUserLike(newLikeState); // 상태 업데이트
 
-    // 서버에 좋아요 상태 업데이트 요청
+        // 서버에 좋아요 상태 업데이트 요청
         axios
             .post(`https://localhost:8443/likes`, { postId: pageId, likeType: "UP" }, {
                 withCredentials: true,
@@ -90,33 +92,38 @@ function PostDetail() {
     
         const fetchData = async () => {
             try {
-                const [postRes, likeRes, countRes] = await Promise.all([
+                const [postResponse, likeCountResponse, likeStatusResponse] = await Promise.all([
                     axios.get(`https://localhost:8443/posts/${pageId}`),
-                    axios.get(`https://localhost:8443/likes/${pageId}`, {
-                        withCredentials: true,
-                        headers: { 'Content-Type': 'application/json' },
-                    }),
                     axios.get(`https://localhost:8443/likes/count/${pageId}`),
+                    isLoggedIn
+                        ? axios.get(`https://localhost:8443/likes/${pageId}`, {
+                            withCredentials: true,
+                            headers: { 'Content-Type': 'application/json' },
+                        })
+                        : Promise.resolve({ status: 200, data: { data: false } }), // 로그인되지 않은 경우 기본값 처리
                 ]);
     
-                if (postRes.status === 200) {
-                    setBoardDetail(postRes.data.data);
-                    setSubCategory(postRes.data.data.subCategory);
-                    setPostCategory(postRes.data.data.category);
+                if (postResponse.status === 200) {
+                    const { category, subCategory } = postResponse.data.data;
+                    setBoardDetail(postResponse.data.data);
+                    setPostCategory(category);
+                    setSubCategory(subCategory);
                 }
-                if (likeRes.status === 200) {
-                    setIsUserLike(likeRes.data.data);
+    
+                if (likeCountResponse.status === 200) {
+                    setLike(likeCountResponse.data.data);
                 }
-                if (countRes.status === 200) {
-                    setLike(countRes.data.data);
+    
+                if (isLoggedIn && likeStatusResponse.status === 200) {
+                    setIsUserLike(likeStatusResponse.data.data);
                 }
             } catch (error) {
-                console.error(error);
+                console.error("Error fetching post details:", error);
             }
         };
     
         fetchData();
-    }, [pageId]);
+    }, [pageId, isLoggedIn]);
     
     
     useEffect(() => {
@@ -202,7 +209,6 @@ function PostDetail() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
                                     <tr>
                                         <td className={styles.table_td_2}>
                                             <HtmlRenderer htmlContent={boardDetail.body} />
@@ -217,7 +223,7 @@ function PostDetail() {
                                 size="large"
                                 icon={<UnorderedListOutlined />}
                                 style={{ border: "1px solid gray", color: "gray", width: "150px"}}
-                                onClick={() => {movePage(`/board/${postCategory}`, 0)}}>
+                                onClick={() => {movePage(`/board/${postCategory.toLowerCase()}`, 0)}}>
                                 목록
                                 </Button>
                                 <Button type="primary" 
@@ -230,7 +236,7 @@ function PostDetail() {
                                     color: isUserLike ? "green" : "gray", // 텍스트 및 아이콘 색상
                                     width: "150px",
                                 }}
-                                onClick={() => toggledLikeBtn(pageId)}>
+                                onClick={() => isLoggedIn? toggledLikeBtn(pageId) : alert('로그인 후 사용가능합니다.')}>
                                 좋아요
                                 </Button>
                                 </Flex>
