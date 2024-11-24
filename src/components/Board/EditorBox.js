@@ -25,7 +25,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
 
   return (
     <Editor
-      apiKey=''
+      apiKey='ir9tbgfsjyo71v42bliw2qaffo9vjtx4fw7k6l3jsrqm67vj' // 환경변수 파일로 이동
       value={content}
       onEditorChange={handleEditorChange}
       init={{
@@ -41,7 +41,6 @@ export default function EditorBox({ value, onChange, initialValue }) {
           "searchreplace", // 검색 및 바꾸기
           "fullscreen", // 전체 화면
           "media", // 미디어 삽입
-          "table", // 표 삽입
           "code", // HTML 코드 보기
           "help", // 도움말
           "emoticons", // 이모티콘
@@ -51,7 +50,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
           'undo redo | blocks | ' +
           'bold italic forecolor | alignleft aligncenter ' +
           'alignright alignjustify | ' +
-          'lists table link charmap | ' +
+          'lists link charmap | ' +
           'image media emoticons'],
           content_css: [
             '//cdnjs.cloudflare.com/ajax/libs/tinymce/6.0.0/skins/ui/oxide/skin.min.css',

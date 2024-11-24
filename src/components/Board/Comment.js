@@ -12,7 +12,7 @@ function Comment({ postId, onCommentsCountChange }) {
     const [newComment, setNewComment] = useState("");
     const [replyInputVisible, setReplyInputVisible] = useState(null);
     const [replyText, setReplyText] = useState("");
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, name, userRole } = useAuth();
 
     const navigate = useNavigate();
     
@@ -109,6 +109,15 @@ function Comment({ postId, onCommentsCountChange }) {
         return `${yyyy}.${mm}.${dd} ${hh}:${min}`;
     }
 
+    function checkUser(comment, name){
+        if(userRole=='ADMIN'){
+            return <ButtonSet id={comment.id} page={"comments"} />
+        }
+        if(!comment.deleted && comment.author===name){
+            return <ButtonSet id={comment.id} page={"comments"} />
+        }
+    }
+
 
     return (
         <div className={styles.commentSection}>
@@ -134,8 +143,7 @@ function Comment({ postId, onCommentsCountChange }) {
                             답글
                         </button>
                     </div>
-                    {!comment.deleted &&
-                    <ButtonSet id={comment.id} page={"comments"} />}
+                    {checkUser(comment, name)}
                 </div>
                 {comments
                     .filter((reply) => reply.preCommentId === comment.id) // 현재 댓글의 대댓글만 필터링
@@ -147,8 +155,7 @@ function Comment({ postId, onCommentsCountChange }) {
                             <div className={styles.deletedComment}>삭제된 댓글입니다</div>):(<div className={styles.content}>{reply.content}</div>)}
                             <div className={styles.createdAt}>{formatDate(reply.createdAt)}</div>
                         </div>
-                        {!comment.deleted &&
-                        <ButtonSet id={reply.id} page={"comments"} />}
+                        {checkUser(reply, name)}
                     </div>
                 ))}
 

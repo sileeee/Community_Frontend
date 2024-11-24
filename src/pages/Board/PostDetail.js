@@ -26,7 +26,7 @@ function PostDetail() {
     const { category, id } = useParams();
     const location = useLocation();
     const sub = location.state?.subCategory;
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, name, userRole } = useAuth();
     
     const [postCategory, setPostCategory] = useState();
     const [pageId, setPageId] = useState(id);
@@ -161,6 +161,17 @@ function PostDetail() {
         });
     }, [pageId, subCategory]);
 
+    function checkUser(boardDetail){
+        console.log(boardDetail.author);
+        console.log(name);
+        if(userRole=='ADMIN'){
+            return <ButtonSet id={pageId} page={"posts"} category={category}/>
+        }
+        if(boardDetail.author===name){
+            return <ButtonSet id={pageId} page={"posts"} category={category}/>
+        }
+    }
+
     return (
         <div className="handubi">
             <div className="div">
@@ -173,7 +184,8 @@ function PostDetail() {
                         <Paper elevation={0} square className={styles.paper}>
                             
                             <div>
-                            <ButtonSet id={pageId} page={"posts"} category={category}/>
+                            {checkUser(boardDetail)}
+                            {/* <ButtonSet id={pageId} page={"posts"} category={category}/> */}
                             </div>
                             
                             <table className={styles.table_}>
