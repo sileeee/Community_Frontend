@@ -1,6 +1,7 @@
 import '../../styleguide.css';
 import React from 'react';
 import './Foot.css';
+import { Link } from 'react-router-dom';
 
 const Foot = () => {
   return (
@@ -8,7 +9,8 @@ const Foot = () => {
       <div className="footer-container">
 
         <div className="footer-section">
-          <div className="footer-logo">KoreaninDubai</div>
+          <div className="footer-logo">Handubi</div>
+          <div className="footer-title">두바이 한인 커뮤니티</div>
           <div className="social-icons">
             <i className="fab fa-facebook"></i>
             <i className="fab fa-instagram"></i>
@@ -21,16 +23,16 @@ const Foot = () => {
         <div className="footer-section">
           <h4>Quick Links</h4>
           <ul>
-            <li>Job Search</li>
-            <li>News</li>
-            <li>Second - Hand Market</li>
-            <li>Real Estate</li>
-            <li>Asian Market</li>
-            <li>Travel</li>
-            <li>Education</li>
-            <li>Hobbies Club</li>
-            <li>Freeboard</li>
-            <li>Business</li>
+            <Link to="/board/job_search"><li>구인구직</li></Link>
+            <Link to="/board/news"><li>뉴스</li></Link>
+            <Link to="/board/second_hand"><li>중고시장</li></Link>
+            <Link to="/board/real_estate"><li>부동산</li></Link>
+            <Link to="/board/asian_market"><li>마켓정보</li></Link>
+            <Link to="/board/travel"><li>여행정보</li></Link>
+            <Link to="/board/child_care"><li>교육정보</li></Link>
+            <Link to="/board/club"><li>동호회</li></Link>
+            <Link to="/board/freeboard"><li>자유게시판</li></Link>
+            <Link to="/board/business"><li>한인업소</li></Link>
           </ul>
         </div>
 
