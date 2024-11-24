@@ -1,16 +1,33 @@
-import { React} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
 
-export default function EditorBox({ value, onChange }) {
+export default function EditorBox({ value, onChange, initialValue }) {
   
+  const [content, setContent] = useState('');
+
+  useEffect(() => {
+    if (initialValue) {
+      setContent(initialValue);
+    }
+  }, [initialValue]);
+
+  useEffect(() => {
+    if (value !== content) {
+      setContent(value);
+    }
+  }, [value]);
+
+  const handleEditorChange = (newContent) => {
+    setContent(newContent);
+    if (onChange) onChange(newContent);
+  };
+
   return (
     <Editor
-      apiKey='ir9tbgfsjyo71v42bliw2qaffo9vjtx4fw7k6l3jsrqm67vj' // 환경변수 파일로 이동!!!!!!!!!!!!!!!!!
-      value={value}
-      onEditorChange={(content) => {
-        if (onChange) onChange(content);
-      }}
+      apiKey=''
+      value={content}
+      onEditorChange={handleEditorChange}
       init={{
         selector: "#postcontent",
         language: 'ko_KR',

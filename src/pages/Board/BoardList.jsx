@@ -10,7 +10,7 @@ import { useLocation } from "react-router";
 import { getKorCategories } from "../../components/Board/getKorCategories"
 
 
-function BoardList({category}) {
+function BoardList({category}) {  // lower case
   
   const navigate = useNavigate();
   const location = useLocation();

@@ -10,11 +10,11 @@ function WriteButton() {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
 
-  const { category } = useParams();
+  const { category } = useParams(); // lower case
 
   const moveToPage = () => {
     if(isLoggedIn){
-      navigate(`/board/new/${String(category || '').toUpperCase()}`);
+      navigate(`/board/new/${String(category || '')}`);
     }else{
       alert("로그인 후 글쓰기가 가능합니다.");
       navigate(`/login`);

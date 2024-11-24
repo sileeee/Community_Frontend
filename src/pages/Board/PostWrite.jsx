@@ -14,8 +14,8 @@ import { notify } from "../User/toast";
 
 function PostWrite() {
     const navigate = useNavigate();
-    const category = useParams();
-    const subCategories = getCategories(category.category);
+    const { category, id } = useParams();
+    const subCategories = getCategories(category.toUpperCase());
     const categories_except_total = subCategories.slice(1);
 
     const [form] = Form.useForm();
@@ -33,8 +33,26 @@ function PostWrite() {
     };
 
     const onFinish = (value) => {
+      if(id){
         axios
-            .post(`https://localhost:8443/posts/new/${category.category}`, value, {
+            .put(`https://localhost:8443/posts/edit/${id}`, value, {
+                withCredentials: true,
+                headers: {
+                  'Content-Type': 'application/json',
+            }})
+            .then((data) => {
+            if (data.status === 200) {
+                alert("게시글 수정이 완료되었습니다.");
+                movePage(`/board/${category.toLowerCase()}`);
+            }})
+            .catch(function (error) {
+                console.log(error);
+                notify("게시글 수정에 실패했습니다", "error");
+            });
+      }
+      else{
+        axios
+            .post(`https://localhost:8443/posts/new/${category.toUpperCase()}`, value, {
                 withCredentials: true,
                 headers: {
                   'Content-Type': 'application/json',
@@ -42,18 +60,43 @@ function PostWrite() {
             .then((data) => {
             if (data.status === 200) {
                 alert("게시글 등록이 완료되었습니다.");
-                movePage("/board/news");
+                movePage(`/board/${category.toLowerCase()}`);
             }})
             .catch(function (error) {
                 console.log(error);
                 notify("게시글 등록에 실패했습니다", "error");
             });
-        };
+      };
+    }
 
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
     };
 
+    const [editorContent, setEditorContent] = useState('');
+
+    useEffect(() => {
+      if (id) {
+          // 기존 게시글 데이터 요청
+          axios.get(`https://localhost:8443/posts/${id}`)
+              .then((response) => {
+                  const data = response.data.data;
+                  console.log("API Response Data:", data);
+                  // 기존 데이터로 Form 초기화
+                  form.setFieldsValue({
+                      title: data.title,
+                      subCategory: data.subCategory,
+                      status: data.status,
+                      body: data.body
+                  });
+                  console.log("Form Fields After Set:", form.getFieldsValue());
+                  setEditorContent(data.body);
+              })
+              .catch((error) => {
+                  console.error("Error fetching post data:", error);
+              });
+      }
+  }, [id, form]);
 
     return (
     <div>
@@ -177,6 +220,7 @@ function PostWrite() {
                             <EditorBox
                                 value={form.getFieldValue("body")}
                                 onChange={(value) => form.setFieldsValue({ body: value })}
+                                initialValue={editorContent}
                             />
                             </div>
                     </Form.Item>
@@ -191,7 +235,7 @@ function PostWrite() {
                   <div style={{ paddingLeft: "10%" }}>
                     <Button
                       type="text"
-                      onClick={() => movePage(`/board/${category.category.toLowerCase()}`)}
+                      onClick={() => movePage(`/board/${category.toLowerCase()}`)}
                     >
                       ← Back
                     </Button>

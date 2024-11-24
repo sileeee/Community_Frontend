@@ -4,13 +4,13 @@ import { Button } from "antd";
 import styles from "./ButtonSet.module.css";
 import { useNavigate } from "react-router-dom";
 
-function ButtonSet({ id, page }) {
+function ButtonSet({ id, page, category}) {
     
     const navigate = useNavigate();
 
     const moveToEditPage = () => {
         let currentId = id + "";
-        navigate("/posts/edit/" + currentId, { state: { id: id} });
+        navigate(`/board/edit/${category.toUpperCase()}/${currentId}`);
     };
 
     const deleteProcess = (id) => {
@@ -39,7 +39,7 @@ function ButtonSet({ id, page }) {
                 .then((res) => {
                     if (res.status === 200) {
                         alert("해당 내용이 삭제되었습니다.");
-                        window.location.reload();
+                        navigate(`/board/${category}`);
                     }
                 })
                 .catch(function (error) {

@@ -7,6 +7,7 @@ import Foot from "../../components/Footer/Foot";
 import HtmlRenderer from "../../components/Board/HtmlRenderer";
 import Comment from "../../components/Board/Comment"
 import { useAuth } from '../../components/common/AuthContext';
+import { getKorCategories } from "../../components/Board/getKorCategories"
 
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
@@ -165,14 +166,14 @@ function PostDetail() {
             <div className="div">
                 <div className="parent-group"> 
                     <Nav />
-                    <h1 className={styles.category}>{category}</h1>   
+                    <h1 className={styles.category}>{getKorCategories(category)}</h1>   
 
                     <div className={styles.container}>
                         {boardDetail && (
                         <Paper elevation={0} square className={styles.paper}>
                             
                             <div>
-                            <ButtonSet id={pageId} />
+                            <ButtonSet id={pageId} page={"posts"} category={category}/>
                             </div>
                             
                             <table className={styles.table_}>

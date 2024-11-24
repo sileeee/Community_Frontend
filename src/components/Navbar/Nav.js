@@ -17,7 +17,7 @@ function Nav(){
         <div className={styles.container}>
             <Link to="/home">
                 <div className={styles.logoContainer}>
-                    <img className={styles.logo} alt="Handubi" src="../../static/img/handubi-logo.png"/>
+                    <img className={styles.logo} alt="Handubi" src="/../static/img/handubi-logo.png"/>
                     <div className={styles.logoHandubi}> Handubi </div>
                 </div>
             </Link>

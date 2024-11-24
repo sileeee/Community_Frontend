@@ -10,7 +10,7 @@ import Foot from "../../components/Footer/Foot";
 
 function Board() {
 
-  const { category } = useParams();
+  const { category } = useParams(); // lower case
 
   return (
     <div className="handubi">

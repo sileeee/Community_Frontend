@@ -22,6 +22,7 @@ function App() {
       
         <Route path="/board/:category" element={<Board/>} /> 
         <Route path="/board/:category/:id" element={<PostDetail />} />
+        <Route path="/board/edit/:category/:id" element={<PostWrite />} />
         <Route path="/board/new/:category" element={<PostWrite />} />
       </Routes>
     </BrowserRouter>
