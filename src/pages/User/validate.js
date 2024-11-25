@@ -1,5 +1,7 @@
 export const validate = (data, type) => {
     const errors = {};
+
+    if (type === "signUp") {
   
     if (!data.email) {
       errors.email = "이메일을 입력해주세요.";
@@ -17,26 +19,35 @@ export const validate = (data, type) => {
       delete errors.password;
     }
   
-    if (type === "signUp") {
-      if (!data.name.trim()) {
-        errors.name = "닉네임을 입력해주세요.";
-      } else {
-        delete errors.name;
-      }
-      if (!data.confirmPassword) {
-        errors.confirmPassword = "비밀번호를 확인해주세요.";
-      } else if (!(data.confirmPassword === data.password)) {
-        errors.confirmPassword = "비밀번호가 일치하지 않습니다";
-      } else {
-        delete errors.confirmPassword;
-      }
-  
-      if (data.IsAccepted) {
-        delete errors.IsAccepted;
-      } else {
-        errors.IsAccepted = "약관에 동의해주세요";
-      }
+    if (!data.name.trim()) {
+      errors.name = "닉네임을 입력해주세요.";
+    } else {
+      delete errors.name;
     }
+
+    if (!data.confirmPassword) {
+      errors.confirmPassword = "비밀번호를 입력해주세요.";
+    } else if (!(data.confirmPassword === data.password)) {
+      errors.confirmPassword = "비밀번호가 일치하지 않습니다";
+    } else {
+      delete errors.confirmPassword;
+    }
+
+    if (data.IsAccepted) {
+      delete errors.IsAccepted;
+    } else {
+      errors.IsAccepted = "약관에 동의해주세요";
+    }
+
+    if (!data.phone) {
+      errors.phone = "전화번호를 입력해주세요.";
+    } else if (!/^[0-9]{9,11}$/.test(data.phone)) {
+      errors.phone = "전화번호는 9~11자리 숫자로 입력해주세요.";
+    } else {
+      delete errors.phone;
+    }
+  
+  }
   
     return errors;
   };
