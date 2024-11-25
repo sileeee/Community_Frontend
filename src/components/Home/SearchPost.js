@@ -14,31 +14,44 @@ function SearchPost(){
     setKeyword(e.target.value);
   };
 
-  const handleKeyDown = async (e) => {
-    if (e.key === 'Enter') {
+  const handleSearch = () => {
+    if(!keyword){
+      alert("검색창에 키워드를 입력하세요.")
+    }else{
       navigate('/board/search', {state: {keyword: keyword}});
-  }};
+    }
+  };
 
-    return (
-        <div className={styles.searchWrapper}>
-            <div className={styles.inputWrapper}>
-                <input 
-                    type="text" 
-                    placeholder="궁금하신 모든 것을 찾아보세요!" 
-                    className={styles.searchInput}
-                    value={keyword}
-                    onChange={handleInputChange}
-                    onKeyDown={handleKeyDown}
-                    /> 
-                <div className={styles.searchBtnContainer}>
-                    <div className={styles.btnTextContainer}>
-                    <div className={styles.btnText}>Search</div>
-                    <img className={styles.search} alt="Search" src="/static/img/search.png" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const searchWithKeyword = () => {
+    handleSearch();
+  };
+
+  return (
+      <div className={styles.searchWrapper}>
+          <div className={styles.inputWrapper}>
+              <input 
+                  type="text" 
+                  placeholder="궁금하신 모든 것을 찾아보세요!" 
+                  className={styles.searchInput}
+                  value={keyword}
+                  onChange={handleInputChange}
+                  onKeyDown={handleKeyDown}
+                  /> 
+              <div className={styles.searchBtnContainer} onClick={searchWithKeyword}>
+                  <div className={styles.btnTextContainer}>
+                  <div className={styles.btnText}>Search</div>
+                  <img className={styles.search} alt="Search" src="/static/img/search.png" />
+                  </div>
+              </div>
+          </div>
+      </div>
+  );
 }
 
 export default SearchPost;
