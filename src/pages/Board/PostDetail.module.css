@@ -126,3 +126,11 @@ background-color: #f6f6f6;
     max-width: 76vw;
     display: block;
 }
+
+.likeBtn {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.likeBtn:hover {
+    transform: scale(1.05);
+}

@@ -57,6 +57,11 @@
     font-size: 1.3vw; /* 글자 크기를 화면 너비에 비례하여 조정 */
     font-weight: 500;
     white-space: nowrap;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.textNavbar:hover {
+    transform: scale(1.05);
 }
 
 .notLoggedIn {
@@ -76,9 +81,12 @@
     font-size: 1.3vw;
     font-weight: 500;
     margin-right: 1vw;
-    /* line-height: 45px;
-    top: 16px; */
     white-space: nowrap;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.textLogin:hover {
+    transform: scale(1.05);
 }
 
 .btn {
@@ -97,6 +105,12 @@
     border-radius: 0.5vw;
     width: 100%;
     height: clamp(1rem, 5vw, 3rem);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.btnSignUp:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 .textSignUp {

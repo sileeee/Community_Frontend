@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Frame.module.css";
 
 
-export const Frame = ({ className, text, divClassName, onClick }) => {
+export const Frame = ({ className, text, onClick }) => {
 
   return (
     <div onClick={onClick} style={{ cursor: "pointer" }}>

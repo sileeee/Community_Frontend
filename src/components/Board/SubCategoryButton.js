@@ -11,7 +11,7 @@ function SubCategoryButton({category, onSubCategoryChange}) {
   
   return (
     <div className={styles.container}>
-      <Flex wrap gap="small" className="site-button-ghost-wrapper">
+      <Flex wrap gap="small">
         {categories.map((subCategory, index) => (
           <Button
             key={index}

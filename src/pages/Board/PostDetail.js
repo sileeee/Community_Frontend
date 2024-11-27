@@ -228,10 +228,11 @@ function PostDetail() {
                                 </tbody>
                             </table>
                             <div className={styles.likeContainer}>
-                                <Flex wrap gap="small" className="site-button-ghost-wrapper">
+                                <Flex wrap gap="small">
                                 <Button type="primary" 
                                 ghost 
                                 size="large"
+                                className={styles.likeBtn}
                                 icon={<UnorderedListOutlined />}
                                 style={{ border: "1px solid gray", color: "gray", width: "150px"}}
                                 onClick={() => {movePage(`/board/${postCategory.toLowerCase()}`, 0)}}>
@@ -241,6 +242,7 @@ function PostDetail() {
                                 ghost
                                 size="large" 
                                 icon={<LikeOutlined />}
+                                className={styles.likeBtn}
                                 style={{
                                     border: isUserLike ? "1.4px solid green" : "1px solid gray", // 테두리 색상
                                     backgroundColor: isUserLike ? "#d9f4d8" : "transparent", // 내부 색상

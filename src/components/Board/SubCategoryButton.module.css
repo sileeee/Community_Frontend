@@ -12,4 +12,9 @@
   
 .button {
   width: 110px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    transform: scale(1.05);
 }

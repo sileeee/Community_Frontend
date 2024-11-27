@@ -36,6 +36,12 @@
   margin-bottom: 20px;
   display: flex;
   justify-content: end;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.viewAll:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+  transform: translateY(-2px); /* Slightly raise the frame */
 }
 
 .square {
@@ -68,6 +74,7 @@
   padding: 16px;
   position: relative;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .newsImage {
@@ -93,6 +100,16 @@
   line-height:1.4;
 }
 
+.newsItem:hover .newsImage {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.newsItem:hover .newsTitle {
+  color: green;
+  text-decoration: underline;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
 
 .newsContent h3 {
   font-size: 14px;
@@ -143,6 +160,7 @@
 .row {
   display: table-row;
   border-bottom: 1px solid #ddd;
+  cursor: pointer;
   height: 30px; /* 행 높이를 고정 */
 }
 
@@ -174,6 +192,13 @@
   text-overflow: ellipsis;
   text-align: left; /* 왼쪽 정렬 */
   padding: 10px;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.title:hover {
+  color: green; /* Green text color on hover */
+  text-decoration: underline; /* Underline on hover */
 }
 
 .noData {

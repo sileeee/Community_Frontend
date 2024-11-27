@@ -18,6 +18,12 @@
   justify-content: center;
   padding: clamp(5px, 1vw, 10px) clamp(10px, 2vw, 20px);
   color: black;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.frame:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+  transform: translateY(-2px); /* Slightly raise the frame */
 }
 
 @media (max-width: 800px) {
