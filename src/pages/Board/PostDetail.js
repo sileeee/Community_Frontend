@@ -162,8 +162,6 @@ function PostDetail() {
     }, [pageId, subCategory]);
 
     function checkUser(boardDetail){
-        console.log(boardDetail.author);
-        console.log(name);
         if(userRole=='ADMIN'){
             return <ButtonSet id={pageId} page={"posts"} category={category}/>
         }

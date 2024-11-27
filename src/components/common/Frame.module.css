@@ -17,6 +17,7 @@
   height: clamp(25px, 3vw, 35px);
   justify-content: center;
   padding: clamp(5px, 1vw, 10px) clamp(10px, 2vw, 20px);
+  color: black;
 }
 
 @media (max-width: 800px) {

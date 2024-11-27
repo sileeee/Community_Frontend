@@ -54,7 +54,7 @@ export const getCategories = (category) => {
         { label: "TOTAL", value: "TOTAL" },
         { label: "풀타임", value: "FULL_TIME" },
         { label: "파트타임", value: "PART_TIME" },
-        { label: "일용직", value: "DAY" },
+        { label: "하루근무", value: "DAY" },
         { label: "ETC", value: "ETC" },
         ];
     } else if (category === "CHILD_CARE") {

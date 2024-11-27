@@ -125,6 +125,10 @@ function PostWrite() {
                             required: true,
                             message: "필수 입력 항목입니다.",
                             },
+                            {
+                              max: 50,
+                              message: "제목은 50자를 초과할 수 없습니다.",
+                            },
                         ]}>
                             <div className={styles.formPadding}>
                                 <Input />

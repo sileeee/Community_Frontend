@@ -8,7 +8,7 @@ export const Frame = ({ className, text, divClassName, onClick }) => {
   return (
     <div onClick={onClick} style={{ cursor: "pointer" }}>
       <div className={`${styles.frame} ${className}`}>
-        <div className={`${styles[divClassName]}`}>{text}</div>
+        <div>{text}</div>
       </div>
     </div>
   );
