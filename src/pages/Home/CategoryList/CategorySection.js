@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getKorCategories } from "../../../components/Board/getKorCategories";
 import { getKorSubCategories } from "../../../components/Board/getKorSubCategories";
 import HtmlRenderer from "../../../components/Board/HtmlRenderer";
-import { FireTwoTone, MessageTwoTone } from '@ant-design/icons';
+import { FireTwoTone, MessageOutlined } from '@ant-design/icons';
 
 
 
@@ -142,7 +142,7 @@ const CategorySection = ({ category, postList, layout }) => {
               </colgroup>
               <thead>
                 <tr>
-                  <th className={styles.header2} colSpan="2"> 최신 글&nbsp;&nbsp;<MessageTwoTone/></th>
+                  <th className={styles.header2} colSpan="2"> 최신 글&nbsp;&nbsp;<MessageOutlined style={{color: "green"}}/> </th>
                 </tr>
               </thead>
               <tbody className={styles.tbody}>
