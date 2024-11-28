@@ -171,3 +171,7 @@
     outline: none; /* 클릭 시 파란색 outline 제거 */
   }
   
+  .pinnedRow {
+    background-color: #e4f4e4; /* 회색 배경 */
+    cursor: pointer;
+  }

@@ -3,11 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styles from "./Board.module.css";
 import { Paper } from "@mui/material";
-import { Table } from "antd";
+import { Table, Button } from "antd";
 import WriteButton from "../../components/Board/WriteButton";
 import SubCategoryButton from "../../components/Board/SubCategoryButton";
 import { useLocation } from "react-router";
 import { getKorCategories } from "../../components/Board/getKorCategories"
+import { useAuth } from '../../components/common/AuthContext';
+import { PushpinFilled } from '@ant-design/icons';
 
 
 function BoardList({category}) {  // lower case
@@ -15,13 +17,36 @@ function BoardList({category}) {  // lower case
   const navigate = useNavigate();
   const location = useLocation();
   const keyword = location.state?.keyword;
+  const { userRole } = useAuth();
   
-  const [noticeList, setNoticeList] = useState();
+  const [noticeList, setNoticeList] = useState([]);
   const [subCategory, setSubCategory] = useState("TOTAL");
+  
+  const localStorageKey = `pinnedItems_${category}`;
+  const [pinnedItems, setPinnedItems] = useState(() => {
+    // 컴포넌트가 처음 렌더링될 때 `localStorage`에서 핀 데이터를 가져옴
+    const savedPinnedItems = localStorage.getItem("pinnedItems");
+    return savedPinnedItems ? JSON.parse(savedPinnedItems) : [];
+  });
   
   const getFilteredPosts = (selected) => {
     setSubCategory(selected);
   };
+
+  const togglePin = (record) => {
+    let updatedPinnedItems;
+
+    if (pinnedItems.some((pinned) => pinned.id === record.id)) {
+      // 이미 핀된 게시글을 제거
+      updatedPinnedItems = pinnedItems.filter((pinned) => pinned.id !== record.id);
+    } else {
+      // 새 게시글을 핀에 추가
+      updatedPinnedItems = [...pinnedItems, record];
+    }
+    setPinnedItems(updatedPinnedItems);
+    localStorage.setItem(localStorageKey, JSON.stringify(updatedPinnedItems)); // 카테고리별 고정게시글 저장
+  };
+
 
   const movePage = (item) => {
     let id = item.id + "";
@@ -51,7 +76,15 @@ function BoardList({category}) {  // lower case
       title: "제목",
       dataIndex: "title",
       align: "center",
-      width: "40%"
+      width: "40%",
+      render: (text, record) => (
+        <>
+          {pinnedItems.some((pinned) => pinned.id === record.id) && (
+            <PushpinFilled style={{ color: "#00732f", marginRight: 8 }} />
+          )}
+          {text}{" "}
+        </>
+      ),
     },
     {
       title: "작성자",
@@ -80,7 +113,28 @@ function BoardList({category}) {  // lower case
       width: "2%",
       sorter: (a, b) => a.view - b.view,
     },
+    ...(userRole === "ADMIN"
+      ? [
+    {
+      title: "고정하기",
+      dataIndex: "pin",
+      align: "center",
+      width: "1%",
+      render: (_, record) => (
+        <Button
+          type={pinnedItems.some((pinned) => pinned.id === record.id) ? "primary" : "default"}
+          onClick={() => togglePin(record)}
+        >
+          {pinnedItems.some((pinned) => pinned.id === record.id) ? "Unpin" : "Pin"}
+        </Button>
+      ),
+    },] : []),
   ];
+
+  useEffect(() => {
+    const savedPinnedItems = localStorage.getItem(localStorageKey);
+    setPinnedItems(savedPinnedItems ? JSON.parse(savedPinnedItems) : []);
+  }, [category]);
 
   useEffect(() => {
     // 페이지가 로드될 때마다 subCategory를 초기화
@@ -88,42 +142,35 @@ function BoardList({category}) {  // lower case
   }, [location.key]);
 
   useEffect(() => {
-    if(keyword){
-      axios
-      .get(`https://localhost:8443/posts/search?keyword=${keyword}`)
-      .then((res) => {
+    const fetchPosts = async () => {
+      try {
+        const url = keyword
+          ? `https://localhost:8443/posts/search?keyword=${keyword}`
+          : `https://localhost:8443/posts?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
+        const res = await axios.get(url);
+
         if (res.status === 200) {
           let totalElements = res.data.data.length;
-          let tmp = res.data.data;
-          tmp.map((item, index) => {
-            item.key = totalElements - index;
-            item.createdAt = convertToStringDate(item.createdAt);
-          });
-          tmp && setNoticeList(tmp);
+          let tmp = res.data.data.map((item, index) => ({
+            ...item,
+            key: totalElements - index,
+            createdAt: convertToStringDate(item.createdAt),
+          }));
+          setNoticeList(tmp);
         }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    }else{
-    axios
-      .get(`https://localhost:8443/posts?category=${String(category || '').toUpperCase()}&subCategory=${subCategory}`)
-      .then((res) => {
-        if (res.status === 200) {
-          let totalElements = res.data.data.length;
-          let tmp = res.data.data;
-          tmp.map((item, index) => {
-            item.key = totalElements - index;
-            item.createdAt = convertToStringDate(item.createdAt);
-          });
-          tmp && setNoticeList(tmp);
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    }
-  }, [category, subCategory]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  fetchPosts();
+  }, [category, subCategory, keyword]);
+
+  const mergedData = [
+    ...pinnedItems,
+    ...noticeList.filter(
+      (item) => !pinnedItems.some((pinned) => pinned.id === item.id)
+    ),
+  ];
 
   return (
     <div className={styles.container}>
@@ -142,8 +189,12 @@ function BoardList({category}) {  // lower case
           {noticeList && (
               <Table
                   columns={columns}
-                  dataSource={noticeList}
-                  rowClassName={styles.tableRow}
+                  dataSource={mergedData}
+                  rowClassName={(record) =>
+                    pinnedItems.some((pinned) => pinned.id === record.id)
+                      ? styles.pinnedRow
+                      : styles.tableRow
+                  }
                   size="middle"
                   pagination={{
                   position: ["none", "bottomRight"],
