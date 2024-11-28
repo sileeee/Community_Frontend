@@ -132,6 +132,7 @@ function BoardList({category}) {  // lower case
   ];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const savedPinnedItems = localStorage.getItem(localStorageKey);
     setPinnedItems(savedPinnedItems ? JSON.parse(savedPinnedItems) : []);
   }, [category]);

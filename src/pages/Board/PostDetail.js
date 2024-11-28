@@ -43,6 +43,7 @@ function PostDetail() {
 
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         if (id) {
             setPageId(id);
         }
