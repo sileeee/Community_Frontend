@@ -93,9 +93,8 @@ function PostDetail() {
     
         const fetchData = async () => {
             try {
-                const [postResponse, likeCountResponse, likeStatusResponse] = await Promise.all([
+                const [postResponse, likeStatusResponse] = await Promise.all([
                     axios.get(`https://localhost:8443/posts/${pageId}`),
-                    axios.get(`https://localhost:8443/likes/count/${pageId}`),
                     isLoggedIn
                         ? axios.get(`https://localhost:8443/likes/${pageId}`, {
                             withCredentials: true,
@@ -109,10 +108,7 @@ function PostDetail() {
                     setBoardDetail(postResponse.data.data);
                     setPostCategory(category);
                     setSubCategory(subCategory);
-                }
-    
-                if (likeCountResponse.status === 200) {
-                    setLike(likeCountResponse.data.data);
+                    setLike(postResponse.data.data.like);
                 }
     
                 if (isLoggedIn && likeStatusResponse.status === 200) {

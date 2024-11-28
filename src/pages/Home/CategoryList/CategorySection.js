@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getKorCategories } from "../../../components/Board/getKorCategories";
 import { getKorSubCategories } from "../../../components/Board/getKorSubCategories";
 import HtmlRenderer from "../../../components/Board/HtmlRenderer";
+import { FireTwoTone, MessageTwoTone } from '@ant-design/icons';
 
 
 
@@ -110,7 +111,7 @@ const CategorySection = ({ category, postList, layout }) => {
               </colgroup>
               <thead>
                 <tr>
-                  <th className={styles.header2} colSpan="2">인기 글</th>
+                  <th className={styles.header2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp;인기 글&nbsp;<FireTwoTone twoToneColor="red"/></th>
                 </tr>
               </thead>
               <tbody className={styles.tbody}>
@@ -141,7 +142,7 @@ const CategorySection = ({ category, postList, layout }) => {
               </colgroup>
               <thead>
                 <tr>
-                  <th className={styles.header2} colSpan="2">최신 글</th>
+                  <th className={styles.header2} colSpan="2"> 최신 글&nbsp;&nbsp;<MessageTwoTone/></th>
                 </tr>
               </thead>
               <tbody className={styles.tbody}>

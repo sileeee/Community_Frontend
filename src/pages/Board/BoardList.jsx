@@ -45,7 +45,7 @@ function BoardList({category}) {  // lower case
       title: "No.",
       dataIndex: "key",
       align: "center",
-      width: "6%",
+      width: "2%",
     },
     {
       title: "제목",
@@ -63,7 +63,22 @@ function BoardList({category}) {  // lower case
       title: "작성날짜",
       dataIndex: "createdAt",
       align: "center",
-      width: "10%"
+      width: "10%",
+      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+    },
+    {
+      title: "좋아요",
+      dataIndex: "like",
+      align: "center",
+      width: "2%",
+      sorter: (a, b) => a.like - b.like,
+    },
+    {
+      title: "조회수",
+      dataIndex: "view",
+      align: "center",
+      width: "2%",
+      sorter: (a, b) => a.view - b.view,
     },
   ];
 
