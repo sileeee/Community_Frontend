@@ -49,7 +49,7 @@ const SignUp = () => {
               'Content-Type': 'application/json',
           }
         });
-        if (response.data.status == "CREATED") {
+        if (response.data.status === "CREATED") {
           alert("가입이 완료되었습니다");
           movePage("/home");
         } else {

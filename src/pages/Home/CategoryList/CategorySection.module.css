@@ -183,7 +183,14 @@
   border: none;
   cursor: pointer;
   display: flex;
+  white-space: normal; /* 줄바꿈 허용 */
+  word-break: break-word; /* 긴 단어도 줄바꿈 */
+  flex-wrap: wrap; /* 텍스트 줄바꿈 활성화 */
+  max-width: 100%; /* 부모 요소 크기를 넘지 않도록 제한 */
+  font-size: 14px; /* 기본 폰트 크기 */
 }
+
+
 
 .title {
   color: black;

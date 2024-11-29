@@ -10,6 +10,7 @@ import "./App.css";
 import './styleguide.css';
 import PostDetail from "./pages/Board/PostDetail";
 import PostWrite from "./pages/Board/PostWrite";
+import MyPage from "./pages/MyPage/MyPage";
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
         <Route path="/board/:category/:id" element={<PostDetail />} />
         <Route path="/board/edit/:category/:id" element={<PostWrite />} />
         <Route path="/board/new/:category" element={<PostWrite />} />
+
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
     const [name, setName] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userRole, setUserRole] = useState(null);
+    const [userId, setUserId] = useState(null);
 
     const checkSession = async () => {
         try {
@@ -19,11 +20,13 @@ export const AuthProvider = ({ children }) => {
         setName(response.data.data.name);
         setIsLoggedIn(response.data.data.loggedIn);
         setUserRole(response.data.data.role);
+        setUserId(response.data.data.userId);
         } catch (error) {
             console.error("Error checking session:", error);
             setName(null);
             setIsLoggedIn(false);
             setUserRole(null);
+            setUserId(null);
         }
     };
 
@@ -33,6 +36,7 @@ export const AuthProvider = ({ children }) => {
             setName(null);
             setIsLoggedIn(false);
             setUserRole(null);
+            setUserId(null);
             alert("Logged out successfully");
         } catch (error) {
             console.error("Error during logout:", error);
@@ -44,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, userRole, name, checkSession, logout }}>
+        <AuthContext.Provider value={{ isLoggedIn, userRole, name, userId, checkSession, logout }}>
             {children}
         </AuthContext.Provider>
     );

@@ -1,6 +1,39 @@
 export const validate = (data, type) => {
     const errors = {};
 
+    if (type === "update") {
+      if (!data.name.trim()) {
+        errors.name = "닉네임을 입력해주세요.";
+      } else {
+        delete errors.name;
+      }
+
+      if(data.password.length === 0) {
+        delete errors.password;
+      }
+      else if (!(data.password.length >= 6)) {
+        errors.password = "비밀번호는 6글자 이상이어야 합니다.";
+      } else {
+        delete errors.password;
+      }
+
+      if (!data.confirmPassword && !data.password) {
+        delete errors.confirmPassword;
+      } else if (!(data.confirmPassword === data.password)) {
+        errors.confirmPassword = "비밀번호가 일치하지 않습니다";
+      } else {
+        delete errors.confirmPassword;
+      }
+
+      if (!data.phone) {
+        errors.phone = "전화번호를 입력해주세요.";
+      } else if (!/^[0-9]{9,11}$/.test(data.phone)) {
+        errors.phone = "전화번호는 9~11자리 숫자로 입력해주세요.";
+      } else {
+        delete errors.phone;
+      }
+    }
+
     if (type === "signUp") {
   
     if (!data.email) {

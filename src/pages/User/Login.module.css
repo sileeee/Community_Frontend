@@ -113,7 +113,6 @@ a:hover {
 
 .completed::after {
   content: "";
-  
   position: absolute;
   width: 15px;
   height: 15px;

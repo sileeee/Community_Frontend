@@ -1,16 +1,29 @@
 import '../../styleguide.css';
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Nav.module.css"
 import { useAuth } from '../common/AuthContext';
+import { SmileFilled } from '@ant-design/icons';
+import DropdownMenu from "./DropdownMenu";
+
 
 function Nav(){
 
-    const { isLoggedIn, logout } = useAuth();
+    const [menuOpen, setMenuOpen] = useState(false);
+    const { isLoggedIn, logout, name } = useAuth();
     const navigate = useNavigate();
 
     const goToBoard = (category) => {
         navigate(`/board/${String(category || '').toLowerCase()}`);
+    };
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+    const goToMyPage = () => {
+        navigate(`/mypage`);
+        setMenuOpen(false);
     };
 
     return(
@@ -40,10 +53,26 @@ function Nav(){
                 
                 {isLoggedIn ? (
                     <div className={styles.btn}>
-                        <div className={styles.btnSignUp}>
-                            <div className={styles.textSignUp} onClick={() => logout()} style={{ cursor: 'pointer' }}>로그아웃</div>
+                        <div className={styles.textNickname}>
+                            안녕하세요<br />
+                            {name.length > 5 ? `${name.slice(0, 5)}...` : name}&nbsp;님!
+                        </div>
+                        <div className={styles.myPage} onClick={toggleMenu}>
+                            <SmileFilled className={styles.myPageIcon}/>
+                            <div className={styles.myPageText}>My Page</div>
+                            {menuOpen && (
+                                <DropdownMenu style={{ top: "70px", right: "30px" }}>
+                                    <div onClick={goToMyPage} className={styles.menuItem}>
+                                        회원정보 수정
+                                    </div>
+                                    <div onClick={() => logout()} className={styles.menuItem}>
+                                        로그아웃
+                                    </div>
+                                </DropdownMenu>
+                            )}
                         </div>
                     </div>
+                    
                 ) : (
                     <div className={styles.notLoggedIn}>
                         <Link to="/login">
