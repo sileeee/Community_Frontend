@@ -99,6 +99,7 @@ const MyPage = () => {
     }, [userId]);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         if (userInfo.name || userInfo.phone) {
             setData({
                 name: userInfo.name || "",
