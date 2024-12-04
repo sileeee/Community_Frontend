@@ -21,6 +21,7 @@ const MyPage = () => {
     const [errors, setErrors] = useState({});
     const [userInfo, setUserInfo] = useState({});
     const { userId } = useAuth();
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const changeHandler = (event) => {
 
@@ -53,7 +54,7 @@ const MyPage = () => {
         const pushData = async () => {
 
             try {
-                const response = await axios.put(`https://localhost:8443/users/update/${userId}`, data, {
+                const response = await axios.put(`${API_BASE_URL}/users/update/${userId}`, data, {
                     withCredentials: true,
                     headers: { 'Content-Type': 'application/json' }
                 })
@@ -85,7 +86,7 @@ const MyPage = () => {
 
     useEffect(() => {
         axios
-        .get(`https://localhost:8443/users/${userId}`, {
+        .get(`${API_BASE_URL}/users/${userId}`, {
             withCredentials: true,
             headers: { 'Content-Type': 'application/json' }
             })

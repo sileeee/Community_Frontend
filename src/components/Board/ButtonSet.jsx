@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 function ButtonSet({ id, page, category}) {
     
     const navigate = useNavigate();
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const moveToEditPage = () => {
         let currentId = id + "";
@@ -16,7 +17,7 @@ function ButtonSet({ id, page, category}) {
     const deleteProcess = (id) => {
         if(page === "comments"){
             axios
-                .delete(`https://localhost:8443/comments/${id}`, {
+                .delete(`${API_BASE_URL}/comments/${id}`, {
                     withCredentials: true,
                     headers: { 'Content-Type': 'application/json' }
                     })
@@ -32,7 +33,7 @@ function ButtonSet({ id, page, category}) {
         }
         if(page === "posts"){
             axios
-                .delete(`https://localhost:8443/posts/delete/${id}`, {
+                .delete(`${API_BASE_URL}/posts/delete/${id}`, {
                     withCredentials: true,
                     headers: { 'Content-Type': 'application/json' }
                     })

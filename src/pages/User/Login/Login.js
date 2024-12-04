@@ -20,9 +20,10 @@ const Login = () => {
   });
 
   const [touched, setTouched] = useState({});
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const checkData = async(obj) => {
-    const urlApi = `https://localhost:8443/users/login`;
+    const urlApi = `${API_BASE_URL}/users/login`;
     
     try {
       const response = await axios.post(urlApi, obj, {
@@ -36,7 +37,7 @@ const Login = () => {
 
       if (status === "OK") {
           checkSession(); // 세션 상태 업데이트
-          movePage("/home"); // 홈으로 이동
+          movePage("/"); // 홈으로 이동
       } else {
           notify("비밀번호 또는 이메일이 틀렸습니다", "error");
       }

@@ -13,12 +13,13 @@ function Comment({ postId, onCommentsCountChange }) {
     const [replyInputVisible, setReplyInputVisible] = useState(null);
     const [replyText, setReplyText] = useState("");
     const { isLoggedIn, name, userRole } = useAuth();
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const navigate = useNavigate();
     
     useEffect(() => {
         axios
-        .get(`https://localhost:8443/comments?post_id=${postId}`)
+        .get(`${API_BASE_URL}/comments?post_id=${postId}`)
         .then((response) => {
             if (response.status === 200) {
             setComments(response.data.data);
@@ -40,7 +41,7 @@ function Comment({ postId, onCommentsCountChange }) {
         }
 
         axios
-        .post("https://localhost:8443/comments", {postId, content:newComment, preCommentId: null}, {
+        .post(`${API_BASE_URL}/comments`, {postId, content:newComment, preCommentId: null}, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,7 +49,7 @@ function Comment({ postId, onCommentsCountChange }) {
         .then((response) => {
             if (response.status === 200) {
                 axios
-                    .get(`https://localhost:8443/comments?post_id=${postId}`)
+                    .get(`${API_BASE_URL}/comments?post_id=${postId}`)
                     .then((response) => {
                         if (response.status === 200) {
                             setComments(response.data.data);
@@ -77,7 +78,7 @@ function Comment({ postId, onCommentsCountChange }) {
         }
 
         axios
-            .post("https://localhost:8443/comments", {postId, content:replyText, preCommentId:parentId}, {
+            .post(`${API_BASE_URL}/comments`, {postId, content:replyText, preCommentId:parentId}, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'application/json',
@@ -85,7 +86,7 @@ function Comment({ postId, onCommentsCountChange }) {
             .then((response) => {
                 if (response.status === 200) {
                     axios
-                        .get(`https://localhost:8443/comments?post_id=${postId}`)
+                        .get(`${API_BASE_URL}/comments?post_id=${postId}`)
                         .then((response) => {
                             if (response.status === 200) {
                                 setComments(response.data.data);

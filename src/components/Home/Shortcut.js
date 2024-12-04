@@ -1,4 +1,3 @@
-import '../../styleguide.css';
 import { Frame } from "../common/Frame";
 import styles from "../common/Frame.module.css";
 

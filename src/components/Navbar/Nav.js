@@ -1,4 +1,3 @@
-import '../../styleguide.css';
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Nav.module.css"
@@ -28,7 +27,7 @@ function Nav(){
 
     return(
         <div className={styles.container}>
-            <Link to="/home">
+            <Link to="/">
                 <div className={styles.logoContainer}>
                     <img className={styles.logo} alt="Handubi" src="/../static/img/handubi-logo.png"/>
                     <div className={styles.logoHandubi}> Handubi </div>

@@ -1,4 +1,3 @@
-import '../../styleguide.css';
 import styles from "./BigBanner.module.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -7,11 +6,12 @@ function BigBanner() {
   const [banners, setBanners] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalTime = 5000;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const response = await axios.get("https://localhost:8443/home/posts/5");
+        const response = await axios.get(`${API_BASE_URL}/home/posts/5`);
         setBanners(response.data.data);
       } catch (error) {
         console.error("Error fetching banner data:", error);

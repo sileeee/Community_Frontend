@@ -1,5 +1,4 @@
 import "../../App.css";
-import '../../styleguide.css';
 import CategorySection from "./CategoryList/CategorySection";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -8,11 +7,12 @@ import axios from "axios";
 function CategoryList(){
 
     const [mainPosts, setMainPosts] = useState([]);
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
         const fetchPosts = async () => {
           try {
-            const res = await axios.get(`https://localhost:8443/home/posts`);
+            const res = await axios.get(`${API_BASE_URL}/home/posts`);
             if (res.status === 200) {
                 setMainPosts(res.data.data);
             }

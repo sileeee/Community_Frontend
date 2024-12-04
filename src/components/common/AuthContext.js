@@ -8,10 +8,11 @@ export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userRole, setUserRole] = useState(null);
     const [userId, setUserId] = useState(null);
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const checkSession = async () => {
         try {
-            const response = await axios.get("https://localhost:8443/auth/session", {
+            const response = await axios.get(`${API_BASE_URL}/auth/session`, {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +33,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.get("https://localhost:8443/users/logout", { withCredentials: true });
+            await axios.get(`${API_BASE_URL}/users/logout`, { withCredentials: true });
             setName(null);
             setIsLoggedIn(false);
             setUserRole(null);

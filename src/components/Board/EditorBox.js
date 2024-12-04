@@ -5,6 +5,12 @@ import { Editor } from '@tinymce/tinymce-react';
 export default function EditorBox({ value, onChange, initialValue }) {
   
   const [content, setContent] = useState('');
+  const [apiKey, setApiKey] = useState('');
+
+  useEffect(() => {
+    setApiKey(process.env.EDITOR_API_KEY);
+  }, []);
+
 
   useEffect(() => {
     if (initialValue) {
@@ -25,7 +31,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
 
   return (
     <Editor
-      apiKey='ir9tbgfsjyo71v42bliw2qaffo9vjtx4fw7k6l3jsrqm67vj' // 환경변수 파일로 이동
+      apiKey={apiKey}
       value={content}
       onEditorChange={handleEditorChange}
       init={{

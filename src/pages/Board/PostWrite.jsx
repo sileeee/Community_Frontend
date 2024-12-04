@@ -23,6 +23,7 @@ function PostWrite() {
     
     const [categorySelectedValue, setCategorySelectedValue] = useState();
     const [statusSelectedValue, setStatusSelectedValue] = useState();
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     
     const onFormLayoutChange = ({ layout }) => {
         setFormLayout(layout);
@@ -35,7 +36,7 @@ function PostWrite() {
     const onFinish = (value) => {
       if(id){
         axios
-            .put(`https://localhost:8443/posts/edit/${id}`, value, {
+            .put(`${API_BASE_URL}/posts/edit/${id}`, value, {
                 withCredentials: true,
                 headers: {
                   'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ function PostWrite() {
       }
       else{
         axios
-            .post(`https://localhost:8443/posts/new/${category.toUpperCase()}`, value, {
+            .post(`${API_BASE_URL}/posts/new/${category.toUpperCase()}`, value, {
                 withCredentials: true,
                 headers: {
                   'Content-Type': 'application/json',
@@ -78,7 +79,7 @@ function PostWrite() {
     useEffect(() => {
       if (id) {
           // 기존 게시글 데이터 요청
-          axios.get(`https://localhost:8443/posts/${id}`)
+          axios.get(`${API_BASE_URL}/posts/${id}`)
               .then((response) => {
                   const data = response.data.data;
                   console.log("API Response Data:", data);

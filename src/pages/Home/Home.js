@@ -3,7 +3,6 @@ import BigBanner from "../../components/Home/BigBanner";
 import Shortcut from "../../components/Home/Shortcut";
 import Nav from "../../components/Navbar/Nav"
 import Foot from "../../components/Footer/Foot"
-import '../../styleguide.css';
 import CategoryList from "./CategoryList";
 import SearchPost from "../../components/Home/SearchPost";
 import { useEffect } from "react";

@@ -36,9 +36,7 @@ root.render(
             }
           `}
         </style>
-        <link href="styleguide.css" rel="stylesheet" />
       </Helmet>
-
       <App />
     </>
   </AuthProvider>

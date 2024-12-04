@@ -107,7 +107,7 @@ cursor: pointer;
 
 .icon_container{
     padding-right: 20px;
-    color: var(--accent);
+    color: #00732f;
 }
 
 .list_item:hover {

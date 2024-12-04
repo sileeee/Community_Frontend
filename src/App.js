@@ -7,7 +7,6 @@ import SignUp from "./pages/User/SignUp/SignUp";
 import Board from "./pages/Board/Board";
 
 import "./App.css";
-import './styleguide.css';
 import PostDetail from "./pages/Board/PostDetail";
 import PostWrite from "./pages/Board/PostWrite";
 import MyPage from "./pages/MyPage/MyPage";
@@ -17,7 +16,7 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
       

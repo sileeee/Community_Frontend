@@ -25,6 +25,7 @@ const SignUp = () => {
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     setErrors(validate(data, "signUp"));
@@ -42,7 +43,7 @@ const SignUp = () => {
     setTouched({ ...touched, [event.target.name]: true });
   };
 
-  const urlApi = `https://localhost:8443/users/sign-up`;
+  const urlApi = `${API_BASE_URL}/users/sign-up`;
       const pushData = async () => {
         const response = await axios.post(urlApi, data, {
           headers: {
@@ -51,7 +52,7 @@ const SignUp = () => {
         });
         if (response.data.status === "CREATED") {
           alert("가입이 완료되었습니다");
-          movePage("/home");
+          movePage("/");
         } else {
           alert("이미 계정이 존재합니다. 로그인을 시도해보세요.");
           movePage("/login");

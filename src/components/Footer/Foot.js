@@ -1,4 +1,3 @@
-import '../../styleguide.css';
 import React from 'react';
 import './Foot.css';
 import { Link } from 'react-router-dom';

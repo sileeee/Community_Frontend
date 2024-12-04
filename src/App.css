@@ -40,7 +40,7 @@
 }
 
 .handubi .text-wrapper-7 {
-  color: var(--text);
+  color: #000000;
   font-family: "Manrope", Helvetica;
   font-weight: 500;
   letter-spacing: -2px;
@@ -66,7 +66,7 @@
 }
 
 .handubi .p {
-  color: var(--variable-collection-faded-text);
+  color: rgba(179, 185, 186, 1);
   font-family: "Inter Tight", Helvetica;
   font-size: 16px;
   font-weight: 400;

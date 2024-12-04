@@ -28,7 +28,7 @@
 }
 
 .logoHandubi {
-    color: var(--accent);
+    color: #00732f;
     font-family: "Manrope", Helvetica;
     font-size: 2vw;
     font-weight: 500;
@@ -46,7 +46,7 @@
 }
 
 .textNavbar {
-    color: var(--text);
+    color: #000000;
     font-family: "Manrope", Helvetica;
     font-size: 1.3vw; /* 글자 크기를 화면 너비에 비례하여 조정 */
     font-weight: 500;
@@ -65,7 +65,7 @@
 }
 
 .textLogin {
-    color: var(--accent);
+    color: #00732f;
     font-family: "Manrope", Helvetica;
     font-size: 1.3vw;
     font-weight: 500;
@@ -89,7 +89,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--accent);
+    background-color: #00732f;
     border-radius: 0.5vw;
     width: 100%;
     height: clamp(1rem, 5vw, 3rem);
@@ -137,14 +137,14 @@
 }
 
 .myPageIcon {
-    color: var(--accent);
+    color: #00732f;
     font-size: 2.3vw;
     padding: 5px;
 }
 
 .myPageText {
     font-size: 0.8vw;
-    color: var(--accent);
+    color: #00732f;
     font-weight: 500;
 }
 
@@ -163,7 +163,7 @@
 .menuItem {
     padding: 10px 15px;
     font-size: 1rem;
-    color: var(--text);
+    color: #000000;
     cursor: pointer;
     transition: background-color 0.3s ease;
     cursor: pointer;

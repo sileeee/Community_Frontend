@@ -18,6 +18,7 @@ function BoardList({category}) {  // lower case
   const location = useLocation();
   const keyword = location.state?.keyword;
   const { userRole } = useAuth();
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   
   const [noticeList, setNoticeList] = useState([]);
   const [subCategory, setSubCategory] = useState("TOTAL");
@@ -146,8 +147,8 @@ function BoardList({category}) {  // lower case
     const fetchPosts = async () => {
       try {
         const url = keyword
-          ? `https://localhost:8443/posts/search?keyword=${keyword}`
-          : `https://localhost:8443/posts?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
+          ? `${API_BASE_URL}/posts/search?keyword=${keyword}`
+          : `${API_BASE_URL}/posts?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
         const res = await axios.get(url);
 
         if (res.status === 200) {

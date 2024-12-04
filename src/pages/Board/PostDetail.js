@@ -1,5 +1,4 @@
 import "../../App.css";
-import '../../styleguide.css';
 import styles from "./PostDetail.module.css";
 import ButtonSet from "../../components/Board/ButtonSet";
 import Nav from "../../components/Navbar/Nav";
@@ -36,6 +35,7 @@ function PostDetail() {
     const [data, setData] = useState();
     const [subCategory, setSubCategory] = useState(sub);
     const [commentsCount, setCommentsCount] = useState(0);
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const handleCommentsCountChange = (count) => {
         setCommentsCount(count);
@@ -69,7 +69,7 @@ function PostDetail() {
 
         // 서버에 좋아요 상태 업데이트 요청
         axios
-            .post(`https://localhost:8443/likes`, { postId: pageId, likeType: "UP" }, {
+            .post(`${API_BASE_URL}/likes`, { postId: pageId, likeType: "UP" }, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ function PostDetail() {
             .then(() => {
                 // 좋아요 개수 갱신
                 axios
-                    .get(`https://localhost:8443/likes/count/${pageId}`)
+                    .get(`${API_BASE_URL}/likes/count/${pageId}`)
                     .then((res) => {
                         if (res.status === 200) {
                             setLike(res.data.data);
@@ -95,9 +95,9 @@ function PostDetail() {
         const fetchData = async () => {
             try {
                 const [postResponse, likeStatusResponse] = await Promise.all([
-                    axios.get(`https://localhost:8443/posts/${pageId}`),
+                    axios.get(`${API_BASE_URL}/posts/${pageId}`),
                     isLoggedIn
-                        ? axios.get(`https://localhost:8443/likes/${pageId}`, {
+                        ? axios.get(`${API_BASE_URL}/likes/${pageId}`, {
                             withCredentials: true,
                             headers: { 'Content-Type': 'application/json' },
                         })
@@ -129,7 +129,7 @@ function PostDetail() {
         if (category == "search") return;
         let data_tmp = [];
         axios
-        .get(`https://localhost:8443/posts?category=${category.toUpperCase()}&subCategory=${subCategory}`)
+        .get(`${API_BASE_URL}/posts?category=${category.toUpperCase()}&subCategory=${subCategory}`)
         .then((res) => {
             if (res.status === 200) {
                 let totalElements = res.data.data.length;

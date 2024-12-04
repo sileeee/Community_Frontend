@@ -14,6 +14,7 @@ const CategorySection = ({ category, postList, layout }) => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState(postList);
   const [recentPosts, setRecentPosts] = useState(postList);
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   
   useEffect(() => {
     if (layout === 2) {
@@ -27,7 +28,7 @@ const CategorySection = ({ category, postList, layout }) => {
   const getHotPosts = async () => {
     try {
       const res = await axios.get(
-        `https://localhost:8443/posts?category=${String(category || "").toUpperCase()}&criteria=view`
+        `${API_BASE_URL}/posts?category=${String(category || "").toUpperCase()}&criteria=view`
       );
       if (res.status === 200) {
         setPosts(res.data.data.slice(0, 7));
@@ -40,7 +41,7 @@ const CategorySection = ({ category, postList, layout }) => {
   const getRecentPosts = async () => {
     try {
       const res = await axios.get(
-        `https://localhost:8443/posts?category=${String(category || "").toUpperCase()}&criteria=createdAt`
+        `${API_BASE_URL}/posts?category=${String(category || "").toUpperCase()}&criteria=createdAt`
       );
       if (res.status === 200) {
         setRecentPosts(res.data.data.slice(0, 7));
