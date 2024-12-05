@@ -27,8 +27,8 @@ export const validate = (data, type) => {
 
       if (!data.phone) {
         errors.phone = "전화번호를 입력해주세요.";
-      } else if (!/^[0-9]{9,11}$/.test(data.phone)) {
-        errors.phone = "전화번호는 9~11자리 숫자로 입력해주세요.";
+      } else if (!/^[0-9]{9,12}$/.test(data.phone)) {
+        errors.phone = "전화번호는 9~12자리 숫자로 입력해주세요.";
       } else {
         delete errors.phone;
       }
