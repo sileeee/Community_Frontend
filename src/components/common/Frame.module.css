@@ -26,16 +26,39 @@
   transform: translateY(-2px); /* Slightly raise the frame */
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .centerContainer {
     flex-wrap: wrap;
-    gap: 4vw;
+    gap: 2vw;
     justify-content: space-around;
+    padding: 5vw;
   }
   .frame {
     flex: 1 1 45vw; /* 두 줄로 배치되도록 너비 조절 */
-    max-width: 45vw;
-    min-width: 10vw;
+    max-width: 20vw;
+    min-width: 13vw;
+    min-height: 6vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .centerContainer {
+    flex-wrap: wrap;
+    gap: 3vw;
+    justify-content: space-around;
+    padding: 4vw;
+  }
+  .frame {
+    flex: 1 1 45vw; /* 두 줄로 배치되도록 너비 조절 */
+    max-width: 20vw;
+    min-width: 13vw;
     min-height: 4vh;
+    gap: 1px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 350px) {
+  .frame {display: none;
   }
 }

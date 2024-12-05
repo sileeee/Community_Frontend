@@ -8,10 +8,17 @@ function BigBanner() {
   const intervalTime = 5000;
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
+  // 화면 크기를 기준으로 요청 URL을 설정
+  const getUrlByScreenSize = () => {
+    return window.innerWidth <= 480
+      ? `${API_BASE_URL}/home/posts/5` // 모바일 전용 URL
+      : `${API_BASE_URL}/home/posts/6`; // 데스크톱 전용 URL
+  };
+
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/home/posts/5`);
+        const response = await axios.get(getUrlByScreenSize());
         setBanners(response.data.data);
       } catch (error) {
         console.error("Error fetching banner data:", error);
@@ -51,18 +58,18 @@ function BigBanner() {
           >
             {banners.map((banner) => (
               <div key={banner.id} className={styles.slide}>
-                <img src={banner.imageUrl} alt={`Banner ${banner.id}`} />
+                <img src={banner.imageUrl} alt={`Banner ${banner.id}`} className={styles.image}/>
               </div>
             ))}
-          </div>
+    </div>
 
-          <div className={`${styles.arrow} ${styles.left}`} onClick={goToPrev}>
-            &#8249;
-          </div>
-          <div className={`${styles.arrow} ${styles.right}`} onClick={goToNext}>
-            &#8250;
-          </div>
-        </>
+    <div className={`${styles.arrow} ${styles.left}`} onClick={goToPrev}>
+      &#8249;
+    </div>
+    <div className={`${styles.arrow} ${styles.right}`} onClick={goToNext}>
+      &#8250;
+    </div>
+    </>
       ) : (
         <p>Loading banners...</p>
       )}

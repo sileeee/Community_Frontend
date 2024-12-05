@@ -83,3 +83,105 @@
     color: rgba(255, 255, 255, 0.8);
   }
   
+/* ===== 반응형 스타일 추가 ===== */
+
+/* 태블릿 화면 (너비 768px 이하) */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .footer-section {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    min-width: 100%;
+  }
+
+  .footer-section h4 {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 1px;
+  }
+
+  .footer-section p {
+    font-size: 10px;
+  }
+
+  .footer-logo {
+    font-size: 20px;
+    padding-left: 0px;
+  }
+
+  .footer-title {
+    font-size: 14px;
+    padding-left: 0px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+}
+
+/* 모바일 화면 (너비 480px 이하) */
+@media (max-width: 480px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-section {
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  .footer-section h4 {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 1px;
+  }
+
+  .footer-section p {
+    font-size: 9px;
+  }
+
+  .footer-logo {
+    font-size: 18px;
+    text-align: center;
+    padding-left: 0px;
+  }
+
+  .footer-title {
+    font-size: 13px;
+    text-align: center;
+    padding-left: 0px;
+  }
+ 
+  .footer-bottom {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 479px) {
+  .footer {
+    background-color: #f8f9fa;
+    color: #00732f;
+  }
+
+  .social-icons i {
+    color: #00732f;
+  }
+  
+  .footer-section h4 {
+    color: #00732f;
+  }
+  
+  .footer-section ul li {
+    color: #00732f;
+  }
+}

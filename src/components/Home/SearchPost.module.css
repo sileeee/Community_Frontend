@@ -82,7 +82,6 @@
     margin-left: 25px;
   }
   
-  
   .search {
     height: 14px;
     left: 0;
@@ -91,3 +90,75 @@
     width: 16px;
   }
   
+  @media (max-width: 768px) {
+    .searchWrapper {
+      width: 70vw; /* 화면 너비에 맞게 조정 */
+      padding: 0px;
+      margin: 0px;
+      height: 18vh;
+    }
+  
+    .inputWrapper {
+      width: 80vw; /* 버튼 너비 축소 */
+      padding-left: 30px;
+      margin: 0px;
+    }
+  
+    .searchBtnContainer {
+      width: 18vw; /* 버튼 너비 축소 */
+      align-items: center;
+      justify-items: center;
+      display: flex;
+      top: 0px;
+      left: 0px;
+    }
+
+    .btnTextContainer {
+      align-items: center;
+      justify-items: center;
+      height: 14px;
+      width: 84px;
+      top: 0px;
+      left: 1vw;
+    }
+  
+    .btnText {
+      font-size: 14px; /* 버튼 텍스트 크기 축소 */
+    }
+  }
+  
+  /* 모바일 화면 (너비 480px 이하) */
+  @media (max-width: 480px) {
+    .searchWrapper {
+      width: 100%; /* 화면의 100% 너비로 조정 */
+      padding-bottom: 3vw;
+    }
+  
+    .inputWrapper {
+      height: 45px; /* 높이 축소 */
+    }
+  
+    .searchInput {
+      font-size: 14px; /* 텍스트 크기 축소 */
+    }
+  
+    .searchBtnContainer {
+      width: 90px; /* 버튼 너비 축소 */
+      height: 45px; /* 높이 축소 */
+      align-items: center;
+      justify-items: center;
+    }
+  
+    .btnTextContainer {
+      align-items: center;
+      justify-items: center;
+      height: 14px;
+      width: 84px;
+      top: 0px;
+      left: 2vw;
+    }
+
+    .btnText {
+      font-size: 12px; /* 버튼 텍스트 크기 축소 */
+    }
+  }

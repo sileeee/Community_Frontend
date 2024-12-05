@@ -256,3 +256,71 @@ a:hover {
   
 
 }
+
+/* ===== 반응형 스타일 추가 ===== */
+
+/* 태블릿 화면 (너비 768px 이하) */
+@media (max-width: 768px) {
+  .container {
+    max-width: 80vw;
+    padding-top: 0px;
+    padding-bottom: 100px;
+    margin: 10vw;
+  }
+
+  .formLogin {
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 10vw;
+    border-radius: 11px;
+    max-width: 50vw;
+  }
+
+  .formLogin input {
+    background: #fff;
+    padding: 15px 32px;
+    width: 50vw;
+  }
+
+  .formLogin input[type="checkbox"] {
+    margin-right: 10px;
+    width: 5vw;
+    height: 5vw;
+    padding: 0px
+  }
+}
+
+/* 모바일 화면 (너비 480px 이하) */
+@media (max-width: 480px) {
+  .container {
+    max-width: 80vw;
+    padding-top: 0px;
+    padding-bottom: 100px;
+    margin: 10vw;
+    overflow: hidden;
+  }
+
+  .formLogin {
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 25vw;
+    border-radius: 11px;
+    max-width: 80vw; /* 화면 너비의 90%로 제한 */
+    overflow: hidden; /* 내부 내용이 초과될 경우 숨기기 */
+  }
+
+  .formLogin input {
+    background: #fff;
+    padding: 15px 32px;
+    width: 50vw;
+  }
+
+  .formLogin input[type="checkbox"] {
+    margin-right: 10px;
+    width: 5vw;
+    height: 5vw;
+    padding: 0px
+  }
+}
