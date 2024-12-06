@@ -22,16 +22,17 @@ const Foot = () => {
         <div className="footer-section">
           <h4>Quick Links</h4>
           <ul>
-            <Link to="/board/job_search"><li>구인구직</li></Link>
             <Link to="/board/news"><li>뉴스</li></Link>
+            <Link to="/board/asian_market"><li>마켓정보</li></Link>
+            <Link to="/board/life"><li>생활정보</li></Link>
             <Link to="/board/second_hand"><li>중고시장</li></Link>
             <Link to="/board/real_estate"><li>부동산</li></Link>
-            <Link to="/board/asian_market"><li>마켓정보</li></Link>
-            <Link to="/board/travel"><li>여행정보</li></Link>
+            <Link to="/board/job_search"><li>구인구직</li></Link>
             <Link to="/board/child_care"><li>교육정보</li></Link>
+            <Link to="/board/travel"><li>여행정보</li></Link>
             <Link to="/board/club"><li>동호회</li></Link>
-            <Link to="/board/freeboard"><li>자유게시판</li></Link>
-            <Link to="/board/business"><li>한인업소</li></Link>
+            <Link to="/board/free_board"><li>자유게시판</li></Link>
+            <Link to="/board/korean_company"><li>한인업소</li></Link>
           </ul>
         </div>
 

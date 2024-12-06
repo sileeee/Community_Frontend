@@ -86,11 +86,10 @@ cursor: pointer;
 .table_td_2 {
     padding: 80px 10px 80px 10px;
     line-height:2;
-    width: 85%;
+    width: 100%;
     word-break: break-all;
     overflow-x: auto;
     position: relative;
-    max-width: 90vw;
     box-sizing: border-box;
     display: block; /* 기본적으로 블록으로 설정 */
 }

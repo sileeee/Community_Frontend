@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
+import axios from 'axios';
 
 
 export default function EditorBox({ value, onChange, initialValue }) {
   
   const [content, setContent] = useState('');
   const [apiKey, setApiKey] = useState('');
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     setApiKey(process.env.EDITOR_API_KEY);
@@ -66,31 +68,75 @@ export default function EditorBox({ value, onChange, initialValue }) {
           image_title: true,
           automatic_uploads: true,
           file_picker_types: "image",
-          file_picker_callback: (callback) => {
+          images_upload_handler: async (blobInfo, success, failure) => {
+            const formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+        
+            try {
+              const response = await axios.post(`${API_BASE_URL}/posts/images`, formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                },
+              });
+              success(response.data.data);
+            } catch (error) {
+              console.error(error);
+              failure('이미지 업로드 중 문제가 발생했습니다.');
+            }
+          },
+          
+          file_picker_callback: async (callback, value, meta) => {
             const input = document.createElement("input");
             input.setAttribute("type", "file");
             input.setAttribute("accept", "image/*");
+          
+            input.onchange = async (event) => {
+              const file = event.target.files[0];
+          
+              if (!file) {
+                alert("파일이 선택되지 않았습니다.");
+                return;
+              }
+          
+              // 클라이언트에서 미리보기를 위한 blob URL 생성
+              const previewUrl = URL.createObjectURL(file);
+          
+              // TinyMCE에서 미리보기 표시
+              callback(previewUrl, { alt: file.name });
+          
+              try {
+                // 서버로 업로드 요청
+                const formData = new FormData();
+                formData.append("file", file);
+          
+                const response = await axios.post(`http://localhost:8080/posts/images`, formData, {
+                  headers: { 'Content-Type': 'multipart/form-data' },
+                });
+          
+                // 업로드 성공 시 업로드된 URL 가져오기
+                const uploadedUrl = response.data.data;
+                console.log("--------------");
+                console.log(response);
+                console.log(uploadedUrl);
 
-            input.addEventListener("change", (e) => {
-              const file = e.target.files[0];
-              const reader = new FileReader();
+                // Blob URL을 가진 이미지를 탐색 및 업데이트
+                  const editor = window.tinymce.activeEditor;
+                  const images = editor.dom.select('img[src^="blob:"]'); // blob URL로 시작하는 이미지 선택
 
-              reader.addEventListener("load", () => {
-                // 파일 블로핑
-                const id = "blobid" + new Date().getTime();
-                const blobCache = window.tinymce.activeEditor.editorUpload.blobCache;
-                const base64 = reader.result.split(",")[1];
-                const blobInfo = blobCache.create(id, file, base64);
-                blobCache.add(blobInfo);
-
-                // 콜백을 호출하고 파일 이름으로 파일 데이터(file의 meta) 파일이름 적용
-                callback(blobInfo.blobUri(), {title: file.name});
-              });
-              // 블로핑된 파일 URL을 읽어옴
-              reader.readAsDataURL(file);
-            });
-            // run function
+                  images.forEach((img) => {
+                    if (img.src === previewUrl) {
+                      editor.dom.setAttrib(img, 'src', uploadedUrl); // 이미지 src 업데이트
+                    }
+                  });
+                } catch (error) {
+                  console.error('Image upload error:', error);
+                  alert('이미지 업로드 중 오류가 발생했습니다.');
+                }
+              };
+          
+            // 파일 선택창 열기
             input.click();
+          
           },
           tinycomments_mode: 'embedded',
           tinycomments_author: 'Author name',
