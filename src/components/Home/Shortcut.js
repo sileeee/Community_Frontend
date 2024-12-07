@@ -5,33 +5,17 @@ function Shortcut(){
     
     const ScrollToPosition = (text) => {
 
-        let scrollPosition = 0;
-    
-        if (text === "뉴스") {
-          scrollPosition = 1300;
-        } else if (text === "마켓정보") {
-          scrollPosition = 1900;
-        } else if (text === "생활정보") {
-            scrollPosition = 2500;
-        } else if (text === "중고시장") {
-            scrollPosition = 3100;
-        } else if (text === "부동산") {
-            scrollPosition = 3700;
-        } else if (text === "구인구직") {
-            scrollPosition = 4300;
-        } else if (text === "교육정보") {
-            scrollPosition = 4900;
-        } else if (text === "여행정보") {
-            scrollPosition = 5500;
-        } else if (text === "동호회") {
-            scrollPosition = 6100;
-        } else if (text === "자유게시판") {
-            scrollPosition = 6700;
-        } else if (text === "한인업소") {
-            scrollPosition = 7400;
+        // 모든 h2 태그를 가져옴
+        const elements = document.querySelectorAll("h2");
+
+        // 요소를 순회하며 텍스트 내용이 일치하는 요소를 찾음
+        for (const element of elements) {
+            if (element.textContent.trim() === text) {
+                // 해당 요소로 부드럽게 스크롤
+                element.scrollIntoView({ behavior: "smooth", block: "start" });
+                return;
+            }
         }
-    
-        window.scrollTo({ top: scrollPosition, behavior: "smooth" });
     };
 
     return(
