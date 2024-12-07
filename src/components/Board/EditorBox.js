@@ -38,6 +38,9 @@ export default function EditorBox({ value, onChange, initialValue }) {
       onEditorChange={handleEditorChange}
       init={{
         selector: "#postcontent",
+        relative_urls: false,
+        remove_script_host: false,
+        document_base_url: 'https://handubi.com/',
         language: 'ko_KR',
         height: 600,
         plugins: [
@@ -110,7 +113,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
                 const formData = new FormData();
                 formData.append("file", file);
           
-                const response = await axios.post(`http://localhost:8080/posts/images`, formData, {
+                const response = await axios.post(`https://handubi.com/api/posts/images`, formData, {
                   headers: { 'Content-Type': 'multipart/form-data' },
                 });
           
