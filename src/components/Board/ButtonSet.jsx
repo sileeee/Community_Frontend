@@ -23,7 +23,7 @@ function ButtonSet({ id, page, category}) {
                     })
                 .then((res) => {
                     if (res.status === 200) {
-                        alert("해당 내용이 삭제되었습니다.");
+                        window.confirm("해당 내용이 삭제되었습니다.")
                         window.location.reload();
                     }
                 })
@@ -39,7 +39,7 @@ function ButtonSet({ id, page, category}) {
                     })
                 .then((res) => {
                     if (res.status === 200) {
-                        alert("해당 내용이 삭제되었습니다.");
+                        window.confirm("해당 내용이 삭제되었습니다.")
                         navigate(`/board/${category}`);
                     }
                 })

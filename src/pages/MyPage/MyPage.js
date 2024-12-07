@@ -60,7 +60,7 @@ const MyPage = () => {
                 })
                 .then((response) => {
                     if (response.data.status === "OK") {
-                        alert("회원 정보가 수정되었습니다", "success");
+                        window.confirm("회원 정보가 수정되었습니다", "success");
                         window.location.reload();
                     } else {
                         throw new Error("Update failed");
@@ -71,7 +71,7 @@ const MyPage = () => {
                         // 서버에서 반환한 에러 응답
                         const errorMessage = error.response.data.errorMessage || "An error occurred";
                         if (errorMessage === "There is already a user with that name") {
-                            alert("해당 닉네임은 이미 사용중입니다.");
+                            window.confirm("해당 닉네임은 이미 사용중입니다.");
                         }
                     }
                 });

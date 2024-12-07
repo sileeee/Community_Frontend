@@ -95,7 +95,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
               const file = event.target.files[0];
           
               if (!file) {
-                alert("파일이 선택되지 않았습니다.");
+                window.confirm("파일이 선택되지 않았습니다.");
                 return;
               }
           
@@ -131,7 +131,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
                   });
                 } catch (error) {
                   console.error('Image upload error:', error);
-                  alert('이미지 업로드 중 오류가 발생했습니다.');
+                  window.confirm('이미지 업로드 중 오류가 발생했습니다.');
                 }
               };
           

@@ -34,8 +34,7 @@ function Comment({ postId, onCommentsCountChange }) {
         e.preventDefault();
         if (!newComment.trim()) return; // 빈 입력 방지
 
-        if(!isLoggedIn){
-            alert("로그인 후 댓글작성이 가능합니다.");
+        if (!isLoggedIn && window.confirm("로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?")) {
             navigate(`/login`);
             return;
         }
@@ -71,8 +70,7 @@ function Comment({ postId, onCommentsCountChange }) {
         e.preventDefault();
         if (!replyText.trim()) return;
 
-        if(!isLoggedIn){
-            alert("로그인 후 댓글작성이 가능합니다.");
+        if(!isLoggedIn && window.confirm("로그인 후 댓글작성이 가능합니다.")){
             navigate(`/login`);
             return;
         }

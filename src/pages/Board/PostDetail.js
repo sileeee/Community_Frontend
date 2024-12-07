@@ -253,7 +253,7 @@ function PostDetail() {
                                     color: isUserLike ? "green" : "gray", // 텍스트 및 아이콘 색상
                                     width: "150px",
                                 }}
-                                onClick={() => isLoggedIn? toggledLikeBtn(pageId) : alert('로그인 후 사용가능합니다.')}>
+                                onClick={() => isLoggedIn? toggledLikeBtn(pageId) : window.confirm('로그인 후 사용가능합니다.')}>
                                 좋아요
                                 </Button>
                                 </Flex>

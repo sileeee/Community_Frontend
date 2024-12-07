@@ -16,7 +16,7 @@ function WriteButton() {
     if(isLoggedIn){
       navigate(`/board/new/${String(category || '')}`);
     }else{
-      alert("로그인 후 글쓰기가 가능합니다.");
+      window.confirm("로그인 후 글쓰기가 가능합니다.");
       navigate(`/login`);
     }
   };

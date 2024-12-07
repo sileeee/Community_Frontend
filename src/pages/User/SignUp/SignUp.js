@@ -51,10 +51,10 @@ const SignUp = () => {
           }
         });
         if (response.data.status === "CREATED") {
-          alert("가입이 완료되었습니다");
+          window.confirm("가입이 완료되었습니다");
           movePage("/");
         } else {
-          alert("이미 계정이 존재합니다. 로그인을 시도해보세요.");
+          window.confirm("이미 계정이 존재합니다. 로그인을 시도해보세요.");
           movePage("/login");
         }
       };

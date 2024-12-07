@@ -15,7 +15,7 @@ function SearchPost(){
 
   const handleSearch = () => {
     if(!keyword){
-      alert("검색창에 키워드를 입력하세요.")
+      window.confirm("검색창에 키워드를 입력하세요.")
     }else{
       navigate('/board/search', {state: {keyword: keyword}});
     }
