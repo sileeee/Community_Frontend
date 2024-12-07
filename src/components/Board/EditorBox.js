@@ -33,7 +33,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
 
   return (
     <Editor
-      apiKey={apiKey}
+      apiKey='enmqn0p7t5hzv31hdubf1ej2pkktvw9l3s407qwittthkqro'
       value={content}
       onEditorChange={handleEditorChange}
       init={{
@@ -53,13 +53,14 @@ export default function EditorBox({ value, onChange, initialValue }) {
           "help", // 도움말
           "emoticons", // 이모티콘
           "codesample", // 코드 샘플
-          "quickbars"], // 퀵툴바
+          "quickbars", // 퀵툴바
+          "table"], // 테이블 기능 추가
         toolbar: [
           'undo redo | blocks | ' +
           'bold italic forecolor | alignleft aligncenter ' +
           'alignright alignjustify | ' +
           'lists link charmap | ' +
-          'image media emoticons'],
+          'image media emoticons | table'],
           content_css: [
             '//cdnjs.cloudflare.com/ajax/libs/tinymce/6.0.0/skins/ui/oxide/skin.min.css',
             '//cdnjs.cloudflare.com/ajax/libs/tinymce/6.0.0/skins/content/default/content.min.css'

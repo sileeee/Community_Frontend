@@ -16,7 +16,7 @@
   gap: clamp(5px, 1vw, 10px);
   height: clamp(25px, 3vw, 35px);
   justify-content: center;
-  padding: clamp(5px, 1vw, 10px) clamp(10px, 2vw, 20px);
+  padding: clamp(10px, 1vw, 10px) clamp(10px, 2vw, 20px);
   color: black;
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
@@ -26,7 +26,7 @@
   transform: translateY(-2px); /* Slightly raise the frame */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1150px) {
   .centerContainer {
     flex-wrap: wrap;
     gap: 2vw;
@@ -38,6 +38,7 @@
     max-width: 20vw;
     min-width: 13vw;
     min-height: 6vh;
+    padding: clamp(15px, 1vw, 10px) clamp(10px, 2vw, 20px);
   }
 }
 

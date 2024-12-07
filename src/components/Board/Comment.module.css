@@ -175,3 +175,19 @@
 }
 
 
+@media (max-width: 480px) {
+    .commentSection {
+        margin: 40px 0px 0px 0px;
+        padding-bottom: 10px;
+    }
+    .commentForm {
+        margin-top: 6px;
+        margin: 20px 0px 3px 0px;
+        padding: 2px;
+    }
+    .title {
+        padding: 0px 0px 5px 5px;
+        font-size: 1.2em;
+        color: #00732f;
+    }
+}

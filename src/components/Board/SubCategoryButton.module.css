@@ -18,3 +18,21 @@
 .button:hover {
     transform: scale(1.05);
 }
+
+
+@media (max-width: 420px) {
+  .button {
+    width: 19vw;
+    font-size: small;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 10px;
+    word-break: keep-all;
+    margin: 0 auto;
+    padding-left: 3%;
+  }
+}

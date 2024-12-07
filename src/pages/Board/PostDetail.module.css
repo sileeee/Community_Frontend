@@ -118,6 +118,16 @@ background-color: #f6f6f6;
     padding-bottom: 20px;
 }
 
+.infoSpan {
+    padding-right: 50px;
+}
+
+.iconWithText {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .subCategory_box{
     border-top: 2px solid rgba(0, 115, 47, 1);
     padding: 40px 15px 20px 10px;
@@ -132,4 +142,63 @@ background-color: #f6f6f6;
 
 .likeBtn:hover {
     transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 100%;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-bottom: 2%;
+    }
+    .likeBtn {
+        width: 5vw;
+        font-size: 3vw;
+    }
+    .icon_container{
+        padding-right: 6px;
+        color: #00732f;
+    }
+    .subCategory_box{
+        padding: 20px 0px 20px 6px;
+        text-align: left;
+        max-width: 92vw;
+        display: block;
+        width: 100%;
+        font-size: small;
+    }
+    .table_info {
+        text-align: left;
+        font-size: 0.9em;
+        padding: 10px 0px 40px 10px;
+        width: 100%;
+        border-bottom: 1px solid rgb(161, 161, 161);
+        max-width: 87vw;
+        display: block;
+    }
+    .table_title {
+        font-size: 1.6em;
+        padding: 10px 15px 20px 10px;
+        text-align: left;
+    }
+    .table_td_2 {
+        padding: 80px 10px 80px 10px;
+        line-height:2;
+        width: 87vw;
+        word-break: break-all;
+        overflow-x: auto;
+        position: relative;
+        box-sizing: border-box;
+        display: block; /* 기본적으로 블록으로 설정 */
+    }
+    .infoSpan {
+        padding-right: 15px; /* 패딩 축소 */
+    }
+    .iconWithText {
+        display: inline-flex;
+        align-items: center;
+        font-size: 11px;
+        gap: 5px;
+    }
 }

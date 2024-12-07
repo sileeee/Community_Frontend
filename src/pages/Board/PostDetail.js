@@ -192,28 +192,35 @@ function PostDetail() {
                                         <th className={styles.table_title}>{boardDetail.title}</th>
                                     </tr>
                                     <tr>
-                                        <td className={styles.table_info}>
-                                            <div className={styles.author_container}>
-                                                <span style={{ paddingRight: "50px" }}>
-                                                <b>{boardDetail.author}</b>
-                                                </span>
+                                    <td className={styles.table_info}>
+                                        <span className={styles.infoSpan}>
+                                            <div className={styles.iconWithText}>
+                                                <CalendarOutlined />
+                                                {convertToStringDate(boardDetail.createdAt)}
                                             </div>
-                                            <span style={{ paddingRight: "50px" }}>
-                                            <CalendarOutlined style={{paddingRight: "10px"}} />
-                                            {convertToStringDate(boardDetail.createdAt)}
-                                            </span>
-                                            <span style={{ paddingRight: "50px" }}>
-                                            <EyeOutlined style={{paddingRight: "10px"}} />
-                                            {boardDetail.view}
-                                            </span>
-                                            <span style={{ paddingRight: "50px" }}>
-                                            <LikeOutlined style={{paddingRight: "5px"}} />Like&nbsp;&nbsp;
-                                            {like}
-                                            </span><span style={{ paddingRight: "50px" }}>
-                                            <CommentOutlined style={{paddingRight: "5px"}} />Comment&nbsp;&nbsp;
-                                            {commentsCount}
-                                            </span>
-                                        </td>
+                                        </span>
+
+                                        <span className={styles.infoSpan}>
+                                            <div className={styles.iconWithText}>
+                                                <EyeOutlined />
+                                                {boardDetail.view}
+                                            </div>
+                                        </span>
+
+                                        <span className={styles.infoSpan}>
+                                            <div className={styles.iconWithText}>
+                                                <LikeOutlined />
+                                                Like {like}
+                                            </div>
+                                        </span>
+
+                                        <span className={styles.infoSpan}>
+                                            <div className={styles.iconWithText}>
+                                                <CommentOutlined />
+                                                Comment {commentsCount}
+                                            </div>
+                                        </span>
+                                    </td>
                                     </tr>
                                 </thead>
                                 <tbody>
