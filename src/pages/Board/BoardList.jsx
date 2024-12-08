@@ -72,12 +72,13 @@ function BoardList({category}) {  // lower case
       dataIndex: "key",
       align: "center",
       width: "2%",
+      responsive: ["md"], // 480px 이상에서만 표시
     },
     {
       title: "제목",
       dataIndex: "title",
       align: "center",
-      width: "40%",
+      width: "60%",
       render: (text, record) => (
         <>
           {pinnedItems.some((pinned) => pinned.id === record.id) && (
@@ -91,14 +92,16 @@ function BoardList({category}) {  // lower case
       title: "작성자",
       dataIndex: "author",
       align: "center",
-      width: "10%"
+      width: "10%",
+      responsive: ["md"], // 480px 이상에서만 표시
     },
     {
       title: "작성날짜",
       dataIndex: "createdAt",
       align: "center",
       width: "10%",
-      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
+      responsive: ["md"], // 480px 이상에서만 표시
     },
     {
       title: "좋아요",
@@ -106,30 +109,40 @@ function BoardList({category}) {  // lower case
       align: "center",
       width: "2%",
       sorter: (a, b) => a.like - b.like,
+      responsive: ["md"], // 480px 이상에서만 표시
     },
     {
       title: "조회수",
       dataIndex: "view",
       align: "center",
-      width: "2%",
+      width: "10%",
       sorter: (a, b) => a.view - b.view,
     },
     ...(userRole === "ADMIN"
       ? [
-    {
-      title: "고정하기",
-      dataIndex: "pin",
-      align: "center",
-      width: "1%",
-      render: (_, record) => (
-        <Button
-          type={pinnedItems.some((pinned) => pinned.id === record.id) ? "primary" : "default"}
-          onClick={() => togglePin(record)}
-        >
-          {pinnedItems.some((pinned) => pinned.id === record.id) ? "Unpin" : "Pin"}
-        </Button>
-      ),
-    },] : []),
+          {
+            title: "고정하기",
+            dataIndex: "pin",
+            align: "center",
+            width: "1%",
+            render: (_, record) => (
+              <Button
+                type={
+                  pinnedItems.some((pinned) => pinned.id === record.id)
+                    ? "primary"
+                    : "default"
+                }
+                onClick={() => togglePin(record)}
+              >
+                {pinnedItems.some((pinned) => pinned.id === record.id)
+                  ? "Unpin"
+                  : "Pin"}
+              </Button>
+            ),
+            responsive: ["md"], // 480px 이상에서만 표시
+          },
+        ]
+      : []),
   ];
 
   useEffect(() => {
