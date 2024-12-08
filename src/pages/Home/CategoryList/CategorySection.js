@@ -82,7 +82,7 @@ const CategorySection = ({ category, postList, layout }) => {
                       <div className={styles.newsContent}>
                         <div className={styles.newsTitle}>
                           {post.title.length > 15
-                            ? post.title.substr(0, 15) + "..."
+                            ? post.title.substr(0, 18) + ".."
                             : post.title}
                         </div>
                         <div className={styles.newsBody}>
