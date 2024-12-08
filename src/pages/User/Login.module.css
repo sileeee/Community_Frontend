@@ -253,8 +253,71 @@ a:hover {
   align-items: center;
   text-align: center;
   margin-bottom: 100px;
-  
+}
 
+.policyPopup {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%; /* 화면 크기에 따라 자동 조정 */
+  max-width: 300px; /* 최대 너비 제한 */
+  top: -10px;
+  left: 50%; /* 수평 가운데 정렬 */
+  transform: translateX(-30%); /* 가운데로 이동 */
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  border-radius: 4px;
+  word-wrap: break-word; /* 긴 단어도 줄바꿈 */
+  overflow-wrap: break-word; /* 내용 줄바꿈 */
+  text-align: left;
+  z-index: 9999;
+}
+
+.policyPopup h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.policyPopup p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.policyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.policyContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 1vw 100px 1vw;
+  line-height: 30px;
+}
+
+.policyContainer > h1 {
+  padding-top: 5vw;
+  color: var(--main-color);
+  font-size: 200%;
+  align-items: center;
+  font-family: "Manrope", Helvetica;
+}
+
+.policyContainer ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+.policyContainer a {
+  color: rgba(0, 115, 47, 1);
+  text-decoration: none;
+}
+.policyContainer a:hover {
+  text-decoration: underline;
 }
 
 /* ===== 반응형 스타일 추가 ===== */
@@ -267,7 +330,14 @@ a:hover {
     padding-bottom: 100px;
     margin: 10vw;
   }
-
+  
+  .policyContent {
+    max-width: 80vw;
+    padding: 0px 10vw 100px 10vw;
+    line-height: 30px;
+    margin: 10vw;
+  }
+  
   .formLogin {
     background: none;
     box-shadow: none;
@@ -285,8 +355,8 @@ a:hover {
 
   .formLogin input[type="checkbox"] {
     margin-right: 10px;
-    width: 5vw;
-    height: 5vw;
+    width: 15px;
+    height: 15px;
     padding: 0px
   }
 }
@@ -299,6 +369,13 @@ a:hover {
     padding-bottom: 100px;
     margin: 10vw;
     overflow: hidden;
+  }
+
+  .policyContent {
+    max-width: 80vw;
+    padding: 0px 10vw 100px 10vw;
+    line-height: 30px;
+    margin: 10vw;
   }
 
   .formLogin {
@@ -319,8 +396,13 @@ a:hover {
 
   .formLogin input[type="checkbox"] {
     margin-right: 10px;
-    width: 5vw;
-    height: 5vw;
+    width: 15px;
+    height: 15px;
     padding: 0px
+  }
+  .policyPopup {
+    width: 90%; /* 작은 화면에서는 폭을 더 좁게 */
+    top: 10px; /* 화면에 맞게 위치 조정 */
+    transform: translateX(-50%) translateY(-30%);/* 가운데로 이동 */
   }
 }

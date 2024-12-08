@@ -104,7 +104,7 @@ function PostWrite() {
         <Nav />
         <div className={styles.writeContainer}>
             <div className={styles.paper}>
-                <h1>새 글 쓰기</h1>
+                <h1>글 쓰기</h1>
             </div>
         <Paper elevation={0} square className={styles.paper}>
           <Form

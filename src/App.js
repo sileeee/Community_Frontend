@@ -10,6 +10,7 @@ import "./App.css";
 import PostDetail from "./pages/Board/PostDetail";
 import PostWrite from "./pages/Board/PostWrite";
 import MyPage from "./pages/MyPage/MyPage";
+import Policy from "./pages/User/Policy";
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
         <Route path="/board/new/:category" element={<PostWrite />} />
 
         <Route path="/mypage" element={<MyPage />} />
+
+        <Route path="/privacy-policy" element={<Policy />} />
       </Routes>
     </BrowserRouter>
   );

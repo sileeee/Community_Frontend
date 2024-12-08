@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
             setIsLoggedIn(false);
             setUserRole(null);
             setUserId(null);
-            window.confirm("Logged out successfully");
+            window.confirm("로그아웃 되었습니다.");
         } catch (error) {
             console.error("Error during logout:", error);
         }

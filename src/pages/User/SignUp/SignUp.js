@@ -26,6 +26,7 @@ const SignUp = () => {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const [showPolicyPopup, setShowPolicyPopup] = useState(false);
 
   useEffect(() => {
     setErrors(validate(data, "signUp"));
@@ -53,9 +54,11 @@ const SignUp = () => {
         if (response.data.status === "CREATED") {
           window.confirm("가입이 완료되었습니다");
           movePage("/");
-        } else {
+        } else if (response.data.errorMessage === "There is already a user with that email"){
           window.confirm("이미 계정이 존재합니다. 로그인을 시도해보세요.");
           movePage("/login");
+        } else {
+          window.confirm("회원가입에 실패하였습니다. 입력란을 확인해보세요.");
         }
       };
 
@@ -172,7 +175,9 @@ const SignUp = () => {
       </div>
 
         <div>
-          <div className={styles.terms}>
+          <div className={styles.terms}
+          onMouseEnter={() => setShowPolicyPopup(true)}
+          onMouseLeave={() => setShowPolicyPopup(false)}>
             <input 
             type="checkbox" 
             name="IsAccepted" 
@@ -180,7 +185,30 @@ const SignUp = () => {
             id="accept" 
             onChange={changeHandler} 
             onFocus={focusHandler} />
-            <label htmlFor="accept">개인정보 보호정책 약관에 동의합니다.</label>
+            <label
+                htmlFor="accept"
+              >
+                개인정보 보호정책 약관에 동의합니다.
+              </label>
+              {showPolicyPopup && (
+                <div className={styles.policyPopup}>
+                  <h3>개인정보 보호정책</h3>
+                  <p>
+                    한두비(이하 "Handubi")는 회원님의 개인정보를 소중히 보호하며, 
+                    이를 안전하게 관리하기 위해 노력합니다. 
+                  </p>
+                  <p>
+                    <b>- 수집 항목:</b> 이름, 이메일, 전화번호, 생년월일 등
+                  </p>
+                    <p><b>- 수집 목적: </b>회원 가입 및 관리, 서비스 제공 및 개선, 사이트 사용 분석 </p>
+                    <p><b>- 보유 기간: </b>회원 탈퇴 후 6개월 또는 관련 법령에 따른 기간</p>
+                    <p><b>- 이용자의 권리: </b>개인정보 조회, 수정 및 삭제 요청, 동의 철회 요청</p>
+                  <p>
+                    자세한 내용은 사이트의 
+                    <Link to="/privacy-policy"> 개인정보 보호정책 전문</Link>을 확인하세요.
+                  </p>
+                </div>
+              )}
           </div>
           {errors.IsAccepted && touched.IsAccepted && <span className={styles.error}>{errors.IsAccepted}</span>}
         </div>
