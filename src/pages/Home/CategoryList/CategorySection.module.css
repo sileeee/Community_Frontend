@@ -82,10 +82,12 @@
   height: auto;
   margin-right: 2%;
   aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .newsContent {
   padding: 2%;
+  max-width: 100%;
 }
 
 .newsTitle {
@@ -93,12 +95,19 @@
   font-weight: bold;
   padding-bottom: 10px;
   font-size: 1em;
+  line-height:1.4;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .newsBody {
   color: #767676;
   line-height:1.4;
   font-size: 0.95em;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .newsItem:hover .newsImage {
@@ -223,8 +232,7 @@
 @media (max-width: 420px) {
 
   .square {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 
   .square2 {
@@ -294,6 +302,6 @@
   }
 
   .badge {
-    font-size: 0.8em;
+    font-size: 0.6em;
   }
 }

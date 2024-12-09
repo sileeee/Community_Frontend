@@ -48,45 +48,44 @@ function Nav(){
                 <div className={styles.textNavbar} onClick={() => goToBoard('KOREAN_COMPANY')} style={{ cursor: 'pointer' }}>한인업소</div>
             </div>
 
-            <div className={styles.notLoggedIn}>
-                
-                {isLoggedIn ? (
-                    <div className={styles.btn}>
-                        <div className={styles.textNickname}>
-                            안녕하세요<br />
-                            {name.length > 5 ? `${name.slice(0, 5)}...` : name}&nbsp;님!
-                        </div>
-                        <div className={styles.myPage} onClick={toggleMenu}>
-                            <SmileFilled className={styles.myPageIcon}/>
-                            <div className={styles.myPageText}>My Page</div>
-                            {menuOpen && (
-                                <DropdownMenu style={{ top: "70px", right: "30px" }}>
-                                    <div onClick={goToMyPage} className={styles.menuItem}>
-                                        회원정보 수정
-                                    </div>
-                                    <div onClick={() => logout()} className={styles.menuItem}>
-                                        로그아웃
-                                    </div>
-                                </DropdownMenu>
-                            )}
-                        </div>
+            {isLoggedIn ? (
+                <div className={styles.notLoggedIn}>
+                <div className={styles.btn}>
+                    <div className={styles.textNickname}>
+                        안녕하세요<br />
+                        {name.length > 5 ? `${name.slice(0, 5)}...` : name}&nbsp;님!
                     </div>
-                    
-                ) : (
-                    <div className={styles.notLoggedIn}>
-                        <Link to="/login">
-                            <div className={styles.textLogin}>로그인</div>
-                        </Link>
-                        <Link to="/sign-up">
-                            <div className={styles.btn}>
-                                <div className={styles.btnSignUp}>
-                                    <div className={styles.textSignUp}>회원가입</div>
+                    <div className={styles.myPage} onClick={toggleMenu}>
+                        <SmileFilled className={styles.myPageIcon}/>
+                        <div className={styles.myPageText}>My Page</div>
+                        {menuOpen && (
+                            <DropdownMenu style={{ top: "70px", right: "30px" }}>
+                                <div onClick={goToMyPage} className={styles.menuItem}>
+                                    회원정보 수정
                                 </div>
-                            </div>
-                        </Link>
+                                <div onClick={() => logout()} className={styles.menuItem}>
+                                    로그아웃
+                                </div>
+                            </DropdownMenu>
+                        )}
                     </div>
-                )}
-            </div>
+                </div>
+                </div>
+                
+            ) : (
+                <div className={styles.notLoggedIn}>
+                    <Link to="/login">
+                        <div className={styles.textLogin}>로그인</div>
+                    </Link>
+                    <Link to="/sign-up">
+                        <div className={styles.btn}>
+                            <div className={styles.btnSignUp}>
+                                <div className={styles.textSignUp}>회원가입</div>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+            )}
         </div>
     );
 }
