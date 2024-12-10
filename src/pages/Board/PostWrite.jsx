@@ -138,38 +138,36 @@ function PostWrite() {
                     </th>
                 </tr>
                 <tr>
+                {categories_except_total.length > 0 && (
                   <th className={styles.table_th_2}>
-                    {" "}
                     <Form.Item 
-                        label="서브 카테고리" 
-                        name="subCategory" 
-                        rules={[
+                      label="서브 카테고리" 
+                      name="subCategory" 
+                      rules={[
                         {
                           required: true,
                           message: "필수 입력 항목입니다.",
                         },
                       ]}>
-                        <div className={styles.formPadding}>
-
+                      <div className={styles.formPadding}>
                         <Radio.Group
-                            onChange={(e) => {
-                                setCategorySelectedValue(e.target.value);
-                              }}
-                            value={categorySelectedValue}
+                          onChange={(e) => setCategorySelectedValue(e.target.value)}
+                          value={categorySelectedValue}
+                        >
+                          {categories_except_total.map((subCategory, index) => (
+                            <Radio.Button 
+                              key={index} 
+                              value={subCategory.value} 
+                              className={`${styles.radioButton} ${categorySelectedValue === subCategory.value ? styles.selected : ""}`}
                             >
-                            {categories_except_total.map((subCategory, index) => (
-                                <Radio.Button 
-                                    key={index} 
-                                    value={subCategory.value} 
-                                    className={`${styles.radioButton} ${categorySelectedValue === subCategory.value ? styles.selected : ""}`}
-                                >
-                                {subCategory.label}
-                                </Radio.Button>
-                            ))}
-                            </Radio.Group>
-                        </div>
+                              {subCategory.label}
+                            </Radio.Button>
+                          ))}
+                        </Radio.Group>
+                      </div>
                     </Form.Item>
                   </th>
+                )}
                 </tr>
                 <tr>
                   <th className={styles.table_th_2}>
