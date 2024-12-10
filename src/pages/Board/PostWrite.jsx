@@ -99,7 +99,7 @@ function PostWrite() {
       }
   }, [id, form]);
 
-    return (
+  return (
     <div>
         <Nav />
         <div className={styles.writeContainer}>
@@ -109,10 +109,18 @@ function PostWrite() {
         <Paper elevation={0} square className={styles.paper}>
           <Form
             labelCol={{ span: 2 }}
-            onFinish={onFinish}
+            onFinish={(values) => {
+              if (values.title.length > 50) {
+                const confirmResult = window.confirm(
+                  "제목은 50자를 초과할 수 없습니다."
+                );
+                if (!confirmResult) return; // 제출 중단
+              }
+              onFinish(values); // 정상 제출
+            }}
             onFinishFailed={onFinishFailed}
             form={form}
-            style={{ paddingRight: "40px" }}>
+            className={styles.formPaddingRight}>
             <table className={styles.table_}>
               <thead>
                 <tr>
@@ -121,6 +129,7 @@ function PostWrite() {
                         <Form.Item
                         label="제목"
                         name="title"
+                        placeholder="[광고] 혹은 [도시이름]을 제목 앞에 표기해주세요.(50자 이내로 제목 작성)"
                         rules={[
                             {
                             required: true,

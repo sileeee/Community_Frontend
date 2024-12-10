@@ -178,11 +178,21 @@ function Comment({ postId, onCommentsCountChange }) {
             ))}
         </div>
         
-        <form className={styles.commentForm} onSubmit={handleCommentSubmit}>
+        <form className={styles.commentForm}onSubmit={(e) => {
+            if (newComment.length > 200) {
+            const confirmResult = window.confirm(
+                "댓글은 200자 이내로 작성해 주세요."
+            );
+            if (!confirmResult) {
+                e.preventDefault(); // 폼 제출 방지
+                return;
+            }}
+            handleCommentSubmit(e);
+            }}>
             <textarea
             className={styles.input}
-            placeholder="커뮤니티가 더 훈훈해지는 댓글 부탁드립니다."
-            maxLength={3000}
+            placeholder="커뮤니티가 더 훈훈해지는 댓글 부탁드립니다.(200자 이내)"
+            maxLength={200}
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             />
