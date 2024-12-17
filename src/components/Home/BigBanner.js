@@ -10,7 +10,7 @@ function BigBanner() {
 
   // 화면 크기를 기준으로 요청 URL을 설정
   const getUrlByScreenSize = () => {
-    return window.innerWidth <= 480
+    return window.innerWidth <= 768
       ? `${API_BASE_URL}/home/posts/5` // 모바일 전용 URL
       : `${API_BASE_URL}/home/posts/6`; // 데스크톱 전용 URL
   };

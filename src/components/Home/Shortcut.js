@@ -21,9 +21,9 @@ function Shortcut(){
     return(
         <div className={styles.centerContainer}>
             <Frame className="frame" text="뉴스" onClick={() => ScrollToPosition("뉴스")} />
+            <Frame className="frame" text="중고장터" onClick={() => ScrollToPosition("중고장터")} />
             <Frame className="frame" text="마켓정보" onClick={() => ScrollToPosition("마켓정보")} />
             <Frame className="frame" text="생활정보" onClick={() => ScrollToPosition("생활정보")} />
-            <Frame className="frame" text="중고시장" onClick={() => ScrollToPosition("중고시장")} />
             <Frame className="frame" text="부동산" onClick={() => ScrollToPosition("부동산")} />
             <Frame className="frame" text="구인구직" onClick={() => ScrollToPosition("구인구직")} />
             <Frame className="frame" text="교육정보" onClick={() => ScrollToPosition("교육정보")} />

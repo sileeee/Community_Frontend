@@ -7,7 +7,7 @@ export const getKorCategories = (category) => {
     } else if (category === "life") {
         return "생활정보";
     } else if (category === "second_hand") {
-        return "중고시장";
+        return "중고장터";
     } else if (category === "real_estate") {
         return "부동산";
     } else if (category === "job_search") {

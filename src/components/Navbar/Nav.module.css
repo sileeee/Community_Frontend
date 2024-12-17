@@ -170,6 +170,13 @@
     background-color: #f5f5f5;
 }
 
+@media (max-width: 930px) {
+    .textNavbar {
+        color: rgba(0, 0, 0, 0);
+        pointer-events: none;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         width: 100%;
@@ -192,9 +199,6 @@
     }
     .navbar {
         width: 30%;
-    }
-    .textNavbar {
-        color: rgba(0, 0, 0, 0);
     }
     .notLoggedIn {
         width: 25%;
@@ -247,63 +251,8 @@
     .navbar {
         width: 23%;
     }
-    .textNavbar {
-        color: rgba(0, 0, 0, 0);
-    }
     .notLoggedIn {
         width: 30%;
         padding-right: 2%;
     }
 }
-/* 
-    .logo {
-        height: 8vw;
-        width: 8vw;
-    }
-    .logoHandubi {
-        font-size: 4vw;
-        font-weight: bold;
-        padding-left: 2vw;
-        letter-spacing: -1px;
-    }
-    .textLogin {
-        font-size: 3vw;
-        margin-right: 2vw;
-    }
-    
-    .btn {
-        align-items: center;
-        height: clamp(1rem, 5vw, 3rem);
-        width: 100%;
-    }
-    
-    .btnSignUp {
-        width: 15vw;
-        height: clamp(1rem, 5vw, 3rem);
-        padding: 4vw;
-    }
-
-    .textSignUp {
-        font-size: 3vw;
-    }
-
-    .textNickname {
-        font-size: 2.5vw;
-        line-height: 1.2;
-        margin-right: 3vw;
-    }
-    .myPage {
-        height: 8vh;
-        width: 40%;
-        margin-left: 1.3vw;
-    }
-    .myPageIcon {
-        font-size: 3.2vw;
-    }
-    
-    .myPageText {
-        font-size: 2vw;
-        align-items: center;
-        justify-content: center;
-    }
-} */

@@ -23,9 +23,9 @@ const Foot = () => {
           <h4>Quick Links</h4>
           <ul>
             <Link to="/board/news"><li>뉴스</li></Link>
+            <Link to="/board/second_hand"><li>중고장터</li></Link>
             <Link to="/board/asian_market"><li>마켓정보</li></Link>
             <Link to="/board/life"><li>생활정보</li></Link>
-            <Link to="/board/second_hand"><li>중고시장</li></Link>
             <Link to="/board/real_estate"><li>부동산</li></Link>
             <Link to="/board/job_search"><li>구인구직</li></Link>
             <Link to="/board/child_care"><li>교육정보</li></Link>

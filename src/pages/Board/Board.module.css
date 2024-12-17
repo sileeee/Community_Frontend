@@ -101,6 +101,9 @@
   .formPadding {
     padding-left: 2%;
     padding-right: 2%;
+    word-break: break-word; /* 단어 잘림 방지 */
+    overflow-wrap: break-word; /* 줄바꿈 보장 */
+    width: 65vw;
   }
   
   .table_th_2 {
@@ -176,6 +179,9 @@
     cursor: pointer;
   }
 
+  .formPaddingRight {
+    padding-right: 40px;
+  }
 
 
   @media (max-width: 420px) {
@@ -193,5 +199,20 @@
       flex-direction: column;
       gap: 10px;
     }
-    
+    .writeContainer {
+      padding-left: 1%;
+      padding-right: 1%;
+      padding-bottom: 2%;
+      gap: 10px; 
+    }
+    .formPaddingRight {
+      padding-right: 0px;
+    }
+    .formPadding {
+      padding-left: 2%;
+      padding-right: 2%;
+      word-break: break-word; /* 단어 잘림 방지 */
+      overflow-wrap: break-word; /* 줄바꿈 보장 */
+      width: 80vw;
+    }
   }

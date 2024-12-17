@@ -63,8 +63,8 @@
   right: 2vw;
 }
 
-/* 모바일 화면 (너비 480px 이하) */
-@media (max-width: 480px) {
+/* 모바일 화면 (너비 768px 이하) */
+@media (max-width: 768px) {
   .bannerContainer {
     padding: 0px;
     height: 100%;
