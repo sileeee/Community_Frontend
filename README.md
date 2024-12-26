@@ -22,8 +22,13 @@ State Management: Context API
 ## ✅ Browser Support </br>
 Browser|Version|Status|
 --- | --- | --- |
-Google Chrome| Latest | ✅ Fully Supported
-Safari| Latest | ✅ Fully Supported
+Google Chrome| Latest | ✔️ Fully Supported
+Safari| Latest | ✔️ Fully Supported
+
+</br></br>
+
+## 🔗 Website </br>
+https://handubi.com/
 
 </br></br>
 
