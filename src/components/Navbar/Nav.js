@@ -4,6 +4,7 @@ import styles from "./Nav.module.css"
 import { useAuth } from '../common/AuthContext';
 import { SmileFilled } from '@ant-design/icons';
 import DropdownMenu from "./DropdownMenu";
+import { Button } from "antd";
 
 
 function Nav(){
@@ -11,6 +12,7 @@ function Nav(){
     const [menuOpen, setMenuOpen] = useState(false);
     const { isLoggedIn, logout, name } = useAuth();
     const navigate = useNavigate();
+    const isSmallScreen = window.innerWidth <= 768;
 
     const goToBoard = (category) => {
         navigate(`/board/${String(category || '').toLowerCase()}`);
@@ -74,13 +76,22 @@ function Nav(){
             ) : (
                 <div className={styles.notLoggedIn}>
                     <Link to="/login">
-                        <div className={styles.textLogin}>로그인</div>
-                    </Link>
-                    <Link to="/sign-up">
-                        <div className={styles.btn}>
-                            <div className={styles.btnSignUp}>
-                                <div className={styles.textSignUp}>회원가입</div>
-                            </div>
+                    <div className={styles.containerBtn}>
+                        <Button
+                            style={{
+                                background: "rgba(0, 115, 47, 1)",
+                                fontSize: isSmallScreen? "2vw" : "clamp(10px, 1.3vw, 19px)",
+                                lineHeight: "normal",
+                                fontWeight: "500",
+                                height: "auto",
+                                justifyContent: "center",
+                                alignItems: "center"
+                            }}
+                            type="primary"
+                            className={styles.signUpBtn}
+                            size="large">
+                            로그인
+                        </Button>
                         </div>
                     </Link>
                 </div>
