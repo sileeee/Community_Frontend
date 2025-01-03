@@ -21,13 +21,16 @@ export const getCategories = (category) => {
     } else if (category === "LIFE") {
         return [
         { label: "TOTAL", value: "TOTAL" },
-        { label: "병원", value: "HOSPITAL" },
+        { label: "의료정보", value: "HOSPITAL" },
         { label: "미용", value: "BEAUTY" },
         { label: "비자", value: "VISA" },
         { label: "식당", value: "RESTAURANT" },
         { label: "택배", value: "DELIVER" },
         { label: "자동차", value: "CAR" },
         { label: "회사설립", value: "COMPANY" },
+        { label: "출산/육아", value: "PARENTING" },
+        { label: "금융/투자", value: "INVESTMENT" },
+        { label: "법률", value: "LAW" },
         { label: "ETC", value: "ETC" },
         ];
     } else if (category === "SECOND_HAND") {
@@ -44,9 +47,10 @@ export const getCategories = (category) => {
     } else if (category === "REAL_ESTATE") {
         return [
         { label: "TOTAL", value: "TOTAL" },
-        { label: "매매", value: "BUY" },
-        { label: "양도", value: "HANDOVER" },
-        { label: "임대차", value: "RENT" },
+        { label: "부동산정보", value: "INFO" },
+        { label: "구매", value: "BUY" },
+        { label: "판매", value: "HANDOVER" },
+        { label: "임대", value: "RENT" },
         { label: "ETC", value: "ETC" },
         ];
     } else if (category === "JOB_SEARCH") {
@@ -60,8 +64,6 @@ export const getCategories = (category) => {
     } else if (category === "CHILD_CARE") {
         return [
         { label: "TOTAL", value: "TOTAL" },
-        { label: "출산", value: "CHILDBIRTH" },
-        { label: "육아", value: "PARENTING" },
         { label: "교육", value: "EDUCATION" },
         { label: "학원", value: "ACADEMY" },
         { label: "ETC", value: "ETC" },

@@ -19,7 +19,7 @@ export const getKorSubCategories = (subCategory) => {
     } else if (subCategory === "GROUP") {
         return "공동구매";
     } else if (subCategory === "HOSPITAL") {
-        return "병원";
+        return "의료정보";
     } else if (subCategory === "BEAUTY") {
         return "미용";
     } else if (subCategory === "VISA") {
@@ -45,21 +45,19 @@ export const getKorSubCategories = (subCategory) => {
     }  else if (subCategory === "DIRHAM") {
         return "디르함";
     } else if (subCategory === "BUY") {
-        return "매매";
+        return "구매";
     } else if (subCategory === "HANDOVER") {
-        return "양도";
+        return "판매";
     } else if (subCategory === "RENT") {
-        return "임대차";
+        return "임대";
     } else if (subCategory === "FULL_TIME") {
         return "풀타임";
     } else if (subCategory === "PART_TIME") {
         return "파트타임";
     } else if (subCategory === "DAY") {
         return "하루근무";
-    } else if (subCategory === "CHILDBIRTH") {
-        return "출산";
     } else if (subCategory === "PARENTING") {
-        return "육아";
+        return "출산/육아";
     } else if (subCategory === "EDUCATION") {
         return "교육";
     } else if (subCategory === "ACADEMY") {
@@ -102,6 +100,12 @@ export const getKorSubCategories = (subCategory) => {
         return "부동산";
     }  else if (subCategory === "KOREAN_TRAVEL") {
         return "여행사";
+    }  else if (subCategory === "INFO") {
+        return "부동산정보";
+    }  else if (subCategory === "INVESTMENT") {
+        return "금융/투자";
+    }  else if (subCategory === "LAW") {
+        return "법률";
     } else if (subCategory === "ETC") {
         return "ETC";
     } else {
