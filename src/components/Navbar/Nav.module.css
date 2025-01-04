@@ -212,6 +212,8 @@
 @media (max-width: 480px) {
     .container {
         height: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
     .logoContainer {
         padding-right: 0%;

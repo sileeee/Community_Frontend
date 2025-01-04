@@ -8,17 +8,11 @@ function BigBanner() {
   const intervalTime = 5000;
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-  // 화면 크기를 기준으로 요청 URL을 설정
-  const getUrlByScreenSize = () => {
-    return window.innerWidth <= 768
-      ? `${API_BASE_URL}/home/posts/5` // 모바일 전용 URL
-      : `${API_BASE_URL}/home/posts/6`; // 데스크톱 전용 URL
-  };
 
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const response = await axios.get(getUrlByScreenSize());
+        const response = await axios.get(`${API_BASE_URL}/home/posts/5`);
         setBanners(response.data.data);
       } catch (error) {
         console.error("Error fetching banner data:", error);
@@ -49,27 +43,45 @@ function BigBanner() {
   return (
     <div className={styles.bannerContainer}>
       {banners.length > 0 ? (
-        <>
-          <div
-            className={styles.slider}
-            style={{
-              transform: `translateX(-${currentIndex * 100}%)`,
-            }}
-          >
-            {banners.map((banner) => (
-              <div key={banner.id} className={styles.slide}>
-                <img src={banner.imageUrl} alt={`Banner ${banner.id}`} className={styles.image}/>
+        <div className={styles.box}>
+          <div className={styles.box1}>
+            {banners.map((banner, index) => (
+              <div
+                key={banner.id}
+                className={`${styles.slide} ${
+                  index === currentIndex ? styles.active : ""
+                }`}
+                style={{
+                  display: index === currentIndex ? "block" : "none",
+                }}
+              >
+                <img
+                  src={banner.imageUrl}
+                  alt={`Banner ${banner.id}`}
+                  className={styles.bigImage}
+                />
               </div>
             ))}
-    </div>
-
-    <div className={`${styles.arrow} ${styles.left}`} onClick={goToPrev}>
-      &#8249;
-    </div>
-    <div className={`${styles.arrow} ${styles.right}`} onClick={goToNext}>
-      &#8250;
-    </div>
-    </>
+          </div>
+          <div className={styles.box2}>
+            <img
+              src="https://handubi.com/api/posts/images/ad_location6.png"
+              className={styles.smallImage}
+            />
+          </div>
+          <div className={styles.box3}>
+            <img
+              src="https://handubi.com/api/posts/images/ad_location7.png"
+              className={styles.smallImage}
+            />
+          </div>
+          <div className={styles.box4}>
+            <img
+              src="https://handubi.com/api/posts/images/ad_location8.png"
+              className={styles.smallImage}
+            />
+          </div>
+        </div>
       ) : (
         <p>Loading banners...</p>
       )}
