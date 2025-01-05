@@ -3,7 +3,7 @@
 }
 
 .handubi .space {
-  height: 50px;
+  height: 1vw;
   position: relative;
   left: 0;
   top: 0;
@@ -105,5 +105,8 @@
   }
   .handubi .parent-group {
     gap: 3px;
+  }
+  .handubi .space {
+    height: 0.3vw;
   }
 }

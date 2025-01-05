@@ -1,6 +1,6 @@
 .searchWrapper {
     gap: 20px;
-    padding: 0px 0px 50px 0px;
+    padding: 0px 0px 0px 0px;
     position: relative;
     justify-content: center;
     align-items: center;
@@ -95,12 +95,13 @@
       width: 70vw; /* 화면 너비에 맞게 조정 */
       padding: 0px;
       margin: 0px;
-      height: 18vh;
+      height: 10vh;
+      margin-top: 5vh;
     }
   
     .inputWrapper {
       width: 80vw; /* 버튼 너비 축소 */
-      padding-left: 30px;
+      padding-left: 20px;
       margin: 0px;
     }
   
@@ -131,11 +132,12 @@
   @media (max-width: 480px) {
     .searchWrapper {
       width: 100%; /* 화면의 100% 너비로 조정 */
-      padding-bottom: 3vw;
+      padding-bottom: 1vw;
     }
   
     .inputWrapper {
       height: 45px; /* 높이 축소 */
+      padding-left: 15px;
     }
   
     .searchInput {

@@ -35,23 +35,25 @@ function CategoryList(){
               <>
                 <CategorySection category={"news"} postList={getCategoryPosts("NEWS")} layout={1} />
                 <div className="space" />
+                <CategorySection category={"free_board"} postList={getCategoryPosts("FREE_BOARD")} layout={2} />
+                <div className="space" />
                 <CategorySection category={"second_hand"} postList={getCategoryPosts("SECOND_HAND")} layout={1} />
+                <div className="space" />
+                <CategorySection category={"job_search"} postList={getCategoryPosts("JOB_SEARCH")} layout={2} />
                 <div className="space" />
                 <CategorySection category={"asian_market"} postList={getCategoryPosts("ASIAN_MARKET")} layout={1} />
                 <div className="space" />
                 <CategorySection category={"life"} postList={getCategoryPosts("LIFE")} layout={2} />
                 <div className="space" />
-                <CategorySection category={"real_estate"} postList={getCategoryPosts("REAL_ESTATE")} layout={1} />
-                <div className="space" />
-                <CategorySection category={"job_search"} postList={getCategoryPosts("JOB_SEARCH")} layout={2} />
-                <div className="space" />
                 <CategorySection category={"child_care"} postList={getCategoryPosts("CHILD_CARE")} layout={2} />
                 <div className="space" />
                 <CategorySection category={"travel"} postList={getCategoryPosts("TRAVEL")} layout={1} />
                 <div className="space" />
+                <CategorySection category={"real_estate"} postList={getCategoryPosts("REAL_ESTATE")} layout={1} />
+                <div className="space" />
                 <CategorySection category={"club"} postList={getCategoryPosts("CLUB")} layout={2} />
                 <div className="space" />
-                <CategorySection category={"free_board"} postList={getCategoryPosts("FREE_BOARD")} layout={2} />
+                <CategorySection category={"korean_company"} postList={getCategoryPosts("KOREAN_COMPANY")} layout={2} />
                 <div className="space" />
               </>
             )}

@@ -22,8 +22,6 @@ function Home(){
           <Nav />
           <BigBanner/>
           <div className="space"/>
-          <div className="space"/>
-          <div className="text-wrapper-7">Everything in one place</div>
           <SearchPost />
           <Shortcut/>
           <CategoryList />

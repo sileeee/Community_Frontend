@@ -29,7 +29,7 @@
 @media (max-width: 1150px) {
   .centerContainer {
     flex-wrap: wrap;
-    gap: 2vw;
+    gap: 3vw;
     justify-content: space-around;
     padding: 5vw;
   }
@@ -37,12 +37,12 @@
     flex: 1 1 45vw; /* 두 줄로 배치되도록 너비 조절 */
     max-width: 20vw;
     min-width: 13vw;
-    min-height: 6vh;
-    padding: clamp(15px, 1vw, 10px) clamp(10px, 2vw, 20px);
+    min-height: 4vh;
+    padding: clamp(10px, 10px, 10px) clamp(2vw, 3vw, 4vw);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 540px) {
   .centerContainer {
     flex-wrap: wrap;
     gap: 3vw;
@@ -60,6 +60,12 @@
 }
 
 @media (max-width: 350px) {
-  .frame {display: none;
+  .centerContainer {
+    flex-wrap: wrap;
+    gap: 1vw;
+  }
+  .frame {
+    margin: 2px;
+    padding: clamp(10px, 10px, 10px) clamp(2vw, 3vw, 4vw);
   }
 }
