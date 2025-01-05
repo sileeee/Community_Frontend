@@ -31,7 +31,7 @@ const CategorySection = ({ category, postList, layout }) => {
         `${API_BASE_URL}/posts?category=${String(category || "").toUpperCase()}&criteria=view`
       );
       if (res.status === 200) {
-        setPosts(res.data.data.slice(0, 7));
+        setPosts(res.data.data.slice(0, 6));
       }
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -44,7 +44,7 @@ const CategorySection = ({ category, postList, layout }) => {
         `${API_BASE_URL}/posts?category=${String(category || "").toUpperCase()}&criteria=createdAt`
       );
       if (res.status === 200) {
-        setRecentPosts(res.data.data.slice(0, 7));
+        setRecentPosts(res.data.data.slice(0, 6));
       }
     } catch (error) {
       console.error("Error fetching posts:", error);

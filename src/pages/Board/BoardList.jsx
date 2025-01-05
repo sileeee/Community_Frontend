@@ -190,6 +190,31 @@ function BoardList({category}) {  // lower case
   return (
     <div className={styles.container}>
       <h1>{getKorCategories(category)}</h1>
+
+      <div className={styles.bannerContainer}>
+        <a href="https://www.instagram.com/korea.dubai/?igsh=MWppYjZweGhhaGRmcQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://handubi.com/api/posts/images/ad_location6.png"
+            alt="Banner 1"
+            className={styles.bannerImage}
+          />
+        </a>
+        <a href="https://www.youtube.com/@koreadubai" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://handubi.com/api/posts/images/ad_location7.png"
+            alt="Banner 2"
+            className={styles.bannerImage}
+          />
+        </a>
+        <a href="https://www.instagram.com/korea.dubai/?igsh=MWppYjZweGhhaGRmcQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://handubi.com/api/posts/images/ad_location8.png"
+            alt="Banner 3"
+            className={styles.bannerImage}
+          />
+        </a>
+      </div>
+
       <div className={styles.datagrid}>
         <Paper elevation={0} square className={styles.paper}>
           <div className={styles.buttonContainer}>
