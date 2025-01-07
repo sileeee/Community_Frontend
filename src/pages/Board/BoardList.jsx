@@ -22,6 +22,8 @@ function BoardList({category}) {  // lower case
   
   const [noticeList, setNoticeList] = useState([]);
   const [subCategory, setSubCategory] = useState("TOTAL");
+  const [banners, setBanners] = useState([]);
+  const [loading, setLoading] = useState(false);
   
   const localStorageKey = `pinnedItems_${category}`;
   const [pinnedItems, setPinnedItems] = useState(() => {
@@ -157,6 +159,19 @@ function BoardList({category}) {  // lower case
   }, [location.key]);
 
   useEffect(() => {
+    setBanners([]);
+    setLoading(true);
+    axios
+      .get(`${API_BASE_URL}/ads/banners?category=${String(category || "").toUpperCase()}`)
+      .then((res) => {
+        const data = res.data.data;
+        setBanners(data);
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, [category, API_BASE_URL]);
+
+  useEffect(() => {
     const fetchPosts = async () => {
       try {
         const url = keyword
@@ -192,27 +207,20 @@ function BoardList({category}) {  // lower case
       <h1>{getKorCategories(category)}</h1>
 
       <div className={styles.bannerContainer}>
-        <a href="https://www.instagram.com/korea.dubai/?igsh=MWppYjZweGhhaGRmcQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://handubi.com/api/posts/images/ad_location6.png"
-            alt="Banner 1"
-            className={styles.bannerImage}
-          />
-        </a>
-        <a href="https://www.youtube.com/@koreadubai" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://handubi.com/api/posts/images/ad_location7.png"
-            alt="Banner 2"
-            className={styles.bannerImage}
-          />
-        </a>
-        <a href="https://www.instagram.com/korea.dubai/?igsh=MWppYjZweGhhaGRmcQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
-          <img
-            src="https://handubi.com/api/posts/images/ad_location8.png"
-            alt="Banner 3"
-            className={styles.bannerImage}
-          />
-        </a>
+        {banners.map((banner, index) => (
+            <a
+              key={index}
+              href={banner.linkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={banner.imageUrl}
+                alt={banner.title}
+                className={styles.bannerImage}
+              />
+            </a>
+          ))}
       </div>
 
       <div className={styles.datagrid}>
