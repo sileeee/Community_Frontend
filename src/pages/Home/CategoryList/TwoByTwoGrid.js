@@ -78,7 +78,7 @@ const TwoByTwoGrid = ({ category, postList, layout }) => {
       case 2:
         return (
           <div className={styles.container}>
-            <div className={styles.square2}>
+            <div className={styles.gridSquare2}>
             <table className={styles.table}>
               <colgroup>
                 <col style={{ width: "15%" }} />
