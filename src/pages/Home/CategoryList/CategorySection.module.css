@@ -6,22 +6,6 @@
   height: auto;
 }
 
-.newsBox {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: 2px;
-}
-
-.box {
-  padding: 5px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
 .container {
   gap: 10%;
   padding: 0px 0px 20px 0px;
@@ -156,13 +140,6 @@
   gap: 30px;
 }
 
-.gridSquare2 {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr; /* 2 columns */
-  gap: 30px;
-}
-
 .table {
   width: 100%; /* 테이블 전체 너비 */
   border-collapse: separate;
@@ -259,30 +236,13 @@
 }
 
 @media (max-width: 430px) {
-
-  .newsBox {
-    gap: 0px;
-  }
-
-  .box {
-    padding: 0px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
+  
   .square {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 
   .square2 {
     grid-template-columns: 1fr;
-  }
-
-  .gridSquare2 {
-    gap: 5px;
   }
 
   .header {
