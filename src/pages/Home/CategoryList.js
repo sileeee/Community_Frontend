@@ -36,7 +36,7 @@ function CategoryList(){
               <>
                 <CategorySection category={"news"} postList={getCategoryPosts("NEWS")} layout={1} />
                 <div className="space" />
-                <TwoByTwoGrid category={["free_board", "life", "child_care", "club"]} postList={[]} layout={2} />
+                <TwoByTwoGrid category={["free_board", "life", "child_care", "club"]} postList={getCategoryPosts("LIFE")} layout={[2, 1, 2, 2]} />
                 <div className="space" />
                 <CategorySection category={"second_hand"} postList={getCategoryPosts("SECOND_HAND")} layout={1} />
                 <div className="space" />

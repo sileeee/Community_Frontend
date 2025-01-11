@@ -72,13 +72,11 @@ const CategorySection = ({ category, postList, layout }) => {
                     <div
                       key={index}
                       className={styles.newsItem}
-                      onClick={() => movePage(post.postId)}
-                    >
+                      onClick={() => movePage(post.postId)}>
                       <img
                         className={styles.newsImage}
                         src={post.imageUrl || "/static/img/handubi-logo.png"}
-                        alt={post.title}
-                      />
+                        alt={post.title}/>
                       <div className={styles.newsContent}>
                         <div className={styles.newsTitle}>
                           {post.title.length > 15
