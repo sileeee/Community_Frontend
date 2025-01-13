@@ -8,11 +8,17 @@ function BigBanner() {
   const intervalTime = 5000;
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
+  // 화면 크기를 기준으로 요청 URL을 설정
+  const getUrlByScreenSize = () => {
+    return window.innerWidth < 768
+      ? `${API_BASE_URL}/home/posts/52` // 모바일 전용 URL
+      : `${API_BASE_URL}/home/posts/51`; // 데스크톱 전용 URL
+  };
 
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/home/posts/5`);
+        const response = await axios.get(getUrlByScreenSize());
         setBanners(response.data.data);
       } catch (error) {
         console.error("Error fetching banner data:", error);

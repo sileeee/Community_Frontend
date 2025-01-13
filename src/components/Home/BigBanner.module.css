@@ -16,7 +16,7 @@
 }
 
 .slide img {
-  width: 60vw;
+  width: 100%;
   height: auto;
   object-fit: contain;
   border-radius: 10px;
@@ -52,33 +52,39 @@
 
 .box {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, auto);
+  /* grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto); */
   gap: 3px;
   max-width: 80%;
   height: auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
 }
 
 .box1 {
-  grid-column: 1 / span 1;
-  grid-row: 1 / span 3;
+  /* grid-column: 1 / span 1; */
+  /* grid-row: 1 / span 3; */
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-column: 1 / span 3;
+  grid-row: 1;
+  width: 100%;
 }
 
 .box2,
 .box3,
 .box4 {
-  grid-column: 2 / span 1;
+  /* grid-column: 2 / span 1; */
   font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-column: span 1;
 }
 
 .box2 {
-  grid-row: 1;
+  grid-row: 2;
 }
 
 .box3 {
@@ -86,14 +92,14 @@
 }
 
 .box4 {
-  grid-row: 3;
+  grid-row: 2;
 }
 
 .bigImage{
   width: 100%;
   height: auto;
   border-radius: 10px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .smallImage {
@@ -105,13 +111,13 @@
 
 @media (max-width: 1024px) {
   .box {
-    max-width: 95%;
+    max-width: 100%;
   }
   .smallImage{
     aspect-ratio: 3 / 1;
   }
   .slide img {
-    width: 65vw;
+    width: 100%;
   }
 }
 
