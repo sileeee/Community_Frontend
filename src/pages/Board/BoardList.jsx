@@ -10,6 +10,7 @@ import { useLocation } from "react-router";
 import { getKorCategories } from "../../components/Board/getKorCategories"
 import { useAuth } from '../../components/common/AuthContext';
 import { PushpinFilled } from '@ant-design/icons';
+import HotPosts from "../../components/Board/HotPosts";
 
 
 function BoardList({category}) {  // lower case
@@ -234,6 +235,9 @@ function BoardList({category}) {  // lower case
             )}
             <WriteButton />
           </div>
+          
+          <HotPosts category={category}/>
+
           {noticeList && (
               <Table
                   columns={columns}
