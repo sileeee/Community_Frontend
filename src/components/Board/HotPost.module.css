@@ -1,0 +1,322 @@
+  .container {
+    gap: 10%;
+    padding: 0px 0px 10px 0px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    color: #8b8888;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0; /* Add padding for spacing if needed */
+    gap: 15px;
+  }
+  
+  .header h2 {
+    font-size: 2vw;
+    font-weight: bold;
+  }
+  
+  .viewAll {
+    background-color: #056608;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: end;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  
+  .viewAll:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+    transform: translateY(-2px); /* Slightly raise the frame */
+  }
+  
+  .square {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
+    width: 80%;
+    height: auto;
+    margin: auto;
+    aspect-ratio: 16 / 4;
+    justify-content: center;
+  }
+  
+  .newsItem {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: row; /* Horizontal alignment of image and text */
+    align-items: center; /* Vertically center content */
+    padding: 8px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .newsImage {
+    width: 30%;
+    height: auto;
+    margin-right: 2%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  
+  .newsTitle {
+    color: #000000;
+    font-weight: bold;
+    padding-bottom: 5px;
+    font-size: 1em;
+    line-height:1.3;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: left;
+  }
+  
+  .newsBody {
+    color: #767676;
+    line-height:1.4;
+    font-size: 0.8em;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: left;
+  }
+  
+  .newsItem:hover .newsImage {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .newsItem:hover .newsTitle {
+    color: green;
+    text-decoration: underline;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+  }
+  
+  .newsContent h3 {
+    font-size: 14px;
+    color: #000000;
+    font-weight: bold;
+    padding-bottom: 3%;
+  }
+  
+  .newsContent p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .square2 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 30px;
+  }
+  
+  .gridSquare2 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .table {
+    width: 100%; /* 테이블 전체 너비 */
+    border-collapse: separate;
+    table-layout: fixed; /* 고정된 테이블 레이아웃 */
+    border-spacing: 0 5px;
+  }
+  
+  .header2 {
+    text-align: center;
+    font-weight: bold;
+    color: #00732f;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+  }
+  
+  .row {
+    display: table-row;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    height: 25px; /* 행 높이를 고정 */
+  }
+  
+  .row td {
+    vertical-align: middle; /* 수직 가운데 정렬 */
+  }
+  
+  .subCategory {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 생략 표시 */
+    justify-items: left;
+  }
+  
+  .badge {
+    background-color: #88ffc3;
+    padding: 0.4vw 0.8vw;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    white-space: normal; /* 줄바꿈 허용 */
+    word-break: break-word; /* 긴 단어도 줄바꿈 */
+    flex-wrap: wrap; /* 텍스트 줄바꿈 활성화 */
+    max-width: 100%; /* 부모 요소 크기를 넘지 않도록 제한 */
+    font-size: 14px; /* 기본 폰트 크기 */
+  }
+  
+  .title {
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left; /* 왼쪽 정렬 */
+    padding: 0.1vw;
+    text-decoration: none;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+  }
+  
+  .title:hover {
+    color: green; /* Green text color on hover */
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  .noData {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #999;
+  }
+  
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .square {
+      grid-template-columns: 1fr;
+    }
+  
+    .viewAll {
+      margin-top: 10px;
+    }
+    .header {
+      font-size: 4vw;
+      justify-content: space-between;
+      padding: 5px 0; /* Add padding for spacing if needed */
+    }
+    .badge {
+      font-size: 0.2em;
+      padding: 0.4vw 0.8vw;
+    }
+    .title {
+      padding: 0.5vw;
+    }
+    .newsImage {
+      width: 50%;
+    }
+    .newsTitle{
+      text-align: left;
+    }
+  }
+  
+  @media (max-width: 430px) {
+    .square {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  
+    .square2 {
+      grid-template-columns: 1fr;
+    }
+  
+    .gridSquare2 {
+      gap: 5px;
+    }
+  
+    .header {
+      padding: 10px 10px 0px 2px; /* Add padding for spacing if needed */
+      font-size: 4vw;
+    }
+  
+    .header h2{
+      font-size: 4vw;
+      padding-left: 10px;
+    }
+  
+    .header2 {
+      font-size: 0.8em;
+      padding: 4px;
+    }
+  
+    .table {
+      width: 100%; /* 테이블 전체 너비 */
+      padding: 5px;
+      table-layout: fixed; /* 고정된 테이블 레이아웃 */
+    }
+  
+    .viewAll {
+      font-size: 2.5vw;
+      padding: 8px 16px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+  
+    .newsItem {
+      border-radius: 8px;
+      overflow: visible;
+      flex-direction: column; /* Horizontal alignment of image and text */
+      align-items: center; /* Vertically center content */
+      padding: 5px;
+    }
+  
+    .newsSection {
+      width: 95vw;
+      max-width: 97vw;
+      margin: 0 auto;
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .newsImage {
+      width: 30vw;
+      height: auto;
+      margin-right: 1%;
+      aspect-ratio: 16 / 9;
+    }
+  
+    .newsTitle {
+      color: #000000;
+      font-weight: bold;
+      padding: 10px 0 0px 0;
+      font-size: 0.7em;
+    }
+  
+    .title {
+      font-size: 0.8em;
+      padding: 5px;
+    }
+  
+    .row {
+      height: 20px;
+    }
+  
+    .badge {
+      font-size: 0.1em;
+    }
+  }
