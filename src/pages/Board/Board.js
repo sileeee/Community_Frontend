@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import BoardList from "./BoardList";
 import Nav from "../../components/Navbar/Nav";
 import Foot from "../../components/Footer/Foot";
+import RealEstateBoardList from "./RealEstate/RealEstateBoardList";
 
 
 function Board() {
@@ -16,7 +17,11 @@ function Board() {
         <div className="div">
             <div className="parent-group">
                 <Nav />
-                <BoardList category={category}/>
+                {category.trim() === "real_estate" ? (
+                  <RealEstateBoardList />
+                ) : (
+                  <BoardList category={category}/>
+                )}
                 <div className="space"/>
                 <Foot />
             </div>

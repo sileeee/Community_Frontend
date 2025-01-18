@@ -144,6 +144,34 @@ background-color: #f6f6f6;
     transform: scale(1.05);
 }
 
+/* real estate post's properties */
+.detailTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.detailTable td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    vertical-align: top;
+}
+
+.detailTable td:first-child {
+    font-weight: bold;
+    background-color: #f9f9f9;
+    width: 30%;
+}
+
+.detailTable td:last-child {
+    width: 70%;
+    text-align: left;
+}
+
+
+
 @media (max-width: 480px) {
 
     .container {

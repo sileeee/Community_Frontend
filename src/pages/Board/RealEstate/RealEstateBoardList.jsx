@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import styles from "./Board.module.css";
+import styles from "../Board.module.css";
 import { Paper } from "@mui/material";
 import { Table, Button } from "antd";
-import WriteButton from "../../components/Board/WriteButton";
-import SubCategoryButton from "../../components/Board/SubCategoryButton";
+import WriteButton from "../../../components/Board/WriteButton";
+import SubCategoryButton from "../../../components/Board/SubCategoryButton";
 import { useLocation } from "react-router";
-import { getKorCategories } from "../../components/Board/getKorCategories"
-import { useAuth } from '../../components/common/AuthContext';
+import { getKorCategories } from "../../../components/Board/getKorCategories"
+import { useAuth } from '../../../components/common/AuthContext';
 import { PushpinFilled } from '@ant-design/icons';
-import HotPosts from "../../components/Board/HotPosts";
+import HotPosts from "../../../components/Board/HotPosts";
 
 
-function BoardList({category}) {  // lower case
+function RealEstateBoardList() {  // lower case
   
   const navigate = useNavigate();
   const location = useLocation();
   const keyword = location.state?.keyword;
   const { userRole } = useAuth();
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const category = "real_estate";
   
   const [noticeList, setNoticeList] = useState([]);
   const [subCategory, setSubCategory] = useState("TOTAL");
   const [banners, setBanners] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [type, setType] = useState();
   
   const localStorageKey = `pinnedItems_${category}`;
   const [pinnedItems, setPinnedItems] = useState(() => {
@@ -153,12 +153,6 @@ function BoardList({category}) {  // lower case
     window.scrollTo(0, 0);
     const savedPinnedItems = localStorage.getItem(localStorageKey);
     setPinnedItems(savedPinnedItems ? JSON.parse(savedPinnedItems) : []);
-
-    if (category === "real_estate") {
-      setType("real-estate");
-    } else {
-      setType("posts");
-    }
   }, [category]);
 
   useEffect(() => {
@@ -183,8 +177,8 @@ function BoardList({category}) {  // lower case
     const fetchPosts = async () => {
       try {
         const url = keyword
-          ? `${API_BASE_URL}/${type}/search?keyword=${keyword}`
-          : `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
+          ? `${API_BASE_URL}/real-estate/search?keyword=${keyword}`
+          : `${API_BASE_URL}/real-estate?subCategory=${subCategory}`;
         const res = await axios.get(url);
 
         if (res.status === 200) {
@@ -242,8 +236,6 @@ function BoardList({category}) {  // lower case
             )}
             <WriteButton />
           </div>
-          
-          <HotPosts category={category} type={type}/>
 
           {noticeList && (
               <Table
@@ -273,4 +265,4 @@ function BoardList({category}) {  // lower case
   );
 }
 
-export default BoardList;
+export default RealEstateBoardList;
