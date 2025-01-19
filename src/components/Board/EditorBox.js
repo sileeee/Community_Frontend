@@ -77,7 +77,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
             formData.append('file', blobInfo.blob(), blobInfo.filename());
         
             try {
-              const response = await axios.post(`${API_BASE_URL}/posts/images`, formData, {
+              const response = await axios.post(`${API_BASE_URL}/images`, formData, {
                 headers: {
                   'Content-Type': 'multipart/form-data',
                 },
@@ -113,7 +113,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
                 const formData = new FormData();
                 formData.append("file", file);
           
-                const response = await axios.post(`https://handubi.com/api/posts/images`, formData, {
+                const response = await axios.post(`${API_BASE_URL}/images`, formData, {
                   headers: { 'Content-Type': 'multipart/form-data' },
                 });
           

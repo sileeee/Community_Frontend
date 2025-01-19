@@ -11,6 +11,8 @@ import { getKorCategories } from "../../components/Board/getKorCategories"
 import { useAuth } from '../../components/common/AuthContext';
 import { PushpinFilled } from '@ant-design/icons';
 import HotPosts from "../../components/Board/HotPosts";
+import RealEstateList from "./RealEstate/RealEstateList";
+import GeneralList from "./General/GeneralList";
 
 
 function BoardList({category}) {  // lower case
@@ -153,12 +155,6 @@ function BoardList({category}) {  // lower case
     window.scrollTo(0, 0);
     const savedPinnedItems = localStorage.getItem(localStorageKey);
     setPinnedItems(savedPinnedItems ? JSON.parse(savedPinnedItems) : []);
-
-    if (category === "real_estate") {
-      setType("real-estate");
-    } else {
-      setType("posts");
-    }
   }, [category]);
 
   useEffect(() => {
@@ -167,8 +163,17 @@ function BoardList({category}) {  // lower case
   }, [location.key]);
 
   useEffect(() => {
+    if (category === "real_estate") {
+      setType("real-estate");
+    } else {
+      setType("posts");
+    }
+  }, [category]);
+
+  useEffect(() => {
     setBanners([]);
     setLoading(true);
+    const fetchPost = async () => {
     axios
       .get(`${API_BASE_URL}/ads/banners?category=${String(category || "").toUpperCase()}`)
       .then((res) => {
@@ -177,6 +182,10 @@ function BoardList({category}) {  // lower case
       })
       .catch(console.error)
       .finally(() => setLoading(false));
+    };
+    if(type){
+      fetchPost();
+    }
   }, [category, API_BASE_URL]);
 
   useEffect(() => {
@@ -200,8 +209,10 @@ function BoardList({category}) {  // lower case
         console.error(error);
       }
     };
-  fetchPosts();
-  }, [category, subCategory, keyword]);
+    if (type) {
+      fetchPosts();
+    }
+  }, [category, type, keyword]);
 
   const mergedData = [
     ...pinnedItems,
@@ -243,30 +254,13 @@ function BoardList({category}) {  // lower case
             <WriteButton />
           </div>
           
-          <HotPosts category={category} type={type}/>
-
-          {noticeList && (
-              <Table
-                  columns={columns}
-                  dataSource={mergedData}
-                  rowClassName={(record) =>
-                    pinnedItems.some((pinned) => pinned.id === record.id)
-                      ? styles.pinnedRow
-                      : styles.tableRow
-                  }
-                  size="middle"
-                  pagination={{
-                  position: ["none", "bottomRight"],
-                  }}
-                  onRow={(record, rowIndex) => {
-                  return {
-                      onClick: (event) => {
-                      movePage(record);
-                      },
-                  };
-                  }}
-            />
+          <HotPosts category={category}/>
+          {category.trim() === "real_estate" ? (
+            <RealEstateList category={category}/>
+          ) : (
+            <GeneralList category={category}/>
           )}
+
         </Paper>
     </div>
     </div>

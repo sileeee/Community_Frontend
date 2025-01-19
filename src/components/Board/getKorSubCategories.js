@@ -48,7 +48,11 @@ export const getKorSubCategories = (subCategory) => {
         return "구매";
     } else if (subCategory === "HANDOVER") {
         return "판매";
-    } else if (subCategory === "RENT") {
+    } else if (subCategory === "URGENT_HANDOVER") {
+        return "급매";
+    }else if (subCategory === "OFF_PLAN") {
+        return "off-plan";
+    }else if (subCategory === "RENT") {
         return "임대";
     } else if (subCategory === "FULL_TIME") {
         return "풀타임";

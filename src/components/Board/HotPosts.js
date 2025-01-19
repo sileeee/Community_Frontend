@@ -8,16 +8,27 @@ import { useNavigate } from "react-router-dom";
 function HotPosts({category}) {
     const navigate = useNavigate();
     const [posts, setPosts] = useState();
+    const [type, setType] = useState("posts");
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
-        getHotPosts();
-    }, [category, API_BASE_URL]);
+        if (category === "real_estate") {
+            setType("real-estate");
+        } else {
+            setType("posts");
+        }
+    }, [category]);
+    
+    useEffect(() => {
+        if (type) {
+            getHotPosts();
+        }
+    }, [type, category]);
 
     const getHotPosts = async () => {
         try {
           const res = await axios.get(
-            `${API_BASE_URL}/posts?category=${String(category || "").toUpperCase()}&criteria=view`
+            `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&criteria=view`
           );
           if (res.status === 200) {
             setPosts(res.data.data.slice(0, 4));
@@ -40,10 +51,10 @@ function HotPosts({category}) {
                     <div
                         key={index}
                         className={styles.newsItem}
-                        onClick={() => movePage(post.postId)}>
+                        onClick={() => movePage(post.id, category)}>
                         <img
                         className={styles.newsImage}
-                        src={post.imageUrl || "/static/img/handubi-logo.png"}
+                        src={post.imageUrl || "/static/img/no_image.png"}
                         alt={post.title}/>
                         <div className={styles.newsContent}>
                         <div className={styles.newsTitle}>

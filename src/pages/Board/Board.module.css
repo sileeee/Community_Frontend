@@ -105,13 +105,14 @@
     width: 100%;
     margin: 10px;
     border-collapse: collapse;
+    margin-top: 20px;
   }
   
   .table_th {
     font-size: 1.7em;
     justify-content: center; /* 가로 가운데 정렬 (필요한 경우) */
+    text-align: left;
     height: 100%;           /* 부모 요소의 높이를 기준으로 가운데 정렬 */
-    padding-top: 20px;
     padding-right: 10px;
   }
 
@@ -121,6 +122,11 @@
     word-break: break-word; /* 단어 잘림 방지 */
     overflow-wrap: break-word; /* 줄바꿈 보장 */
     width: 65vw;
+  }
+
+  .inputSmall {
+    width: 150px;
+    text-align: left;
   }
   
   .table_th_2 {
@@ -198,6 +204,10 @@
 
   .formPaddingRight {
     padding-right: 40px;
+  }
+
+  .customCard .ant-card-body {
+    padding: 10px !important; /* 기본 패딩을 10px로 변경 */
   }
 
 

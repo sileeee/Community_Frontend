@@ -72,7 +72,7 @@ function BigBanner() {
           <div className={styles.box2}>
             <a href="https://www.instagram.com/korea.dubai/?igsh=MWppYjZweGhhaGRmcQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
               <img
-                src="https://handubi.com/api/posts/images/ad_location6.png"
+                src="https://handubi.com/api/images/ad_location6.png"
                 className={styles.smallImage}
               />
             </a>
@@ -80,7 +80,7 @@ function BigBanner() {
           <div className={styles.box3}>
             <a href="https://www.youtube.com/@koreadubai" target="_blank" rel="noopener noreferrer">
               <img
-                src="https://handubi.com/api/posts/images/ad_location7.png"
+                src="https://handubi.com/api/images/ad_location7.png"
                 className={styles.smallImage}
               />
             </a>
@@ -88,7 +88,7 @@ function BigBanner() {
           <div className={styles.box4}>
             <a href="https://www.instagram.com/korea.dubai/?igsh=MWppYjZweGhhaGRmcQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
               <img
-                src="https://handubi.com/api/posts/images/ad_location8.png"
+                src="https://handubi.com/api/images/ad_location8.png"
                 className={styles.smallImage}
               />
             </a>

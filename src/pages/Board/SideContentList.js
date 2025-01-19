@@ -15,44 +15,48 @@ function SideContentList({ pageId, category, subCategory }) {
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
-        if (category == "real_estate") {
-            setType("real-estate");   
+        if (category === "real_estate") {
+          setType("real-estate");
         } else {
-            setType("posts");
+          setType("posts");
         }
-    }, []);
-
+      }, [category]);
 
     useEffect(() => {
         let data_tmp = [];
-        axios
-        .get(`${API_BASE_URL}/${type}?category=${category.toUpperCase()}&subCategory=${subCategory}`)
-        .then((res) => {
-            if (res.status === 200) {
-                let totalElements = res.data.data.length;
-                let tmp = res.data.data;
-                let index = tmp.findIndex((item) => item.id === parseInt(pageId));
-                
-                if (index !== 0) {
-                    data_tmp.push({
-                        type: "prev",
-                        title: tmp[index - 1].title,
-                        id: tmp[index - 1].id,
-                    });
+        const fetchPosts = async () => {
+            axios
+            .get(`${API_BASE_URL}/${type}?category=${category.toUpperCase()}&subCategory=${subCategory}`)
+            .then((res) => {
+                if (res.status === 200) {
+                    let totalElements = res.data.data.length;
+                    let tmp = res.data.data;
+                    let index = tmp.findIndex((item) => item.id === parseInt(pageId));
+                    
+                    if (index !== 0) {
+                        data_tmp.push({
+                            type: "prev",
+                            title: tmp[index - 1].title,
+                            id: tmp[index - 1].id,
+                        });
+                    }
+                    if (index !== totalElements - 1) {
+                        data_tmp.push({
+                            type: "next",
+                            title: tmp[index + 1].title,
+                            id: tmp[index + 1].id,
+                        });
+                    }
+                    data_tmp && setData(data_tmp);
                 }
-                if (index !== totalElements - 1) {
-                    data_tmp.push({
-                        type: "next",
-                        title: tmp[index + 1].title,
-                        id: tmp[index + 1].id,
-                    });
-                }
-                data_tmp && setData(data_tmp);
-            }
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        };
+        if (type) {
+            fetchPosts();
+        }
     }, [pageId]);
 
 
@@ -63,7 +67,6 @@ function SideContentList({ pageId, category, subCategory }) {
             navigate(url, {state: {category: category}});
         }
     };
-    
 
     return (
         <div>

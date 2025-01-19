@@ -50,6 +50,8 @@ export const getCategories = (category) => {
         { label: "부동산정보", value: "INFO" },
         { label: "구매", value: "BUY" },
         { label: "판매", value: "HANDOVER" },
+        { label: "급매", value: "URGENT_HANDOVER" },
+        { label: "off-plan", value: "OFF_PLAN" },
         { label: "임대", value: "RENT" },
         { label: "ETC", value: "ETC" },
         ];

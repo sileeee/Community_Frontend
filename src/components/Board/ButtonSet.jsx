@@ -11,7 +11,7 @@ function ButtonSet({ id, page, category}) {
 
     const moveToEditPage = () => {
         let currentId = id + "";
-        navigate(`/board/edit/${category.toUpperCase()}/${currentId}`);
+        navigate(`/board/edit/${category}/${currentId}`);
     };
 
     const deleteProcess = (id) => {
