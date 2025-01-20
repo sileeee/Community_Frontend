@@ -8,58 +8,54 @@ import { useAuth } from '../../../components/common/AuthContext';
 import { PushpinFilled } from '@ant-design/icons';
 
 
-function GeneralList({category}) {
+function GeneralList({category, selectedSubCategory}) {
   
-  const navigate = useNavigate();
-  const location = useLocation();
-  const keyword = location.state?.keyword;
-  const { userRole } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const keyword = location.state?.keyword;
+    const { userRole } = useAuth();
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    
+    const [noticeList, setNoticeList] = useState([]);
+    const [subCategory, setSubCategory] = useState("TOTAL");
+    const [banners, setBanners] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [type, setType] = useState();
   
-  const [noticeList, setNoticeList] = useState([]);
-  const [subCategory, setSubCategory] = useState("TOTAL");
-  const [banners, setBanners] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [type, setType] = useState();
+    const localStorageKey = `pinnedItems_${category}`;
   
-  const localStorageKey = `pinnedItems_${category}`;
-  const [pinnedItems, setPinnedItems] = useState(() => {
-    // 컴포넌트가 처음 렌더링될 때 `localStorage`에서 핀 데이터를 가져옴
-    const savedPinnedItems = localStorage.getItem("pinnedItems");
-    return savedPinnedItems ? JSON.parse(savedPinnedItems) : [];
-  });
-  
-  const getFilteredPosts = (selected) => {
-    setSubCategory(selected);
-  };
-
-  const togglePin = (record) => {
-    let updatedPinnedItems;
-
-    if (pinnedItems.some((pinned) => pinned.id === record.id)) {
-      // 이미 핀된 게시글을 제거
-      updatedPinnedItems = pinnedItems.filter((pinned) => pinned.id !== record.id);
-    } else {
-      // 새 게시글을 핀에 추가
-      updatedPinnedItems = [...pinnedItems, record];
-    }
-    setPinnedItems(updatedPinnedItems);
-    localStorage.setItem(localStorageKey, JSON.stringify(updatedPinnedItems)); // 카테고리별 고정게시글 저장
-  };
+    const [pinnedItems, setPinnedItems] = useState(() => {
+        const savedPinnedItems = localStorage.getItem(localStorageKey);
+        return savedPinnedItems ? JSON.parse(savedPinnedItems) : [];
+    });
 
 
-  const movePage = (item) => {
-    let id = item.id + "";
+    const togglePin = (record) => {
+        let updatedPinnedItems;
 
-    if (category !== "search") {
-      navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next, subCategory: subCategory } });
-    }
-    else if (keyword) {
-      navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next } });
-    }
+        if (pinnedItems.some((pinned) => pinned.id === record.id)) {
+        // 이미 핀된 게시글을 제거
+        updatedPinnedItems = pinnedItems.filter((pinned) => pinned.id !== record.id);
+        } else {
+        // 새 게시글을 핀에 추가
+        updatedPinnedItems = [...pinnedItems, record];
+        }
+        setPinnedItems(updatedPinnedItems);
+        localStorage.setItem(localStorageKey, JSON.stringify(updatedPinnedItems)); // 카테고리별 고정게시글 저장
+    };
 
-  };
+
+    const movePage = (item) => {
+        let id = item.id + "";
+
+        if (category !== "search") {
+        navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next, subCategory: subCategory } });
+        }
+        else if (keyword) {
+        navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next } });
+        }
+    };
 
   const convertToStringDate = (param) => {
     let result = param.substr(0,10);
@@ -143,104 +139,106 @@ function GeneralList({category}) {
           },
         ]
       : []),
-  ];
+    ];
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
+    useEffect(() => {
+        window.scrollTo(0, 0);
 
-    if (category === "real_estate") {
-        setType("real-estate");
-      } else {
-        setType("posts");
-      }
-
-    const savedPinnedItems = localStorage.getItem(localStorageKey);
-    setPinnedItems(savedPinnedItems ? JSON.parse(savedPinnedItems) : []);
-
-  }, [category]);
-
-  useEffect(() => {
-    // 페이지가 로드될 때마다 subCategory를 초기화
-    setSubCategory("TOTAL");
-  }, [location.key]);
-
-  useEffect(() => {
-    setBanners([]);
-    setLoading(true);
-    const fetchPost = async () => {
-    axios
-      .get(`${API_BASE_URL}/ads/banners?category=${String(category || "").toUpperCase()}`)
-      .then((res) => {
-        const data = res.data.data;
-        setBanners(data);
-      })
-      .catch(console.error)
-      .finally(() => setLoading(false));
-    }
-    if(type){
-        fetchPost();
-    }
-  }, [category, API_BASE_URL]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const url = keyword
-          ? `${API_BASE_URL}/${type}/search?keyword=${keyword}`
-          : `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
-        const res = await axios.get(url);
-
-        if (res.status === 200) {
-          let totalElements = res.data.data.length;
-          let tmp = res.data.data.map((item, index) => ({
-            ...item,
-            key: totalElements - index,
-            createdAt: convertToStringDate(item.createdAt),
-          }));
-          setNoticeList(tmp);
+        if (category === "real_estate") {
+            setType("real-estate");
+        } else {
+            setType("posts");
         }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    if(type){
-        fetchPosts();
-    }
-  }, [category, type, keyword]);
+        const savedPinnedItems = localStorage.getItem(localStorageKey);
+        setPinnedItems(savedPinnedItems ? JSON.parse(savedPinnedItems) : []);
 
-  const mergedData = [
-    ...pinnedItems,
-    ...noticeList.filter(
-      (item) => !pinnedItems.some((pinned) => pinned.id === item.id)
-    ),
-  ];
+    }, [category]);
 
-  return (
-    <div>
-          {noticeList && (
-              <Table
-                  columns={columns}
-                  dataSource={mergedData}
-                  rowClassName={(record) =>
-                    pinnedItems.some((pinned) => pinned.id === record.id)
-                      ? styles.pinnedRow
-                      : styles.tableRow
-                  }
-                  size="middle"
-                  pagination={{
-                  position: ["none", "bottomRight"],
-                  }}
-                  onRow={(record, rowIndex) => {
-                  return {
-                      onClick: (event) => {
-                      movePage(record);
-                      },
-                  };
-                  }}
-            />
-          )}
-    </div>
-  );
+    useEffect(() => {
+        // 페이지가 로드될 때마다 subCategory를 초기화
+        setSubCategory("TOTAL");
+    }, [location.key]);
+
+    useEffect(() => {
+        setBanners([]);
+        setLoading(true);
+        const fetchPost = async () => {
+        axios
+        .get(`${API_BASE_URL}/ads/banners?category=${String(category || "").toUpperCase()}`)
+        .then((res) => {
+            const data = res.data.data;
+            setBanners(data);
+        })
+        .catch(console.error)
+        .finally(() => setLoading(false));
+        }
+        if(type){
+            fetchPost();
+        }
+    }, [category, API_BASE_URL]);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+        try {
+            const url = keyword
+            ? `${API_BASE_URL}/${type}/search?keyword=${keyword}`
+            : `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
+            const res = await axios.get(url);
+
+            if (res.status === 200) {
+            let totalElements = res.data.data.length;
+            let tmp = res.data.data.map((item, index) => ({
+                ...item,
+                key: totalElements - index,
+                createdAt: convertToStringDate(item.createdAt),
+            }));
+            setNoticeList(tmp);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+        };
+        if(type){
+            fetchPosts();
+        }
+    }, [type, subCategory, API_BASE_URL, category]);
+
+    useEffect(() => {
+        if (selectedSubCategory) {
+        setSubCategory(selectedSubCategory);
+        }
+    }, [selectedSubCategory]);
+
+    const mergedData = [...pinnedItems, ...noticeList].filter(
+        (item, index, self) => self.findIndex((i) => i.id === item.id) === index
+    );
+
+    return (
+        <div>
+            {noticeList && (
+                <Table
+                    columns={columns}
+                    dataSource={mergedData}
+                    rowClassName={(record) =>
+                        pinnedItems.some((pinned) => pinned.id === record.id)
+                        ? styles.pinnedRow
+                        : styles.tableRow
+                    }
+                    size="middle"
+                    pagination={{
+                    position: ["none", "bottomRight"],
+                    }}
+                    onRow={(record, rowIndex) => {
+                    return {
+                        onClick: (event) => {
+                        movePage(record);
+                        },
+                    };
+                    }}
+                />
+            )}
+        </div>
+    );
 }
 
 export default GeneralList;
