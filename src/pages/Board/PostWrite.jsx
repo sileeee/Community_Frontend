@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { useNavigate, useParams } from "react-router";
 import styles from "./Board.module.css";
 import Nav from "../../components/Navbar/Nav";
@@ -12,7 +11,6 @@ import GeneralPostWrite from "./General/GeneralPostWrite";
 function PostWrite() {
 
     const { category, id } = useParams();
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   return (
     <div>

@@ -30,7 +30,6 @@ function RealEstatePostWrite({category, id}) {
     const [productLocationSelectedValue, setproductLocationSelectedValue] = useState();
     
 
-    // const API_BASE_URL = "http://localhost:8080"
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const movePage = (url) => {
@@ -38,9 +37,12 @@ function RealEstatePostWrite({category, id}) {
     };
 
     const onFinish = (value) => {
+
+        const thumbnailUrl = form.getFieldValue("thumbnailUrl");
+        const payload = { ...value, thumbnailUrl };
       if(id){
         axios
-            .put(`${API_BASE_URL}/real-estate/edit/${id}`, value, {
+            .put(`${API_BASE_URL}/real-estate/edit/${id}`, payload, {
                 withCredentials: true,
                 headers: {
                   'Content-Type': 'application/json',
@@ -57,7 +59,7 @@ function RealEstatePostWrite({category, id}) {
       }
       else{
         axios
-            .post(`${API_BASE_URL}/real-estate/new/${category.toUpperCase()}`, value, {
+            .post(`${API_BASE_URL}/real-estate/new/${category.toUpperCase()}`, payload, {
                 withCredentials: true,
                 headers: {
                   'Content-Type': 'application/json',
@@ -73,6 +75,12 @@ function RealEstatePostWrite({category, id}) {
             });
       };
     }
+
+    const extractFirstImageUrl = (htmlString) => {
+        const imgTagRegex = /<img[^>]+src="([^">]+)"[^>]*>/;
+        const match = htmlString.match(imgTagRegex);
+        return match ? match[0] : null;
+      };
 
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
@@ -97,7 +105,8 @@ function RealEstatePostWrite({category, id}) {
                       totalArea: data.totalArea,
                       state: data.state,
                       price: data.price,
-                      productStatus: data.productStatus
+                      productStatus: data.productStatus,
+                      thumbnailUrl: data.thumbnailUrl
                   });
                   console.log("Form Fields After Set:", form.getFieldsValue());
                   setEditorContent(data.body);
@@ -366,6 +375,9 @@ function RealEstatePostWrite({category, id}) {
               <tbody>
                 <tr>
                   <td className={styles.table_td_2}>
+                    <Form.Item name="thumbnailUrl" style={{ display: "none" }}>
+                        <Input />
+                    </Form.Item>
                     <Form.Item 
                         label="내용" 
                         name="body"
@@ -379,7 +391,13 @@ function RealEstatePostWrite({category, id}) {
                             <div className={styles.formPadding}>
                             <EditorBox
                                 value={form.getFieldValue("body")}
-                                onChange={(value) => form.setFieldsValue({ body: value })}
+                                onChange={(value) => {
+                                    const thumbnailUrl = extractFirstImageUrl(value); 
+                                    form.setFieldsValue({ 
+                                        body: value, 
+                                        thumbnailUrl: thumbnailUrl
+                                    });
+                                }}
                                 initialValue={editorContent}
                             />
                             </div>
