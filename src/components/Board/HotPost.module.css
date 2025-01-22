@@ -238,7 +238,8 @@
   
   @media (max-width: 430px) {
     .square {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
     }
   
     .square2 {
@@ -279,10 +280,11 @@
   
     .newsItem {
       border-radius: 8px;
+      width: 130px;
       overflow: visible;
       flex-direction: column; /* Horizontal alignment of image and text */
       align-items: center; /* Vertically center content */
-      padding: 5px;
+      padding: 7px;
     }
   
     .newsSection {
@@ -294,7 +296,7 @@
     }
   
     .newsImage {
-      width: 30vw;
+      width: 100%;
       height: auto;
       margin-right: 1%;
       aspect-ratio: 16 / 9;
@@ -303,8 +305,13 @@
     .newsTitle {
       color: #000000;
       font-weight: bold;
-      padding: 10px 0 0px 0;
+      padding: 5px;
       font-size: 0.7em;
+    }
+
+    .newsBody {
+      padding: 5px;
+      white-space:inherit;
     }
   
     .title {
