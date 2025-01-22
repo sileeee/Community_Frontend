@@ -206,6 +206,25 @@
     padding-right: 40px;
   }
 
+  .customCard {
+    width: 13rem;
+    margin: 0.4rem;
+    text-align: left;
+  }
+
+  .cardCover {
+    width: 11rem  !important;
+    height: 11rem;
+    margin: 1rem auto;
+    object-fit: cover;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0rem 0;
+  }
+
   .customCard .ant-card-body {
     padding: 10px !important; /* 기본 패딩을 10px로 변경 */
   }
@@ -241,5 +260,53 @@
       word-break: break-word; /* 단어 잘림 방지 */
       overflow-wrap: break-word; /* 줄바꿈 보장 */
       width: 80vw;
+    }
+
+    @media (max-width: 430px) {
+      .container {
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+      .customCard {
+        width: 6.5rem;
+        margin: 0.1rem;
+      }
+      .cardCover {
+        height: 6.5rem;
+        width: 5.3rem !important;
+        margin: 0.5rem auto;
+      }
+      .cardTitle {
+        font-size: 0.7rem;
+      }
+      .cardDescription {
+        font-size: 0.6em;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .container {
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+      .customCard {
+        width: 6rem;
+        margin: 0.1rem;
+        padding: 0px !important;
+      }
+      
+      .cardCover {
+        height: 6.5rem;
+        width: 5.3rem !important;
+        margin: 0.5rem auto;
+      }
+      .cardTitle {
+        font-size: 0.7rem;
+      }
+      .cardDescription {
+        font-size: 0.6em;
+      }
     }
   }

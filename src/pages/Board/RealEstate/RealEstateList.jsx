@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import styles from "../Board.module.css";
 import { Card } from "antd";
 import { useLocation } from "react-router";
-import { useAuth } from '../../../components/common/AuthContext';
 import { getProductType } from "../../../components/Board/getProductType";
 import { getProductStatus } from "../../../components/Board/getProductStatus";
 import { getLocation } from "../../../components/Board/getLocation";
@@ -178,7 +177,7 @@ const getProductTypeByValue = (category, value) => {
     <div style={{
         display: 'flex',
         flexWrap: 'wrap', // 줄바꿈 허용
-        justifyContent: 'flex-start', // 좌측 정렬
+        justifyContent: 'center', // 좌측 정렬
       }}
       >
         {noticeList && (
@@ -187,38 +186,26 @@ const getProductTypeByValue = (category, value) => {
                 key={index}
                 hoverable
                 className={styles.customCard}
-                style={{
-                    width: '13rem',
-                    margin: '1rem', // 카드 간 간격
-                    textAlign: 'left',
-                }}
+                bodyStyle={{padding: "1wv 2vw 3vw 2vw",}}
                 cover={
                     <img 
                       alt={notice.title || "example"} 
                       src={notice.thumbnailUrl || "/static/img/no_image.png"} 
-                      style={{
-                        width: '11rem',
-                        height: '11rem',
-                        margin: '1rem auto',
-                        objectFit: 'cover', // 이미지가 크기에 맞게 잘리도록 설정
-                      }}
+                      className={styles.cardCover}
                     />
                     }
                     onClick={() => movePage(notice)}
                 >
                   <Meta 
                     title={
-                        <div style={{
-                            display: 'block',
-                            whiteSpace: 'wrap',
-                            maxWidth: '10rem',
-                          }}>
+                        <div className={styles.cardTitle}>
                             <div>{truncateString(notice.title, 20)}</div>
                             <div>{notice.price || "- "}AED</div>
                         </div>
                     }
+                    
                     description={
-                        <div>
+                        <div className={styles.cardDescription} style={{"padding": "0px"}}>
                           <div><b>{getProductTypeByValue(category.toUpperCase(), notice.productType) || "-"}</b></div>
                           <div><b>거래 형태 : </b>{getKorSubCategories(notice.subCategory.toUpperCase()) || "-"}</div>
                           <div><b>매물 상태 : </b>{getProductStatusByValue(category.toUpperCase(), notice.productStatus) || "-"}</div>
