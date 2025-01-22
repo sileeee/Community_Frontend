@@ -15,7 +15,8 @@ function BoardList({category}) {  // lower case
   
   const location = useLocation();
   const keyword = location.state?.keyword;
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const API_BASE_URL = "http://localhost:8080"
+  // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   
   const [noticeList, setNoticeList] = useState([]);
   const [subCategory, setSubCategory] = useState("TOTAL");
@@ -32,20 +33,6 @@ function BoardList({category}) {  // lower case
   
   const getFilteredPosts = (selected) => {
     setSubCategory(selected);
-  };
-
-  const togglePin = (record) => {
-    let updatedPinnedItems;
-
-    if (pinnedItems.some((pinned) => pinned.id === record.id)) {
-      // 이미 핀된 게시글을 제거
-      updatedPinnedItems = pinnedItems.filter((pinned) => pinned.id !== record.id);
-    } else {
-      // 새 게시글을 핀에 추가
-      updatedPinnedItems = [...pinnedItems, record];
-    }
-    setPinnedItems(updatedPinnedItems);
-    localStorage.setItem(localStorageKey, JSON.stringify(updatedPinnedItems)); // 카테고리별 고정게시글 저장
   };
 
   const convertToStringDate = (param) => {

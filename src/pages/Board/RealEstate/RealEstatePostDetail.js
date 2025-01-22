@@ -3,6 +3,10 @@ import styles from "../PostDetail.module.css";
 import ButtonSet from "../../../components/Board/ButtonSet";
 import HtmlRenderer from "../../../components/Board/HtmlRenderer";
 import { useAuth } from '../../../components/common/AuthContext';
+import { getKorSubCategories } from "../../../components/Board/getKorSubCategories";
+import { getProductType } from "../../../components/Board/getProductType";
+import { getProductStatus } from "../../../components/Board/getProductStatus";
+import { getLocation } from "../../../components/Board/getLocation";
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -18,8 +22,27 @@ function RealEstatePostDetail({commentsCount, category, pageId}) {
     
     const [like, setLike] = useState(0);
     const [boardDetail, setBoardDetail] = useState();
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    const API_BASE_URL = "http://localhost:8080"
+    // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
+    const getLocationByValue = (category, value) => {
+        const locations = getLocation(category);
+        const location = locations.find(loc => loc.value === value);
+        return location ? location.label : null; // 해당 value가 없으면 null 반환
+    };
+    
+    const getProductStatusByValue = (category, value) => {
+        const productStatuses = getProductStatus(category);
+        console.log(category);
+        const productStatus = productStatuses.find(loc => loc.value === value);
+        return productStatus ? productStatus.label : null; // 해당 value가 없으면 null 반환
+    };
+    
+    const getProductTypeByValue = (category, value) => {
+        const productTypes = getProductType(category);
+        const productType = productTypes.find(loc => loc.value === value);
+        return productType ? productType.label : null; // 해당 value가 없으면 null 반환
+    };
 
     const convertToStringDate = (param) => {
         let result = param.substr(0, 10) + " " + param.substr(11, 5);
@@ -112,15 +135,15 @@ function RealEstatePostDetail({commentsCount, category, pageId}) {
                                         <tbody>
                                             <tr>
                                                 <td>건물 종류</td>
-                                                <td>{boardDetail.productType}</td>
+                                                <td>{getProductTypeByValue(category.toUpperCase(), boardDetail.productType) || "-"}</td>
                                             </tr>
                                             <tr>
                                                 <td>거래 형태</td>
-                                                <td>{boardDetail.subCategory?boardDetail.subCategory:"-"}</td>
+                                                <td>{getKorSubCategories(boardDetail.subCategory) || "-"}</td>
                                             </tr>
                                             <tr>
                                                 <td>매물 상태</td>
-                                                <td>{boardDetail.productStatus?boardDetail.productStatus:"-"}</td>
+                                                <td>{getProductStatusByValue(category.toUpperCase(), boardDetail.productStatus) || "-"}</td>
                                             </tr>
                                             <tr>
                                                 <td>실내 면적</td>
@@ -132,7 +155,7 @@ function RealEstatePostDetail({commentsCount, category, pageId}) {
                                             </tr>
                                             <tr>
                                                 <td>주</td>
-                                                <td>{boardDetail.state?boardDetail.state:"-"}</td>
+                                                <td>{getLocationByValue(category.toUpperCase(), boardDetail.state) || "-"}</td>
                                             </tr>
                                             <tr>
                                                 <td>가격(AED)</td>

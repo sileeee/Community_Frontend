@@ -16,8 +16,7 @@ function RealEstateList({category}) {
   const navigate = useNavigate();
   const location = useLocation();
   const keyword = location.state?.keyword;
-  const { userRole } = useAuth();
-  const { Meta } = Card;
+  const { Meta } = Card;  
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   
   const [noticeList, setNoticeList] = useState([]);
@@ -81,15 +80,16 @@ const getLocationByValue = (category, value) => {
 };
 
 const getProductStatusByValue = (category, value) => {
-    const locations = getProductStatus(category);
-    const location = locations.find(loc => loc.value === value);
-    return location ? location.label : null; // 해당 value가 없으면 null 반환
+    const productStatuses = getProductStatus(category);
+    console.log(category);
+    const productStatus = productStatuses.find(loc => loc.value === value);
+    return productStatus ? productStatus.label : null; // 해당 value가 없으면 null 반환
 };
 
 const getProductTypeByValue = (category, value) => {
-    const locations = getProductType(category);
-    const location = locations.find(loc => loc.value === value);
-    return location ? location.label : null; // 해당 value가 없으면 null 반환
+    const productTypes = getProductType(category);
+    const productType = productTypes.find(loc => loc.value === value);
+    return productType ? productType.label : null; // 해당 value가 없으면 null 반환
 };
 
 
@@ -219,12 +219,12 @@ const getProductTypeByValue = (category, value) => {
                     }
                     description={
                         <div>
-                          <div><b>{getProductTypeByValue(type.toUpperCase(), notice.productType) || "-"}</b></div>
+                          <div><b>{getProductTypeByValue(category.toUpperCase(), notice.productType) || "-"}</b></div>
                           <div><b>거래 형태 : </b>{getKorSubCategories(notice.subCategory.toUpperCase()) || "-"}</div>
-                          <div><b>매물 상태 : </b>{getProductStatusByValue(type.toUpperCase(), notice.productStatus) || "-"}</div>
+                          <div><b>매물 상태 : </b>{getProductStatusByValue(category.toUpperCase(), notice.productStatus) || "-"}</div>
                           <div><b>실내 면적(sqf) : </b>{notice.innerArea || "-"}</div>
                           <div><b>전체 면적(sqf) : </b>{notice.totalArea || "-"}</div>
-                          <div><b>위치 : </b>{getLocationByValue(type.toUpperCase(), notice.state) || "-"}</div>
+                          <div><b>위치 : </b>{getLocationByValue(category.toUpperCase(), notice.state) || "-"}</div>
                         </div>
                       } 
                   />
