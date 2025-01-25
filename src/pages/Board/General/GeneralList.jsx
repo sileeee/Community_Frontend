@@ -19,8 +19,6 @@ function GeneralList({category, selectedSubCategory}) {
     
     const [noticeList, setNoticeList] = useState([]);
     const [subCategory, setSubCategory] = useState("TOTAL");
-    const [banners, setBanners] = useState([]);
-    const [loading, setLoading] = useState(false);
     const [type, setType] = useState();
   
     const localStorageKey = `pinnedItems_${category}`;
@@ -159,23 +157,6 @@ function GeneralList({category, selectedSubCategory}) {
         setSubCategory("TOTAL");
     }, [location.key]);
 
-    useEffect(() => {
-        setBanners([]);
-        setLoading(true);
-        const fetchPost = async () => {
-        axios
-        .get(`${API_BASE_URL}/ads/banners?category=${String(category || "").toUpperCase()}`)
-        .then((res) => {
-            const data = res.data.data;
-            setBanners(data);
-        })
-        .catch(console.error)
-        .finally(() => setLoading(false));
-        }
-        if(type){
-            fetchPost();
-        }
-    }, [category, API_BASE_URL]);
 
     useEffect(() => {
         const fetchPosts = async () => {

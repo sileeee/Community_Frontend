@@ -10,7 +10,7 @@ import { getLocation } from "../../../components/Board/getLocation";
 import { getKorSubCategories } from "../../../components/Board/getKorSubCategories";
 
 
-function RealEstateList({category}) {
+function RealEstateList({category, selectedSubCategory}) {
   
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,40 +20,12 @@ function RealEstateList({category}) {
   
   const [noticeList, setNoticeList] = useState([]);
   const [subCategory, setSubCategory] = useState("TOTAL");
-  const [banners, setBanners] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [type, setType] = useState();
-  
-  const localStorageKey = `pinnedItems_${category}`;
-  const [pinnedItems, setPinnedItems] = useState(() => {
-    // 컴포넌트가 처음 렌더링될 때 `localStorage`에서 핀 데이터를 가져옴
-    const savedPinnedItems = localStorage.getItem("pinnedItems");
-    return savedPinnedItems ? JSON.parse(savedPinnedItems) : [];
-  });
-  
-  const getFilteredPosts = (selected) => {
-    setSubCategory(selected);
-  };
-
-  const togglePin = (record) => {
-    let updatedPinnedItems;
-
-    if (pinnedItems.some((pinned) => pinned.id === record.id)) {
-      // 이미 핀된 게시글을 제거
-      updatedPinnedItems = pinnedItems.filter((pinned) => pinned.id !== record.id);
-    } else {
-      // 새 게시글을 핀에 추가
-      updatedPinnedItems = [...pinnedItems, record];
-    }
-    setPinnedItems(updatedPinnedItems);
-    localStorage.setItem(localStorageKey, JSON.stringify(updatedPinnedItems)); // 카테고리별 고정게시글 저장
-  };
 
   const truncateString = (str, maxLength) => {
     if (!str) return ''; // 문자열이 없을 때
     return str.length > maxLength ? str.slice(0, maxLength) + '..' : str;
   };
-
 
   const movePage = (item) => {
     let id = item.id + "";
@@ -64,116 +36,94 @@ function RealEstateList({category}) {
     else if (keyword) {
       navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next } });
     }
-
-  };
-
-  const convertToStringDate = (param) => {
-    let result = param.substr(0,10);
-    return result;
-  };
-
-const getLocationByValue = (category, value) => {
-    const locations = getLocation(category);
-    const location = locations.find(loc => loc.value === value);
-    return location ? location.label : null; // 해당 value가 없으면 null 반환
-};
-
-const getProductStatusByValue = (category, value) => {
-    const productStatuses = getProductStatus(category);
-    console.log(category);
-    const productStatus = productStatuses.find(loc => loc.value === value);
-    return productStatus ? productStatus.label : null; // 해당 value가 없으면 null 반환
-};
-
-const getProductTypeByValue = (category, value) => {
-    const productTypes = getProductType(category);
-    const productType = productTypes.find(loc => loc.value === value);
-    return productType ? productType.label : null; // 해당 value가 없으면 null 반환
-};
-
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    if (category === "real_estate") {
-        setType("real-estate");
-    } else {
-        setType("posts");
-    }
-    
-    const savedPinnedItems = localStorage.getItem(localStorageKey);
-    setPinnedItems(savedPinnedItems ? JSON.parse(savedPinnedItems) : []);
-  }, [category]);
-
-  useEffect(() => {
-    // 페이지가 로드될 때마다 subCategory를 초기화
-    setSubCategory("TOTAL");
-  }, [location.key]);
-
-  useEffect(() => {
-
-    if (category === "real_estate") {
-        setType("real-estate");
-    } else {
-        setType("posts");
-    }
-    setBanners([]);
-    setLoading(true);
-    const fetchPost = async () => {
-    axios
-      .get(`${API_BASE_URL}/ads/banners?category=${String(category || "").toUpperCase()}`)
-      .then((res) => {
-        const data = res.data.data;
-        setBanners(data);
-      })
-      .catch(console.error)
-      .finally(() => setLoading(false));
-    }
-    if(type){
-        fetchPost();
-    }
-  }, [category, API_BASE_URL]);
-
-  useEffect(() => {
-
-    if (category === "real_estate") {
-        setType("real-estate");
-    } else {
-        setType("posts");
-    }
-    const fetchPosts = async () => {
-      try {
-        const url = keyword
-          ? `${API_BASE_URL}/${type}/search?keyword=${keyword}`
-          : `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
-        const res = await axios.get(url);
-
-        if (res.status === 200) {
-          let totalElements = res.data.data.length;
-          let tmp = res.data.data.map((item, index) => ({
-            ...item,
-            key: totalElements - index,
-            createdAt: convertToStringDate(item.createdAt),
-          }));
-          setNoticeList(tmp);
-        }
-      } catch (error) {
-        console.error(error);
-      }
     };
-    if(type){
-      fetchPosts();
-    }
-  }, [category, type, keyword]);
 
-  const mergedData = [
-    ...pinnedItems,
-    ...noticeList.filter(
-      (item) => !pinnedItems.some((pinned) => pinned.id === item.id)
-    ),
-  ];
+    const convertToStringDate = (param) => {
+        let result = param.substr(0,10);
+        return result;
+    };
 
-  return (
+    const getLocationByValue = (category, value) => {
+        const locations = getLocation(category);
+        const location = locations.find(loc => loc.value === value);
+        return location ? location.label : null; // 해당 value가 없으면 null 반환
+    };
+
+    const getProductStatusByValue = (category, value) => {
+        const productStatuses = getProductStatus(category);
+        const productStatus = productStatuses.find(loc => loc.value === value);
+        return productStatus ? productStatus.label : null; // 해당 value가 없으면 null 반환
+    };
+
+    const getProductTypeByValue = (category, value) => {
+        const productTypes = getProductType(category);
+        const productType = productTypes.find(loc => loc.value === value);
+        return productType ? productType.label : null; // 해당 value가 없으면 null 반환
+    };
+
+    useEffect(() => {
+        if (selectedSubCategory) {
+        setSubCategory(selectedSubCategory);
+        }
+    }, [selectedSubCategory]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+        if (category === "real_estate") {
+            setType("real-estate");
+        } else {
+            setType("posts");
+        }
+    }, [category]);
+
+    useEffect(() => {
+        // 페이지가 로드될 때마다 subCategory를 초기화
+        setSubCategory("TOTAL");
+    }, [location.key]);
+
+    useEffect(() => {
+
+        if (category === "real_estate") {
+            setType("real-estate");
+        } else {
+            setType("posts");
+        }
+    }, [category, API_BASE_URL]);
+
+    useEffect(() => {
+
+        if (category === "real_estate") {
+            setType("real-estate");
+        } else {
+            setType("posts");
+        }
+        const fetchPosts = async () => {
+        try {
+            const url = keyword
+            ? `${API_BASE_URL}/${type}/search?keyword=${keyword}`
+            : `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
+            const res = await axios.get(url);
+
+            if (res.status === 200) {
+            let totalElements = res.data.data.length;
+            let tmp = res.data.data.map((item, index) => ({
+                ...item,
+                key: totalElements - index,
+                createdAt: convertToStringDate(item.createdAt),
+            }));
+            setNoticeList(tmp);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+        };
+        if(type){
+        fetchPosts();
+        }
+    }, [category, type, keyword, subCategory]);
+
+    return (
     <div style={{
         display: 'flex',
         flexWrap: 'wrap', // 줄바꿈 허용

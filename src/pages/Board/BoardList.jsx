@@ -15,8 +15,7 @@ function BoardList({category}) {  // lower case
   
   const location = useLocation();
   const keyword = location.state?.keyword;
-  const API_BASE_URL = "http://localhost:8080"
-  // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   
   const [noticeList, setNoticeList] = useState([]);
   const [subCategory, setSubCategory] = useState("TOTAL");
@@ -138,7 +137,7 @@ function BoardList({category}) {  // lower case
           
           <HotPosts category={category}/>
           {category.trim() === "real_estate" ? (
-            <RealEstateList category={category}/>
+            <RealEstateList category={category} selectedSubCategory={subCategory}/>
           ) : (
             <GeneralList category={category} selectedSubCategory={subCategory} />
           )}
