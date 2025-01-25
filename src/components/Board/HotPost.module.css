@@ -205,7 +205,99 @@
     font-size: 16px;
     color: #999;
   }
+
+  .noPicContainer {
+    padding: 0px 0px 20px 0px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+    color: #ffffff;
+  }
+
+  .noPicTable {
+    width: 100%; /* 테이블 전체 너비 */
+    border-collapse: separate;
+    table-layout: fixed; /* 고정된 테이블 레이아웃 */
+    border-spacing: 0 5px;
+  }
+
+  .noPicHeader2 {
+    text-align: center;
+    font-weight: bold;
+    color: #00732f;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+  }
   
+  .header3 {
+    text-align: center;
+    font-weight: bold;
+    color: #00732f;
+    padding: 10px;
+    padding-bottom: 10px;
+  }
+  
+
+  .noPicRow {
+    display: table-row;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    height: 25px; /* 행 높이를 고정 */
+  }
+  
+  .noPicRow td {
+    vertical-align: middle; /* 수직 가운데 정렬 */
+  }
+
+  .noPicSubCategory {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 텍스트가 넘칠 경우 생략 표시 */
+    justify-items: left;
+  }
+  
+  .noPicBadge {
+    background-color: #88ffc3;
+    padding: 0.4vw 0.8vw;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    white-space: normal; /* 줄바꿈 허용 */
+    word-break: break-word; /* 긴 단어도 줄바꿈 */
+    flex-wrap: wrap; /* 텍스트 줄바꿈 활성화 */
+    max-width: 100%; /* 부모 요소 크기를 넘지 않도록 제한 */
+    font-size: 14px; /* 기본 폰트 크기 */
+  }
+  
+  .noPicTitle {
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left; /* 왼쪽 정렬 */
+    padding: 0.1vw;
+    text-decoration: none;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+  }
+  
+  .noPicTitle:hover {
+    color: green; /* Green text color on hover */
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  .noPicNoData {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #999;
+  }
+
   
   /* Responsive adjustments */
   @media (max-width: 768px) {

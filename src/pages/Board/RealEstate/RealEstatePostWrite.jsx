@@ -77,9 +77,9 @@ function RealEstatePostWrite({category, id}) {
     }
 
     const extractFirstImageUrl = (htmlString) => {
-        const imgTagRegex = /<img[^>]+src="([^">]+)"[^>]*>/;
-        const match = htmlString.match(imgTagRegex);
-        return match ? match[0] : null;
+        const srcRegex = /<img[^>]*src=['"]?([^'">]+)['"]?/;
+        const match = htmlString.match(srcRegex);
+        return match ? match[1] : null;
       };
 
     const onFinishFailed = (errorInfo) => {

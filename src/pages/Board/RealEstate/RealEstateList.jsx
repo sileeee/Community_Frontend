@@ -186,7 +186,7 @@ const getProductTypeByValue = (category, value) => {
                 key={index}
                 hoverable
                 className={styles.customCard}
-                bodyStyle={{padding: "1wv 2vw 3vw 2vw",}}
+                bodyStyle={{paddingTop: "2px", paddingLeft: "2vw", paddingRight: "2vw"}}
                 cover={
                     <img 
                       alt={notice.title || "example"} 

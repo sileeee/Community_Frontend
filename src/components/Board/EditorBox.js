@@ -119,9 +119,6 @@ export default function EditorBox({ value, onChange, initialValue }) {
           
                 // 업로드 성공 시 업로드된 URL 가져오기
                 const uploadedUrl = response.data.data;
-                console.log("--------------");
-                console.log(response);
-                console.log(uploadedUrl);
 
                 // Blob URL을 가진 이미지를 탐색 및 업데이트
                   const editor = window.tinymce.activeEditor;
