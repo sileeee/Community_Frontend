@@ -46,13 +46,10 @@ function GeneralList({category, selectedSubCategory}) {
 
     const movePage = (item) => {
         let id = item.id + "";
+        let itemCategory = item.category ? item.category : "real_estate";
+        let itemSubCategory = item.subCategory;
 
-        if (category !== "search") {
-        navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next, subCategory: subCategory } });
-        }
-        else if (keyword) {
-        navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next } });
-        }
+        navigate(`/board/${itemCategory}/${id}`, { state: { subCategory: itemSubCategory } });
     };
 
   const convertToStringDate = (param) => {
@@ -159,30 +156,49 @@ function GeneralList({category, selectedSubCategory}) {
 
 
     useEffect(() => {
-        const fetchPosts = async () => {
+      const fetchPosts = async () => {
         try {
-            const url = keyword
-            ? `${API_BASE_URL}/${type}/search?keyword=${keyword}`
-            : `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
+          let tmp = [];
+
+          if (keyword) {
+            const urls = [
+              `${API_BASE_URL}/posts/search?keyword=${keyword}`,
+              `${API_BASE_URL}/real-estate/search?keyword=${keyword}`,
+            ];
+            const responses = await Promise.all(urls.map((url) => axios.get(url)));
+            
+            responses.forEach((res) => {
+              if (res.status === 200 && Array.isArray(res.data.data)) {
+                const data = res.data.data.map((item, index) => ({
+                  ...item,
+                  key: tmp.length + index,
+                  createdAt: convertToStringDate(item.createdAt),
+                }));
+                tmp = [...tmp, ...data];
+              }
+            });
+          } else {
+            const url = `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
             const res = await axios.get(url);
 
             if (res.status === 200) {
-            let totalElements = res.data.data.length;
-            let tmp = res.data.data.map((item, index) => ({
-                ...item,
-                key: totalElements - index,
-                createdAt: convertToStringDate(item.createdAt),
-            }));
-            setNoticeList(tmp);
+                tmp = res.data.data.map((item, index) => ({
+                    ...item,
+                    key: index,
+                    createdAt: convertToStringDate(item.createdAt),
+                }));
             }
+          }
+          setNoticeList(tmp);
         } catch (error) {
-            console.error(error);
+          console.error("Error fetching posts:", error);
         }
-        };
-        if(type){
-            fetchPosts();
-        }
-    }, [type, subCategory, API_BASE_URL, category]);
+      };
+      if (type) {
+          fetchPosts();
+      }
+  }, [type, subCategory, keyword, API_BASE_URL, category]);
+  
 
     useEffect(() => {
         if (selectedSubCategory) {
@@ -196,28 +212,53 @@ function GeneralList({category, selectedSubCategory}) {
 
     return (
         <div>
-            {noticeList && (
-                <Table
-                    columns={columns}
-                    dataSource={mergedData}
-                    rowClassName={(record) =>
-                        pinnedItems.some((pinned) => pinned.id === record.id)
-                        ? styles.pinnedRow
-                        : styles.tableRow
-                    }
-                    size="middle"
-                    pagination={{
-                    position: ["none", "bottomRight"],
-                    }}
-                    onRow={(record, rowIndex) => {
-                    return {
-                        onClick: (event) => {
-                        movePage(record);
-                        },
-                    };
-                    }}
-                />
-            )}
+          {keyword? (
+            noticeList && (
+              <Table
+                  columns={columns}
+                  dataSource={noticeList}
+                  rowClassName={(record) =>
+                      pinnedItems.some((pinned) => pinned.id === record.id)
+                      ? styles.pinnedRow
+                      : styles.tableRow
+                  }
+                  size="middle"
+                  pagination={{
+                  position: ["none", "bottomRight"],
+                  }}
+                  onRow={(record, rowIndex) => {
+                  return {
+                      onClick: (event) => {
+                      movePage(record);
+                      },
+                  };
+                  }}
+              />
+          )
+          ):(
+            noticeList && (
+              <Table
+                  columns={columns}
+                  dataSource={mergedData}
+                  rowClassName={(record) =>
+                      pinnedItems.some((pinned) => pinned.id === record.id)
+                      ? styles.pinnedRow
+                      : styles.tableRow
+                  }
+                  size="middle"
+                  pagination={{
+                  position: ["none", "bottomRight"],
+                  }}
+                  onRow={(record, rowIndex) => {
+                  return {
+                      onClick: (event) => {
+                      movePage(record);
+                      },
+                  };
+                  }}
+              />
+            )
+          )}
         </div>
     );
 }

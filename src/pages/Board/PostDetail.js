@@ -18,14 +18,14 @@ import SideContentList from "./SideContentList";
 
 
 
-
 function PostDetail() {
   
     const navigate = useNavigate();
     const { category, id } = useParams();
     const location = useLocation();
     const subCategory = location.state?.subCategory;
-    const { isLoggedIn, name, userRole } = useAuth();
+    const keyword = location.state?.keyword;
+    const { isLoggedIn } = useAuth();
     
     const [pageId, setPageId] = useState(id);
     const [like, setLike] = useState(0);
@@ -115,7 +115,7 @@ function PostDetail() {
                     {category.trim() === "real_estate" ? (
                         <RealEstatePostDetail commentsCount={commentsCount} category={category} pageId={pageId}/>
                         ) : (
-                        <GeneralPostDetail commentsCount={commentsCount} category={category} pageId={pageId}/>
+                        <GeneralPostDetail commentsCount={commentsCount} category={category} pageId={pageId} keyword={keyword}/>
                         )}
 
                         <div className={styles.likeContainer}>

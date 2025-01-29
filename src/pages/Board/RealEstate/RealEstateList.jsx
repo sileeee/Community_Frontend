@@ -12,30 +12,23 @@ import { getKorSubCategories } from "../../../components/Board/getKorSubCategori
 
 function RealEstateList({category, selectedSubCategory}) {
   
-  const navigate = useNavigate();
-  const location = useLocation();
-  const keyword = location.state?.keyword;
-  const { Meta } = Card;  
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-  
-  const [noticeList, setNoticeList] = useState([]);
-  const [subCategory, setSubCategory] = useState("TOTAL");
-  const [type, setType] = useState();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { Meta } = Card;  
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    
+    const [noticeList, setNoticeList] = useState([]);
+    const [subCategory, setSubCategory] = useState("TOTAL");
+    const [type, setType] = useState();
 
-  const truncateString = (str, maxLength) => {
-    if (!str) return ''; // 문자열이 없을 때
-    return str.length > maxLength ? str.slice(0, maxLength) + '..' : str;
-  };
+    const truncateString = (str, maxLength) => {
+        if (!str) return ''; // 문자열이 없을 때
+        return str.length > maxLength ? str.slice(0, maxLength) + '..' : str;
+    };
 
-  const movePage = (item) => {
-    let id = item.id + "";
-
-    if (category !== "search") {
-      navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next, subCategory: subCategory } });
-    }
-    else if (keyword) {
-      navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next } });
-    }
+    const movePage = (item) => {
+        let id = item.id + "";
+        navigate(`/board/${category}/${id}`, { state: {prev: item.prev, next: item.next, subCategory: subCategory } });
     };
 
     const convertToStringDate = (param) => {
@@ -100,9 +93,7 @@ function RealEstateList({category, selectedSubCategory}) {
         }
         const fetchPosts = async () => {
         try {
-            const url = keyword
-            ? `${API_BASE_URL}/${type}/search?keyword=${keyword}`
-            : `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
+            const url = `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
             const res = await axios.get(url);
 
             if (res.status === 200) {
@@ -121,7 +112,7 @@ function RealEstateList({category, selectedSubCategory}) {
         if(type){
         fetchPosts();
         }
-    }, [category, type, keyword, subCategory]);
+    }, [category, type, subCategory]);
 
     return (
     <div style={{

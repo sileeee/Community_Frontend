@@ -17,7 +17,6 @@ function BoardList({category}) {  // lower case
   const keyword = location.state?.keyword;
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   
-  const [noticeList, setNoticeList] = useState([]);
   const [subCategory, setSubCategory] = useState("TOTAL");
   const [banners, setBanners] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,11 +31,6 @@ function BoardList({category}) {  // lower case
   
   const getFilteredPosts = (selected) => {
     setSubCategory(selected);
-  };
-
-  const convertToStringDate = (param) => {
-    let result = param.substr(0,10);
-    return result;
   };
 
   useEffect(() => {
@@ -76,31 +70,6 @@ function BoardList({category}) {  // lower case
     }
   }, [category, API_BASE_URL]);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const url = keyword
-          ? `${API_BASE_URL}/${type}/search?keyword=${keyword}`
-          : `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
-        const res = await axios.get(url);
-
-        if (res.status === 200) {
-          let totalElements = res.data.data.length;
-          let tmp = res.data.data.map((item, index) => ({
-            ...item,
-            key: totalElements - index,
-            createdAt: convertToStringDate(item.createdAt),
-          }));
-          setNoticeList(tmp);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    if (type) {
-      fetchPosts();
-    }
-  }, [category, type, keyword]);
 
   return (
     <div className={styles.container}>
@@ -132,11 +101,14 @@ function BoardList({category}) {  // lower case
                   onSubCategoryChange={(selectedCategory) => getFilteredPosts(selectedCategory)}
                 />
             )}
-            <WriteButton />
+            {!keyword && (
+              <WriteButton />
+            )}
           </div>
-          
-          <HotPosts category={category}/>
-          {category.trim() === "real_estate" ? (
+          {!keyword && (
+            <HotPosts category={category}/>
+          )}
+          {(category.trim() === "real_estate" && !keyword)? (
             <RealEstateList category={category} selectedSubCategory={subCategory}/>
           ) : (
             <GeneralList category={category} selectedSubCategory={subCategory} />
