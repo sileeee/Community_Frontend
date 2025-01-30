@@ -3,19 +3,22 @@ import styles from "./HotPost.module.css";
 import axios from "axios";
 import HtmlRenderer from "./HtmlRenderer";
 import { useNavigate } from "react-router-dom";
-import { FireTwoTone } from '@ant-design/icons';
+import { FireTwoTone, MessageOutlined } from '@ant-design/icons';
 import { getKorSubCategories } from "./getKorSubCategories";
 
 
 function HotPosts({category}) {
     const navigate = useNavigate();
     const [posts, setPosts] = useState();
+    const [weeklyHotposts, setWeeklyHotposts] = useState();
+    const [monthlyHotPosts, setMonthlyHotPosts] = useState();
     const [type, setType] = useState("posts");
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
         if (category === "real_estate") {
             setType("real-estate");
+            
         } else {
             setType("posts");
         }
@@ -24,13 +27,15 @@ function HotPosts({category}) {
     useEffect(() => {
         if (type) {
             getHotPosts();
+            getMonthlyHotPosts();
+            getWeeklyHotPosts();
         }
     }, [type, category]);
 
     const getHotPosts = async () => {
         try {
-          const res = await axios.get(
-            `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&criteria=view`
+            const res = await axios.get(
+                `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&criteria=view`
           );
           if (res.status === 200) {
             setPosts(res.data.data.slice(0, 4));
@@ -39,6 +44,58 @@ function HotPosts({category}) {
           console.error("Error fetching posts:", error);
         }
     };
+
+    const getMonthlyHotPosts = async() => {
+        try {
+
+            const now = new Date();
+            const pastDate = new Date();
+            pastDate.setDate(now.getDate() - 30);
+
+            const formatDate = (date) => date.toISOString().split(".")[0]; // ISO 8601 포맷 (밀리초 제거)
+
+            const res = await axios.get(
+                `${API_BASE_URL}/likes?category=${String(category || "").toUpperCase()}&startDate=${formatDate(pastDate)}&endDate=${formatDate(now)}`
+            );
+            if (res.status === 200) {
+                const posts = res.data.data.slice(0, 4);
+    
+                const postDetails = await Promise.all(
+                    posts.map(async (post) => {
+                        const response = await axios.get(`${API_BASE_URL}/posts/${post.postId}`);
+                        return response.data.data;
+                    })
+                );
+    
+                setMonthlyHotPosts(postDetails);
+            }
+        } catch (error) {
+          console.error("Error fetching posts:", error);
+        }
+    }
+
+    const getWeeklyHotPosts = async() => {
+        try {
+            const res = await axios.get(
+                `${API_BASE_URL}/likes?category=${String(category || "").toUpperCase()}`
+          );
+          if (res.status === 200) {
+            const posts = res.data.data.slice(0, 4);
+    
+                const postDetails = await Promise.all(
+                    posts.map(async (post) => {
+                        const response = await axios.get(`${API_BASE_URL}/posts/${post.postId}`);
+                        return response.data.data;
+                    })
+                );
+    
+                setWeeklyHotposts(postDetails);
+          }
+        } catch (error) {
+          console.error("Error fetching posts:", error);
+        }
+    }
+
 
     const movePage = (id, category) => {
         navigate(id === 0 ? `/board/${category}` : `/board/${category}/${id}`);
@@ -56,37 +113,70 @@ function HotPosts({category}) {
         if (noPicCategories.includes(category)) {
             return (
                 <div className={styles.noPicContainer}>
+                    <div className={styles.noPicSquare}>
+                    <table className={styles.noPicTable}>
+                    <colgroup>
+                        <col style={{ width: "15%" }} />
+                        <col style={{ width: "85%" }} />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                        <th className={styles.noPicHeader2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp; 주간 인기 글&nbsp;<FireTwoTone twoToneColor="red"/></th>
+                        </tr>
+                    </thead>
+                    <tbody className={styles.tbody}>
+                        {weeklyHotposts && weeklyHotposts.length > 0 ? (
+                        weeklyHotposts.map((post, index) => (
+                            <tr key={index} className={styles.noPicRow} onClick={() => movePage(post.id)}>
+                            <td className={styles.noPicSubCategory}>
+                            <button className={styles.noPicBadge}>{getKorSubCategories(post.subCategory)}</button>
+                            </td>
+                            <td className={styles.noPicTitle}>
+                                {post.title}
+                            </td>
+                            </tr>
+                        ))
+                        ) : (
+                        <tr>
+                            <td colSpan="2" className={styles.noPicNoData}>
+                            게시글이 없습니다.
+                            </td>
+                        </tr>
+                        )}
+                    </tbody>
+                </table>
                 <table className={styles.noPicTable}>
-              <colgroup>
-                <col style={{ width: "15%" }} />
-                <col style={{ width: "85%" }} />
-              </colgroup>
-              <thead>
-                <tr>
-                  <th className={styles.noPicHeader2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp;인기 글&nbsp;<FireTwoTone twoToneColor="red"/></th>
-                </tr>
-              </thead>
-              <tbody className={styles.tbody}>
-                {posts && posts.length > 0 ? (
-                  posts.map((post, index) => (
-                    <tr key={index} className={styles.noPicRow} onClick={() => movePage(post.id)}>
-                      <td className={styles.noPicSubCategory}>
-                      <button className={styles.noPicBadge}>{getKorSubCategories(post.subCategory)}</button>
-                      </td>
-                      <td className={styles.noPicTitle}>
-                        {post.title}
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="2" className={styles.noPicNoData}>
-                      게시글이 없습니다.
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+                    <colgroup>
+                        <col style={{ width: "15%" }} />
+                        <col style={{ width: "85%" }} />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                        <th className={styles.noPicHeader2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp; 월간 인기 글&nbsp;<FireTwoTone twoToneColor="red"/></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {monthlyHotPosts && monthlyHotPosts.length > 0 ? (
+                        monthlyHotPosts.map((post, index) => (
+                            <tr key={index} className={styles.noPicRow} onClick={() => movePage(post.id)}>
+                            <td className={styles.noPicSubCategory}>
+                            <button className={styles.noPicBadge}>{getKorSubCategories(post.subCategory)}</button>
+                            </td>
+                            <td className={styles.noPicTitle}>
+                                {post.title}
+                            </td>
+                            </tr>
+                        ))
+                        ) : (
+                        <tr>
+                            <td colSpan="2" className={styles.noPicNoData}>
+                            게시글이 없습니다.
+                            </td>
+                        </tr>
+                        )}
+                    </tbody>
+                </table>
+                </div>
             </div>
             );
         }
