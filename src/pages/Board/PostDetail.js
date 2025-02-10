@@ -126,7 +126,7 @@ function PostDetail() {
                             className={styles.likeBtn}
                             icon={<UnorderedListOutlined />}
                             style={{ border: "1px solid gray", color: "gray", width: "150px"}}
-                            onClick={() => {movePage(`/board/${category}`, 0)}}>
+                            onClick={() => {movePage(`/board/${category.toLowerCase()}`, 0)}}>
                             목록
                             </Button>
                             <Button type="primary" 
