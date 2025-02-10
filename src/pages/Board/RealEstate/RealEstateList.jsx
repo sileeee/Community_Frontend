@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styles from "../Board.module.css";
-import { Card, Select } from "antd";
+import { Card, Select, Pagination } from "antd";
 import { useLocation } from "react-router";
 import { getProductType } from "../../../components/Board/getProductType";
 import { getProductStatus } from "../../../components/Board/getProductStatus";
@@ -22,6 +22,10 @@ function RealEstateList({category, selectedSubCategory}) {
     const [subCategory, setSubCategory] = useState("TOTAL");
     const [type, setType] = useState();
     const [sortOrder, setSortOrder] = useState("recent");
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(12);
+
 
     const truncateString = (str, maxLength) => {
         if (!str) return ''; // 문자열이 없을 때
@@ -126,6 +130,9 @@ function RealEstateList({category, selectedSubCategory}) {
             return [...posts].sort((a, b) => b.createdAt - a.createdAt);
         }
     };
+
+    const sortedData = sortPosts(noticeList, sortOrder);
+    const paginatedData = sortedData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
     
     return (
     <div>
@@ -143,7 +150,7 @@ function RealEstateList({category, selectedSubCategory}) {
         }}
         >
         {noticeList && (
-            sortPosts(noticeList, sortOrder).map((notice, index) => (
+            paginatedData.map((notice, index) => (
                 <Card
                     key={index}
                     hoverable
@@ -181,6 +188,17 @@ function RealEstateList({category, selectedSubCategory}) {
                 ))
             )}
         </div>
+        <Pagination
+        style={{ textAlign: "center", justifyContent: "center"}}
+        current={currentPage}
+        pageSize={pageSize}
+        total={sortedData.length}
+        showSizeChanger
+        onChange={(page, size) => {
+        setCurrentPage(page);
+        setPageSize(size);
+        }}
+        />
     </div>
   );
 }
