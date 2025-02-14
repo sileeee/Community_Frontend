@@ -22,8 +22,7 @@ function RealEstatePostDetail({commentsCount, category, pageId}) {
     
     const [like, setLike] = useState(0);
     const [boardDetail, setBoardDetail] = useState();
-    const API_BASE_URL = "http://localhost:8080"
-    // const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const getLocationByValue = (category, value) => {
         const locations = getLocation(category);
@@ -72,10 +71,10 @@ function RealEstatePostDetail({commentsCount, category, pageId}) {
     
     function checkUser(boardDetail){
         if(userRole=='ADMIN'){
-            return <ButtonSet id={pageId} page={"posts"} category={category}/>
+            return <ButtonSet id={pageId} page={"real_estate_posts"} category={category}/>
         }
         if(boardDetail.author===name){
-            return <ButtonSet id={pageId} page={"posts"} category={category}/>
+            return <ButtonSet id={pageId} page={"real_estate_posts"} category={category}/>
         }
     }
 

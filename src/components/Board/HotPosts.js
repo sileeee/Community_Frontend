@@ -183,7 +183,7 @@ function HotPosts({category}) {
         else{
             return (
             <div>
-            <div className={styles.header3} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp;인기 글&nbsp;<FireTwoTone twoToneColor="red"/></div>
+            <div className={styles.header3} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp;화제 글&nbsp;<FireTwoTone twoToneColor="red"/></div>
             <div className={styles.square}>
                 {posts && posts.length > 0 ? (
                     posts

@@ -119,7 +119,7 @@ const CategorySection = ({ category, postList, layout }) => {
               </colgroup>
               <thead>
                 <tr>
-                  <th className={styles.header2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp;인기 글&nbsp;<FireTwoTone twoToneColor="red"/></th>
+                  <th className={styles.header2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp;화제 글&nbsp;<FireTwoTone twoToneColor="red"/></th>
                 </tr>
               </thead>
               <tbody className={styles.tbody}>

@@ -123,7 +123,7 @@ const TwoByTwoGrid = ({ category, postList, layout }) => {
             <div className={styles.gridSquare2}>
               <PostTable
                 headerIcon={<FireTwoTone twoToneColor="red" />}
-                headerText="인기 글"
+                headerText="화제 글"
                 postData={posts}
                 category={cat}
               />

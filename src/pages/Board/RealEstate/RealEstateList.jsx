@@ -189,7 +189,7 @@ function RealEstateList({category, selectedSubCategory}) {
             )}
         </div>
         <Pagination
-        style={{ textAlign: "center", justifyContent: "center"}}
+        style={{ textAlign: "right", justifyContent: "right"}}
         current={currentPage}
         pageSize={pageSize}
         total={sortedData.length}
