@@ -67,9 +67,9 @@ function ButtonSet({ id, page, category}) {
 
     return (
         <div className={styles.container}>
-            {page === "posts" && (
+            {(page === "posts" || page === "real_estate_posts") && (
                 <Button className={styles.edit_button} onClick={moveToEditPage}>
-                편집
+                    편집
                 </Button>
             )}
             <Button
