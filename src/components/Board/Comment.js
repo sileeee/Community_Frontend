@@ -23,7 +23,7 @@ function Comment({ postId, onCommentsCountChange }) {
         .then((response) => {
             if (response.status === 200) {
             setComments(response.data.data);
-            onCommentsCountChange && onCommentsCountChange(comments.length);
+            onCommentsCountChange && onCommentsCountChange(response.data.data.length);
             }
         })
         .catch((error) => console.error("Failed to fetch comments:", error));
@@ -52,7 +52,7 @@ function Comment({ postId, onCommentsCountChange }) {
                     .then((response) => {
                         if (response.status === 200) {
                             setComments(response.data.data);
-                            onCommentsCountChange && onCommentsCountChange(comments.length);
+                            onCommentsCountChange && onCommentsCountChange(response.data.data.length);
                         }
                     }).catch((error) => console.error("Failed to fetch comments:", error));
                 setNewComment("");
