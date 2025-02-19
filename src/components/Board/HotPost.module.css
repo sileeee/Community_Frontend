@@ -322,7 +322,7 @@
 @media (max-width:600px) {
 
   .square {
-    /* grid-template-columns: 1fr; */
+    grid-template-columns: 1fr;
     width: 85vw;
   }
   .newsImage {
@@ -331,10 +331,11 @@
     border-radius: 5px;
   }
   .newsTitle {
-    font-size: 6px;
+    font-size: 10px;
+    padding-bottom: 0px;
   }
   .newsBody {
-    font-size: 4px;
+    display: none;
   }
   .newsItem {
     height: 12vw;
