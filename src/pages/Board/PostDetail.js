@@ -28,7 +28,6 @@ function PostDetail() {
     const { isLoggedIn } = useAuth();
     
     const [pageId, setPageId] = useState(id);
-    const [like, setLike] = useState(0);
     const [isUserLike, setIsUserLike] = useState(false);
     const [commentsCount, setCommentsCount] = useState(0);
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
@@ -64,17 +63,6 @@ function PostDetail() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-            })
-            .then(() => {
-                // 좋아요 개수 갱신
-                axios
-                    .get(`${API_BASE_URL}/likes/count/${pageId}`)
-                    .then((res) => {
-                        if (res.status === 200) {
-                            setLike(res.data.data);
-                        }
-                    })
-                    .catch(console.error);
             })
             .catch(console.error);
     };

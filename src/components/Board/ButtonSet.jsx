@@ -23,7 +23,7 @@ function ButtonSet({ id, page, category}) {
                     })
                 .then((res) => {
                     if (res.status === 200) {
-                        window.confirm("해당 내용이 삭제되었습니다.")
+                        window.alert("해당 내용이 삭제되었습니다.")
                         window.location.reload();
                     }
                 })
@@ -31,15 +31,15 @@ function ButtonSet({ id, page, category}) {
                     console.log(error);
                 });
         }
-        if(page === "posts"){
+        if(page === "posts" || page === "real-estate"){
             axios
-                .delete(`${API_BASE_URL}/posts/delete/${id}`, {
+                .delete(`${API_BASE_URL}/${page}/delete/${id}`, {
                     withCredentials: true,
                     headers: { 'Content-Type': 'application/json' }
                     })
                 .then((res) => {
                     if (res.status === 200) {
-                        window.confirm("해당 내용이 삭제되었습니다.")
+                        window.alert("해당 내용이 삭제되었습니다.")
                         navigate(`/board/${category}`);
                     }
                 })
@@ -47,22 +47,6 @@ function ButtonSet({ id, page, category}) {
                     console.log(error);
                 });
         }
-        if(page === "real_estate_posts"){
-            axios
-                .delete(`${API_BASE_URL}/real-estate/delete/${id}`, {
-                    withCredentials: true,
-                    headers: { 'Content-Type': 'application/json' }
-                    })
-                .then((res) => {
-                    if (res.status === 200) {
-                        window.confirm("해당 내용이 삭제되었습니다.")
-                        navigate(`/board/${category}`);
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }   
     }
 
     return (

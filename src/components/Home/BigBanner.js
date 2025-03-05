@@ -35,17 +35,6 @@ function BigBanner() {
     return () => clearInterval(autoSlide);
   }, [banners.length]); // banners.length가 변경될 때마다 재설정
 
-
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
-  };
-
-  const goToPrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? banners.length - 1 : prevIndex - 1
-    );
-  };
-
   return (
     <div className={styles.bannerContainer}>
       {banners.length > 0 ? (

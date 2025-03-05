@@ -94,7 +94,7 @@ function RealEstatePostWrite({category, id}) {
           axios.get(`${API_BASE_URL}/real-estate/${id}`)
               .then((response) => {
                   const data = response.data.data;
-                  console.log("API Response Data:", data);
+                  
                   // 기존 데이터로 Form 초기화
                   form.setFieldsValue({
                       title: data.title,

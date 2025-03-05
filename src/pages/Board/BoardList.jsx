@@ -19,25 +19,13 @@ function BoardList({category}) {  // lower case
   
   const [subCategory, setSubCategory] = useState("TOTAL");
   const [banners, setBanners] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [type, setType] = useState();
   
   const localStorageKey = `pinnedItems_${category}`;
-
-  const [pinnedItems, setPinnedItems] = useState(() => {
-    const savedPinnedItems = localStorage.getItem(localStorageKey);
-    return savedPinnedItems ? JSON.parse(savedPinnedItems) : [];
-  });
   
   const getFilteredPosts = (selected) => {
     setSubCategory(selected);
   };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    const savedPinnedItems = localStorage.getItem(localStorageKey);
-    setPinnedItems(savedPinnedItems ? JSON.parse(savedPinnedItems) : []);
-  }, [category]);
 
   useEffect(() => {
     // 페이지가 로드될 때마다 subCategory를 초기화
@@ -54,7 +42,6 @@ function BoardList({category}) {  // lower case
 
   useEffect(() => {
     setBanners([]);
-    setLoading(true);
     const fetchPost = async () => {
     axios
       .get(`${API_BASE_URL}/ads/banners?category=${String(category || "").toUpperCase()}`)
@@ -62,8 +49,7 @@ function BoardList({category}) {  // lower case
         const data = res.data.data;
         setBanners(data);
       })
-      .catch(console.error)
-      .finally(() => setLoading(false));
+      .catch(console.error);
     };
     if(type){
       fetchPost();

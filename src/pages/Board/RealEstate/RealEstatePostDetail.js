@@ -71,10 +71,10 @@ function RealEstatePostDetail({commentsCount, category, pageId}) {
     
     function checkUser(boardDetail){
         if(userRole=='ADMIN'){
-            return <ButtonSet id={pageId} page={"real_estate_posts"} category={category}/>
+            return <ButtonSet id={pageId} page={"real-estate"} category={category}/>
         }
         if(boardDetail.author===name){
-            return <ButtonSet id={pageId} page={"real_estate_posts"} category={category}/>
+            return <ButtonSet id={pageId} page={"real-estate"} category={category}/>
         }
     }
 
