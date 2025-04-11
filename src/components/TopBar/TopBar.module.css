@@ -1,0 +1,307 @@
+.globalControls {
+    width: 100%;
+    height: 15vh;
+    background-color: #ffffff;
+    border: none;
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2vw;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    min-width: fit-content;
+}
+
+.rightGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* gap: 80px; */
+}
+
+.languageText {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.globalIcon {
+    font-size: 13px;
+    color: #00732f;
+}
+  
+.languageToggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+  
+.languageToggle .ant-switch-checked {
+    background-color: lightyellow !important;
+    color: black;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 17%;
+    padding-right: 2%;
+    padding-left: 1%;
+    left: 0;
+}
+
+.logo {
+    height: 3vw; /* 화면 너비에 비례하여 크기 조정 */
+    width: 3vw;
+}
+
+.logoHandubi {
+    color: #00732f;
+    font-family: "Manrope", Helvetica;
+    font-size: 2vw;
+    font-weight: 500;
+    white-space: nowrap;
+    padding-left: 1vw;
+    /* letter-spacing: -1.3px; */
+}
+
+.notLoggedIn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 12.5%;
+    padding-left: 2.5%;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    height: clamp(1rem, 5vw, 3rem);
+    width: 100%;
+    margin-right: 10px;
+}
+
+.textNickname {
+    color: #555555;
+    font-family: "Manrope", Helvetica;
+    font-size: 0.9vw;
+    font-weight: 500;
+    white-space: nowrap;
+    line-height: 1.4vw;
+}
+
+.myPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: clamp(1rem, 5vw, 3rem);
+    width: 40%;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    margin-left: 0.5vw;
+    cursor: pointer;
+    
+}
+
+.myPage:hover {
+    transform: scale(1.05);
+}
+
+.myPageIcon {
+    color: #00732f;
+    font-size: 2.3vw;
+    padding: 5px;
+}
+
+.myPageText {
+    font-size: 0.8vw;
+    color: #00732f;
+    font-weight: 500;
+}
+
+/* .dropDownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 10rem;
+    z-index: 1000;
+} */
+
+/* .dropMenu {
+    position: "absolute";
+    top:auto;
+    left: -20px;
+    background-color: "white";
+    border: "1px solid #ddd";
+    box-shadow: "0 4px 6px rgba(0, 0, 0, 0.1)";
+    border-radius: "5px";
+    width: "clamp(6rem, 15vw, 10rem)";
+    font-size: "clamp(12px, 1.3vw, 16px)";
+    padding: "6px"
+} */
+
+.menuItem {
+    padding: 10px;
+    font-size: 1rem;
+    color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.menuItem:hover {
+    background-color: #f5f5f5;
+}
+
+.containerBtn {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.signUpBtn {
+  white-space: nowrap;
+  padding-left: 1.3vw;
+  padding-right: 1.3vw;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.signUpBtn:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1200px) {
+
+    .globalControls {
+        height: 10vh;
+    }
+
+    .rightGroup {
+        gap: 60px;
+    }
+
+    .textNavbar {
+        color: rgba(0, 0, 0, 0);
+        pointer-events: none;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .globalControls {
+        height: 10vh;
+    }
+
+    .rightGroup {
+        gap: 50px;
+    }
+    
+    .logoContainer {
+        width: 37%;
+        padding-right: 2%;
+        padding-left: 3.5%;
+        margin-left: 15px;
+    }
+    .logo {
+        height: 5vw;
+        width: 5vw;
+    }
+    .logoHandubi {
+        font-size: 3.5vw;
+        font-weight: bold;
+        padding-left: 2vw;
+        letter-spacing: -1px;
+    }
+    .notLoggedIn {
+        width: 25%;
+        padding-right: 2.5%;
+    }
+
+    .textNickname {
+        font-size: 1.5vw;
+        line-height: 1.2;
+        padding-right: 2px;
+    }
+
+    .myPageIcon {
+        font-size: 3.2vw;
+    }
+    
+    .myPageText {
+        font-size: 1.3vw;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .containerBtn {
+        width: 70%; 
+    }
+    
+    .signUpBtn {
+      padding-left: 2vw;
+      padding-right: 2vw;
+    }
+
+    .menuItem {
+        padding: 10px;
+        margin : 0%;
+        font-size: 1.8vw;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .globalControls {
+        height: 6vh;
+    }
+
+    .rightGroup {
+        gap: 20px;
+    }
+    
+    .logoContainer {
+        padding-right: 0%;
+        padding-left: 7.5%;
+    }
+    
+    .notLoggedIn {
+        width: 30%;
+        padding-right: 2%;
+    }
+    .textNickname {
+        font-size: 2.5vw;
+    }
+    .myPageText {
+        font-size: 2.5vw;
+    }
+    .menuItem {
+        padding: 6px;
+        font-size: 2.5vw;
+        margin : 0%;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .logoContainer {
+        margin-left: 5px;
+    }
+    .textNickname {
+        font-size: 2vw;
+    }
+    .myPageText {
+        font-size: 2vw;
+    }
+    .menuItem {
+        padding: 6px;
+        font-size: 3vw;
+        margin : 0%;
+    }
+}

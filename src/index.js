@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './i18n';
 import App from './App';
 import { Helmet } from "react-helmet";
 import { AuthProvider } from './components/common/AuthContext';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

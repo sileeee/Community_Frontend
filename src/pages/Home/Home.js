@@ -6,9 +6,7 @@ import Foot from "../../components/Footer/Foot"
 import CategoryList from "./CategoryList";
 import SearchPost from "../../components/Home/SearchPost";
 import { useEffect } from "react";
-import GlobalControls from "../../components/GlobalControls/GlobalControls";
-
-
+import TopBar from "../../components/TopBar/TopBar";
 
 function Home(){
 
@@ -20,9 +18,11 @@ function Home(){
     <div className="handubi">
       <div className="div">
         <div className="parent-group">
-          <GlobalControls />
+          <TopBar />
           <Nav />
+          <div className="space"/>
           <BigBanner/>
+          <div className="space"/>
           <div className="space"/>
           <SearchPost />
           <Shortcut/>
