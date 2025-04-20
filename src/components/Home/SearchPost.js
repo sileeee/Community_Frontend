@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './SearchPost.module.css';
+import { useTranslation } from "react-i18next";
 
 
 
@@ -8,6 +9,8 @@ function SearchPost(){
 
   const [keyword, setKeyword] = useState('');
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const handleInputChange = (e) => {
     setKeyword(e.target.value);
@@ -36,7 +39,7 @@ function SearchPost(){
           <div className={styles.inputWrapper}>
               <input 
                   type="text" 
-                  placeholder="궁금하신 모든 것을 찾아보세요!" 
+                  placeholder={t('SEARCH_KEYWORD')}
                   className={styles.searchInput}
                   value={keyword}
                   onChange={handleInputChange}

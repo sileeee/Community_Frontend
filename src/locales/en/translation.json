@@ -3,13 +3,80 @@
     "FREE_BOARD": "Free Board",
     "SECOND_HAND": "Second Hand",
     "JOB_SEARCH": "Job Search",
-    "ASIAN_MARKET": "Asian Market",
+    "ASIAN_MARKET": "Market",
     "LIFE": "Life",
     "CHILD_CARE": "Education",
     "TRAVEL": "Travel",
     "REAL_ESTATE": "Real Estate",
     "CLUB": "Club",
     "KOREAN_COMPANY": "Korean Company",
+    "SEARCH": "search results",
+
+    "TOTAL": "Total",
+    "SOCIETY": "Society",
+    "POLITICS": "Politics",
+    "SPORTS": "Sports",
+    "ECONOMICS": "Economics",
+    "CULTURE": "Culture",
+    "ETC": "Etc",
+
+    "KOREAN": "Korean",
+    "ASIAN": "Asian",
+    "GROUP": "Group",
+
+    "HOSPITAL": "hospital",
+    "BEAUTY": "beauty",
+    "VISA": "visa",
+    "RESTAURANT": "restaurant",
+    "DELIVER": "delivery",
+    "CAR": "car",
+    "COMPANY": "company",
+    "PARENTING": "parenting",
+    "INVESTMENT": "investment",
+    "LAW": "law",
+
+    "ELECTRONIC": "electronic",
+    "FURNITURE": "furniture",
+    "HOUSEHOLD": "household",
+    "TICKET": "ticket",
+    "USED_CAR": "used car",
+    "DIRHAM": "dirham",
+
+    "INFO": "info",
+    "BUY": "buy",
+    "HANDOVER": "handover",
+    "URGENT_HANDOVER": "urgent",
+    "OFF_PLAN": "off-plan",
+    "RENT": "rent",
+
+    "FULL_TIME": "full time",
+    "PART_TIME": "part time",
+    "DAY": "day work",
+
+    "EDUCATION": "education",
+    "ACADEMY": "academy",
+
+    "EXPERIENCE": "experience",
+    "ACCOMODATION": "hotel",
+    "RENT_CAR":"rent car",
+    "EVENT":"event",
+
+    "SPORT": "sport",
+    "HOBBY": "hobby",
+    "RELIGION": "religion",
+    "STUDY" : "study",
+
+    "KOREAN_HOSPITAL": "hospital",
+    "KOREAN_BEAUTY": "beauty",
+    "KOREAN_ACCOMODATION": "hotel",
+    "KOREAN_RESTAURANT": "restaurant",
+    "KOREAN_MARKET": "market",
+    "KOREAN_HEALTH" : "health",
+    "KOREAN_LAW": "law",
+    "KOREAN_CAR": "car",
+    "KOREAN_ACADEMY": "academy",
+    "KOREAN_ESTATE": "real estate",
+    "KOREAN_TRAVEL": "travel",
 
     "LOGIN": "Login",
     "LOGOUT": "Logout",
@@ -17,5 +84,155 @@
     "HELLO": "Hello",
     "SIR": "",
     "MANAGE_ACCT": "Manage Account",
-    "SEARCH": "Explore everything you're curious about!"
+    "SEARCH_KEYWORD": "Explore everything about Dubai!",
+
+    "SITE_TOPIC": "Dubai Korean Community",
+
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "WRITE": "Write",
+
+    "HOT_POSTS" : "Hot",
+    "WEEKLY_POSTS" : "Weekly Picks",
+    "MONTHLY_POSTS" : "Monthly Picks",
+    "RECENT_POSTS" : "Recent Posts",
+    "NO_POSTS": "No posts yet.",
+
+    "TOPIC": "Topic",
+    "AUTHOR": "Author",
+    "CREATED_AT": "Date",
+    "LIKE": "Likes",
+    "VIEW": "Views",
+    "SUBCATEGORY": "Subcategory",
+    "STATUS": "Status",
+    "PUBLIC": "public",
+    "PRIVATE": "private",
+    "CONTENT": "Content",
+    "EDITOR_LANGUAGE" : "en",
+
+    "VIEW_SORT": "views",
+    "LIKE_SORT": "likes",
+    "NEWEST_SORT": "newest",
+
+    "BUILDING_TYPE" : "type",
+    "CURRENT_STATUS" : "status",
+    "INNERAREA" : "inner(sqf)",
+    "TOTALAREA" : "total(sqf)",
+    "LOCATION" : "location",
+    "PRICE" : "price(AED)",
+
+    "APARTMENT": "apartment",
+    "VILLA": "villa",
+    "CONDO": "condo",
+    "TOWNHOUSE": "townhouse",
+    "PENTHOUSE": "penthouse",
+    "COMMERCIAL": "commercial",
+
+    "EMPTY": "vacant",
+    "OCCUPIED": "occupied",
+    "CONSTRUCTION_IN_PROGRESS": "under construction",
+    "PROCESS": "under contract",
+    "COMPLETE": "sold",
+
+    "ABU_DHABI": "abu dhabi",
+    "AJMAN": "ajman",
+    "DUBAI": "dubai",
+    "FUJAIRAH": "fujairah",
+    "RAS_AL_KHAIMAH": "ras al khaimah",
+    "SHARJAH": "sharjah",
+    "UMM_AL_QUWAIN": "umm al quwain",
+
+    "CONTENT_LIST": "Content List",
+    "PREPOST" : "Previous",
+    "NEXTPOS" : "Next",
+    "REPLY" : "Reply",
+    "REPLY_SUBMIT" : "Submit",
+    "REPLY_DESCRIPTION" : "Help warm up our community with a kind comment! (Max 200 characters)",
+    "DELETED_REPLY" : "Deleted comment.",
+    "RE_REPLY" : "Write a reply",
+
+    "EDIT_PROFILE" : "Edit Profile",
+    "NEW_PASSWORD" : "New Password",
+    "CONFIRM_PASSWORD" : "Confirm Password",
+    "EDIT_PROFILE_SUCCESS" : "Submit",
+
+    "SIGN-UP" : "Sign Up",
+    "POLICY_CONSENT" : "By clicking the button below, you agree to the terms and conditions and privacy policy of Handubi.",
+
+    "PRIVACY_POLICY_TITLE": "Privacy Policy",
+    "PRIVACY_POLICY_DESCRIPTION": "Handubi values and protects your personal information, and strives to manage it securely.",
+    "PRIVACY_POLICY_COLLECTED_ITEMS": "- Collected items: Name, email, phone number, date of birth, etc.",
+    "PRIVACY_POLICY_PURPOSE": "- Purpose of collection: Membership registration and management, service provision and improvement, site usage analysis",
+    "PRIVACY_POLICY_DURATION": "- Retention period: 6 months after membership withdrawal or as required by applicable laws",
+    "PRIVACY_POLICY_RIGHTS": "- User rights: Request to view, modify, delete personal data, or withdraw consent",
+    "PRIVACY_POLICY_LINK_TEXT": "For more information, please refer to the full Privacy Policy.",
+
+    "privacy": {
+    "title": "Privacy Policy",
+    "intro": "{{site}} (hereinafter \"Handubi\") values your privacy and is committed to protecting your personal information. This Privacy Policy explains what types of personal data we collect, how we use it, how we protect it, and your rights as a user.",
+    "collection": {
+      "title": "1. Data Collection",
+      "desc": "We may collect the following personal data to operate the site and provide services:",
+      "required": "Required Information: Nickname, Email Address, Password, Mobile Number, Date of Birth",
+      "optional": "Optional Information: Activity records on the site (posts, comments, etc.)",
+      "auto": "Automatically Collected Information:",
+      "logs": "Access records, IP address, browser information",
+      "cookies": "User preference data through cookies"
+    },
+    "usage": {
+      "title": "2. Purpose of Use",
+      "desc": "Collected data is used for the following purposes:",
+      "signup": "User registration",
+      "community": "Service provision such as forums and community features",
+      "ads": "Personalized content and advertisements",
+      "improve": "Service improvement and statistical analysis",
+      "law": "Verification to comply with legal obligations"
+    },
+    "storage": {
+      "title": "3. Data Retention and Deletion",
+      "period": "1. Retention Period:",
+      "member": "Membership data: Deleted immediately upon user withdrawal",
+      "legal": "Data retained as required by law will be securely stored for the necessary period",
+      "deletion": "2. Deletion Procedure:",
+      "user_request": "Data will be deleted immediately upon user request or upon expiration of the retention period.",
+      "irreversible": "Deleted data is processed to be irrecoverable."
+    },
+    "sharing": {
+      "title": "4. Data Sharing and Provision",
+      "desc": "We do not share personal information with third parties except in the following cases:",
+      "consent": "When the user has given prior consent",
+      "law": "When required by law",
+      "trusted": "When cooperating with trusted third-party partners to provide services"
+    },
+    "cookies": {
+      "title": "5. Cookie Policy",
+      "desc": "Cookies are used to enhance user experience. Users may refuse cookie use through browser settings, which may limit some functions."
+    },
+    "rights": {
+      "title": "6. User Rights",
+      "desc": "Users have the following rights regarding their personal information:",
+      "view_edit_delete": "Request to view, edit, or delete personal data",
+      "withdraw": "Request to withdraw consent or restrict processing",
+      "transfer": "Request data transfer (if technically feasible)",
+      "contact": "** Contact Method: Please reach out via the email address below for inquiries related to your personal information."
+    },
+    "protection": {
+      "title": "7. Data Protection Measures",
+      "desc": "We take the following measures to protect your personal data:",
+      "ssl": "Use of SSL (Secure Sockets Layer) technology",
+      "encryption": "Data encryption and access control",
+      "monitoring": "Regular security checks and monitoring"
+    },
+    "changes": {
+      "title": "8. Policy Changes",
+      "desc": "This Privacy Policy may be updated as needed. We will notify users of any changes through the site or email. Changes take effect upon notice."
+    },
+    "contact": {
+      "title": "9. Contact Information",
+      "desc": "For any questions regarding this Privacy Policy or to exercise your rights, please contact us at:",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address"
+    }
+  }
 }

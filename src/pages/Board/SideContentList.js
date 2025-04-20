@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { List } from "antd";
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
+import { useTranslation } from "react-i18next";
 
 
 function SideContentList({ pageId, category, subCategory }) {
@@ -12,6 +13,7 @@ function SideContentList({ pageId, category, subCategory }) {
     const navigate = useNavigate();
     const [data, setData] = useState();
     const [type, setType] = useState("posts");
+    const { t } = useTranslation();
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
@@ -82,7 +84,7 @@ function SideContentList({ pageId, category, subCategory }) {
                         <span className={styles.icon_container}>
                         <CaretUpOutlined />
                             <span className={styles.prev_btn}>
-                            이전 글
+                            {t('PREPOST')}
                             </span>
                         </span>
                         {item.title}
@@ -94,7 +96,7 @@ function SideContentList({ pageId, category, subCategory }) {
                         <span className={styles.icon_container}>
                         <CaretDownOutlined />
                             <span className={styles.prev_btn}>
-                            다음 글
+                            {t('NEXTPOS')}
                             </span>
                         </span>
                         {item.title}

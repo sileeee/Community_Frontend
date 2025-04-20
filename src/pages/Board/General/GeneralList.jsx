@@ -6,6 +6,7 @@ import { Table, Button } from "antd";
 import { useLocation } from "react-router";
 import { useAuth } from '../../../components/common/AuthContext';
 import { PushpinFilled } from '@ant-design/icons';
+import { useTranslation } from "react-i18next";
 
 
 function GeneralList({category, selectedSubCategory}) {
@@ -14,6 +15,7 @@ function GeneralList({category, selectedSubCategory}) {
     const location = useLocation();
     const keyword = location.state?.keyword;
     const { userRole } = useAuth();
+    const { t } = useTranslation();
 
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     
@@ -66,7 +68,7 @@ function GeneralList({category, selectedSubCategory}) {
       responsive: ["md"], // 480px 이상에서만 표시
     },
     {
-      title: "제목",
+      title: t('TOPIC'),
       dataIndex: "title",
       align: "center",
       width: "60%",
@@ -80,14 +82,14 @@ function GeneralList({category, selectedSubCategory}) {
       ),
     },
     {
-      title: "작성자",
+      title: t('AUTHOR'),
       dataIndex: "author",
       align: "center",
       width: "10%",
       responsive: ["md"], // 480px 이상에서만 표시
     },
     {
-      title: "작성날짜",
+      title: t('CREATED_AT'),
       dataIndex: "createdAt",
       align: "center",
       width: "10%",
@@ -95,7 +97,7 @@ function GeneralList({category, selectedSubCategory}) {
       responsive: ["md"], // 480px 이상에서만 표시
     },
     {
-      title: "좋아요",
+      title: t('LIKE'),
       dataIndex: "like",
       align: "center",
       width: "2%",
@@ -103,7 +105,7 @@ function GeneralList({category, selectedSubCategory}) {
       responsive: ["md"], // 480px 이상에서만 표시
     },
     {
-      title: "조회수",
+      title: t('VIEW'),
       dataIndex: "view",
       align: "center",
       width: "10%",

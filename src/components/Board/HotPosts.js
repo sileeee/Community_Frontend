@@ -5,6 +5,7 @@ import HtmlRenderer from "./HtmlRenderer";
 import { useNavigate } from "react-router-dom";
 import { FireTwoTone, MessageOutlined } from '@ant-design/icons';
 import { getKorSubCategories } from "./getKorSubCategories";
+import { useTranslation } from "react-i18next";
 
 
 function HotPosts({category}) {
@@ -13,6 +14,7 @@ function HotPosts({category}) {
     const [weeklyHotposts, setWeeklyHotposts] = useState();
     const [monthlyHotPosts, setMonthlyHotPosts] = useState();
     const [type, setType] = useState("posts");
+    const { t } = useTranslation();
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
@@ -121,7 +123,7 @@ function HotPosts({category}) {
                     </colgroup>
                     <thead>
                         <tr>
-                        <th className={styles.noPicHeader2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp; 주간 인기 글&nbsp;<FireTwoTone twoToneColor="red"/></th>
+                        <th className={styles.noPicHeader2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp; {t('WEEKLY_POSTS')}&nbsp;<FireTwoTone twoToneColor="red"/></th>
                         </tr>
                     </thead>
                     <tbody className={styles.tbody}>
@@ -139,7 +141,7 @@ function HotPosts({category}) {
                         ) : (
                         <tr>
                             <td colSpan="2" className={styles.noPicNoData}>
-                            게시글이 없습니다.
+                            {t('NO_POSTS')}
                             </td>
                         </tr>
                         )}
@@ -152,7 +154,7 @@ function HotPosts({category}) {
                     </colgroup>
                     <thead>
                         <tr>
-                        <th className={styles.noPicHeader2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp; 월간 인기 글&nbsp;<FireTwoTone twoToneColor="red"/></th>
+                        <th className={styles.noPicHeader2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp; {t('MONTHLY_POSTS')}&nbsp;<FireTwoTone twoToneColor="red"/></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -170,7 +172,7 @@ function HotPosts({category}) {
                         ) : (
                         <tr>
                             <td colSpan="2" className={styles.noPicNoData}>
-                            게시글이 없습니다.
+                            {t('NO_POSTS')}
                             </td>
                         </tr>
                         )}
@@ -183,7 +185,7 @@ function HotPosts({category}) {
         else{
             return (
             <div>
-            <div className={styles.header3} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp;화제 글&nbsp;<FireTwoTone twoToneColor="red"/></div>
+            <div className={styles.header3} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp;{t('HOT_POSTS')}&nbsp;<FireTwoTone twoToneColor="red"/></div>
             <div className={styles.square}>
                 {posts && posts.length > 0 ? (
                     posts
@@ -207,7 +209,7 @@ function HotPosts({category}) {
                     </div>
                     ))
                 ) : (
-                <p>게시글이 없습니다.</p>
+                <p>{t('NO_POSTS')}</p>
                 )}
             </div>
             </div>

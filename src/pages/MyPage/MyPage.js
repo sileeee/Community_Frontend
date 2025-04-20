@@ -7,10 +7,13 @@ import Foot from "../../components/Footer/Foot";
 import { useAuth } from '../../components/common/AuthContext';
 import { validate } from "../User/validate";
 import { notify } from "../User/toast";
-
+import TopBar from "../../components/TopBar/TopBar";
+import { useTranslation } from "react-i18next";
 
 
 const MyPage = () => {
+
+    const { t } = useTranslation();
 
     const [data, setData] = useState({
         name: "",
@@ -112,10 +115,11 @@ const MyPage = () => {
     
     return (
         <div>
+        <TopBar />
         <Nav />
         <div className={styles.container}>
         <form className={styles.formMyPage} onSubmit={submitHandler} autoComplete="off">
-            <h1>회원 정보 수정</h1>
+            <h1>{t('EDIT_PROFILE')}</h1>
             <div>
                 <div>
                     <input 
@@ -135,7 +139,7 @@ const MyPage = () => {
                     type="password" 
                     name="password" 
                     value={data.password} 
-                    placeholder="새 비밀번호" 
+                    placeholder={t('NEW_PASSWORD')}
                     onChange={changeHandler} 
                     onFocus={focusHandler} 
                     autoComplete="off" />
@@ -148,7 +152,7 @@ const MyPage = () => {
                 <input 
                 type="password" 
                 name="confirmPassword" 
-                placeholder="새 비밀번호 확인" 
+                placeholder={t('CONFIRM_PASSWORD')}
                 onChange={changeHandler} 
                 onFocus={focusHandler} 
                 autoComplete="off" />
@@ -169,7 +173,7 @@ const MyPage = () => {
                     {errors.phone && touched.phone && <span className={styles.error}>{errors.phone}</span>}
                 </div>
                 <div>
-                    <button type="submit">변경하기</button>
+                    <button type="submit">{t('EDIT_PROFILE_SUCCESS')}</button>
                 </div>
             </form>
             </div>

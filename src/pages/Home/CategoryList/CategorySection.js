@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from './CategorySection.module.css';
 import { useNavigate } from "react-router-dom";
-import { getKorCategories } from "../../../components/Board/getKorCategories";
 import { getKorSubCategories } from "../../../components/Board/getKorSubCategories";
 import HtmlRenderer from "../../../components/Board/HtmlRenderer";
 import { FireTwoTone, MessageOutlined } from '@ant-design/icons';
-
+import { useTranslation } from "react-i18next";
 
 
 const CategorySection = ({ category, postList, layout }) => {
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [posts, setPosts] = useState(postList);
   const [recentPosts, setRecentPosts] = useState(postList);
   const [type, setType] = useState("posts");
@@ -102,7 +102,7 @@ const CategorySection = ({ category, postList, layout }) => {
                     </div>
                   ))
               ) : (
-                <p>게시글이 없습니다.</p>
+                <p>{t('NO_POSTS')}</p>
               )}
             </div>
           </div>
@@ -119,7 +119,7 @@ const CategorySection = ({ category, postList, layout }) => {
               </colgroup>
               <thead>
                 <tr>
-                  <th className={styles.header2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp;화제 글&nbsp;<FireTwoTone twoToneColor="red"/></th>
+                  <th className={styles.header2} colSpan="2"><FireTwoTone twoToneColor="red"/>&nbsp;{t('HOT_POSTS')}&nbsp;<FireTwoTone twoToneColor="red"/></th>
                 </tr>
               </thead>
               <tbody className={styles.tbody}>
@@ -137,7 +137,7 @@ const CategorySection = ({ category, postList, layout }) => {
                 ) : (
                   <tr>
                     <td colSpan="2" className={styles.noData}>
-                      게시글이 없습니다.
+                      {t('NO_POSTS')}
                     </td>
                   </tr>
                 )}
@@ -150,7 +150,7 @@ const CategorySection = ({ category, postList, layout }) => {
               </colgroup>
               <thead>
                 <tr>
-                  <th className={styles.header2} colSpan="2"> 최신 글&nbsp;&nbsp;<MessageOutlined style={{color: "green"}}/> </th>
+                  <th className={styles.header2} colSpan="2">{t('RECENT_POSTS')}&nbsp;&nbsp;<MessageOutlined style={{color: "green"}}/> </th>
                 </tr>
               </thead>
               <tbody className={styles.tbody}>
@@ -168,7 +168,7 @@ const CategorySection = ({ category, postList, layout }) => {
                 ) : (
                   <tr>
                     <td colSpan="2" className={styles.noData}>
-                      게시글이 없습니다.
+                      {t('NO_POSTS')}
                     </td>
                   </tr>
                 )}
@@ -186,7 +186,7 @@ const CategorySection = ({ category, postList, layout }) => {
   return (
     <div className={styles.newsSection}>
       <div className={styles.header}>
-        <h2>{getKorCategories(category)}</h2>
+        <h2>{t(category.toUpperCase())}</h2>
         <button className={styles.viewAll} onClick={() => movePage(0)}>
           View All
         </button>

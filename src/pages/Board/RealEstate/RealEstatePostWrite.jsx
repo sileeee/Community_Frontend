@@ -10,12 +10,14 @@ import { notify } from "../../User/toast";
 import { getProductStatus } from "../../../components/Board/getProductStatus";
 import { getProductType } from "../../../components/Board/getProductType";
 import { getLocation } from "../../../components/Board/getLocation";
-
+import { useTranslation } from "react-i18next";
 
 
 function RealEstatePostWrite({category, id}) {
 
     const navigate = useNavigate();
+    const { t } = useTranslation();
+
     const subCategories = getCategories(category.toUpperCase());
     const categories_except_total = subCategories.slice(1);
     const productType = getProductType(category.toUpperCase());
@@ -140,7 +142,7 @@ function RealEstatePostWrite({category, id}) {
                     <th className={styles.table_th}>
                         {" "}
                         <Form.Item
-                        label="제목"
+                        label={t('TOPIC')}
                         name="title"
                         placeholder="[광고] 혹은 [도시이름]을 제목 앞에 표기해주세요.(50자 이내로 제목 작성)"
                         rules={[
@@ -163,7 +165,7 @@ function RealEstatePostWrite({category, id}) {
                 {categories_except_total.length > 0 && (
                   <th className={styles.table_th_2}>
                     <Form.Item 
-                      label="서브 카테고리" 
+                      label={t('SUBCATEGORY')}
                       name="subCategory" 
                       rules={[
                         {
@@ -182,7 +184,7 @@ function RealEstatePostWrite({category, id}) {
                               value={subCategory.value} 
                               className={`${styles.radioButton} ${categorySelectedValue === subCategory.value ? styles.selected : ""}`}
                             >
-                              {subCategory.label}
+                              {t(subCategory.value)}
                             </Radio.Button>
                           ))}
                         </Radio.Group>
@@ -195,7 +197,7 @@ function RealEstatePostWrite({category, id}) {
                   <th className={styles.table_th_2}>
                     {" "}
                     <Form.Item 
-                        label="공개여부" 
+                        label={t('STATUS')}
                         name="postStatus" 
                         rules={[
                         {
@@ -214,13 +216,13 @@ function RealEstatePostWrite({category, id}) {
                                 value="PUBLIC" 
                                 className={`${styles.radioButton} ${statusSelectedValue === "PUBLIC" ? styles.selected : ""}`}
                             >
-                                공개
+                                {t('PUBLIC')}
                             </Radio.Button>
                             <Radio.Button 
                                 value="PRIVATE" 
                                 className={`${styles.radioButton} ${statusSelectedValue === "PRIVATE" ? styles.selected : ""}`}
                             >
-                                비공개
+                                {t('PRIVATE')}
                             </Radio.Button>
                         </Radio.Group>
                         </div>
@@ -232,7 +234,7 @@ function RealEstatePostWrite({category, id}) {
                 {productType.length > 0 && (
                   <th className={styles.table_th_2}>
                     <Form.Item 
-                      label="건물 종류" 
+                      label={t('BUILDING_TYPE')}
                       name="productType" 
                       rules={[
                         {
@@ -251,7 +253,7 @@ function RealEstatePostWrite({category, id}) {
                               value={type.value} 
                               className={`${styles.radioButton} ${productTypeSelectedValue === type.value ? styles.selected : ""}`}
                             >
-                              {type.label}
+                              {t(type.value)}
                             </Radio.Button>
                           ))}
                         </Radio.Group>
@@ -264,7 +266,7 @@ function RealEstatePostWrite({category, id}) {
                 {productStatus.length > 0 && (
                   <th className={styles.table_th_2}>
                     <Form.Item 
-                      label="매물 상태" 
+                      label={t('CURRENT_STATUS')}
                       name="productStatus">
                       <div className={styles.formPadding}>
                         <Radio.Group
@@ -277,7 +279,7 @@ function RealEstatePostWrite({category, id}) {
                               value={status.value} 
                               className={`${styles.radioButton} ${productStatusSelectedValue === status.value ? styles.selected : ""}`}
                             >
-                              {status.label}
+                              {t(status.value)}
                             </Radio.Button>
                           ))}
                         </Radio.Group>
@@ -291,7 +293,7 @@ function RealEstatePostWrite({category, id}) {
                     <th className={styles.table_th}>
                         {" "}
                         <Form.Item
-                        label="실내면적(sqf)"
+                        label={t('INNERAREA')}
                         name="innerArea"
                         placeholder="실내면적을 입력해주세요."
                         rules={[
@@ -310,7 +312,7 @@ function RealEstatePostWrite({category, id}) {
                     <th className={styles.table_th}>
                         {" "}
                         <Form.Item
-                        label="전체면적(sqf)"
+                        label={t('TOTALAREA')}
                         name="totalArea"
                         placeholder="전체면적을 입력해주세요."
                         rules={[
@@ -329,7 +331,7 @@ function RealEstatePostWrite({category, id}) {
                 {productLocation.length > 0 && (
                   <th className={styles.table_th_2}>
                     <Form.Item 
-                      label="위치(지역)" 
+                      label={t('LOCATION')}
                       name="state">
                       <div className={styles.formPadding}>
                         <Radio.Group
@@ -342,7 +344,7 @@ function RealEstatePostWrite({category, id}) {
                               value={location.value} 
                               className={`${styles.radioButton} ${productLocationSelectedValue === location.value ? styles.selected : ""}`}
                             >
-                              {location.label}
+                              {t(location.value)}
                             </Radio.Button>
                           ))}
                         </Radio.Group>
@@ -355,7 +357,7 @@ function RealEstatePostWrite({category, id}) {
                     <th className={styles.table_th}>
                         {" "}
                         <Form.Item
-                        label="가격(AED)"
+                        label={t('PRICE')}
                         name="price"
                         placeholder="가격을 입력해주세요."
                         rules={[
@@ -379,7 +381,7 @@ function RealEstatePostWrite({category, id}) {
                         <Input />
                     </Form.Item>
                     <Form.Item 
-                        label="내용" 
+                        label={t('CONTENT')}
                         name="body"
                         valuePropName="value"
                         getValueFromEvent={(content) => content}

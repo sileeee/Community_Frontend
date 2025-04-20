@@ -2,10 +2,12 @@ import { Button, Flex } from "antd";
 import styles from "./SubCategoryButton.module.css";
 import React, { useState } from "react";
 import { getCategories } from "../Board/getCategories";
+import { useTranslation } from "react-i18next";
 
 function SubCategoryButton({category, onSubCategoryChange}) {
 
   const [selectedCategory, setSelectedCategory] = useState("TOTAL");
+  const { t } = useTranslation();
 
   const categories = getCategories(category);
   
@@ -29,7 +31,7 @@ function SubCategoryButton({category, onSubCategoryChange}) {
               onSubCategoryChange(subCategory.value);
             }}
           >
-            {subCategory.label}
+            {t(subCategory.value)}
           </Button>
         ))}
       </Flex>

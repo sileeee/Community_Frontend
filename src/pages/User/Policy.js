@@ -1,99 +1,102 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Login.module.css";
 import Nav from "../../components/Navbar/Nav";
 import Foot from "../../components/Footer/Foot";
+import TopBar from "../../components/TopBar/TopBar";
+import { useTranslation } from "react-i18next";
 
 
 const MyPage = () => {
     
-    window.scrollTo(0,0)
+    const { t } = useTranslation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     
     return (
         <div>
+        <TopBar />
         <Nav />
         <div className={styles.policyContainer}>
-        <h1>개인정보 보호정책</h1>
+        <h1>{t("privacy.title")}</h1>
         <div className={styles.policyContent}>
-            <p>
-                <strong>한두비</strong>(이하 "Handubi")는 사용자 여러분의 개인정보를 소중히 여기며, 이를 보호하기 위해 최선을 다하고 있습니다. <br/>
-                본 개인정보 보호정책은 사이트에서 수집하는 개인정보의 종류, 사용 목적, 보호 방법 및 사용자 권리에 대해 설명합니다.
-            </p>
-            <br/>
-            <h2>1. 개인정보 수집</h2>
-            <p>저희는 사이트 운영 및 서비스 제공을 위해 아래와 같은 개인정보를 수집할 수 있습니다:</p>
-            <ul>
-                <li><strong>필수 정보:</strong> 닉네임, 이메일 주소, 비밀번호, 휴대전화 번호, 생년월일</li>
-                <li><strong>선택 정보:</strong> 사이트 내 활동 기록 (게시글, 댓글 등)</li>
-            </ul>
-            <p><strong>자동 수집 정보:</strong></p>
-            <ul>
-                <li>접속 기록, IP 주소, 브라우저 정보</li>
-                <li>쿠키를 통한 사용자 환경 설정 정보</li>
-            </ul>
-            <br/>
-            <h2>2. 개인정보 사용 목적</h2>
-            <p>수집된 개인정보는 아래와 같은 목적으로 사용됩니다:</p>
-            <ul>
-                <li>사이트 회원 가입</li>
-                <li>게시판, 커뮤니티 기능 등 서비스 제공</li>
-                <li>사용자 맞춤형 콘텐츠 및 광고 제공</li>
-                <li>서비스 개선 및 통계 분석</li>
-                <li>법률 준수를 위한 사용자 정보 확인</li>
-            </ul>
-            <br/>
-            <h2>3. 개인정보 보관 및 삭제</h2>
-            <p><strong>1. 보관 기간:</strong></p>
-            <ul>
-                <li>회원 가입 정보: 회원 탈퇴 시 즉시 삭제</li>
-                <li>관련 법규에 따라 보관이 요구되는 정보는 해당 기간 동안 안전하게 보관</li>
-            </ul>
-            <p><strong>2. 삭제 절차:</strong></p>
-            <ul>
-                <li>사용자가 요청하거나, 보관 기간이 만료된 정보는 즉시 삭제합니다.</li>
-                <li>삭제된 정보는 복구할 수 없도록 처리됩니다.</li>
-            </ul>
-            <br/>
-            <h2>4. 개인정보 공유 및 제공</h2>
-            <p>저희는 사용자의 개인정보를 제3자와 공유하지 않습니다. 단, 아래와 같은 경우에 한해 예외적으로 제공할 수 있습니다:</p>
-            <ul>
-                <li>사용자가 사전에 동의한 경우</li>
-                <li>법적 요구에 따라 제출이 필요한 경우</li>
-                <li>서비스 제공을 위해 신뢰할 수 있는 외부 업체와 협력하는 경우</li>
-            </ul>
-            <br/>
-            <h2>5. 쿠키 정책</h2>
-            <p>사이트는 사용자 경험 개선을 위해 쿠키를 사용합니다. 사용자는 브라우저 설정을 통해 쿠키 사용을 거부할 수 있으며, 일부 기능 제한이 있을 수 있습니다.</p>
-            <br/>
-            <h2>6. 사용자 권리</h2>
-            <p>사용자는 자신의 개인정보에 대해 다음과 같은 권리를 가집니다:</p>
-            <ul>
-                <li>개인정보 열람, 수정, 삭제 요청</li>
-                <li>동의 철회 및 데이터 처리 제한 요청</li>
-                <li>데이터 이동 요청 (기술적으로 가능한 경우)</li>
-            </ul>
-            <p>** 문의 방법: 개인정보 관련 요청은 아래 이메일로 연락해 주시기 바랍니다.<br/>
-                이메일: koreadubai058@gmail.com
-            </p>
-            <br/>
-            <h2>7. 정보 보호를 위한 노력</h2>
-            <p>저희는 사용자의 개인정보를 안전하게 보호하기 위해 다음과 같은 조치를 취합니다:</p>
-            <ul>
-                <li>SSL(Secure Sockets Layer) 기술 적용</li>
-                <li>데이터 암호화 및 접근 권한 제한</li>
-                <li>정기적인 보안 점검 및 모니터링</li>
-            </ul>
-            <br/>
-            <h2>8. 정책 변경</h2>
-            <p>본 개인정보 보호정책은 필요에 따라 변경될 수 있습니다. 정책 변경 시, 사이트 공지 또는 이메일을 통해 안내드리겠습니다. 변경된 내용은 공지 후 효력이 발생합니다.</p>
-            <br/>
-            <h2>9. 문의처</h2>
-            <p>본 개인정보 보호정책에 대한 문의 사항이 있거나, 사용자 권리를 행사하고 싶으신 경우 아래로 연락해 주세요:</p>
-            <p>
-                이메일: koreadubai058@gmail.com<br/>
-                전화: <br/>
-                주소: 
-            </p>
-        </div></div>
+          <p>{t("privacy.intro", { site: "Handubi" })}</p>
+
+          <h2>{t("privacy.collection.title")}</h2>
+          <p>{t("privacy.collection.desc")}</p>
+          <ul>
+            <li>{t("privacy.collection.required")}</li>
+            <li>{t("privacy.collection.optional")}</li>
+          </ul>
+          <p>{t("privacy.collection.auto")}</p>
+          <ul>
+            <li>{t("privacy.collection.logs")}</li>
+            <li>{t("privacy.collection.cookies")}</li>
+          </ul>
+
+          <h2>{t("privacy.usage.title")}</h2>
+          <p>{t("privacy.usage.desc")}</p>
+          <ul>
+            <li>{t("privacy.usage.signup")}</li>
+            <li>{t("privacy.usage.community")}</li>
+            <li>{t("privacy.usage.ads")}</li>
+            <li>{t("privacy.usage.improve")}</li>
+            <li>{t("privacy.usage.law")}</li>
+          </ul>
+
+          <h2>{t("privacy.storage.title")}</h2>
+          <p>{t("privacy.storage.period")}</p>
+          <ul>
+            <li>{t("privacy.storage.member")}</li>
+            <li>{t("privacy.storage.legal")}</li>
+          </ul>
+          <p>{t("privacy.storage.deletion")}</p>
+          <ul>
+            <li>{t("privacy.storage.user_request")}</li>
+            <li>{t("privacy.storage.irreversible")}</li>
+          </ul>
+
+          <h2>{t("privacy.sharing.title")}</h2>
+          <p>{t("privacy.sharing.desc")}</p>
+          <ul>
+            <li>{t("privacy.sharing.consent")}</li>
+            <li>{t("privacy.sharing.law")}</li>
+            <li>{t("privacy.sharing.trusted")}</li>
+          </ul>
+
+          <h2>{t("privacy.cookies.title")}</h2>
+          <p>{t("privacy.cookies.desc")}</p>
+
+          <h2>{t("privacy.rights.title")}</h2>
+          <p>{t("privacy.rights.desc")}</p>
+          <ul>
+            <li>{t("privacy.rights.view_edit_delete")}</li>
+            <li>{t("privacy.rights.withdraw")}</li>
+            <li>{t("privacy.rights.transfer")}</li>
+          </ul>
+          <p>{t("privacy.rights.contact")}</p>
+
+          <h2>{t("privacy.protection.title")}</h2>
+          <p>{t("privacy.protection.desc")}</p>
+          <ul>
+            <li>{t("privacy.protection.ssl")}</li>
+            <li>{t("privacy.protection.encryption")}</li>
+            <li>{t("privacy.protection.monitoring")}</li>
+          </ul>
+
+          <h2>{t("privacy.changes.title")}</h2>
+          <p>{t("privacy.changes.desc")}</p>
+
+          <h2>{t("privacy.contact.title")}</h2>
+          <p>{t("privacy.contact.desc")}</p>
+          <p>
+            {t("privacy.contact.email")}: koreadubai058@gmail.com<br />
+            {t("privacy.contact.phone")}:<br />
+            {t("privacy.contact.address")}:
+          </p>
+        </div>
+        </div>
         <Foot />
         </div>
     );

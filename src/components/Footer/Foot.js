@@ -1,15 +1,19 @@
 import React from 'react';
 import './Foot.css';
 import { Link } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 
 const Foot = () => {
+
+  const { t } = useTranslation();
+
   return (
     <div className="footer">
       <div className="footer-container">
 
         <div className="footer-section">
           <div className="footer-logo">Handubi</div>
-          <div className="footer-title">두바이 한인 커뮤니티</div>
+          <div className="footer-title">{t('SITE_TOPIC')}</div>
           <div className="social-icons">
             <i className="fab fa-facebook"></i>
             <i className="fab fa-instagram"></i>
@@ -22,17 +26,17 @@ const Foot = () => {
         <div className="footer-section">
           <h4>Quick Links</h4>
           <ul>
-            <Link to="/board/news"><li>뉴스</li></Link>
-            <Link to="/board/second_hand"><li>중고장터</li></Link>
-            <Link to="/board/asian_market"><li>마켓정보</li></Link>
-            <Link to="/board/life"><li>생활정보</li></Link>
-            <Link to="/board/real_estate"><li>부동산</li></Link>
-            <Link to="/board/job_search"><li>구인구직</li></Link>
-            <Link to="/board/child_care"><li>교육정보</li></Link>
-            <Link to="/board/travel"><li>여행정보</li></Link>
-            <Link to="/board/club"><li>동호회</li></Link>
-            <Link to="/board/free_board"><li>자유게시판</li></Link>
-            <Link to="/board/korean_company"><li>한인업소</li></Link>
+            <Link to="/board/news"><li>{t('NEWS')}</li></Link>
+            <Link to="/board/second_hand"><li>{t('SECOND_HAND')}</li></Link>
+            <Link to="/board/asian_market"><li>{t('ASIAN_MARKET')}</li></Link>
+            <Link to="/board/life"><li>{t('LIFE')}</li></Link>
+            <Link to="/board/real_estate"><li>{t('REAL_ESTATE')}</li></Link>
+            <Link to="/board/job_search"><li>{t('JOB_SEARCH')}</li></Link>
+            <Link to="/board/child_care"><li>{t('CHILD_CARE')}</li></Link>
+            <Link to="/board/travel"><li>{t('TRAVEL')}</li></Link>
+            <Link to="/board/club"><li>{t('CLUB')}</li></Link>
+            <Link to="/board/free_board"><li>{t('FREE_BOARD')}</li></Link>
+            <Link to="/board/korean_company"><li>{t('KOREAN_COMPANY')}</li></Link>
           </ul>
         </div>
 

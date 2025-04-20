@@ -3,16 +3,18 @@ import { ToastContainer, toast } from "react-toastify";
 import { notify } from "../toast";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { useTranslation } from "react-i18next";
 import { validate } from "../validate";
 import styles from "../Login.module.css";
 import "react-toastify/dist/ReactToastify.css";
 import Foot from "../../../components/Footer/Foot";
 import Nav from "../../../components/Navbar/Nav";
+import TopBar from "../../../components/TopBar/TopBar";
 
 const SignUp = () => {
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [data, setData] = useState({
     name: "",
@@ -86,10 +88,11 @@ const SignUp = () => {
 
   return (
     <div>
+      <TopBar />
       <Nav />
     <div className={styles.container}>
       <form className={styles.formLogin} onSubmit={submitHandler} autoComplete="off">
-        <h1> 회원가입 </h1>
+        <h1> {t('SIGN-UP')} </h1>
         <div>
           <div className={errors.name && touched.name ? styles.unCompleted : !errors.name && touched.name ? styles.completed : undefined}>
             <input 
@@ -187,25 +190,21 @@ const SignUp = () => {
             onFocus={focusHandler} />
             <label
                 htmlFor="accept"
+                style={{ fontSize: "0.8rem", fontFamily: "Manrope" , lineHeight: "1rem", marginLeft: "0.5rem" }}
               >
-                개인정보 보호정책 약관에 동의합니다.
+                {t('POLICY_CONSENT')}
               </label>
               {showPolicyPopup && (
                 <div className={styles.policyPopup}>
-                  <h3>개인정보 보호정책</h3>
+                  <h3>{t("PRIVACY_POLICY_TITLE")}</h3>
+                  <p>{t("PRIVACY_POLICY_DESCRIPTION")}</p>
+                  <p><b>{t("PRIVACY_POLICY_COLLECTED_ITEMS")}</b></p>
+                  <p><b>{t("PRIVACY_POLICY_PURPOSE")}</b></p>
+                  <p><b>{t("PRIVACY_POLICY_DURATION")}</b></p>
+                  <p><b>{t("PRIVACY_POLICY_RIGHTS")}</b></p>
                   <p>
-                    한두비(이하 "Handubi")는 회원님의 개인정보를 소중히 보호하며, 
-                    이를 안전하게 관리하기 위해 노력합니다. 
-                  </p>
-                  <p>
-                    <b>- 수집 항목:</b> 이름, 이메일, 전화번호, 생년월일 등
-                  </p>
-                    <p><b>- 수집 목적: </b>회원 가입 및 관리, 서비스 제공 및 개선, 사이트 사용 분석 </p>
-                    <p><b>- 보유 기간: </b>회원 탈퇴 후 6개월 또는 관련 법령에 따른 기간</p>
-                    <p><b>- 이용자의 권리: </b>개인정보 조회, 수정 및 삭제 요청, 동의 철회 요청</p>
-                  <p>
-                    자세한 내용은 사이트의 
-                    <Link to="/privacy-policy"> 개인정보 보호정책 전문</Link>을 확인하세요.
+                    {t("PRIVACY_POLICY_LINK_TEXT")}
+                    <Link to="/privacy-policy"> {t("PRIVACY_POLICY_TITLE")} </Link>
                   </p>
                 </div>
               )}
@@ -215,7 +214,7 @@ const SignUp = () => {
         <div>
           <button type="submit">Create Account</button>
           <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%", fontFamily: "Manrope" }}>
-            이미 계정이 있으신가요? <Link to="/login" style={{fontFamily: "Manrope"}}> Login</Link>
+          Have an account? <Link to="/login" style={{fontFamily: "Manrope"}}> Login</Link>
           </span>
         </div>
       </form>

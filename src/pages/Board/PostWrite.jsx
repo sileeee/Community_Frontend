@@ -5,19 +5,22 @@ import Nav from "../../components/Navbar/Nav";
 import Foot from "../../components/Footer/Foot";
 import RealEstatePostWrite from "./RealEstate/RealEstatePostWrite";
 import GeneralPostWrite from "./General/GeneralPostWrite";
-
+import TopBar from "../../components/TopBar/TopBar";
+import { useTranslation } from "react-i18next";
 
 
 function PostWrite() {
 
-    const { category, id } = useParams();
+  const { category, id } = useParams();
+  const { t } = useTranslation();
 
   return (
     <div>
+        <TopBar />
         <Nav />
         <div className={styles.writeContainer}>
           <div className={styles.paper}>
-              <h1>글 쓰기</h1>
+              <h1>{t('WRITE')}</h1>
           </div>
         
           {category.trim() === "real_estate" ? (

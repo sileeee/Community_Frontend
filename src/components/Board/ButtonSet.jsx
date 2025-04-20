@@ -3,8 +3,11 @@ import axios from "axios";
 import { Button } from "antd";
 import styles from "./ButtonSet.module.css";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function ButtonSet({ id, page, category}) {
+
+    const { t } = useTranslation();
     
     const navigate = useNavigate();
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
@@ -53,14 +56,14 @@ function ButtonSet({ id, page, category}) {
         <div className={styles.container}>
             {(page === "posts" || page === "real_estate_posts") && (
                 <Button className={styles.edit_button} onClick={moveToEditPage}>
-                    편집
+                    {t('EDIT')}
                 </Button>
             )}
             <Button
             className={styles.delete_button}
             onClick={() => deleteProcess(id)}
             >
-            삭제
+            {t('DELETE')}
             </Button>
         </div>
     );

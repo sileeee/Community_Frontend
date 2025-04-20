@@ -4,8 +4,6 @@ import Nav from "../../components/Navbar/Nav";
 import Foot from "../../components/Footer/Foot";
 import Comment from "../../components/Board/Comment"
 import { useAuth } from '../../components/common/AuthContext';
-import { getKorCategories } from "../../components/Board/getKorCategories"
-
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -15,6 +13,8 @@ import { UnorderedListOutlined, LikeOutlined, CaretUpOutlined, CaretDownOutlined
 import RealEstatePostDetail from "./RealEstate/RealEstatePostDetail";
 import GeneralPostDetail from "./General/GeneralPostDetail";
 import SideContentList from "./SideContentList";
+import { useTranslation } from "react-i18next";
+import TopBar from "../../components/TopBar/TopBar";
 
 
 
@@ -26,6 +26,8 @@ function PostDetail() {
     const subCategory = location.state?.subCategory;
     const keyword = location.state?.keyword;
     const { isLoggedIn } = useAuth();
+
+    const { t } = useTranslation();
     
     const [pageId, setPageId] = useState(id);
     const [isUserLike, setIsUserLike] = useState(false);
@@ -95,8 +97,9 @@ function PostDetail() {
         <div className="handubi">
             <div className="div">
                 <div className="parent-group"> 
+                    <TopBar />
                     <Nav />
-                    <h1 className={styles.category}>{getKorCategories(category)}</h1>   
+                    <h1 className={styles.category}>{t(category.toUpperCase())}</h1>   
 
                     <div className={styles.container}>
                         
@@ -115,7 +118,7 @@ function PostDetail() {
                             icon={<UnorderedListOutlined />}
                             style={{ border: "1px solid gray", color: "gray", width: "150px"}}
                             onClick={() => {movePage(`/board/${category.toLowerCase()}`, 0)}}>
-                            목록
+                            {t('CONTENT_LIST')}
                             </Button>
                             <Button type="primary" 
                             ghost
@@ -129,7 +132,7 @@ function PostDetail() {
                                 width: "150px",
                             }}
                             onClick={() => isLoggedIn? toggledLikeBtn(pageId) : window.confirm('로그인 후 사용가능합니다.')}>
-                            좋아요
+                            {t('LIKE')}
                             </Button>
                             </Flex>
                         </div>

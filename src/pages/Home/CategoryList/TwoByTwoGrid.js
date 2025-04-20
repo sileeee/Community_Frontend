@@ -6,9 +6,12 @@ import { getKorCategories } from "../../../components/Board/getKorCategories";
 import { getKorSubCategories } from "../../../components/Board/getKorSubCategories";
 import HtmlRenderer from "../../../components/Board/HtmlRenderer";
 import { FireTwoTone, MessageOutlined } from '@ant-design/icons';
+import { useTranslation } from "react-i18next";
+
 
 const TwoByTwoGrid = ({ category, postList, layout }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [posts, setPosts] = useState([]);
   const [recentPosts, setRecentPosts] = useState([]);
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
@@ -73,7 +76,7 @@ const TwoByTwoGrid = ({ category, postList, layout }) => {
         ) : (
           <tr>
             <td colSpan="2" className={styles.noData}>
-              게시글이 없습니다.
+              {t('NO_POSTS')}
             </td>
           </tr>
         )}
@@ -112,7 +115,7 @@ const TwoByTwoGrid = ({ category, postList, layout }) => {
                     </div>
                   ))
               ) : (
-                <p>게시글이 없습니다.</p>
+                <p>{t('NO_POSTS')}</p>
               )}
             </div>
           </div>
@@ -123,13 +126,13 @@ const TwoByTwoGrid = ({ category, postList, layout }) => {
             <div className={styles.gridSquare2}>
               <PostTable
                 headerIcon={<FireTwoTone twoToneColor="red" />}
-                headerText="화제 글"
+                headerText={t('HOT_POSTS')}
                 postData={posts}
                 category={cat}
               />
               <PostTable
                 headerIcon={<MessageOutlined style={{ color: "green" }} />}
-                headerText="최신 글"
+                headerText={t('RECENT_POSTS')}
                 postData={recentPosts}
                 category={cat}
               />
@@ -147,7 +150,7 @@ const TwoByTwoGrid = ({ category, postList, layout }) => {
         {category.map((cat, index) => (
           <div key={index} className={styles.box}>
             <div className={styles.header}>
-              <h2>{getKorCategories(cat)}</h2>
+              <h2>{t(cat.toUpperCase())}</h2>
               <button className={styles.viewAll} onClick={() => movePage(0, cat)}>
                 View All
               </button>

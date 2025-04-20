@@ -8,6 +8,7 @@ import { getProductType } from "../../../components/Board/getProductType";
 import { getProductStatus } from "../../../components/Board/getProductStatus";
 import { getLocation } from "../../../components/Board/getLocation";
 import { getKorSubCategories } from "../../../components/Board/getKorSubCategories";
+import { useTranslation } from "react-i18next";
 
 
 function RealEstateList({category, selectedSubCategory}) {
@@ -16,6 +17,7 @@ function RealEstateList({category, selectedSubCategory}) {
     const location = useLocation();
     const { Meta } = Card;  
     const { Option } = Select;
+    const { t } = useTranslation();
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     
     const [noticeList, setNoticeList] = useState([]);
@@ -138,9 +140,9 @@ function RealEstateList({category, selectedSubCategory}) {
     <div>
         <div style={{ textAlign: "right", marginBottom: "16px" }}>
             <Select defaultValue="recent" style={{ width: 95 }} onChange={(value) => setSortOrder(value)}>
-                <Option value="recent">최신순</Option>
-                <Option value="views">조회수순</Option>
-                <Option value="likes">좋아요순</Option>
+                <Option value="recent">{t('NEWEST_SORT')}</Option>
+                <Option value="views">{t('VIEW_SORT')}</Option>
+                <Option value="likes">{t('LIKE_SORT')}</Option>
             </Select>
         </div>
         <div style={{

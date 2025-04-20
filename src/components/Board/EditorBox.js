@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios';
+import { useTranslation } from "react-i18next";
 
 
 export default function EditorBox({ value, onChange, initialValue }) {
@@ -8,6 +9,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
   const [content, setContent] = useState('');
   const [apiKey, setApiKey] = useState('');
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     setApiKey(process.env.EDITOR_API_KEY);
@@ -33,6 +35,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
 
   return (
     <Editor
+      key={i18n.language}
       apiKey='enmqn0p7t5hzv31hdubf1ej2pkktvw9l3s407qwittthkqro'
       value={content}
       onEditorChange={handleEditorChange}
@@ -41,7 +44,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
         relative_urls: false,
         remove_script_host: false,
         document_base_url: 'https://handubi.com/',
-        language: 'ko_KR',
+        language: i18n.language === 'ko' ? 'ko_KR' : 'en',
         height: 600,
         plugins: [
         	"lists", // 리스트 기능

@@ -5,6 +5,7 @@ import { CommentOutlined } from '@ant-design/icons';
 import ButtonSet from "./ButtonSet";
 import { useAuth } from '../common/AuthContext';
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Comment({ postId, onCommentsCountChange }) {
 
@@ -13,6 +14,7 @@ function Comment({ postId, onCommentsCountChange }) {
     const [replyInputVisible, setReplyInputVisible] = useState(null);
     const [replyText, setReplyText] = useState("");
     const { isLoggedIn, name, userRole } = useAuth();
+    const { t } = useTranslation();
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     const navigate = useNavigate();
@@ -133,13 +135,13 @@ function Comment({ postId, onCommentsCountChange }) {
                     <div className={styles.comment}>
                         <div className={styles.author}>{comment.author}</div>
                         {comment.deleted ? (
-                            <div className={styles.deletedComment}>삭제된 댓글입니다</div>):(<div className={styles.content}>{comment.content}</div>)}
+                            <div className={styles.deletedComment}>{t('DELETED_REPLY')}</div>):(<div className={styles.content}>{comment.content}</div>)}
                         <div className={styles.createdAt}>{formatDate(comment.createdAt)}</div>
                         <button
                             className={styles.replyButton}
                             onClick={() => handleReply(comment.id)}
                         >
-                            답글
+                            {t('REPLY')}
                         </button>
                     </div>
                     {checkUser(comment, name)}
@@ -151,7 +153,7 @@ function Comment({ postId, onCommentsCountChange }) {
                         <div className={styles.comment}>
                             <div className={styles.author}>{reply.author}</div>
                             {reply.deleted ? (
-                            <div className={styles.deletedComment}>삭제된 댓글입니다</div>):(<div className={styles.content}>{reply.content}</div>)}
+                            <div className={styles.deletedComment}>{t('DELETED_REPLY')}</div>):(<div className={styles.content}>{reply.content}</div>)}
                             <div className={styles.createdAt}>{formatDate(reply.createdAt)}</div>
                         </div>
                         {checkUser(reply, name)}
@@ -162,14 +164,14 @@ function Comment({ postId, onCommentsCountChange }) {
                     <div className={styles.replyTextBox}>
                         <textarea
                             className={styles.replyInput}
-                            placeholder="대댓글을 입력하세요"
+                            placeholder={t('RE_REPLY')}
                             value={replyText}
                             onChange={(e) => setReplyText(e.target.value)}
                         />
                         <button
                             className={styles.replySubmitButton}
                             onClick={(e) => handleReplySubmit(e, comment.id)}>
-                            등록
+                            {t('REPLY_SUBMIT')}
                         </button>
                     </div>
                 )}
@@ -191,14 +193,14 @@ function Comment({ postId, onCommentsCountChange }) {
             }}>
             <textarea
             className={styles.input}
-            placeholder="커뮤니티가 더 훈훈해지는 댓글 부탁드립니다.(200자 이내)"
+            placeholder={t('REPLY_DESCRIPTION')}
             maxLength={200}
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             />
             <div className={styles.footer}>
             <button type="submit" className={styles.submitButton}>
-                댓글 등록
+                {t('REPLY_SUBMIT')}
             </button>
             </div>
         </form>

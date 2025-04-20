@@ -3,12 +3,14 @@ import { Button } from "antd";
 import styles from "./WriteButton.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from '../common/AuthContext';
+import { useTranslation } from "react-i18next";
 
 
 function WriteButton() {
 
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
+  const { t } = useTranslation();
 
   const { category } = useParams(); // lower case
 
@@ -29,7 +31,7 @@ function WriteButton() {
         className={styles.addbutton}
         size="large"
         onClick={moveToPage}>
-        글쓰기
+        {t('WRITE')}
       </Button>
     </div>
   );

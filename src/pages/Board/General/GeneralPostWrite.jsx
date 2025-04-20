@@ -7,11 +7,13 @@ import { Form, Input, Row, Col, Button, Radio } from "antd";
 import { getCategories } from "../../../components/Board/getCategories";
 import EditorBox from "../../../components/Board/EditorBox";
 import { notify } from "../../User/toast";
+import { useTranslation } from "react-i18next";
 
 
 
 function GeneralPostWrite({category, id}) {
     
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const subCategories = getCategories(category.toUpperCase());
     const categories_except_total = subCategories.slice(1);
@@ -114,7 +116,7 @@ function GeneralPostWrite({category, id}) {
                     <th className={styles.table_th}>
                         {" "}
                         <Form.Item
-                        label="제목"
+                        label={t('TOPIC')}
                         name="title"
                         placeholder="[광고] 혹은 [도시이름]을 제목 앞에 표기해주세요.(50자 이내로 제목 작성)"
                         rules={[
@@ -137,7 +139,7 @@ function GeneralPostWrite({category, id}) {
                 {categories_except_total.length > 0 && (
                   <th className={styles.table_th_2}>
                     <Form.Item 
-                      label="서브 카테고리" 
+                      label={t('SUBCATEGORY')}
                       name="subCategory" 
                       rules={[
                         {
@@ -156,7 +158,7 @@ function GeneralPostWrite({category, id}) {
                               value={subCategory.value} 
                               className={`${styles.radioButton} ${categorySelectedValue === subCategory.value ? styles.selected : ""}`}
                             >
-                              {subCategory.label}
+                              {t(subCategory.value)}
                             </Radio.Button>
                           ))}
                         </Radio.Group>
@@ -169,7 +171,7 @@ function GeneralPostWrite({category, id}) {
                   <th className={styles.table_th_2}>
                     {" "}
                     <Form.Item 
-                        label="공개여부" 
+                        label={t('STATUS')}
                         name="postStatus" 
                         rules={[
                         {
@@ -188,13 +190,13 @@ function GeneralPostWrite({category, id}) {
                                 value="PUBLIC" 
                                 className={`${styles.radioButton} ${statusSelectedValue === "PUBLIC" ? styles.selected : ""}`}
                             >
-                                공개
+                                {t('PUBLIC')}
                             </Radio.Button>
                             <Radio.Button 
                                 value="PRIVATE" 
                                 className={`${styles.radioButton} ${statusSelectedValue === "PRIVATE" ? styles.selected : ""}`}
                             >
-                                비공개
+                                {t('PRIVATE')}
                             </Radio.Button>
                         </Radio.Group>
                         </div>
@@ -206,7 +208,7 @@ function GeneralPostWrite({category, id}) {
                 <tr>
                   <td className={styles.table_td_2}>
                     <Form.Item 
-                        label="내용" 
+                        label={t('CONTENT')}
                         name="body"
                         valuePropName="value"
                         getValueFromEvent={(content) => content}

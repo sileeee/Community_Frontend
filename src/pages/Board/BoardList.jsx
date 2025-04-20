@@ -5,10 +5,10 @@ import { Paper } from "@mui/material";
 import WriteButton from "../../components/Board/WriteButton";
 import SubCategoryButton from "../../components/Board/SubCategoryButton";
 import { useLocation } from "react-router";
-import { getKorCategories } from "../../components/Board/getKorCategories"
 import HotPosts from "../../components/Board/HotPosts";
 import RealEstateList from "./RealEstate/RealEstateList";
 import GeneralList from "./General/GeneralList";
+import { useTranslation } from "react-i18next";
 
 
 function BoardList({category}) {  // lower case
@@ -20,6 +20,7 @@ function BoardList({category}) {  // lower case
   const [subCategory, setSubCategory] = useState("TOTAL");
   const [banners, setBanners] = useState([]);
   const [type, setType] = useState();
+  const { t } = useTranslation();
   
   const localStorageKey = `pinnedItems_${category}`;
   
@@ -59,7 +60,7 @@ function BoardList({category}) {  // lower case
 
   return (
     <div className={styles.container}>
-      <h1>{getKorCategories(category)}</h1>
+      <h1>{t(category.toUpperCase())}</h1>
 
       <div className={styles.bannerContainer}>
         {banners.map((banner, index) => (
