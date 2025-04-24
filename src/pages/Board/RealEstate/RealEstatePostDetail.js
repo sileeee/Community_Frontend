@@ -153,7 +153,7 @@ function RealEstatePostDetail({commentsCount, category, pageId}) {
                                                 <td>{boardDetail.totalArea?boardDetail.totalArea:"-"}</td>
                                             </tr>
                                             <tr>
-                                                <td>주</td>
+                                                <td>위치(지역)</td>
                                                 <td>{getLocationByValue(category.toUpperCase(), boardDetail.state) || "-"}</td>
                                             </tr>
                                             <tr>

@@ -45,15 +45,17 @@ const TopBar = () => {
 
     return (
         <div className={styles.globalControls}>
+            <div className={styles.leftSection}></div>
+
             <Link to="/">
                 <div className={styles.logoContainer}>
-                    <img className={styles.logo} alt="Handubi" src="/../static/img/handubi-logo.png"/>
+                    <img className={styles.logo} alt="Handubi" src="/../static/img/handubi-logo.png" />
                     <div className={styles.logoHandubi}> Handubi </div>
                 </div>
             </Link>
             <div className={styles.rightSection}>
             <div className={styles.rightGroup}
-            style={{ gap: isLoggedIn ? "40px" : "80px" }}>
+                style={{ gap: isLoggedIn ? "40px" : "50px" }}>
                 <div className={styles.languageText}>
                     <GlobalOutlined className={styles.globalIcon} />
                     <div className={styles.languageToggle}>
