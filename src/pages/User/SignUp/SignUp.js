@@ -190,7 +190,7 @@ const SignUp = () => {
             onFocus={focusHandler} />
             <label
                 htmlFor="accept"
-                style={{ fontSize: "0.8rem", fontFamily: "Manrope" , lineHeight: "1rem", marginLeft: "0.5rem" }}
+                style={{ fontSize: "0.8rem", fontFamily: "Pretendard" , lineHeight: "1rem", marginLeft: "0.5rem" }}
               >
                 {t('POLICY_CONSENT')}
               </label>
@@ -213,8 +213,8 @@ const SignUp = () => {
         </div>
         <div>
           <button type="submit">Create Account</button>
-          <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%", fontFamily: "Manrope" }}>
-          Have an account? <Link to="/login" style={{fontFamily: "Manrope"}}> Login</Link>
+          <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%", fontFamily: "Pretendard" }}>
+          Have an account? <Link to="/login" style={{fontFamily: "Pretendard"}}> Login</Link>
           </span>
         </div>
       </form>

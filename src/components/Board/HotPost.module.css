@@ -16,11 +16,13 @@
     width: 100%;
     padding: 10px 0; /* Add padding for spacing if needed */
     gap: 15px;
+    font-family: 'Pretendard', sans-serif;
   }
   
   .header h2 {
     font-size: 2vw;
     font-weight: bold;
+    font-family: 'Pretendard', sans-serif;
   }
   
   .viewAll {
@@ -33,6 +35,7 @@
     display: flex;
     justify-content: end;
     transition: box-shadow 0.3s ease, transform 0.2s ease;
+    font-family: 'Pretendard', sans-serif;
   }
   
   .viewAll:hover {
@@ -84,6 +87,7 @@
     text-overflow: ellipsis;
     white-space: normal;
     word-wrap: break-word;
+    font-family: 'Pretendard', sans-serif;
     text-align: left;
   }
   
@@ -95,6 +99,7 @@
     white-space: normal;
     word-wrap: break-word;
     text-align: left;
+    font-family: 'Pretendard', sans-serif;
   }
   
   .newsItem:hover .newsImage {
@@ -112,12 +117,14 @@
     font-size: 14px;
     color: #000000;
     font-weight: bold;
+    font-family: 'Pretendard', sans-serif;
     padding-bottom: 3%;
   }
   
   .newsContent p {
     font-size: 14px;
     color: #555;
+    font-family: 'Pretendard', sans-serif;
   }
   
   .square2 {
@@ -192,6 +199,7 @@
     padding: 0.1vw;
     text-decoration: none;
     transition: color 0.2s ease, text-decoration 0.2s ease;
+    font-family: 'Pretendard', sans-serif;
   }
   
   .title:hover {
@@ -204,6 +212,7 @@
     padding: 20px;
     font-size: 16px;
     color: #999;
+    font-family: 'Pretendard', sans-serif;
   }
 
   .noPicContainer {
@@ -238,6 +247,7 @@
     padding: 10px;
     background-color: #f0f0f0;
     border-radius: 8px;
+    font-family: 'Pretendard', sans-serif;
   }
   
   .header3 {
@@ -246,6 +256,7 @@
     color: #00732f;
     padding: 10px;
     padding-bottom: 10px;
+    font-family: 'Pretendard', sans-serif;
   }
   
   .noPicRow {
@@ -289,6 +300,7 @@
     padding: 0.1vw;
     text-decoration: none;
     transition: color 0.2s ease, text-decoration 0.2s ease;
+    font-family: 'Pretendard', sans-serif;
   }
   
   .noPicTitle:hover {
@@ -301,6 +313,7 @@
     padding: 20px;
     font-size: 16px;
     color: #999;
+    font-family: 'Pretendard', sans-serif;
   }
 
 @media (max-width:1000px) {

@@ -70,7 +70,7 @@
 
 .logoHandubi {
     color: #00732f;
-    font-family: "Manrope", Helvetica;
+    font-family: 'Pretendard', sans-serif;
     font-size: 1.5vw;
     font-weight: 500;
     white-space: nowrap;
@@ -96,7 +96,7 @@
 
 .textNickname {
     color: #555555;
-    font-family: "Manrope", Helvetica;
+    font-family: 'Pretendard', sans-serif;
     font-size: 0.9vw;
     font-weight: 500;
     white-space: nowrap;
@@ -130,28 +130,8 @@
     font-size: 0.8vw;
     color: #00732f;
     font-weight: 500;
+    font-family: 'Pretendard', sans-serif;
 }
-
-/* .dropDownMenu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 10rem;
-    z-index: 1000;
-} */
-
-/* .dropMenu {
-    position: "absolute";
-    top:auto;
-    left: -20px;
-    background-color: "white";
-    border: "1px solid #ddd";
-    box-shadow: "0 4px 6px rgba(0, 0, 0, 0.1)";
-    border-radius: "5px";
-    width: "clamp(6rem, 15vw, 10rem)";
-    font-size: "clamp(12px, 1.3vw, 16px)";
-    padding: "6px"
-} */
 
 .menuItem {
     padding: 10px;
@@ -160,6 +140,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     cursor: pointer;
+    font-family: 'Pretendard', sans-serif;
 }
 
 .menuItem:hover {
@@ -192,7 +173,7 @@
     
     .logoHandubi {
         color: #00732f;
-        font-family: "Manrope", Helvetica;
+        font-family: 'Pretendard', sans-serif;
         font-size: 2vw;
         font-weight: 500;
         white-space: nowrap;

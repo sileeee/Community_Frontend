@@ -68,6 +68,20 @@ const CategorySection = ({ category, postList, layout }) => {
       }
   };
 
+  const cleanHtmlContent = (html) => {
+    return html
+      .replace(/style="[^"]*"/g, '') 
+      .replace(/<img[^>]*>/gi, '') 
+      .replace(/<figure[^>]*>.*?<\/figure>/gis, '') 
+      .replace(/<figcaption[^>]*>.*?<\/figcaption>/gis, '') 
+      .replace(/&nbsp;/gi, '') 
+      .replace(/<br[^>]*>/gi, '') 
+      .replace(/<p[^>]*>\s*<\/p>/gi, '') 
+      .replace(/<div[^>]*>\s*<\/div>/gi, '')
+      .replace(/<(strong|h[1-4])[^>]*>/gi, '<p>')      // 🔥 strong, h1~h4 여는 태그를 <p>로
+      .replace(/<\/(strong|h[1-4])>/gi, '</p>');         // 🔥 strong, h1~h4 닫는 태그를 </p>로
+  };
+  
   const renderLayout = () => {
     switch (layout) {
       case 1:
@@ -88,15 +102,10 @@ const CategorySection = ({ category, postList, layout }) => {
                         alt={post.title}/>
                       <div className={styles.newsContent}>
                         <div className={styles.newsTitle}>
-                          {post.title.length > 15
-                            ? post.title.substr(0, 18) + ".."
-                            : post.title}
+                          {post.title}
                         </div>
                         <div className={styles.newsBody}>
-                          <HtmlRenderer
-                            htmlContent={post.content}
-                            maxLength={70}
-                          />
+                          <HtmlRenderer htmlContent={cleanHtmlContent(post.content)} />
                         </div>
                       </div>
                     </div>

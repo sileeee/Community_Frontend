@@ -86,7 +86,7 @@ const Login = () => {
         </div>
         <div>
           <button type="submit">Login</button>
-          <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%" }}>
+          <span style={{ color: "#a29494", textAlign: "center", display: "inline-block", width: "100%", fontFamily: 'Pretendard' }}>
             New here? <Link to="/sign-up">Sign Up</Link>
           </span>
         </div>

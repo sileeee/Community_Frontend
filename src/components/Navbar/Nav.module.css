@@ -17,11 +17,12 @@
     justify-content: center;
     align-items: center;
     gap: 2.5vw;
+    font-family: 'Pretendard', sans-serif;
 }
 
 .textNavbar {
     color: #000000;
-    font-family: "Manrope", Helvetica;
+    font-family: 'Pretendard', sans-serif;
     font-size: clamp(10px, 1.3vw, 19px);
     font-weight: 500;
     white-space: nowrap;

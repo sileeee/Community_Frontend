@@ -20,10 +20,11 @@
 
 .header {
   display: flex;
-  justify-content: space-between; /* Space items to the left and right */
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 10px 0; /* Add padding for spacing if needed */
+  padding: 10px 0;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .viewAll {
@@ -80,7 +81,7 @@
 .newsImage {
   width: 50%;
   height: auto;
-  margin-right: 2%;
+  margin-right: 0%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
@@ -91,23 +92,69 @@
 }
 
 .newsTitle {
+  font-family: 'Pretendard', sans-serif;
+  color: #000000;
+  font-size: 16px;
+  line-height: 20px;
+  padding-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+  white-space: normal;
+  font-weight: bold;
+}
+
+.newsTitle * {
+  all: unset;
+  display: inline;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 15px;
   color: #000000;
   font-weight: bold;
-  padding-bottom: 10px;
-  font-size: 1em;
-  line-height:1.4;
-  text-overflow: ellipsis;
+  line-height: 20px;
+}
+
+.newsBody * {
+  all: unset; /* 기존 인라인 스타일 완전 제거 */
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  color: #383737;
+  font-weight: normal;
+  line-height: 15px;
+  word-break: break-word;
   white-space: normal;
-  word-wrap: break-word;
 }
 
 .newsBody {
-  color: #767676;
-  line-height:1.4;
-  font-size: 0.95em;
+  font-family: 'Pretendard', sans-serif;
+  color: #1e1e1e;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
   text-overflow: ellipsis;
-  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* 기본 4줄까지만 보여줌 */
+  -webkit-box-orient: vertical;
   word-wrap: break-word;
+  white-space: normal;
+  height: auto;
+}
+
+.newsBody p,
+.newsBody div,
+.newsBody span,
+.newsBody h1,
+.newsBody h2,
+.newsBody h3,
+.newsBody h4,
+.newsBody h5,
+.newsBody h6 {
+  margin: 0;
+  padding: 0;
 }
 
 .newsItem:hover .newsImage {
@@ -154,6 +201,7 @@
   padding: 10px;
   background-color: #f0f0f0;
   border-radius: 8px;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .row {
@@ -198,6 +246,7 @@
   padding: 0.1vw;
   text-decoration: none;
   transition: color 0.2s ease, text-decoration 0.2s ease;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .title:hover {
@@ -303,8 +352,11 @@
     font-size: 0.8em;
   }
 
-  .newsBody {
-    font-size: 0.7em;
+  @media (max-width: 430px) {
+    .newsBody {
+      font-size: 0.7em;
+      -webkit-line-clamp: 3;
+    }
   }
 
   .title {

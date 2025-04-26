@@ -40,11 +40,13 @@
   width: 100%;
   padding: 10px 0; /* Add padding for spacing if needed */
   gap: 15px;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .header h2 {
   font-size: 2vw;
   font-weight: bold;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .viewAll {
@@ -113,6 +115,7 @@
   white-space: normal;
   word-wrap: break-word;
   text-align: left;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .newsBody {
@@ -123,6 +126,7 @@
   white-space: normal;
   word-wrap: break-word;
   text-align: left;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .newsItem:hover .newsImage {
@@ -176,6 +180,7 @@
   padding: 10px;
   background-color: #f0f0f0;
   border-radius: 8px;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .row {
@@ -220,6 +225,7 @@
   padding: 0.1vw;
   text-decoration: none;
   transition: color 0.2s ease, text-decoration 0.2s ease;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .title:hover {
@@ -350,6 +356,7 @@
     font-weight: bold;
     padding: 10px 0 0px 0;
     font-size: 0.7em;
+    font-family: 'Pretendard', sans-serif;
   }
 
   .title {

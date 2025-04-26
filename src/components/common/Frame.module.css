@@ -19,6 +19,7 @@
   padding: clamp(10px, 1vw, 10px) clamp(10px, 2vw, 20px);
   color: black;
   transition: box-shadow 0.3s ease, transform 0.2s ease;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .frame:hover {
