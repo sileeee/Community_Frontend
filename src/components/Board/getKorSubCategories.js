@@ -48,18 +48,12 @@ export const getKorSubCategories = (subCategory) => {
         return "구매";
     } else if (subCategory === "HANDOVER") {
         return "판매";
-    } else if (subCategory === "URGENT_HANDOVER") {
-        return "급매";
-    }else if (subCategory === "OFF_PLAN") {
-        return "off-plan";
     }else if (subCategory === "RENT") {
         return "임대";
-    } else if (subCategory === "FULL_TIME") {
-        return "풀타임";
-    } else if (subCategory === "PART_TIME") {
-        return "파트타임";
-    } else if (subCategory === "DAY") {
-        return "하루근무";
+    } else if (subCategory === "HIRING") {
+        return "구인";
+    } else if (subCategory === "JOB_SEEKING") {
+        return "구직";
     } else if (subCategory === "PARENTING") {
         return "출산/육아";
     } else if (subCategory === "EDUCATION") {

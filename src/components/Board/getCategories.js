@@ -50,17 +50,14 @@ export const getCategories = (category) => {
         { label: "부동산정보", value: "INFO" },
         { label: "구매", value: "BUY" },
         { label: "판매", value: "HANDOVER" },
-        { label: "급매", value: "URGENT_HANDOVER" },
-        { label: "off-plan", value: "OFF_PLAN" },
         { label: "임대", value: "RENT" },
         { label: "ETC", value: "ETC" },
         ];
     } else if (category === "JOB_SEARCH") {
         return [
         { label: "TOTAL", value: "TOTAL" },
-        { label: "풀타임", value: "FULL_TIME" },
-        { label: "파트타임", value: "PART_TIME" },
-        { label: "하루근무", value: "DAY" },
+        { label: "구인", value: "HIRING" },
+        { label: "구직", value: "JOB_SEEKING" },
         { label: "ETC", value: "ETC" },
         ];
     } else if (category === "CHILD_CARE") {
