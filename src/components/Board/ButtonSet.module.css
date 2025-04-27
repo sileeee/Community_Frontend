@@ -8,8 +8,10 @@
 .edit_button {
   display: inline-block;
   margin-right: 10px;
+  font-family: 'Pretendard', sans-serif;
 }
 
 .delete_button {
   display: inline-block;
+  font-family: 'Pretendard', sans-serif;
 }

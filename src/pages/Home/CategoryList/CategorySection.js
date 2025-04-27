@@ -78,8 +78,8 @@ const CategorySection = ({ category, postList, layout }) => {
       .replace(/<br[^>]*>/gi, '') 
       .replace(/<p[^>]*>\s*<\/p>/gi, '') 
       .replace(/<div[^>]*>\s*<\/div>/gi, '')
-      .replace(/<(strong|h[1-4])[^>]*>/gi, '<p>')      // 🔥 strong, h1~h4 여는 태그를 <p>로
-      .replace(/<\/(strong|h[1-4])>/gi, '</p>');         // 🔥 strong, h1~h4 닫는 태그를 </p>로
+      .replace(/<(strong|h[1-4])[^>]*>/gi, '<p>') 
+      .replace(/<\/(strong|h[1-4])>/gi, '</p>');
   };
   
   const renderLayout = () => {
