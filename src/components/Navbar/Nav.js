@@ -19,7 +19,6 @@ function Nav(){
                 <div className={styles.textNavbar} onClick={() => goToBoard('FREE_BOARD')}>{t('FREE_BOARD')}</div>
                 <div className={styles.textNavbar} onClick={() => goToBoard('SECOND_HAND')}>{t('SECOND_HAND')}</div>
                 <div className={styles.textNavbar} onClick={() => goToBoard('JOB_SEARCH')}>{t('JOB_SEARCH')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('ASIAN_MARKET')}>{t('ASIAN_MARKET')}</div>
                 <div className={styles.textNavbar} onClick={() => goToBoard('LIFE')}>{t('LIFE')}</div>
                 <div className={styles.textNavbar} onClick={() => goToBoard('CHILD_CARE')}>{t('CHILD_CARE')}</div>
                 <div className={styles.textNavbar} onClick={() => goToBoard('TRAVEL')}>{t('TRAVEL')}</div>

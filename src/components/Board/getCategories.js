@@ -10,17 +10,12 @@ export const getCategories = (category) => {
         { label: "문화", value: "CULTURE" },
         { label: "ETC", value: "ETC" },
         ];
-    } else if (category === "ASIAN_MARKET") {
+    } else if (category === "LIFE") {
         return [
         { label: "TOTAL", value: "TOTAL" },
         { label: "한인마트", value: "KOREAN" },
         { label: "아시안마트", value: "ASIAN" },
         { label: "공동구매", value: "GROUP" },
-        { label: "ETC", value: "ETC" },
-        ];
-    } else if (category === "LIFE") {
-        return [
-        { label: "TOTAL", value: "TOTAL" },
         { label: "의료정보", value: "HOSPITAL" },
         { label: "미용", value: "BEAUTY" },
         { label: "비자", value: "VISA" },
