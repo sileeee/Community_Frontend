@@ -40,6 +40,19 @@ export default function EditorBox({ value, onChange, initialValue }) {
       value={content}
       onEditorChange={handleEditorChange}
       init={{
+        extended_valid_elements: 'iframe[src|frameborder|style|scrolling|class|width|height|name|align]',
+        toolbar: [
+          'undo redo | blocks | ' +
+          'bold italic forecolor | alignleft aligncenter ' +
+          'alignright alignjustify | ' +
+          'lists link charmap | ' +
+          'image media emoticons | table code' 
+        ],
+        plugins: [
+          "lists", "link", "image", "charmap", "preview",
+          "searchreplace", "fullscreen", "media", "code",
+          "help", "emoticons", "codesample", "quickbars", "table"
+        ],
         selector: "#postcontent",
         relative_urls: false,
         remove_script_host: false,
@@ -75,6 +88,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
           image_title: true,
           automatic_uploads: true,
           file_picker_types: "image",
+          entity_encoding: 'raw',
           images_upload_handler: async (blobInfo, success, failure) => {
             const formData = new FormData();
             formData.append('file', blobInfo.blob(), blobInfo.filename());

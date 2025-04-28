@@ -6,7 +6,13 @@ const HtmlRenderer = ({ htmlContent, maxLength }) => {
   const containerRef = useRef(null);
 
   // DOMPurify로 sanitize 후 width/height 속성 제거
-  let cleanHtml = DOMPurify.sanitize(htmlContent);
+  let cleanHtml = DOMPurify.sanitize(htmlContent, {
+    ADD_TAGS: ["iframe"],
+    ADD_ATTR: [
+      "src", "width", "height", "style", "frameborder",
+      "allowfullscreen", "loading", "referrerpolicy"
+    ]
+  });
   cleanHtml = cleanHtml.replace(/(width|height)="[^"]*"/g, '');
 
   // maxLength 옵션 있으면 텍스트 잘라내기
