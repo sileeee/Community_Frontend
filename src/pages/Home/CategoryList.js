@@ -42,8 +42,6 @@ function CategoryList(){
                 <div className="space" />
                 <CategorySection category={"job_search"} postList={[]} layout={2} />
                 <div className="space" />
-                <CategorySection category={"asian_market"} postList={getCategoryPosts("ASIAN_MARKET")} layout={1} />
-                <div className="space" />
                 <CategorySection category={"travel"} postList={getCategoryPosts("TRAVEL")} layout={1} />
                 <div className="space" />
                 <CategorySection category={"real_estate"} postList={getCategoryPosts("REAL_ESTATE")} layout={1} />

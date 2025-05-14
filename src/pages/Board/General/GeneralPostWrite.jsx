@@ -28,6 +28,11 @@ function GeneralPostWrite({category, id}) {
     };
 
     const onFinish = (value) => {
+
+      if (category.toUpperCase() === "FREE_BOARD") {
+        value.subCategory = "ETC";
+      }
+
       if(id){
         axios
             .put(`${API_BASE_URL}/posts/edit/${id}`, value, {

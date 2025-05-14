@@ -41,6 +41,8 @@
     "TICKET": "티켓/상품권",
     "USED_CAR": "자동차",
     "DIRHAM": "디르함",
+    "BUY_USED": "삽니다",
+    "SELL_USED": "팝니다",
 
     "INFO": "부동산정보",
     "BUY": "구매",

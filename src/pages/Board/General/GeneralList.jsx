@@ -9,7 +9,7 @@ import { PushpinFilled } from '@ant-design/icons';
 import { useTranslation } from "react-i18next";
 
 
-function GeneralList({category, selectedSubCategory}) {
+function GeneralList({category, selectedSubCategory, selectedPostType}) {
   
     const navigate = useNavigate();
     const location = useLocation();
@@ -21,6 +21,7 @@ function GeneralList({category, selectedSubCategory}) {
     
     const [noticeList, setNoticeList] = useState([]);
     const [subCategory, setSubCategory] = useState("TOTAL");
+    const [postType, setPostType] = useState(null);
     const [type, setType] = useState();
   
     const localStorageKey = `pinnedItems_${category}`;
@@ -154,6 +155,7 @@ function GeneralList({category, selectedSubCategory}) {
     useEffect(() => {
         // 페이지가 로드될 때마다 subCategory를 초기화
         setSubCategory("TOTAL");
+        setPostType(null);
     }, [location.key]);
 
 
@@ -180,7 +182,7 @@ function GeneralList({category, selectedSubCategory}) {
               }
             });
           } else {
-            const url = `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}`;
+            const url = `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&subCategory=${subCategory}${postType ? `&postType=${postType}` : ''}`;
             const res = await axios.get(url);
 
             if (res.status === 200) {
@@ -199,14 +201,20 @@ function GeneralList({category, selectedSubCategory}) {
       if (type) {
           fetchPosts();
       }
-  }, [type, subCategory, keyword, API_BASE_URL, category]);
+  }, [type, subCategory, keyword, API_BASE_URL, category, postType]);
   
 
-    useEffect(() => {
-        if (selectedSubCategory) {
-        setSubCategory(selectedSubCategory);
-        }
-    }, [selectedSubCategory]);
+  useEffect(() => {
+    if (selectedSubCategory !== undefined) {
+      setSubCategory(selectedSubCategory);
+    }
+  }, [selectedSubCategory]);
+  
+  useEffect(() => {
+    if (selectedPostType !== undefined) {
+      setPostType(selectedPostType);
+    }
+  }, [selectedPostType]);
 
     const mergedData = [...pinnedItems, ...noticeList].filter(
         (item, index, self) => self.findIndex((i) => i.id === item.id) === index

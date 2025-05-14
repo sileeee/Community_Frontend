@@ -99,7 +99,13 @@ export const getCategories = (category) => {
         { label: "여행사", value: "KOREAN_TRAVEL" },
         { label: "ETC", value: "ETC" },
         ];
-    } else {
+    } else if (category === "TRADE_TYPE") {
+        return [
+        { label: "팝니다", value: "SELL_USED" },
+        { label: "삽니다", value: "BUY_USED" }
+        ];
+    }
+    else {
         return [
         ];
     }

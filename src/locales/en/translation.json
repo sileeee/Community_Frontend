@@ -41,6 +41,8 @@
     "TICKET": "ticket",
     "USED_CAR": "used car",
     "DIRHAM": "dirham",
+    "BUY_USED": "buy",
+    "SELL_USED": "sell",
 
     "INFO": "info",
     "BUY": "buy",

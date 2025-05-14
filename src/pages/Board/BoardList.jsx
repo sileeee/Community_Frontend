@@ -4,7 +4,7 @@ import styles from "./Board.module.css";
 import { Paper } from "@mui/material";
 import WriteButton from "../../components/Board/WriteButton";
 import SubCategoryButton from "../../components/Board/SubCategoryButton";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import HotPosts from "../../components/Board/HotPosts";
 import RealEstateList from "./RealEstate/RealEstateList";
 import GeneralList from "./General/GeneralList";
@@ -14,10 +14,12 @@ import { useTranslation } from "react-i18next";
 function BoardList({category}) {  // lower case
   
   const location = useLocation();
+  const navigate = useNavigate();
   const keyword = location.state?.keyword;
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   
   const [subCategory, setSubCategory] = useState("TOTAL");
+  const [postType, setPostType] = useState(null);
   const [banners, setBanners] = useState([]);
   const [type, setType] = useState();
   const { t } = useTranslation();
@@ -28,9 +30,17 @@ function BoardList({category}) {  // lower case
     setSubCategory(selected);
   };
 
+  const getFilteredPostType = (selected) => {
+    const newPostType = selected ? selected : null;
+    setPostType(newPostType);
+  };
+
   useEffect(() => {
-    // 페이지가 로드될 때마다 subCategory를 초기화
-    setSubCategory("TOTAL");
+    // 페이지가 새로고침될 때만 초기화
+    if (!location.state) {
+      setSubCategory("TOTAL");
+      setPostType(null);
+    }
   }, [location.key]);
 
   useEffect(() => {
@@ -92,13 +102,25 @@ function BoardList({category}) {  // lower case
               <WriteButton />
             )}
           </div>
+          <div className={styles.categoryTitle}>
+          {!keyword && category === 'second_hand' && (
+            <SubCategoryButton
+              category="TRADE_TYPE"
+              onSubCategoryChange={(selectedCategory) => getFilteredPostType(selectedCategory)}
+            />
+          )}
+          </div>
           {!keyword && (
             <HotPosts category={category}/>
           )}
           {(category.trim() === "real_estate" && !keyword)? (
             <RealEstateList category={category} selectedSubCategory={subCategory}/>
           ) : (
-            <GeneralList category={category} selectedSubCategory={subCategory} />
+            <GeneralList 
+              category={category} 
+              selectedSubCategory={subCategory}
+              selectedPostType={postType}
+            />
           )}
 
         </Paper>
