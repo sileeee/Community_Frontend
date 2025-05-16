@@ -157,7 +157,7 @@ function RealEstateList({category, selectedSubCategory}) {
                     key={index}
                     hoverable
                     className={styles.customCard}
-                    bodyStyle={{paddingTop: "2px", paddingLeft: "2vw", paddingRight: "2vw"}}
+                    bodyStyle={{paddingTop: "2px", paddingLeft: "10px", paddingRight: "10px"}}
                     cover={
                         <img 
                         alt={notice.title || "example"} 
@@ -176,7 +176,7 @@ function RealEstateList({category, selectedSubCategory}) {
                         }
                         
                         description={
-                            <div className={styles.cardDescription} style={{"padding": "0px"}}>
+                            <div className={styles.cardDescription} style={{"padding": "0px", color: "#444444"}}>
                             <div><b>{getProductTypeByValue(category.toUpperCase(), notice.productType) || "-"}</b></div>
                             <div><b>거래 형태 : </b>{getKorSubCategories(notice.subCategory.toUpperCase()) || "-"}</div>
                             <div><b>매물 상태 : </b>{getProductStatusByValue(category.toUpperCase(), notice.productStatus) || "-"}</div>

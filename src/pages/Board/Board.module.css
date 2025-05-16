@@ -226,7 +226,12 @@
   }
 
   .customCard .ant-card-body {
-    padding: 10px !important; /* 기본 패딩을 10px로 변경 */
+    padding: 5px !important; /* 기본 패딩을 10px로 변경 */
+  }
+
+  .ant-card-body {
+    padding-left: 5px !important; /* 원하는 값으로 조정 */
+    padding-right: 6px !important;
   }
 
   .categoryTitle {
@@ -287,6 +292,7 @@
       }
       .cardDescription {
         font-size: 0.6em;
+        color: #444444;
       }
       .categoryTitle {
         padding-bottom: 5%;
