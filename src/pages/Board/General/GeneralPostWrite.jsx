@@ -20,6 +20,7 @@ function GeneralPostWrite({category, id}) {
 
     const [form] = Form.useForm();
     const [categorySelectedValue, setCategorySelectedValue] = useState();
+    const [postTypeSelectedValue, setPostTypeSelectedValue] = useState(null);
     const [statusSelectedValue, setStatusSelectedValue] = useState();
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -86,6 +87,7 @@ function GeneralPostWrite({category, id}) {
                   form.setFieldsValue({
                       title: data.title,
                       subCategory: data.subCategory,
+                      postType: data.postType,
                       postStatus: data.postStatus,
                       body: data.body
                   });
@@ -172,6 +174,38 @@ function GeneralPostWrite({category, id}) {
                   </th>
                 )}
                 </tr>
+                {category.toUpperCase() === "SECOND_HAND" && (
+                <tr>
+                  <th className={styles.table_th_2}>
+                    <Form.Item 
+                        label={t('TRADE_TYPE')}
+                        name="postType"
+                        rules={[
+                          {
+                            required: true,
+                            message: "필수 입력 항목입니다.",
+                          },
+                        ]}>
+                      <div className={styles.formPadding}>
+                        <Radio.Group
+                          onChange={(e) => setPostTypeSelectedValue(e.target.value)}
+                          value={postTypeSelectedValue}
+                        >
+                        {getCategories("TRADE_TYPE").map((postType, index) => (
+                            <Radio.Button 
+                              key={index} 
+                              value={postType.value} 
+                              className={`${styles.radioButton} ${postTypeSelectedValue === postType.value ? styles.selected : ""}`}
+                            >
+                              {t(postType.value)}
+                            </Radio.Button>
+                          ))}
+                        </Radio.Group>
+                      </div>
+                    </Form.Item>
+                  </th>
+                </tr>
+                )}
                 <tr>
                   <th className={styles.table_th_2}>
                     {" "}

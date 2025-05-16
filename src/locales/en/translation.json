@@ -43,6 +43,7 @@
     "DIRHAM": "dirham",
     "BUY_USED": "buy",
     "SELL_USED": "sell",
+    "TRADE_TYPE": "trade type",
 
     "INFO": "info",
     "BUY": "buy",
