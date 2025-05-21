@@ -110,7 +110,7 @@ function BoardList({category}) {  // lower case
             />
           )}
           </div>
-          {!keyword && (
+          {!keyword && category !== "link_hub" && (
             <HotPosts category={category}/>
           )}
           {(category.trim() === "real_estate" && !keyword)? (

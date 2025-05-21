@@ -30,7 +30,7 @@ function GeneralPostWrite({category, id}) {
 
     const onFinish = (value) => {
 
-      if (category.toUpperCase() === "FREE_BOARD") {
+      if (category.toUpperCase() === "FREE_BOARD" || category.toUpperCase() === "LINK_HUB") {
         value.subCategory = "ETC";
       }
 

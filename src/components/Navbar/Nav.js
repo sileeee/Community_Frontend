@@ -25,6 +25,7 @@ function Nav(){
                 <div className={styles.textNavbar} onClick={() => goToBoard('REAL_ESTATE')}>{t('REAL_ESTATE')}</div>
                 <div className={styles.textNavbar} onClick={() => goToBoard('CLUB')}>{t('CLUB')}</div>
                 <div className={styles.textNavbar} onClick={() => goToBoard('KOREAN_COMPANY')}>{t('KOREAN_COMPANY')}</div>
+                <div className={styles.textNavbar} onClick={() => goToBoard('LINK_HUB')}>{t('LINK_HUB')}</div>
             </div>
         </div>
     );
