@@ -85,7 +85,7 @@
 
     "HELLO": "안녕하세요",
     "SIR": "님",
-    "MANAGE_ACCT": "회원정보 수정",
+    "MANAGE_ACCT": "마이페이지",
     "SEARCH_KEYWORD": "궁금하신 모든 것을 찾아보세요!",
     
     "SITE_TOPIC": "두바이 한인 커뮤니티",
@@ -170,6 +170,7 @@
     "PRIVACY_POLICY_LINK_TEXT": "자세한 내용은 사이트의 개인정보 보호정책 전문을 확인하세요.",
 
     "LINK_HUB": "모든링크",
+    "MY_POSTS" : "내가 쓴 글",
 
     "privacy": {
     "title": "개인정보 보호정책",

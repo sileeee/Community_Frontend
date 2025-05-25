@@ -9,6 +9,7 @@ import { validate } from "../User/validate";
 import { notify } from "../User/toast";
 import TopBar from "../../components/TopBar/TopBar";
 import { useTranslation } from "react-i18next";
+import MyPosts from "./MyPosts";
 
 
 const MyPage = () => {
@@ -23,6 +24,7 @@ const MyPage = () => {
     const [touched, setTouched] = useState({});
     const [errors, setErrors] = useState({});
     const [userInfo, setUserInfo] = useState({});
+    const [activeTab, setActiveTab] = useState("my_posts");
     const { userId } = useAuth();
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -118,47 +120,62 @@ const MyPage = () => {
         <TopBar />
         <Nav />
         <div className={styles.container}>
-        <form className={styles.formMyPage} onSubmit={submitHandler} autoComplete="off">
-            <h1>{t('EDIT_PROFILE')}</h1>
-            <div>
+        <div className={styles.tabContainer}>
+        <button
+            className={`${styles.tab} ${activeTab === "my_posts" ? styles.activeTab : ""}`}
+            onClick={() => setActiveTab("my_posts")}
+        >
+            {t("MY_POSTS")}
+        </button>
+        <button
+            className={`${styles.tab} ${activeTab === "profile" ? styles.activeTab : ""}`}
+            onClick={() => setActiveTab("profile")}
+        >
+            {t("EDIT_PROFILE")}
+        </button>
+        </div>
+        {activeTab === "profile" && (
+            <form className={styles.formMyPage} onSubmit={submitHandler} autoComplete="off">
+                <h1>{t('EDIT_PROFILE')}</h1>
                 <div>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        value={data.name} 
-                        placeholder={data.name} 
+                    <div>
+                        <input 
+                            type="text" 
+                            name="name" 
+                            value={data.name} 
+                            placeholder={data.name} 
+                            onChange={changeHandler} 
+                            onFocus={focusHandler} 
+                            autoComplete="off" />
+                    </div>
+                    {errors.name && touched.name && <span className={styles.error}>{errors.name}</span>}
+                </div>
+                <div>
+                    <div>
+                        <input 
+                        type="password" 
+                        name="password" 
+                        value={data.password} 
+                        placeholder={t('NEW_PASSWORD')}
                         onChange={changeHandler} 
                         onFocus={focusHandler} 
                         autoComplete="off" />
+                        
+                    </div>
+                    {errors.password && touched.password && <span className={styles.error}>{errors.password}</span>}
                 </div>
-                {errors.name && touched.name && <span className={styles.error}>{errors.name}</span>}
-            </div>
-            <div>
                 <div>
-                    <input 
-                    type="password" 
-                    name="password" 
-                    value={data.password} 
-                    placeholder={t('NEW_PASSWORD')}
-                    onChange={changeHandler} 
-                    onFocus={focusHandler} 
-                    autoComplete="off" />
-                    
+                    <div>
+                        <input 
+                        type="password" 
+                        name="confirmPassword" 
+                        placeholder={t('CONFIRM_PASSWORD')}
+                        onChange={changeHandler} 
+                        onFocus={focusHandler} 
+                        autoComplete="off" />
+                    </div>
+                    {errors.confirmPassword && touched.confirmPassword && <span className={styles.error}>{errors.confirmPassword}</span>}
                 </div>
-                {errors.password && touched.password && <span className={styles.error}>{errors.password}</span>}
-            </div>
-            <div>
-            <div>
-                <input 
-                type="password" 
-                name="confirmPassword" 
-                placeholder={t('CONFIRM_PASSWORD')}
-                onChange={changeHandler} 
-                onFocus={focusHandler} 
-                autoComplete="off" />
-            </div>
-            {errors.confirmPassword && touched.confirmPassword && <span className={styles.error}>{errors.confirmPassword}</span>}
-            </div>
                 <div>
                     <div>
                         <input 
@@ -176,7 +193,13 @@ const MyPage = () => {
                     <button type="submit">{t('EDIT_PROFILE_SUCCESS')}</button>
                 </div>
             </form>
+        )}
+        {activeTab === "my_posts" && (
+            <div className={styles.myPosts}>
+                <MyPosts/>
             </div>
+        )}
+        </div>
         <Foot />
         </div>
     );

@@ -27,6 +27,8 @@ export const getKorCategories = (category) => {
         return "한인업소";
     } else if (lowerCategory === "search") {
         return "검색결과";
+    } else if (lowerCategory === "link_hub") {
+        return "모든링크";
     } else {
         return [
         ];

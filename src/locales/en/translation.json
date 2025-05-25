@@ -9,7 +9,7 @@
     "TRAVEL": "Travel",
     "REAL_ESTATE": "Real Estate",
     "CLUB": "Club",
-    "KOREAN_COMPANY": "Korean Company",
+    "KOREAN_COMPANY": "Company",
     "SEARCH": "search results",
 
     "TOTAL": "Total",
@@ -85,7 +85,7 @@
 
     "HELLO": "Hello",
     "SIR": "",
-    "MANAGE_ACCT": "Manage Account",
+    "MANAGE_ACCT": "My Page",
     "SEARCH_KEYWORD": "Explore everything about Dubai!",
 
     "SITE_TOPIC": "Dubai Korean Community",
@@ -170,6 +170,7 @@
     "PRIVACY_POLICY_LINK_TEXT": "For more information, please refer to the full Privacy Policy.",
 
     "LINK_HUB": "Link Hub",
+    "MY_POSTS" : "My Posts",
 
     "privacy": {
     "title": "Privacy Policy",

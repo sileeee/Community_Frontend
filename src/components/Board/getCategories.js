@@ -104,6 +104,20 @@ export const getCategories = (category) => {
         { label: "팝니다", value: "SELL_USED" },
         { label: "삽니다", value: "BUY_USED" }
         ];
+    } else if (category === "MY_POSTS") {
+        return [
+        { label: "뉴스", value: "NEWS" },
+        { label: "자유게시판", value: "FREE_BOARD" },
+        { label: "중고장터", value: "SECOND_HAND" },
+        { label: "구인구직", value: "JOB_SEARCH" },
+        { label: "생활정보", value: "LIFE" },
+        { label: "교육정보", value: "CHILD_CARE" },
+        { label: "여행정보", value: "TRAVEL" },
+        { label: "부동산", value: "REAL_ESTATE" },
+        { label: "동호회", value: "CLUB" },
+        { label: "한인업소", value: "KOREAN_COMPANY" },
+        { label: "모든링크", value: "LINK_HUB" }
+        ];
     }
     else {
         return [
