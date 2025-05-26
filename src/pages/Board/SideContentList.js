@@ -64,9 +64,9 @@ function SideContentList({ pageId, category, subCategory }) {
 
     const movePage = (url, id) => {
         if(id){
-            navigate(url+id, {state: {id: id, category: category}});
+            navigate(url+id, {state: {id: id, category: category, subCategory: subCategory}});
         }else{
-            navigate(url, {state: {category: category}});
+            navigate(url, {state: {category: category, subCategory: subCategory}});
         }
     };
 
