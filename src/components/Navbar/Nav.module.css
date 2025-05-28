@@ -4,6 +4,7 @@
     justify-content: space-between;
     position: relative;
     z-index: 1;
+    overflow: visible;
     width: 100%;
     height: 50px;
     padding: 3vw 2vw 3vw 2vw;
@@ -11,7 +12,7 @@
 }
 
 .navbar {
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -19,7 +20,7 @@
     align-items: center;
     gap: 2.5vw;
     font-family: 'Pretendard', sans-serif;
-    z-index: 1000;
+    z-index: 2
 }
 
 .textNavbar {
@@ -31,6 +32,7 @@
     transition: box-shadow 0.3s ease, transform 0.2s ease;
     cursor: pointer;
     position: relative;
+    z-index: 1;
 }
 
 .textNavbar:hover {
@@ -50,9 +52,8 @@
     visibility: hidden;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-    z-index: 1000;
     padding: 10px 0;
-    z-index: 99999;
+    z-index: 99;
     position: fixed;
   }
   

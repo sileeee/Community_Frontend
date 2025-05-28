@@ -84,25 +84,14 @@ const TopBar = () => {
                                 <MenuOutlined className={styles.myPageIcon}/>
                                 <div className={styles.myPageText}>Menu</div>
                                 {menuOpen && (
-                                    <DropdownMenu style={{
-                                        position: "absolute",
-                                        top: `${dropdownPos.top}px`,
-                                        left: `${dropdownPos.left}px`,
-                                        backgroundColor: "white",
-                                        border: "1px solid #ddd",
-                                        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                                        borderRadius: "5px",
-                                        width: "clamp(6rem, 10vw, 10rem)",
-                                        fontSize: "clamp(12px, 1.3vw, 16px)",
-                                        padding: "6px"
-                                    }}>
-                                        <div onClick={goToMyPage} className={styles.menuItem}>
-                                            {t('MANAGE_ACCT')}
-                                        </div>
-                                        <div onClick={() => logout()} className={styles.menuItem}>
-                                            {t("LOGOUT")}
-                                        </div>
-                                    </DropdownMenu>
+                                    <div className={styles.dropdownMenu}>
+                                    <div onClick={goToMyPage} className={styles.menuItem}>
+                                        {t('MANAGE_ACCT')}
+                                    </div>
+                                    <div onClick={() => logout()} className={styles.menuItem}>
+                                        {t("LOGOUT")}
+                                    </div>
+                                    </div>
                                 )}
                             </div>
                         </div>
