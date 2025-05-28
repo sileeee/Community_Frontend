@@ -52,6 +52,12 @@ function BoardList({category}) {  // lower case
   }, [category]);
 
   useEffect(() => {
+    if (location.state?.subCategory) {
+      setSubCategory(location.state.subCategory);
+    }
+  }, [location.state?.subCategory]);
+
+  useEffect(() => {
     setBanners([]);
     const fetchPost = async () => {
     axios
@@ -95,6 +101,7 @@ function BoardList({category}) {  // lower case
             {!keyword && (
                 <SubCategoryButton
                   category={category.toUpperCase()}
+                  selectedSubCategory={subCategory}
                   onSubCategoryChange={(selectedCategory) => getFilteredPosts(selectedCategory)}
                 />
             )}

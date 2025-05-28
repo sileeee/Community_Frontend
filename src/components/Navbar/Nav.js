@@ -1,33 +1,64 @@
-import React from "react";
+// Nav.jsx
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import styles from "./Nav.module.css"
+import styles from "./Nav.module.css";
+import { getCategories } from "../Board/getCategories";
+import axios from 'axios';
 
 function Nav(){
 
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const [hoveredCategory, setHoveredCategory] = useState(null);
 
-    const goToBoard = (category) => {
-        navigate(`/board/${String(category || '').toLowerCase()}`);
+    const goToBoard = (category, subCategory = null) => {
+        navigate(`/board/${String(category || '').toLowerCase()}`, {
+            state: subCategory ? { subCategory } : undefined,
+          });
     };
 
-    return(
+      return (
         <div className={styles.container}>
-            <div className={styles.navbar}>
-                <div className={styles.textNavbar} onClick={() => goToBoard('NEWS')}>{t('NEWS')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('FREE_BOARD')}>{t('FREE_BOARD')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('SECOND_HAND')}>{t('SECOND_HAND')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('JOB_SEARCH')}>{t('JOB_SEARCH')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('LIFE')}>{t('LIFE')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('CHILD_CARE')}>{t('CHILD_CARE')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('TRAVEL')}>{t('TRAVEL')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('REAL_ESTATE')}>{t('REAL_ESTATE')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('CLUB')}>{t('CLUB')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('KOREAN_COMPANY')}>{t('KOREAN_COMPANY')}</div>
-                <div className={styles.textNavbar} onClick={() => goToBoard('LINK_HUB')}>{t('LINK_HUB')}</div>
-            </div>
+          <div className={styles.navbar}>
+            {["NEWS", "FREE_BOARD", "SECOND_HAND", "JOB_SEARCH", "LIFE", "CHILD_CARE", "TRAVEL", "REAL_ESTATE", "CLUB", "KOREAN_COMPANY", "LINK_HUB"].map((cat) => {
+              const subCategories = getCategories(cat).filter(sub => sub.value !== "ETC" && sub.value !== "TOTAL");
+              const hasDropdown = subCategories.length > 0;
+    
+              return (
+                <div
+                  key={cat}
+                  className={styles.textNavbar}
+                  onMouseEnter={() => hasDropdown && setHoveredCategory(cat)}
+                  onMouseLeave={() => hasDropdown && setHoveredCategory(null)}
+                  onClick={() => goToBoard(cat)}
+                >
+                  {t(cat)}
+                  {hoveredCategory === cat && hasDropdown && (
+                    <div
+                      className={styles.dropdownContainer}
+                      onMouseEnter={() => setHoveredCategory(cat)}
+                      onMouseLeave={() => setHoveredCategory(null)}
+                    >
+                      {subCategories.map((sub, idx) => (
+                        <div
+                          key={idx}
+                          className={styles.dropdownItem}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            goToBoard(cat, sub.value);
+                          }}
+                        >
+                          {sub.label}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
-    );
-}
+      );
+    }
 export default Nav;
