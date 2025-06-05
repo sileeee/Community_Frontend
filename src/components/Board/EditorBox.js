@@ -36,7 +36,7 @@ export default function EditorBox({ value, onChange, initialValue }) {
   return (
     <Editor
       key={i18n.language}
-      apiKey='enmqn0p7t5hzv31hdubf1ej2pkktvw9l3s407qwittthkqro'
+      apiKey='ir9tbgfsjyo71v42bliw2qaffo9vjtx4fw7k6l3jsrqm67vj'
       value={content}
       onEditorChange={handleEditorChange}
       init={{
@@ -89,72 +89,73 @@ export default function EditorBox({ value, onChange, initialValue }) {
           automatic_uploads: true,
           file_picker_types: "image",
           entity_encoding: 'raw',
-          images_upload_handler: async (blobInfo, success, failure) => {
+          images_upload_handler: async (blobInfo, success, failure) => { // 이미지가 삽입된 후 실제 업로드할 때 사용됨, 퀵툴바의 이미지버튼은 해당 함수만 사용
             const formData = new FormData();
             formData.append('file', blobInfo.blob(), blobInfo.filename());
-        
+          
             try {
               const response = await axios.post(`${API_BASE_URL}/images`, formData, {
-                headers: {
-                  'Content-Type': 'multipart/form-data',
-                },
+                headers: { 'Content-Type': 'multipart/form-data' },
               });
-              success(response.data.data);
+          
+              const uploadedUrl = response.data.data;
+              const blobUri = blobInfo.blobUri();
+          
+              // 이미지 src를 blob에서 실제 URL로 교체
+              const editor = window.tinymce.activeEditor;
+              const imgs = editor.dom.select(`img[src="${blobUri}"]`);
+              imgs.forEach(img => editor.dom.setAttrib(img, 'src', uploadedUrl));
+          
+              success(uploadedUrl);
             } catch (error) {
-              console.error(error);
-              failure('이미지 업로드 중 문제가 발생했습니다.');
+              failure("이미지 업로드 중 문제가 발생했습니다.");
             }
           },
           
-          file_picker_callback: async (callback, value, meta) => {
+          file_picker_callback: (callback, value, meta) => {
             const input = document.createElement("input");
             input.setAttribute("type", "file");
             input.setAttribute("accept", "image/*");
           
-            input.onchange = async (event) => {
-              const file = event.target.files[0];
+            input.onchange = async () => {
+              const file = input.files[0];
+              const reader = new FileReader();
           
-              if (!file) {
-                window.confirm("파일이 선택되지 않았습니다.");
-                return;
-              }
+              reader.onload = async () => {
+                const base64 = reader.result.split(",")[1];
+                const blobCache = window.tinymce.activeEditor.editorUpload.blobCache;
+                const id = "blobid" + new Date().getTime();
+                const blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
           
-              // 클라이언트에서 미리보기를 위한 blob URL 생성
-              const previewUrl = URL.createObjectURL(file);
+                // 미리보기로 blob URL 사용
+                callback(blobInfo.blobUri(), { alt: file.name });
           
-              // TinyMCE에서 미리보기 표시
-              callback(previewUrl, { alt: file.name });
+                // 서버에 업로드 후 이미지 src 교체
+                try {
+                  const formData = new FormData();
+                  formData.append("file", file);
           
-              try {
-                // 서버로 업로드 요청
-                const formData = new FormData();
-                formData.append("file", file);
-          
-                const response = await axios.post(`${API_BASE_URL}/images`, formData, {
-                  headers: { 'Content-Type': 'multipart/form-data' },
-                });
-          
-                // 업로드 성공 시 업로드된 URL 가져오기
-                const uploadedUrl = response.data.data;
-
-                // Blob URL을 가진 이미지를 탐색 및 업데이트
-                  const editor = window.tinymce.activeEditor;
-                  const images = editor.dom.select('img[src^="blob:"]'); // blob URL로 시작하는 이미지 선택
-
-                  images.forEach((img) => {
-                    if (img.src === previewUrl) {
-                      editor.dom.setAttrib(img, 'src', uploadedUrl); // 이미지 src 업데이트
-                    }
+                  const response = await axios.post(`${API_BASE_URL}/images`, formData, {
+                    headers: { "Content-Type": "multipart/form-data" },
                   });
-                } catch (error) {
-                  console.error('Image upload error:', error);
-                  window.confirm('이미지 업로드 중 오류가 발생했습니다.');
+          
+                  const uploadedUrl = response.data.data;
+          
+                  // 실제 이미지 src 업데이트
+                  const editor = window.tinymce.activeEditor;
+                  const imgs = editor.dom.select(`img[src="${blobInfo.blobUri()}"]`);
+                  imgs.forEach(img => editor.dom.setAttrib(img, 'src', uploadedUrl));
+                } catch (err) {
+                  console.error('Image upload error:', err);
+                  window.alert('이미지 업로드 실패');
                 }
               };
           
-            // 파일 선택창 열기
-            input.click();
+              reader.readAsDataURL(file);
+            };
           
+            input.click();
           },
           tinycomments_mode: 'embedded',
           tinycomments_author: 'Author name',
