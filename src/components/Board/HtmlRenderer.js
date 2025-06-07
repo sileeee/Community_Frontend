@@ -5,17 +5,15 @@ import styles from "./HtmlRenderer.module.css";
 const HtmlRenderer = ({ htmlContent, maxLength }) => {
   const containerRef = useRef(null);
 
-  // DOMPurify로 sanitize 후 width/height 속성 제거
+  // DOMPurify로 sanitize (width/height 속성 유지)
   let cleanHtml = DOMPurify.sanitize(htmlContent, {
     ADD_TAGS: ["iframe"],
     ADD_ATTR: [
       "src", "width", "height", "style", "frameborder",
-      "allowfullscreen", "loading", "referrerpolicy"
+      "allowfullscreen", "loading", "referrerpolicy", "alt"
     ]
   });
-  cleanHtml = cleanHtml.replace(/(width|height)="[^"]*"/g, '');
 
-  // maxLength 옵션 있으면 텍스트 잘라내기
   const truncateHtmlContent = (html, maxLength) => {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = html;
@@ -31,51 +29,37 @@ const HtmlRenderer = ({ htmlContent, maxLength }) => {
 
   useEffect(() => {
     const updateImageStyles = () => {
-      if (window.innerWidth <= 800) { 
-        if (containerRef.current) {
-          const imgs = containerRef.current.querySelectorAll('img');
-          imgs.forEach((img) => {
-            img.style.width = '100%';
-            img.style.height = 'auto';
-            img.style.display = 'block';
-          });
-  
-          const parents = containerRef.current.querySelectorAll('div');
-          parents.forEach((parent) => {
-            parent.style.maxWidth = '100%';
-            parent.style.width = '100%';
-            parent.style.display = 'block';
-          });
-  
-          const figures = containerRef.current.querySelectorAll('figure');
-          figures.forEach((figure) => {
-            figure.style.maxWidth = '100%';
-            figure.style.width = '100%';
-            figure.style.margin = '0 auto';
-            figure.style.display = 'block';
-          });
-  
-          const figcaptions = containerRef.current.querySelectorAll('figcaption');
-          figcaptions.forEach((caption) => {
-            caption.style.maxWidth = '100%';
-            caption.style.width = '100%';
-            caption.style.display = 'block';
-            caption.style.textAlign = 'center';
-          });
+      if (!containerRef.current) return;
+
+      const imgs = containerRef.current.querySelectorAll('img');
+
+      imgs.forEach((img) => {
+        const width = img.getAttribute('width');
+        const height = img.getAttribute('height');
+
+        if (width && height) {
+          img.style.width = `${width}px`;
+          img.style.height = `${height}px`;
+          img.style.maxWidth = 'unset';
+          img.style.display = 'block';
+          img.style.margin = '0 auto';
+        } else {
+          img.style.width = '100%';
+          img.style.height = 'auto';
+          img.style.maxWidth = '100%';
+          img.style.display = 'block';
+          img.style.margin = '0 auto';
         }
-      }
+      });
     };
-  
-    updateImageStyles(); // 최초 렌더링 때 한 번 실행
-  
-    window.addEventListener('resize', updateImageStyles); // 화면 리사이즈 시마다 체크
-  
+
+    updateImageStyles();
+    window.addEventListener('resize', updateImageStyles);
     return () => {
-      window.removeEventListener('resize', updateImageStyles); // 컴포넌트 언마운트 시 정리
+      window.removeEventListener('resize', updateImageStyles);
     };
   }, [finalHtml]);
-  
-  
+
   return (
     <div
       className={styles.htmlRender}

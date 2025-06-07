@@ -1,15 +1,23 @@
-/* HTMLRenderer 모듈에서 TinyMCE 출력물을 스타일링하기 위한 기본 설정 */
 .htmlRender {
-    all: unset;
-    display: block; /* 기본 컨테이너 역할 설정 */
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
-/* 인라인 스타일 복원 */
-.htmlRender *[style] {
-    all: revert;
+/* ✅ 사용자 사이즈 반영 */
+.htmlRender img[width][height] {
+  display: block;
+  margin: 0 auto;
+}
+
+/* ✅ 반응형 이미지 */
+.htmlRender img:not([width]):not([height]) {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
 /* 텍스트 관련 스타일 */
@@ -79,18 +87,4 @@
 .htmlRender th {
     background-color: #f8f9fa;
     font-weight: bold;
-}
-
-
-.htmlRender img {
-    all: unset;
-    width: 100% !important;
-    height: auto !important;
-    display: block;
-    margin: 0 auto;
-}
-
-.htmlRender img:where(*) {
-    max-width: 100% !important;
-    width: 100% !important;
 }
