@@ -80,7 +80,7 @@ function RealEstateList({category, selectedSubCategory}) {
 
     useEffect(() => {
         // 페이지가 로드될 때마다 subCategory를 초기화
-        setSubCategory("TOTAL");
+        // setSubCategory("TOTAL");
     }, [location.key]);
 
     useEffect(() => {

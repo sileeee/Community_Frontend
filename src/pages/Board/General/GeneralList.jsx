@@ -154,7 +154,7 @@ function GeneralList({category, selectedSubCategory, selectedPostType}) {
 
     useEffect(() => {
         // 페이지가 로드될 때마다 subCategory를 초기화
-        setSubCategory("TOTAL");
+        // setSubCategory("TOTAL");
         setPostType(null);
     }, [location.key]);
 
