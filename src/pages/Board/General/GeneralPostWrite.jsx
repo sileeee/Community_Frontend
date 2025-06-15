@@ -67,6 +67,19 @@ function GeneralPostWrite({category, id}) {
                 console.log(error);
                 notify("게시글 등록에 실패했습니다", "error");
             });
+
+        if (category.toUpperCase() === "FREE_BOARD") {
+          axios.post(`https://hook.eu2.make.com/po4iu5p6sw7nsab3fona5mohjewv913s`, value, {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          })
+          .then((data) => {
+            if (data.status === 200) {
+              console.log("Free board new posting notificatino was sent.");
+            }
+          })
+        }
       };
     }
 

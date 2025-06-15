@@ -27,7 +27,7 @@
 }
 
 .handubi .parent-group {
-  background-color: #fffefb;
+  background-color: #ffffff;
   flex: 0 1 auto;
   flex-grow: 0; /* 공간을 자동으로 차지하지 않도록 설정 */
   flex-shrink: 0; /* 축소되지 않도록 설정 */
