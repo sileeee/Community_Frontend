@@ -30,13 +30,16 @@ function GeneralPostWrite({category, id}) {
 
     const onFinish = (value) => {
 
+      const thumbnailUrl = form.getFieldValue("thumbnailUrl");
+      const payload = { ...value, thumbnailUrl };
+
       if (category.toUpperCase() === "FREE_BOARD" || category.toUpperCase() === "LINK_HUB") {
         value.subCategory = "ETC";
       }
 
       if(id){
         axios
-            .put(`${API_BASE_URL}/posts/edit/${id}`, value, {
+            .put(`${API_BASE_URL}/posts/edit/${id}`, payload, {
                 withCredentials: true,
                 headers: {
                   'Content-Type': 'application/json',
@@ -53,7 +56,7 @@ function GeneralPostWrite({category, id}) {
       }
       else{
         axios
-            .post(`${API_BASE_URL}/posts/new/${category.toUpperCase()}`, value, {
+            .post(`${API_BASE_URL}/posts/new/${category.toUpperCase()}`, payload, {
                 withCredentials: true,
                 headers: {
                   'Content-Type': 'application/json',
@@ -83,6 +86,12 @@ function GeneralPostWrite({category, id}) {
       };
     }
 
+    const extractFirstImageUrl = (htmlString) => {
+      const imgTagRegex = /<img[^>]+src="([^">]+)"[^>]*>/;
+      const match = htmlString.match(imgTagRegex);
+      return match ? match[0] : null;
+    };
+
     const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
     };
@@ -102,7 +111,8 @@ function GeneralPostWrite({category, id}) {
                       subCategory: data.subCategory,
                       postType: data.postType,
                       postStatus: data.postStatus,
-                      body: data.body
+                      body: data.body,
+                      thumbnailUrl: data.thumbnailUrl
                   });
                   console.log("Form Fields After Set:", form.getFieldsValue());
                   setEditorContent(data.body);
@@ -259,6 +269,9 @@ function GeneralPostWrite({category, id}) {
               <tbody>
                 <tr>
                   <td className={styles.table_td_2}>
+                    <Form.Item name="thumbnailUrl" style={{ display: "none" }}>Add commentMore actions
+                        <Input />
+                    </Form.Item>
                     <Form.Item 
                         label={t('CONTENT')}
                         name="body"
@@ -272,8 +285,13 @@ function GeneralPostWrite({category, id}) {
                             <div className={styles.formPadding}>
                             <EditorBox
                                 value={form.getFieldValue("body")}
-                                onChange={(value) => form.setFieldsValue({ body: value })}
-                                initialValue={editorContent}
+                                onChange={(value) => {
+                                  const thumbnailUrl = extractFirstImageUrl(value); 
+                                  form.setFieldsValue({ 
+                                      body: value, 
+                                      thumbnailUrl: thumbnailUrl
+                                  });
+                              }}
                             />
                             </div>
                     </Form.Item>
