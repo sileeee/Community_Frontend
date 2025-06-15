@@ -26,13 +26,15 @@ const CategorySection = ({ category, postList, layout }) => {
   }, [category]);
 
   useEffect(() => {
+    if (!type) return;
     if (layout === 2) {
       getHotPosts();
-      getRecentPosts();
-    } else {
-      setPosts(postList); // 기본 게시글 세팅
     }
-  }, [layout, category, postList]);
+    getRecentPosts();
+    // } else {
+    //   setPosts(postList); // 기본 게시글 세팅
+    // }
+  }, [layout, category, postList, type]);
 
   const getHotPosts = async () => {
     try {
@@ -40,7 +42,11 @@ const CategorySection = ({ category, postList, layout }) => {
         `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&criteria=view`
       );
       if (res.status === 200) {
-        setPosts(res.data.data.slice(0, 6));
+        if (layout === 2) {
+          setPosts(res.data.data.slice(0, 6));
+        } else {
+          setPosts(res.data.data.slice(0, 4));
+        }
       }
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -49,11 +55,20 @@ const CategorySection = ({ category, postList, layout }) => {
 
   const getRecentPosts = async () => {
     try {
+
+      // const selectedType = category === "real_estate" ? "real-estate" : "posts";
+      // setType(selectedType);
+
       const res = await axios.get(
         `${API_BASE_URL}/${type}?category=${String(category || "").toUpperCase()}&criteria=createdAt`
       );
       if (res.status === 200) {
-        setRecentPosts(res.data.data.slice(0, 6));
+        if (layout === 2) {
+          setRecentPosts(res.data.data.slice(0, 6));
+        }
+        else {
+          setRecentPosts(res.data.data.slice(0, 4));
+        }
       }
     } catch (error) {
       console.error("Error fetching posts:", error);
@@ -69,6 +84,9 @@ const CategorySection = ({ category, postList, layout }) => {
   };
 
   const cleanHtmlContent = (html) => {
+
+    if (!html) return "";
+
     return html
       .replace(/style="[^"]*"/g, '') 
       .replace(/<img[^>]*>/gi, '') 
@@ -81,6 +99,11 @@ const CategorySection = ({ category, postList, layout }) => {
       .replace(/<(strong|h[1-4])[^>]*>/gi, '<p>') 
       .replace(/<\/(strong|h[1-4])>/gi, '</p>');
   };
+
+  const extractImageSrc = (htmlString) => {
+    const match = htmlString?.match(/<img[^>]+src="([^">]+)"/);
+    return match ? match[1] : htmlString;
+  };
   
   const renderLayout = () => {
     switch (layout) {
@@ -88,24 +111,24 @@ const CategorySection = ({ category, postList, layout }) => {
         return (
           <div className={styles.container}>
             <div className={styles.square}>
-              {posts && posts.length > 0 ? (
-                [...posts]
+              {recentPosts && recentPosts.length > 0 ? (
+                [...recentPosts]
                   .sort((a, b) => a.locationId - b.locationId)
                   .map((post, index) => (
                     <div
                       key={index}
                       className={styles.newsItem}
-                      onClick={() => movePage(post.postId)}>
+                      onClick={() => movePage(post.id)}>
                       <img
                         className={styles.newsImage}
-                        src={post.imageUrl || "/static/img/handubi-logo.png"}
+                        src={extractImageSrc(post.thumbnailUrl) || "/static/img/handubi-logo.png"}
                         alt={post.title}/>
                       <div className={styles.newsContent}>
                         <div className={styles.newsTitle}>
                           {post.title}
                         </div>
                         <div className={styles.newsBody}>
-                          <HtmlRenderer htmlContent={cleanHtmlContent(post.content)} />
+                          <HtmlRenderer htmlContent={cleanHtmlContent(post.body)} />
                         </div>
                       </div>
                     </div>

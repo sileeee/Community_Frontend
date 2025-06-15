@@ -98,6 +98,10 @@ function HotPosts({category}) {
         }
     }
 
+    const extractImageSrc = (htmlString) => {
+        const match = htmlString?.match(/<img[^>]+src="([^">]+)"/);
+        return match ? match[1] : htmlString;
+    };
 
     const movePage = (id, category) => {
         navigate(id === 0 ? `/board/${category}` : `/board/${category}/${id}`);
@@ -196,7 +200,7 @@ function HotPosts({category}) {
                         onClick={() => movePage(post.id, category)}>
                         <img
                         className={styles.newsImage}
-                        src={post.thumbnailUrl || "/static/img/no_image.png"}
+                        src={extractImageSrc(post.thumbnailUrl) || "/static/img/no_image.png"}
                         alt={post.title}/>
                         <div className={styles.newsContent}>
                         <div className={styles.newsTitle}>

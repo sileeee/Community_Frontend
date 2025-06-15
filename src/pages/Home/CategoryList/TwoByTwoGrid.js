@@ -84,24 +84,31 @@ const TwoByTwoGrid = ({ category, postList, layout }) => {
     </table>
   );
 
+  const extractImageSrc = (htmlString) => {
+    const match = htmlString?.match(/<img[^>]+src="([^">]+)"/);
+    return match ? match[1] : htmlString;
+  };
+
   const renderLayout = (cat, layoutNo) => {
     switch (layoutNo) {
       case 1:
         return (
           <div className={styles.container}>
             <div className={styles.square}>
-              {postList && postList.length > 0 ? (
-                postList
+              {recentPosts && recentPosts.length > 0 ? (
+                recentPosts
+                  .filter((post) => post.category === cat.toUpperCase())
+                  .slice(0, 4)
                   .sort((a, b) => a.locationId - b.locationId)
                   .map((post, index) => (
                     <div
                       key={index}
                       className={styles.newsItem}
-                      onClick={() => movePage(post.postId)}
+                      onClick={() => movePage(post.id, post.category)}
                     >
                       <img
                         className={styles.newsImage}
-                        src={post.imageUrl || "/static/img/handubi-logo.png"}
+                        src={extractImageSrc(post.thumbnailUrl) || "/static/img/handubi-logo.png"}
                         alt={post.title}
                       />
                       <div className={styles.newsContent}>
@@ -109,7 +116,7 @@ const TwoByTwoGrid = ({ category, postList, layout }) => {
                           {post.title.length > 15 ? post.title.substr(0, 18) + ".." : post.title}
                         </div>
                         <div className={styles.newsBody}>
-                          <HtmlRenderer htmlContent={post.content} maxLength={70} />
+                          <HtmlRenderer htmlContent={post.body} maxLength={70} />
                         </div>
                       </div>
                     </div>
