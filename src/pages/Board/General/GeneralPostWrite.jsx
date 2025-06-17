@@ -30,12 +30,11 @@ function GeneralPostWrite({category, id}) {
 
     const onFinish = (value) => {
 
-      const thumbnailUrl = form.getFieldValue("thumbnailUrl");
-      const payload = { ...value, thumbnailUrl };
-
       if (category.toUpperCase() === "FREE_BOARD" || category.toUpperCase() === "LINK_HUB") {
         value.subCategory = "ETC";
       }
+      const thumbnailUrl = form.getFieldValue("thumbnailUrl");
+      const payload = { ...value, thumbnailUrl };
 
       if(id){
         axios
@@ -89,7 +88,7 @@ function GeneralPostWrite({category, id}) {
     const extractFirstImageUrl = (htmlString) => {
       const imgTagRegex = /<img[^>]+src="([^">]+)"[^>]*>/;
       const match = htmlString.match(imgTagRegex);
-      return match ? match[0] : null;
+      return match ? match[0] : "/static/img/no_image.png";
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -269,7 +268,7 @@ function GeneralPostWrite({category, id}) {
               <tbody>
                 <tr>
                   <td className={styles.table_td_2}>
-                    <Form.Item name="thumbnailUrl" style={{ display: "none" }}>Add commentMore actions
+                    <Form.Item name="thumbnailUrl" style={{ display: "none" }}>
                         <Input />
                     </Form.Item>
                     <Form.Item 

@@ -108,7 +108,7 @@ const TwoByTwoGrid = ({ category, postList, layout }) => {
                     >
                       <img
                         className={styles.newsImage}
-                        src={extractImageSrc(post.thumbnailUrl) || "/static/img/handubi-logo.png"}
+                        src={extractImageSrc(post.thumbnailUrl) || "/static/img/no_image.png"}
                         alt={post.title}
                       />
                       <div className={styles.newsContent}>

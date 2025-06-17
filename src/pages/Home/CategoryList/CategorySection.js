@@ -121,7 +121,7 @@ const CategorySection = ({ category, postList, layout }) => {
                       onClick={() => movePage(post.id)}>
                       <img
                         className={styles.newsImage}
-                        src={extractImageSrc(post.thumbnailUrl) || "/static/img/handubi-logo.png"}
+                        src={extractImageSrc(post.thumbnailUrl) || "/static/img/no_image.png"}
                         alt={post.title}/>
                       <div className={styles.newsContent}>
                         <div className={styles.newsTitle}>
