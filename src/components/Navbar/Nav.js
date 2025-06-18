@@ -21,7 +21,7 @@ function Nav(){
       return (
         <div className={styles.container}>
           <div className={styles.navbar}>
-            {["NEWS", "FREE_BOARD", "SECOND_HAND", "JOB_SEARCH", "LIFE", "CHILD_CARE", "TRAVEL", "REAL_ESTATE", "CLUB", "KOREAN_COMPANY", "LINK_HUB"].map((cat) => {
+            {["NEWS", "FREE_BOARD", "SECOND_HAND", "JOB_SEARCH", "LIFE", "CHILD_CARE", "REAL_ESTATE", "CLUB", "KOREAN_COMPANY", "LINK_HUB"].map((cat) => {
               const subCategories = getCategories(cat).filter(sub => sub.value !== "ETC" && sub.value !== "TOTAL");
               const hasDropdown = subCategories.length > 0;
     

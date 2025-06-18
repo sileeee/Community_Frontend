@@ -13,19 +13,23 @@ export const getCategories = (category) => {
     } else if (category === "LIFE") {
         return [
         { label: "TOTAL", value: "TOTAL" },
-        { label: "한인마트", value: "KOREAN" },
-        { label: "아시안마트", value: "ASIAN" },
-        { label: "공동구매", value: "GROUP" },
-        { label: "의료정보", value: "HOSPITAL" },
+        { label: "식당", value: "RESTAURANT" },
+        { label: "마트", value: "MARKET" },
+        { label: "체험", value: "EXPERIENCE" },
+        { label: "숙소", value: "ACCOMODATION" },
+        { label: "여행 팁", value: "TRAVEL_TIPS" },
+        { label: "출산/육아", value: "PARENTING" },
+        { label: "의료", value: "HOSPITAL" },
         { label: "미용", value: "BEAUTY" },
         { label: "비자", value: "VISA" },
-        { label: "식당", value: "RESTAURANT" },
-        { label: "택배", value: "DELIVER" },
-        { label: "자동차", value: "CAR" },
-        { label: "회사설립", value: "COMPANY" },
-        { label: "출산/육아", value: "PARENTING" },
         { label: "금융/투자", value: "INVESTMENT" },
         { label: "법률", value: "LAW" },
+        { label: "택배", value: "DELIVER" },
+        { label: "자동차", value: "CAR" },
+        { label: "공동구매", value: "GROUP" },
+        // { label: "한인마트", value: "KOREAN" },
+        // { label: "아시안마트", value: "ASIAN" },
+        // { label: "회사설립", value: "COMPANY" },
         { label: "ETC", value: "ETC" },
         ];
     } else if (category === "SECOND_HAND") {
@@ -62,15 +66,15 @@ export const getCategories = (category) => {
         { label: "학원", value: "ACADEMY" },
         { label: "ETC", value: "ETC" },
         ];
-    } else if (category === "TRAVEL") {
-        return [
-        { label: "TOTAL", value: "TOTAL" },
-        { label: "체험", value: "EXPERIENCE" },
-        { label: "숙소", value: "ACCOMODATION" },
-        { label: "렌트카", value: "RENT_CAR" },
-        { label: "이벤트", value: "EVENT" },
-        { label: "ETC", value: "ETC" },
-        ];
+    // } else if (category === "TRAVEL") {
+    //     return [
+    //     { label: "TOTAL", value: "TOTAL" },
+    //     { label: "체험", value: "EXPERIENCE" },
+    //     { label: "숙소", value: "ACCOMODATION" },
+    //     { label: "렌트카", value: "RENT_CAR" },
+    //     { label: "이벤트", value: "EVENT" },
+    //     { label: "ETC", value: "ETC" },
+    //     ];
     } else if (category === "CLUB") {
         return [
         { label: "TOTAL", value: "TOTAL" },
@@ -110,9 +114,9 @@ export const getCategories = (category) => {
         { label: "자유게시판", value: "FREE_BOARD" },
         { label: "중고장터", value: "SECOND_HAND" },
         { label: "구인구직", value: "JOB_SEARCH" },
-        { label: "생활정보", value: "LIFE" },
+        { label: "정보공유", value: "LIFE" },
         { label: "교육정보", value: "CHILD_CARE" },
-        { label: "여행정보", value: "TRAVEL" },
+        // { label: "여행정보", value: "TRAVEL" },
         { label: "부동산", value: "REAL_ESTATE" },
         { label: "동호회", value: "CLUB" },
         { label: "한인업소", value: "KOREAN_COMPANY" },

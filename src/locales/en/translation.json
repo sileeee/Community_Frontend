@@ -34,6 +34,7 @@
     "PARENTING": "parenting",
     "INVESTMENT": "investment",
     "LAW": "law",
+    "TRAVEL_TIPS": "travel tips",
 
     "ELECTRONIC": "electronic",
     "FURNITURE": "furniture",
@@ -73,6 +74,7 @@
     "KOREAN_ACCOMODATION": "hotel",
     "KOREAN_RESTAURANT": "restaurant",
     "KOREAN_MARKET": "market",
+    "MARKET": "market",
     "KOREAN_HEALTH" : "health",
     "KOREAN_LAW": "law",
     "KOREAN_CAR": "car",

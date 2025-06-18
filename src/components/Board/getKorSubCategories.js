@@ -16,10 +16,12 @@ export const getKorSubCategories = (subCategory) => {
         return "한인마트";
     } else if (subCategory === "ASIAN") {
         return "아시안마트";
+    } else if (subCategory === "MARKET") {
+        return "마트";
     } else if (subCategory === "GROUP") {
         return "공동구매";
     } else if (subCategory === "HOSPITAL") {
-        return "의료정보";
+        return "의료";
     } else if (subCategory === "BEAUTY") {
         return "미용";
     } else if (subCategory === "VISA") {
@@ -30,8 +32,8 @@ export const getKorSubCategories = (subCategory) => {
         return "택배";
     } else if (subCategory === "CAR") {
         return "자동차";
-    } else if (subCategory === "COMPANY") {
-        return "회사설립";
+    // } else if (subCategory === "COMPANY") {
+    //     return "회사설립";
     } else if (subCategory === "ELECTRONIC") {
         return "전자기기";
     } else if (subCategory === "FURNITURE") {
@@ -106,7 +108,9 @@ export const getKorSubCategories = (subCategory) => {
         return "법률";
     } else if (subCategory === "ETC") {
         return "ETC";
-    } else {
+    } else if (subCategory === "TRAVEL_TIPS") {
+        return "여행 팁";
+    }else {
         return [
         ];
     }

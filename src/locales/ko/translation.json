@@ -4,7 +4,7 @@
     "SECOND_HAND": "중고장터",
     "JOB_SEARCH": "구인구직",
     "ASIAN_MARKET": "마켓정보",
-    "LIFE": "생활정보",
+    "LIFE": "정보공유",
     "CHILD_CARE": "교육정보",
     "TRAVEL": "여행정보",
     "REAL_ESTATE": "부동산",
@@ -22,9 +22,10 @@
 
     "KOREAN": "한인마트",
     "ASIAN": "아시안마트",
+    "MARKET": "마트",
     "GROUP": "공동구매",
 
-    "HOSPITAL": "의료정보",
+    "HOSPITAL": "의료",
     "BEAUTY": "미용",
     "VISA": "비자",
     "RESTAURANT": "식당",
@@ -79,6 +80,7 @@
     "KOREAN_ACADEMY": "학원",
     "KOREAN_ESTATE": "부동산",
     "KOREAN_TRAVEL": "여행사",
+    "TRAVEL_TIPS": "여행 팁",
 
     "LOGIN": "로그인",
     "LOGOUT": "로그아웃",
