@@ -229,7 +229,8 @@ function RealEstatePostWrite({category, id}) {
                     </Form.Item>
                   </th>
                 </tr>
-                {/* product type */}
+                {categorySelectedValue !== 'INFO' && (
+                <>
                 <tr>
                 {productType.length > 0 && (
                   <th className={styles.table_th_2}>
@@ -373,6 +374,8 @@ function RealEstatePostWrite({category, id}) {
                         </Form.Item>
                     </th>
                 </tr> 
+                </>
+              )}
               </thead>
               <tbody>
                 <tr>

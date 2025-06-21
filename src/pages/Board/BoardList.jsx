@@ -120,8 +120,16 @@ function BoardList({category}) {  // lower case
           {!keyword && category !== "link_hub" && (
             <HotPosts category={category}/>
           )}
-          {(category.trim() === "real_estate" && !keyword)? (
-            <RealEstateList category={category} selectedSubCategory={subCategory}/>
+          {(category.trim() === "real_estate" && !keyword) ? (
+            subCategory === "INFO" ? (
+              <GeneralList 
+              category={category} 
+              selectedSubCategory={subCategory}
+              selectedPostType={postType}
+            />
+            ) : (
+              <RealEstateList category={category} selectedSubCategory={subCategory} />
+            )
           ) : (
             <GeneralList 
               category={category} 

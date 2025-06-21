@@ -105,13 +105,19 @@ function RealEstateList({category, selectedSubCategory}) {
             const res = await axios.get(url);
 
             if (res.status === 200) {
-            let totalElements = res.data.data.length;
-            let tmp = res.data.data.map((item, index) => ({
-                ...item,
-                key: totalElements - index,
-                createdAt: convertToStringDate(item.createdAt),
-            }));
-            setNoticeList(tmp);
+                let data = res.data.data;
+
+                if (subCategory === "TOTAL") {
+                    data = data.filter(item => item.subCategory !== "INFO");
+                }
+    
+                let totalElements = data.length;
+                let tmp = data.map((item, index) => ({
+                    ...item,
+                    key: totalElements - index,
+                    createdAt: convertToStringDate(item.createdAt),
+                }));
+                setNoticeList(tmp);
             }
         } catch (error) {
             console.error(error);

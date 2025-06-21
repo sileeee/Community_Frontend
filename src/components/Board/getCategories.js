@@ -45,8 +45,8 @@ export const getCategories = (category) => {
         ];
     } else if (category === "REAL_ESTATE") {
         return [
-        { label: "TOTAL", value: "TOTAL" },
         { label: "부동산정보", value: "INFO" },
+        { label: "TOTAL", value: "TOTAL" },
         { label: "구매", value: "BUY" },
         { label: "판매", value: "HANDOVER" },
         { label: "임대", value: "RENT" },
