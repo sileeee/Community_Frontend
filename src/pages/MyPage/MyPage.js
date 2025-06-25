@@ -10,6 +10,7 @@ import { notify } from "../User/toast";
 import TopBar from "../../components/TopBar/TopBar";
 import { useTranslation } from "react-i18next";
 import MyPosts from "./MyPosts";
+import MyPoints from "./MyPoints";
 
 
 const MyPage = () => {
@@ -128,6 +129,12 @@ const MyPage = () => {
             {t("MY_POSTS")}
         </button>
         <button
+            className={`${styles.tab} ${activeTab === "my_points" ? styles.activeTab : ""}`}
+            onClick={() => setActiveTab("my_points")}
+        >
+            {t("MY_POINTS")}
+        </button>
+        <button
             className={`${styles.tab} ${activeTab === "profile" ? styles.activeTab : ""}`}
             onClick={() => setActiveTab("profile")}
         >
@@ -197,6 +204,11 @@ const MyPage = () => {
         {activeTab === "my_posts" && (
             <div className={styles.myPosts}>
                 <MyPosts/>
+            </div>
+        )}
+        {activeTab === "my_points" && (
+            <div className={styles.myPosts}>
+                <MyPoints/>
             </div>
         )}
         </div>

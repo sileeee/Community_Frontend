@@ -174,6 +174,17 @@
 
     "LINK_HUB": "모든링크",
     "MY_POSTS" : "내가 쓴 글",
+    "MY_POINTS": "내 포인트",
+    "POINT_HISTORY": "포인트 내역",
+    "DATE": "날짜",
+    "POINT": "포인트",
+    "POINT_DESCRIPTION": "관련 정보",
+    "POINT_ACTION": "활동",
+    "WRITE_POST": "게시글 작성",
+    "COMMENT": "댓글 작성",
+    "DAILY_CHECKIN": "출석 체크",
+    "LIKE_RECEIVED": "좋아요 받음",
+    "REPORT_ACCEPTED": "신고 처리됨",
 
     "privacy": {
     "title": "개인정보 보호정책",

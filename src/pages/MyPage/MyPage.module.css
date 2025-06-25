@@ -13,9 +13,9 @@
     background: #fff;
     box-shadow: var(--box-shadow);
     border: 1px solid var(--secondary-color);
-    padding: 70px;
+    padding: 30px;
     border-radius: 11px;
-    min-width: 50svw;
+    min-width: 50vw;
     max-width: 50vw;
     text-align: center;
 }
@@ -149,3 +149,71 @@
     border: 1px solid var(--main-color);
   }
   
+/* POINTS */
+  .pointsCard {
+  border: 1px solid var(--secondary-color);
+  font-family: 'Pretendard', sans-serif;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 40px;
+}
+
+.pointsValue {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--main-color);
+  margin: 10px 0;
+}
+
+.historySection h2 {
+  padding-top: 70px;
+  font-size: 20px;
+  font-family: 'Pretendard', sans-serif;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: var(--main-color);
+}
+
+.historyTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.historyTable th,
+.historyTable td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.historyTable th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.points {
+  font-family: 'Pretendard', sans-serif;
+  color: green;
+  font-weight: 600;
+}
+
+@media (max-width: 1280px) {
+  
+  .formMyPage {
+    min-width: 90vw;
+    max-width: 100%;
+  }
+  .pointsCard {
+    padding: 30px;
+    margin-bottom: 10px;
+  }
+  .tab {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}
