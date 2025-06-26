@@ -11,6 +11,7 @@ import PostDetail from "./pages/Board/PostDetail";
 import PostWrite from "./pages/Board/PostWrite";
 import MyPage from "./pages/MyPage/MyPage";
 import Policy from "./pages/User/Policy";
+import AdminPanel from "./pages/Admin/AdminPanel";
 
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
         <Route path="/board/new/:category" element={<PostWrite />} />
 
         <Route path="/mypage" element={<MyPage />} />
-
+        <Route path="/admin" element={<AdminPanel />} />
+        
         <Route path="/privacy-policy" element={<Policy />} />
       </Routes>
     </BrowserRouter>

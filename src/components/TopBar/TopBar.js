@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { GlobalOutlined } from '@ant-design/icons';
 import { useAuth } from '../common/AuthContext';
 import { MenuOutlined } from '@ant-design/icons';
-import DropdownMenu from "../Navbar/DropdownMenu";
 import { Button } from "antd";
 
 
@@ -15,6 +14,7 @@ const TopBar = () => {
     const { isLoggedIn, logout, name } = useAuth();
     const navigate = useNavigate();
     const { t, i18n } = useTranslation();
+    const { userRole } = useAuth();
 
     const isSmallScreen = window.innerWidth <= 768;
     const [menuOpen, setMenuOpen] = useState(false);
@@ -38,6 +38,11 @@ const TopBar = () => {
 
     const goToMyPage = () => {
         navigate(`/mypage`);
+        setMenuOpen(false);
+    };
+
+    const goToAdminPage = () => {
+        navigate(`/admin`);
         setMenuOpen(false);
     };
 
@@ -91,6 +96,11 @@ const TopBar = () => {
                                     <div onClick={() => logout()} className={styles.menuItem}>
                                         {t("LOGOUT")}
                                     </div>
+                                    {userRole === "ADMIN" && (
+                                    <div onClick={goToAdminPage} className={styles.menuItem}>
+                                        {t("ADMIN_PANEL")}
+                                    </div>
+                                    )}
                                     </div>
                                 )}
                             </div>

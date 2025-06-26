@@ -23,16 +23,15 @@ function Shortcut(){
 
     return(
         <div className={styles.centerContainer}>
-            <Frame className="frame" text={t('NEWS')} onClick={() => ScrollToPosition("뉴스")} />
-            <Frame className="frame" text={t('FREE_BOARD')} onClick={() => ScrollToPosition("자유게시판")} />
-            <Frame className="frame" text={t('SECOND_HAND')} onClick={() => ScrollToPosition("중고장터")} />
-            <Frame className="frame" text={t('JOB_SEARCH')} onClick={() => ScrollToPosition("구인구직")} />
-            <Frame className="frame" text={t('LIFE')} onClick={() => ScrollToPosition("생활정보")} />
-            <Frame className="frame" text={t('CHILD_CARE')} onClick={() => ScrollToPosition("교육정보")} />
-            <Frame className="frame" text={t('TRAVEL')} onClick={() => ScrollToPosition("여행정보")} />
-            <Frame className="frame" text={t('REAL_ESTATE')} onClick={() => ScrollToPosition("부동산")} />
-            <Frame className="frame" text={t('CLUB')} onClick={() => ScrollToPosition("동호회")} />
-            <Frame className="frame" text={t('KOREAN_COMPANY')} onClick={() => ScrollToPosition("한인업소")} />
+            <Frame className="frame" text={t('NEWS')} onClick={() => ScrollToPosition(t('NEWS'))} />
+            <Frame className="frame" text={t('FREE_BOARD')} onClick={() => ScrollToPosition(t('FREE_BOARD'))} />
+            <Frame className="frame" text={t('SECOND_HAND')} onClick={() => ScrollToPosition(t('SECOND_HAND'))} />
+            <Frame className="frame" text={t('JOB_SEARCH')} onClick={() => ScrollToPosition(t('JOB_SEARCH'))} />
+            <Frame className="frame" text={t('LIFE')} onClick={() => ScrollToPosition(t('LIFE'))} />
+            <Frame className="frame" text={t('CHILD_CARE')} onClick={() => ScrollToPosition(t('CHILD_CARE'))} />
+            <Frame className="frame" text={t('REAL_ESTATE')} onClick={() => ScrollToPosition(t('REAL_ESTATE'))} />
+            <Frame className="frame" text={t('CLUB')} onClick={() => ScrollToPosition(t('CLUB'))} />
+            <Frame className="frame" text={t('KOREAN_COMPANY')} onClick={() => ScrollToPosition(t('KOREAN_COMPANY'))} />
             
             {/* <Frame className="frame" divClassName="frame-text" text="한인업소" onClick={() => ScrollToPosition("한인업소")} /> */}
         </div>

@@ -253,5 +253,6 @@
       "phone": "전화",
       "address": "주소"
     }
-  }
+  },
+  "ADMIN_PANEL": "관리자 패널"
 }
