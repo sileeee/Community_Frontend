@@ -4,6 +4,7 @@
   align-items: center;
   min-height: calc(100vh - 160px); /* 헤더, 푸터 공간 제외 */
   padding: 40px 0;
+  background-color: #ffffff;
 }
 
 .wrapper {
@@ -102,16 +103,15 @@
     width: 100%;
 }
 
-/* @media (max-width: 600px) {
+@media (max-width: 600px) {
 
     .pageContainer {
         padding: 20px;
     }
     .wrapper {
         padding: 10px;
-        background-color: #ffffff;
         border: none;
         border-radius: none;
         box-shadow: none;
     }
-} */
+}

@@ -156,6 +156,28 @@
     margin-left: 8px;
 }
 
+.backBtn {
+    margin-bottom: 20px;
+    border: 1px solid var(--secondary-color);
+    width: 15%;
+    padding: 12px;
+    font-family: 'Pretendard';
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+.backBtn:hover { background: #bfbfbf; }
+
+.pointsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
 @media (max-width: 1024px) {
     .container {
         display: flex;
@@ -202,6 +224,11 @@
 
     .statsRow {
         font-size: 0.8rem;
+    }
+    .backBtn {
+        width: 40%;
+        padding: 10px;
+        font-size: 0.9rem;
     }
 }
 
