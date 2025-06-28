@@ -12,6 +12,7 @@ import PostWrite from "./pages/Board/PostWrite";
 import MyPage from "./pages/MyPage/MyPage";
 import Policy from "./pages/User/Policy";
 import AdminPanel from "./pages/Admin/AdminPanel";
+import AdminPointPanel from "./pages/Admin/AdminPointPanel";
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
 
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/admin" element={<AdminPanel />} />
-        
+        <Route path="/admin/points/:id" element={<AdminPointPanel />} />
+
         <Route path="/privacy-policy" element={<Policy />} />
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,21 @@
 * {
-  box-sizing: border-box; /* 모든 요소에 대해 box-sizing을 border-box로 설정 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root {
+  --main-color: rgba(0, 115, 47, 1);
+  --main-color-hover: #183524;
+}
+
+body {
+  font-size: 14px;
+  color: #303030;
+  overflow-x: hidden;
+  /* background: #f8f9fa; */
+  font-family: 'Pretendard', sans-serif;
 }
 
 .handubi .space {

@@ -13,7 +13,7 @@
     width: 95vw;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 40px;
+    padding: 20px;
 }
 
 .adminTable {
@@ -48,19 +48,19 @@
 .searchLabel { font-weight: 600; }
 
 .searchInput {
-  flex: 1;
-  padding: 10px 14px;
-  border: 1px solid var(--secondary-color);
-  border-radius: 6px;
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 6px;
 }
 
 .searchBtn {
-  background: var(--main-color);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
+    background: var(--main-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .searchBtn:hover { background: var(--main-color-hover); }
@@ -70,41 +70,91 @@
     display: flex;
     justify-content: space-between;
     font-weight: 500;
+    align-items: center;
     margin-bottom: 15px;
 }
 
 .pointTable {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-  font-family: 'Pretendard', sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    font-family: 'Pretendard', sans-serif;
 }
 
 .pointTable th,
 .pointTable td {
-  padding: 14px 12px;
-  border: 1px solid #ddd;
-  text-align: center;
+    padding: 14px 12px;
+    border: 1px solid #ddd;
+    text-align: center;
 }
 
 .pointTable th { background: #f4f4f4; font-weight: 600; }
 
 .detailBtn,
 .adjustBtn {
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: 1px solid var(--secondary-color);
-  background: #fff;
-  cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--secondary-color);
+    background: #fff;
+    cursor: pointer;
 }
 
 .detailBtn:hover { background: #f8f8f8; }
 .adjustBtn {
-  border: none;
-  background: var(--main-color);
-  color: #fff;
+    border: none;
+    background: var(--main-color);
+    color: #fff;
 }
 .adjustBtn:hover { background: var(--main-color-hover); }
+
+.tabContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.tab {
+    padding: 10px 25px;
+    border: 1px solid var(--secondary-color);
+    background: #fff;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: "Manrope", Helvetica;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.tab:hover {
+    background: var(--main-color-hover);
+    color: white;
+}
+.activeTab {
+    background: var(--main-color);
+    color: white;
+    border: 1px solid var(--main-color);
+}
+.rewardRejectBtn{
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--secondary-color);
+    background: #f44336;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.rewardRejectBtn:hover {
+    background: #d32f2f;
+}
+
+.statusSelect {
+    padding: 6px 10px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-left: 8px;
+}
 
 @media (max-width: 1024px) {
     .container {
@@ -158,5 +208,8 @@
 @media (max-width: 768px) {
     .searchRow {
         width: 100%;
+    }
+    .rewardRejectBtn{
+        margin-left: 0px;
     }
 }

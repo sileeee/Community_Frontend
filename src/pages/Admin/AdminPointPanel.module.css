@@ -1,0 +1,117 @@
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 160px); /* 헤더, 푸터 공간 제외 */
+  padding: 40px 0;
+}
+
+.wrapper {
+  max-width: 600px;
+  align-items: center;
+  justify-items: center;
+  padding: 40px;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: 'Pretendard', sans-serif;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--main-color);
+  margin-bottom: 20px;
+}
+
+.current {
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  color: #333;
+}
+
+.section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.pointSelect,
+.pointInput[type="number"],
+.pointInput[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.addBtn,
+.subBtn,
+.cancelBtn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.addBtn {
+  background-color: var(--main-color);
+  color: white;
+  margin-top: 5px;
+}
+
+.addBtn:hover {
+  background-color: var(--main-color-hover);
+}
+
+.subBtn {
+  background-color: #e74c3c;
+  color: white;
+  margin-top: 5px;
+}
+
+.subBtn:hover {
+  background-color: #c0392b;
+}
+
+.cancelBtn {
+  margin-top: 30px;
+  background-color: #999;
+  color: white;
+}
+
+.cancelBtn:hover {
+    background-color: #777;
+    width: 100%;
+}
+
+/* @media (max-width: 600px) {
+
+    .pageContainer {
+        padding: 20px;
+    }
+    .wrapper {
+        padding: 10px;
+        background-color: #ffffff;
+        border: none;
+        border-radius: none;
+        box-shadow: none;
+    }
+} */
