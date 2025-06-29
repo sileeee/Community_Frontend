@@ -18,8 +18,8 @@ const TopBar = () => {
 
     const isSmallScreen = window.innerWidth <= 768;
     const [menuOpen, setMenuOpen] = useState(false);
-    const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0 });
     const myPageRef = useRef(null);
+    const dropdownRef = useRef(null);
 
     const toggleLanguage = (checked) => {
         i18n.changeLanguage(checked ? "en" : "ko");
@@ -28,13 +28,23 @@ const TopBar = () => {
     const toggleMenu = () => {
         if (!menuOpen && myPageRef.current) {
             const rect = myPageRef.current.getBoundingClientRect();
-            setDropdownPos({
-                top: rect.bottom + window.scrollY + 10,
-                left: rect.left + window.scrollX - 70
-            });
         }
         setMenuOpen(prev => !prev);
     };
+    
+    useEffect(() => {
+        if (!menuOpen) return;
+
+        const handleClickOutside = (e) => {
+        if (
+            dropdownRef.current && !dropdownRef.current.contains(e.target) &&
+            myPageRef.current   && !myPageRef.current.contains(e.target)
+        ) {
+            setMenuOpen(false);
+        }};
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [menuOpen]);
 
     const goToMyPage = () => {
         navigate(`/mypage`);
@@ -87,7 +97,7 @@ const TopBar = () => {
                             </div>
                             <div ref={myPageRef} className={styles.myPage} onClick={toggleMenu}>
                                 <MenuOutlined className={styles.myPageIcon}/>
-                                <div className={styles.myPageText}>Menu</div>
+                                <div ref={dropdownRef} className={styles.myPageText}>Menu</div>
                                 {menuOpen && (
                                     <div className={styles.dropdownMenu}>
                                     <div onClick={goToMyPage} className={styles.menuItem}>
