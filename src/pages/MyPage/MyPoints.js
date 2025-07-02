@@ -64,13 +64,15 @@ function MyPoints({ targetId }) {
             {history.map((item, index) => (
                 <tr key={index}>
                 <td>{item.createdAt?.slice(0, 10)}</td>
-                <td>{t(item.actionType)}</td>
+                <td>{t(item.actionType.name)}</td>
                 <td className={styles.points}>{item.points > 0 ? `+${item.points}` : `${item.points}`}</td>
                 <td>
                     {item.referencePostId
-                    ? `게시글 ID #${item.referencePostId}`
+                    ? `게시글 작성 ID #${item.referencePostId}`
                     : item.referenceCommentId
-                    ? `댓글 ID #${item.referenceCommentId}`
+                    ? `댓글 작성 ID #${item.referenceCommentId}`
+                    : item.referenceNote
+                    ? "-"
                     : "-"}
                 </td>
                 </tr>
