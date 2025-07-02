@@ -7,26 +7,60 @@ import { useAuth } from '../../components/common/AuthContext';
 import TopBar from "../../components/TopBar/TopBar";
 import { useNavigate } from "react-router";
 import MyPoints from "../MyPage/MyPoints";
+import dayjs from "dayjs";
+import { Description } from "@mui/icons-material";
 
 
 const AdminPanel = () => {
 
     const navigate = useNavigate();
-    const [statusFilter, setStatusFilter] = useState("ALL");
-    const [query, setQuery] = useState("");
-    const [viewUserId, setViewUserId] = useState(null);
-    const [members, setMembers] = useState([]);
-    const [rewardMembers, setRewardMembers] = useState([]);
-
-    const [totalPoints, setTotalPoints] = useState(0);
     
+    //  포인트 관련
+    const [members, setMembers] = useState([]);
+    const [totalPoints, setTotalPoints] = useState(0);
     const [totalMembers, setTotalMembers] = useState(0);
-    const [totalRewards, setTotalRewards] = useState(0);
 
+    // 리워드 관련
+    const [rewardMembers, setRewardMembers] = useState([]);
+    const [statusFilter, setStatusFilter] = useState("ALL");
+    const [totalRewards, setTotalRewards] = useState(0);
+    const filteredRewards = useMemo(() => {
+        const f = statusFilter.toUpperCase();
+        return rewardMembers
+            .filter(r => f === "ALL" || (r.status ?? "").toUpperCase() === f)
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    }, [rewardMembers, statusFilter]);
+    const totalFiltered = filteredRewards.length;
+    
+    // 상품 관련
+    const [products, setProducts] = useState([]);
+    const [eventStatusFilter, setEventStatusFilter] = useState("ACTIVE");
+    const filteredProducts = useMemo(() => {
+        return products.filter(p =>
+        eventStatusFilter === "ACTIVE" ? p.active : !p.active
+        );
+    }, [products, eventStatusFilter]);
+
+    // 상품 등록 관련
+    const [showProductModal, setShowProductModal] = useState(false);
+    const [productForm, setProductForm] = useState({
+        name: "",
+        description: "",
+        pointPrice: 0,
+        stockQty: 0,
+        deadline: "",
+        eventStatus: "ACTIVE",
+    });
+    
+    // 공통 state
     const { userId } = useAuth();
     const [activeTab, setActiveTab] = useState("manage_points");
+    const [query, setQuery] = useState("");
+    const [viewUserId, setViewUserId] = useState(null);
+
     
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; 
+    // const API_BASE_URL = "http://localhost:8080";
 
     const fetchData = async () => {
         try {
@@ -51,17 +85,32 @@ const AdminPanel = () => {
         }
     };
 
-    useEffect(() => {
-        const savedStatus = localStorage.getItem("adminRewardStatus");
-        if (savedStatus) setStatusFilter(savedStatus);
-        
-        const savedTab = localStorage.getItem("adminActiveTab");
-        if (savedTab) {
-            setActiveTab(savedTab);
-            localStorage.removeItem("adminActiveTab");
+    const fetchProductData = async () => {
+        try {
+            const res = await axios.get(`${API_BASE_URL}/admin/product/list`, {
+                withCredentials: true,
+            });
+            setProducts(res.data.data ?? []);
+        } catch (e) {
+            console.error("Failed to fetch products", e);
         }
+    };
+
+    useEffect(() => {
+        // const savedStatus = localStorage.getItem("adminRewardStatus");
+        // if (savedStatus) setStatusFilter(savedStatus);
+        
+        // const savedTab = localStorage.getItem("adminActiveTab");
+        // if (savedTab) {
+        //     setActiveTab(savedTab);
+        //     localStorage.removeItem("adminActiveTab");
+        // }
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (activeTab === "event") fetchProductData();
+    }, [activeTab]);
 
     const acceptReward = async (requestId) => {
         try {
@@ -97,20 +146,45 @@ const AdminPanel = () => {
         navigate(url);
     };
 
-    const filteredRewards = useMemo(() => {
-        const f = statusFilter.toUpperCase();
-        return rewardMembers
-            .filter(r => f === "ALL" || (r.status ?? "").toUpperCase() === f)
-            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    }, [rewardMembers, statusFilter]);
-
-    const totalFiltered = filteredRewards.length;
-
-
     const handleStatusChange = (val) => {
         const upper = (val || "").toUpperCase().trim();
         setStatusFilter(upper);
         localStorage.setItem("adminRewardStatus", upper);
+    };
+
+    const handleCreateProduct = async () => {
+        try {
+            await axios.post(`${API_BASE_URL}/admin/product/register`, productForm, {
+                withCredentials: true,
+            });
+            alert("상품이 등록되었습니다");
+            setShowProductModal(false);
+            // fetchData();
+            setProductForm({ name:"", description:"", pointPrice:0, stockQty:0, deadline:"" });
+            fetchProductData();
+        } catch (e) {
+        alert("등록 실패: " + (e.response?.data?.message || e.message));
+        }
+    };
+
+    const endEvent = async productId => {
+        if (!window.confirm("해당 이벤트를 종료하시겠습니까?")) return;
+        try {
+            await axios.post(`${API_BASE_URL}/admin/product/${productId}/end`, null, { withCredentials: true });
+            fetchProductData();
+        } catch (e) {
+            alert("종료 실패: " + (e.response?.data?.message || e.message));
+        }
+    };
+
+    const startEvent = async productId => {
+        if (!window.confirm("해당 이벤트를 시작하시겠습니까?")) return;
+        try {
+            await axios.post(`${API_BASE_URL}/admin/product/${productId}/start`, null, { withCredentials: true });
+            fetchProductData();
+        } catch (e) {
+            alert("시작 실패: " + (e.response?.data?.message || e.message));
+        }
     };
 
     return (
@@ -132,6 +206,12 @@ const AdminPanel = () => {
                     onClick={() => setActiveTab("request_reward")}
                 >
                     보상 신청 및 처리
+                </button>
+                <button
+                    className={`${styles.tab} ${activeTab === "event" ? styles.activeTab : ""}`}
+                    onClick={() => setActiveTab("event")}
+                >
+                    이벤트 관리
                 </button>
             </div>
             {activeTab === "manage_points" && (
@@ -189,7 +269,118 @@ const AdminPanel = () => {
                 </table>
                 </div>
                 )}
+            {activeTab === "event" && (
+                <div className={styles.adminContainer}>
+                    {showProductModal && (
+                        <div className={styles.modalBackdrop}>
+                            <div className={styles.modalInner}>
+                                <h2>새 상품 등록</h2>
+                                <input
+                                    className={styles.input}
+                                    placeholder="이벤트 이름"
+                                    value={productForm.name}
+                                    onChange={e => setProductForm({ ...productForm, name: e.target.value })}
+                                />
+                                <textarea
+                                    className={styles.textarea}
+                                    placeholder="설명"
+                                    rows={3}
+                                    value={productForm.description}
+                                    onChange={e => setProductForm({ ...productForm, description: e.target.value })}
+                                />
+                                <label className={styles.deadlineLabel}>가격(포인트)</label>
+                                <input
+                                    className={styles.input}
+                                    type="number"
+                                    placeholder="가격(포인트)"
+                                    value={productForm.pointPrice}
+                                    onChange={e => setProductForm({ ...productForm, pointPrice: Number(e.target.value) })}
+                                />
+                                <label className={styles.deadlineLabel}>재고(수량)</label>
+                                <input
+                                    className={styles.input}
+                                    type="number"
+                                    placeholder="재고"
+                                    value={productForm.stockQty}
+                                    onChange={e => setProductForm({ ...productForm, stockQty: Number(e.target.value) })}
+                                />
+                                <label className={styles.deadlineLabel}>
+                                    마감일:
+                                    <input
+                                        type="datetime-local"
+                                        className={styles.input}
+                                        value={productForm.deadline}
+                                        onChange={e => setProductForm({ ...productForm, deadline: e.target.value })}
+                                    />
+                                </label>
+                                <div className={styles.modalBtnRow}>
+                                    <button onClick={handleCreateProduct} className={styles.adjustBtn}>생성하기</button>
+                                    <button onClick={() => setShowProductModal(false)} className={styles.rewardRejectBtn}>취소</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                <h1 className={styles.title}>포인트 관리</h1>
 
+                <div className={styles.searchRow}>
+                    <button className={styles.searchBtn} onClick={() => setShowProductModal(true)}>
+                    새로운 상품 생성
+                    </button>
+                </div>
+
+                {/* <div className={styles.statsRow}>
+                    <div>👥 상품 구매 회원 수: {totalMembers}명</div>
+                    <div>💰 총 지불된 포인트: {totalPoints.toLocaleString()}점</div>
+                </div> */}
+                <div className={styles.statsRow}>
+                    <div>🎁 등록된 이벤트 수: {products.length}회</div>
+
+                    <select
+                        value={eventStatusFilter}
+                        onChange={(e) => setEventStatusFilter(e.target.value)}
+                        className={styles.statusSelect}
+                    >
+                    <option value="ACTIVE">진행중</option>
+                    <option value="INACTIVE">비활성</option>
+                    </select>
+                </div>
+                <table className={styles.pointTable}>
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>상품명</th>
+                        <th>상품설명</th>
+                        <th>가격</th>
+                        <th>재고</th>
+                        <th>마감일</th>
+                        <th>현재상태</th>
+                        <th>상태변경</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {filteredProducts.map((p,i)=>(
+                        <tr key={p.id}>
+                            <td>{i+1}</td>
+                            <td>{p.name}</td>
+                            <td>{p.description}</td>
+                            <td>{p.pointPrice}</td>
+                            <td>{p.stockQty}</td>
+                            <td>{p.deadline ? p.deadline.slice(0,10) : "-"}</td>
+                            <td>{p.active ? "진행중" : "비활성"}</td>
+                            <td>
+                            {p.active && (
+                                <button onClick={()=>endEvent(p.id)} className={styles.rewardRejectBtn}>종료</button>
+                            )}
+                            {!p.active && (
+                                <button onClick={()=>startEvent(p.id)} className={styles.adjustBtn}>시작</button>
+                            )}
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+                </div>
+                )}
             {activeTab === "request_reward" && (
                 <div className={styles.adminContainer}>
                     <h1 className={styles.title}>보상 신청 리스트</h1>
@@ -228,7 +419,7 @@ const AdminPanel = () => {
                         <th>닉네임</th>
                         <th>현재 포인트</th>
                         <th>차감될 포인트</th>
-                        <th>신청 내용</th>
+                        <th>상품 ID</th>
                         <th>신청 날짜</th>
                         <th>현재 상태</th>
                         <th>승인여부</th>
@@ -241,7 +432,7 @@ const AdminPanel = () => {
                             <td>{m.name}</td>
                             <td>{m.totalPoints}</td>
                             <td>{m.pointsUsed}</td>
-                            <td>{m.rewardType}</td>
+                            <td>{m.productId}</td>
                             <td>{m.createdAt?.slice(0, 10)}</td>
                             <td>{m.status}</td>
                             <td>
