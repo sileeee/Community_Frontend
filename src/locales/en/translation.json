@@ -59,6 +59,10 @@
 
     "EDUCATION": "education",
     "ACADEMY": "academy",
+    "TODDLER": "toddler",
+    "ELEMENTARY": "elementary",
+    "MIDDLE": "middle",
+    "MOM_TALK": "mom talk",
 
     "EXPERIENCE": "experience",
     "ACCOMODATION": "hotel",

@@ -59,6 +59,10 @@
 
     "EDUCATION": "교육",
     "ACADEMY": "학원",
+    "TODDLER": "유아",
+    "ELEMENTARY": "초등",
+    "MIDDLE": "중고등",
+    "MOM_TALK": "맘수다",
 
     "EXPERIENCE": "체험",
     "ACCOMODATION": "숙소",

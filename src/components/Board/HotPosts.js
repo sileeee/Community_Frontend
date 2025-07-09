@@ -53,7 +53,7 @@ function HotPosts({category}) {
             const now = new Date();
             const pastDate = new Date();
             pastDate.setDate(now.getDate() - 30);
-
+ 
             const formatDate = (date) => date.toISOString().split(".")[0]; // ISO 8601 포맷 (밀리초 제거)
 
             const res = await axios.get(
@@ -133,7 +133,7 @@ function HotPosts({category}) {
                     <tbody className={styles.tbody}>
                         {weeklyHotposts && weeklyHotposts.length > 0 ? (
                         weeklyHotposts.map((post, index) => (
-                            <tr key={index} className={styles.noPicRow} onClick={() => movePage(post.id)}>
+                            <tr key={index} className={styles.noPicRow} onClick={() => movePage(post.id, post.category)}>
                             <td className={styles.noPicSubCategory}>
                             <button className={styles.noPicBadge}>{getKorSubCategories(post.subCategory)}</button>
                             </td>
@@ -164,7 +164,7 @@ function HotPosts({category}) {
                     <tbody>
                         {monthlyHotPosts && monthlyHotPosts.length > 0 ? (
                         monthlyHotPosts.map((post, index) => (
-                            <tr key={index} className={styles.noPicRow} onClick={() => movePage(post.id)}>
+                            <tr key={index} className={styles.noPicRow} onClick={() => movePage(post.id, post.category)}>
                             <td className={styles.noPicSubCategory}>
                             <button className={styles.noPicBadge}>{getKorSubCategories(post.subCategory)}</button>
                             </td>

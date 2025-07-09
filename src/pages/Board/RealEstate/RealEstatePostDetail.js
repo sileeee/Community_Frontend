@@ -130,6 +130,7 @@ function RealEstatePostDetail({commentsCount, category, pageId}) {
                         <tbody>
                             <tr>
                                 <td className={styles.table_td_2}>
+                                    {boardDetail.subCategory.toLowerCase() !== "info" && (
                                 <table className={styles.detailTable}>
                                         <tbody>
                                             <tr>
@@ -162,6 +163,7 @@ function RealEstatePostDetail({commentsCount, category, pageId}) {
                                             </tr>
                                         </tbody>
                                     </table>
+                                    )}
                                     <HtmlRenderer htmlContent={boardDetail.body} />
                                 </td>
                             </tr>

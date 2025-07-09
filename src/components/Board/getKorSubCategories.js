@@ -58,10 +58,14 @@ export const getKorSubCategories = (subCategory) => {
         return "구직";
     } else if (subCategory === "PARENTING") {
         return "출산/육아";
-    } else if (subCategory === "EDUCATION") {
-        return "교육";
-    } else if (subCategory === "ACADEMY") {
-        return "학원";
+    } else if (subCategory === "TODDLER") {
+        return "유아";
+    } else if (subCategory === "ELEMENTARY") {
+        return "초등";
+    } else if (subCategory === "MIDDLE") {
+        return "중고등";
+    } else if (subCategory === "MOM_TALK") {
+        return "맘수다";
     } else if (subCategory === "EXPERIENCE") {
         return "체험";
     } else if (subCategory === "ACCOMODATION") {

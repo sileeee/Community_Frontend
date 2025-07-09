@@ -31,6 +31,16 @@ function GeneralList({category, selectedSubCategory, selectedPostType}) {
         return savedPinnedItems ? JSON.parse(savedPinnedItems) : [];
     });
 
+    const [isNarrow, setIsNarrow] = useState(window.innerWidth < 1000);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setIsNarrow(window.innerWidth < 1000);
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, [isNarrow]);
 
     const togglePin = (record) => {
         let updatedPinnedItems;
@@ -71,7 +81,7 @@ function GeneralList({category, selectedSubCategory, selectedPostType}) {
     {
       title: t('TOPIC'),
       dataIndex: "title",
-      align: "center",
+      align: isNarrow ? "left" : "center",
       width: "60%",
       render: (text, record) => (
         <>

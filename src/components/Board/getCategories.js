@@ -62,8 +62,10 @@ export const getCategories = (category) => {
     } else if (category === "CHILD_CARE") {
         return [
         { label: "TOTAL", value: "TOTAL" },
-        { label: "교육", value: "EDUCATION" },
-        { label: "학원", value: "ACADEMY" },
+        { label: "유아", value: "TODDLER" },
+        { label: "초등", value: "ELEMENTARY" },
+        { label: "중고등", value: "MIDDLE" },
+        { label: "맘수다", value: "MOM_TALK" },
         { label: "ETC", value: "ETC" },
         ];
     // } else if (category === "TRAVEL") {
