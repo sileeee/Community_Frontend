@@ -13,6 +13,7 @@ import MyPage from "./pages/MyPage/MyPage";
 import Policy from "./pages/User/Policy";
 import AdminPanel from "./pages/Admin/AdminPanel";
 import AdminPointPanel from "./pages/Admin/AdminPointPanel";
+import PointStore from "./pages/PointStore/PointStore";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/board/new/:category" element={<PostWrite />} />
 
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/pointstore" element={<PointStore />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin/points/:id" element={<AdminPointPanel />} />
 

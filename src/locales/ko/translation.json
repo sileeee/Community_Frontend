@@ -261,5 +261,22 @@
   "POINT_STORE_ITEM": "상품",
   "POINT_STORE_PRICE": "가격",
   "POINT_STORE_BUY": "구매하기",
-  "STATUS_REWARD_REQUEST": "구매요청 진행상황"
+  "STATUS_REWARD_REQUEST": "구매요청 진행상황",
+  "REJECTED": "거절됨",
+  "APPROVED": "승인됨",
+  "PENDING": "대기중",
+  "MY_REQUEST": "나의 구매 요청",
+  "PRODUCTS": "포인트 상품 목록",
+  "PRODUCT": "상품",
+  "DEADLINE": "기한",
+  "BUY_BUTTON": "구매",
+  "PRODUCT_BUY": "구매하기",
+  "POINT_USED" : "가격",
+  "HOW_TO_COLLECT_POINTS": "포인트 적립 방법",
+  "SOLDOUT": "품절",
+  "CANCEL": "취소하기",
+  "CANCEL_BTN": "취소",
+  "CANCELLED": "취소됨",
+  "REQUEST_STATUS": "요청 상태",
+  "POINT_STORE_ITEM_DESC": "상품 설명"
 }

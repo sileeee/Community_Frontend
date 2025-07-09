@@ -263,5 +263,22 @@
   "CURRENT_EVENT": "Current Event Products",
   "POINT_STORE_PRICE": "Price",
   "POINT_STORE_BUY": "Buy",
-  "STATUS_REWARD_REQUEST": "Status Reward Request"
+  "STATUS_REWARD_REQUEST": "Status Reward Request",
+  "REJECTED": "Rejected",
+  "APPROVED": "Approved",
+  "PENDING": "Pending",
+  "MY_REQUEST": "My Purchase Request",
+  "PRODUCTS": "Products",
+  "PRODUCT": "Product",
+  "DEADLINE": "Deadline",
+  "POINT_USED" : "Price",
+  "BUY_BUTTON": "Buy",
+  "PRODUCT_BUY": "Buy",
+  "HOW_TO_COLLECT_POINTS": "How to Collect Points",
+  "SOLDOUT": "Sold Out",
+  "CANCEL": "Cancel",
+  "CANCEL_BTN": "Cancel",
+  "CANCELLED": "Cancelled",
+  "REQUEST_STATUS": "Request Status",
+  "POINT_STORE_ITEM_DESC": "Product Description"
 }

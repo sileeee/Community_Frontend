@@ -51,6 +51,11 @@ const TopBar = () => {
         setMenuOpen(false);
     };
 
+    const goToPointStore = () => {
+        navigate(`/pointstore`);
+        setMenuOpen(false);
+    };
+
     const goToAdminPage = () => {
         navigate(`/admin`);
         setMenuOpen(false);
@@ -102,6 +107,9 @@ const TopBar = () => {
                                     <div className={styles.dropdownMenu}>
                                     <div onClick={goToMyPage} className={styles.menuItem}>
                                         {t('MANAGE_ACCT')}
+                                    </div>
+                                    <div onClick={goToPointStore} className={styles.menuItem}>
+                                        {t('POINT_STORE')}
                                     </div>
                                     <div onClick={() => logout()} className={styles.menuItem}>
                                         {t("LOGOUT")}

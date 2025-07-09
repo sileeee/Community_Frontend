@@ -97,14 +97,6 @@ const AdminPanel = () => {
     };
 
     useEffect(() => {
-        // const savedStatus = localStorage.getItem("adminRewardStatus");
-        // if (savedStatus) setStatusFilter(savedStatus);
-        
-        // const savedTab = localStorage.getItem("adminActiveTab");
-        // if (savedTab) {
-        //     setActiveTab(savedTab);
-        //     localStorage.removeItem("adminActiveTab");
-        // }
         fetchData();
     }, []);
 
@@ -114,9 +106,10 @@ const AdminPanel = () => {
 
     const acceptReward = async (requestId) => {
         try {
-            const res = await axios.post(`${API_BASE_URL}/admin/reward/${requestId}/accept`, {
-                withCredentials: true,
-            });
+            const res = await axios.post(`${API_BASE_URL}/admin/reward/${requestId}/accept`,
+                null,
+                { withCredentials: true }
+            );
             if (res.data.status === "OK") {
                 window.confirm("승인되었습니다");
                 localStorage.setItem("adminActiveTab", activeTab);
@@ -129,9 +122,10 @@ const AdminPanel = () => {
 
     const rejectReward = async (requestId) => {
         try {
-            const res = await axios.post(`${API_BASE_URL}/admin/reward/${requestId}/reject`, {
-                withCredentials: true,
-            });
+            const res = await axios.post(`${API_BASE_URL}/admin/reward/${requestId}/reject`,
+            null,
+            { withCredentials: true }
+            );
             if (res.data.status === "OK") {
                 window.confirm("거절되었습니다");
                 localStorage.setItem("adminActiveTab", activeTab);
