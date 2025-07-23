@@ -94,24 +94,29 @@ function RealEstatePostWrite({category, id}) {
       if (id) {
           // 기존 게시글 데이터 요청
           axios.get(`${API_BASE_URL}/real-estate/${id}`)
-              .then((response) => {
-                  const data = response.data.data;
+              .then(({data}) => {
+                  const d = data.data;
                   
                   // 기존 데이터로 Form 초기화
                   form.setFieldsValue({
-                      title: data.title,
-                      subCategory: data.subCategory,
-                      postStatus: data.postStatus,
-                      body: data.body,
-                      innerArea: data.innerArea,
-                      totalArea: data.totalArea,
-                      state: data.state,
-                      price: data.price,
-                      productStatus: data.productStatus,
-                      thumbnailUrl: data.thumbnailUrl
+                      title: d.title,
+                      subCategory: d.subCategory,
+                      postStatus: d.postStatus,
+                      body: d.body,
+                      innerArea: d.innerArea,
+                      totalArea: d.totalArea,
+                      state: d.state,
+                      price: d.price,
+                      productStatus: d.productStatus,
+                      thumbnailUrl: d.thumbnailUrl
                   });
                   console.log("Form Fields After Set:", form.getFieldsValue());
-                  setEditorContent(data.body);
+                  setCategorySelectedValue(d.subCategory);
+                  setStatusSelectedValue(d.postStatus);
+                  setproductTypeSelectedValue(d.productType);
+                  setproductStatusSelectedValue(d.productStatus);
+                  setproductLocationSelectedValue(d.state);
+                  setEditorContent(d.body);
               })
               .catch((error) => {
                   console.error("Error fetching post data:", error);
@@ -155,9 +160,7 @@ function RealEstatePostWrite({category, id}) {
                               message: "제목은 50자를 초과할 수 없습니다.",
                             },
                         ]}>
-                            <div className={styles.formPadding}>
-                                <Input />
-                            </div>
+                          <Input className={styles.inputTitle} />
                         </Form.Item>
                     </th>
                 </tr>
@@ -303,9 +306,7 @@ function RealEstatePostWrite({category, id}) {
                                 message: "숫자만 입력 가능합니다.",
                             }
                           ]}>
-                            <div className={styles.formPadding}>
-                                <Input className={styles.inputSmall} />
-                            </div>
+                            <Input className={styles.inputSmall} />
                         </Form.Item>
                     </th>
                 </tr>
@@ -322,9 +323,7 @@ function RealEstatePostWrite({category, id}) {
                                 message: "숫자만 입력 가능합니다.",
                             }
                           ]}>
-                            <div className={styles.formPadding}>
-                                <Input className={styles.inputSmall} />
-                            </div>
+                            <Input className={styles.inputSmall} />
                         </Form.Item>
                     </th>
                 </tr>
@@ -368,9 +367,7 @@ function RealEstatePostWrite({category, id}) {
                             }
                           ]}
                           >
-                            <div className={styles.formPadding}>
-                                <Input className={styles.inputSmall} />
-                            </div>
+                          <Input className={styles.inputSmall} />
                         </Form.Item>
                     </th>
                 </tr> 

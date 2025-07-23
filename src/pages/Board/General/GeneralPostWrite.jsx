@@ -18,11 +18,13 @@ function GeneralPostWrite({category, id}) {
     const subCategories = getCategories(category.toUpperCase());
     const categories_except_total = subCategories.slice(1);
 
+    const [formWidth, setFormWidth] = useState("65vw");
     const [form] = Form.useForm();
     const [categorySelectedValue, setCategorySelectedValue] = useState();
     const [postTypeSelectedValue, setPostTypeSelectedValue] = useState(null);
     const [statusSelectedValue, setStatusSelectedValue] = useState();
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    // const API_BASE_URL = "http://localhost:8080";
 
     const movePage = (url) => {
         navigate(url);
@@ -98,29 +100,55 @@ function GeneralPostWrite({category, id}) {
     const [editorContent, setEditorContent] = useState('');
 
     useEffect(() => {
+      if (!id) return;
       if (id) {
           // 기존 게시글 데이터 요청
           axios.get(`${API_BASE_URL}/posts/${id}`)
-              .then((response) => {
-                  const data = response.data.data;
+              .then(({data}) => {
+                  const d = data.data;
                   console.log("API Response Data:", data);
                   // 기존 데이터로 Form 초기화
                   form.setFieldsValue({
-                      title: data.title,
-                      subCategory: data.subCategory,
-                      postType: data.postType,
-                      postStatus: data.postStatus,
-                      body: data.body,
-                      thumbnailUrl: data.thumbnailUrl
+                      title: d.title,
+                      subCategory: d.subCategory,
+                      postType: d.postType,
+                      postStatus: d.postStatus,
+                      body: d.body,
+                      thumbnailUrl: d.thumbnailUrl
                   });
+                  setCategorySelectedValue(d.subCategory);
+                  setPostTypeSelectedValue(d.postType);
+                  setStatusSelectedValue(d.postStatus);
                   console.log("Form Fields After Set:", form.getFieldsValue());
-                  setEditorContent(data.body);
+                  setEditorContent(d.body);
               })
               .catch((error) => {
                   console.error("Error fetching post data:", error);
               });
       }
   }, [id, form]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1280) {
+        setFormWidth("80vw");
+      } else {
+        setFormWidth("65vw");
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const sharedFormStyle = {
+    marginLeft: "2%",
+    marginRight: "2%",
+    wordBreak: "break-word",
+    overflowWrap: "break-word",
+    width: formWidth,
+  };
 
   return (
     <div>
@@ -158,9 +186,7 @@ function GeneralPostWrite({category, id}) {
                               message: "제목은 50자를 초과할 수 없습니다.",
                             },
                         ]}>
-                            <div className={styles.formPadding}>
-                                <Input />
-                            </div>
+                          <Input style={sharedFormStyle} />
                         </Form.Item>
                     </th>
                 </tr>

@@ -2,13 +2,26 @@
   display: block;
   font-family: inherit;
   font-size: inherit;
-  color: inherit;
+  color: #4a4a4a;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
-/* ✅ 사용자 사이즈 반영 */
+/* 모든 img를 강제 반응형으로 */
+.htmlRender img {
+  width: auto !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+
 .htmlRender img[width][height] {
   display: block;
   margin: 0 auto;
+  max-width: 100%;
+  height: auto;
 }
 
 /* ✅ 반응형 이미지 */

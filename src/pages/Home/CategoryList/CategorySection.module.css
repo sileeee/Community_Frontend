@@ -132,19 +132,22 @@
 .newsBody {
   font-family: 'Pretendard', sans-serif;
   color: #1e1e1e;
-  font-weight: normal;
   font-size: 13px;
-  line-height: 15px;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  line-height: 1.5;
+  font-weight: normal;
+
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* 기본 4줄까지만 보여줌 */
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
-  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  word-break: break-word;
   white-space: normal;
-  height: auto;
+  max-height: calc(1.5em * 4);
   margin-top: 5px;
 }
+
 
 .newsBody p,
 .newsBody div,
@@ -357,9 +360,9 @@
 
   .newsBody {
     font-size: 0.7em;
-      -webkit-line-clamp: 3;
-    }
-
+    -webkit-line-clamp: 3;
+  }
+  
   .title {
     font-size: 0.8em;
     padding: 5px;

@@ -128,8 +128,14 @@ const CategorySection = ({ category, postList, layout }) => {
                           {post.title}
                         </div>
                         <div className={styles.newsBody}>
-                          <HtmlRenderer htmlContent={cleanHtmlContent(post.body)} />
+                          {cleanHtmlContent(post.body)
+                            .replace(/<[^>]+>/g, "")
+                            .slice(0, 120)}...
                         </div>
+
+                        {/* <div className={styles.newsBody}>
+                          <HtmlRenderer htmlContent={cleanHtmlContent(post.body)} />
+                        </div> */}
                       </div>
                     </div>
                   ))

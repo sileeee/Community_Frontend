@@ -124,9 +124,17 @@
     width: 65vw;
   }
 
+  .inputTitle {
+    width: 65vw;
+    text-align: left;
+    margin-left: 2%;
+    margin-right: 2%;
+  }
   .inputSmall {
     width: 150px;
     text-align: left;
+    margin-left: 2%;
+    margin-right: 2%;
   }
   
   .table_th_2 {
@@ -269,6 +277,9 @@
       padding-right: 2%;
       word-break: break-word; /* 단어 잘림 방지 */
       overflow-wrap: break-word; /* 줄바꿈 보장 */
+      width: 80vw;
+    }
+    .inputTitle{
       width: 80vw;
     }
 
